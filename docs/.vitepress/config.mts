@@ -1,11 +1,10 @@
-import {DefaultTheme, defineConfig} from 'vitepress'
+import {defineConfig} from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-    title: "GameFrameX.Docs",
+    title: "GameFrameX文档",
     description: "GameFrameX.Docs",
     titleTemplate: ':title',
-    lang: 'zh',
     lastUpdated: true,
     srcExclude: [
         '**/README.md',
@@ -13,17 +12,60 @@ export default defineConfig({
     ],
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
-
         sidebar: [
             {
-                text: 'Examples',
+                base: '/unity/',
+                text: 'Unity',
                 items: [
-                    {text: 'Markdown Examples', link: '/markdown-examples'},
+                    {text: '开始', link: '/start'},
+                ]
+            },
+            {
+                text: '服务器',
+                base: '/server/',
+                items: [
+                    {text: '开始', link: '/start'},
                     {text: 'Runtime API Examples', link: '/api-examples'}
                 ]
-            }
+            },
+            {
+                base: '/tools/',
+                text: '工具',
+                items: [
+                    {text: '开始', link: '/start'},
+
+                ]
+            },
+            {
+                base: '/protobuf/',
+                text: '协议',
+                items: [
+                    {text: '开始', link: '/start'},
+                ]
+            },
+            {
+                base: '/docker/',
+                text: 'Docker',
+                items: [
+                    {text: '开始', link: '/start'},
+                ]
+            },
+            {
+                base: '/config/',
+                text: '配置文件',
+                items: [
+                    {text: '开始', link: '/start'},
+                ]
+            },
         ],
-        nav: nav(),
+        nav: [
+            {text: 'Unity客户端', link: '/unity/'},
+            {text: '服务器', link: '/server/'},
+            {text: '工具', link: '/tools/'},
+            {text: '协议', link: '/protobuf/'},
+            {text: 'Docker', link: '/docker/'},
+            {text: '配置文件', link: '/config/'},
+        ],
         socialLinks: [
             {icon: 'github', link: 'https://github.com/alianblank'}
         ],
@@ -71,15 +113,4 @@ export default defineConfig({
         }
     }
 })
-
-function nav(): DefaultTheme.NavItem[] {
-    return [
-        {text: 'Unity', link: '/unity/'},
-        {text: 'Server', link: '/server/'},
-        {text: 'Tools', link: '/tools/'},
-        {text: 'ProtoBuff', link: '/protobuf/'},
-        {text: 'Docker', link: '/docker/'},
-        {text: 'Configs', link: '/config/'},
-    ]
-}
 
