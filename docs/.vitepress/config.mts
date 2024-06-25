@@ -1,15 +1,18 @@
-import {defineConfig} from 'vitepress'
+import {DefaultTheme, defineConfig} from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     title: "GameFrameX.Docs",
     description: "GameFrameX.Docs",
+    titleTemplate: ':title',
+    lang: 'zh',
+    lastUpdated: true,
+    srcExclude: [
+        '**/README.md',
+        '**/TODO.md'
+    ],
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
-        nav: [
-            {text: 'Home', link: '/'},
-            {text: 'Examples', link: '/markdown-examples'}
-        ],
 
         sidebar: [
             {
@@ -20,15 +23,36 @@ export default defineConfig({
                 ]
             }
         ],
-
+        nav: nav(),
         socialLinks: [
-            {icon: 'github', link: 'https://github.com/vuejs/vitepress'}
+            {icon: 'github', link: 'https://github.com/alianblank'}
         ],
         editLink: {
             text: '编辑纠错',
             pattern: ({filePath}) => {
                 return `https://github.com/AlianBlank/GameFrameX.Docs/edit/main/docs/${filePath}`
             }
+        },
+        footer: {
+            message: '<a href="https://github.com/AlianBlank/GameFrameX/blob/main/LICENSE.md">Apache License</a>.',
+            copyright: 'Copyright © 2019-${new Date().getFullYear()} <a href="https://github.com/AlianBlank">Blank</a>'
+        },
+        docFooter: {
+            prev: '上一页',
+            next: '下一页'
+        },
+        lastUpdated: {
+            text: '最后更新于',
+            formatOptions: {
+                dateStyle: 'short',
+                timeStyle: 'medium'
+            }
+        },
+        lightModeSwitchTitle: '切换到浅色模式',
+        darkModeSwitchTitle: '切换到深色模式',
+        returnToTopLabel: '回到顶部',
+        search: {
+            provider: 'local'
         }
     },
     markdown: {
@@ -47,3 +71,15 @@ export default defineConfig({
         }
     }
 })
+
+function nav(): DefaultTheme.NavItem[] {
+    return [
+        {text: 'Unity', link: '/unity/'},
+        {text: 'Server', link: '/server/'},
+        {text: 'Tools', link: '/tools/'},
+        {text: 'ProtoBuff', link: '/protobuf/'},
+        {text: 'Docker', link: '/docker/'},
+        {text: 'Configs', link: '/config/'},
+    ]
+}
+
