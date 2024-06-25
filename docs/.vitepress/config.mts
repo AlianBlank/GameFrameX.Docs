@@ -23,7 +23,13 @@ export default defineConfig({
 
         socialLinks: [
             {icon: 'github', link: 'https://github.com/vuejs/vitepress'}
-        ]
+        ],
+        editLink: {
+            text: '编辑纠错',
+            pattern: ({filePath}) => {
+                return `https://github.com/AlianBlank/GameFrameX.Docs/edit/main/docs/${filePath}`
+            }
+        }
     },
     markdown: {
         image: {
