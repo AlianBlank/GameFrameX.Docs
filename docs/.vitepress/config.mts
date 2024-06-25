@@ -35,7 +35,7 @@ export default defineConfig({
         },
         footer: {
             message: '<a href="https://github.com/AlianBlank/GameFrameX/blob/main/LICENSE.md">Apache License</a>.',
-            copyright: 'Copyright © 2019-${new Date().getFullYear()} <a href="https://github.com/AlianBlank">Blank</a>'
+            copyright: `Copyright © 2019-${new Date().getFullYear()} <a href="https://github.com/AlianBlank">Blank</a>`
         },
         docFooter: {
             prev: '上一页',
