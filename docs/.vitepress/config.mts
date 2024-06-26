@@ -1,4 +1,6 @@
 import {defineConfig} from 'vitepress'
+import * as fs from "fs";
+import * as path from "path";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -14,52 +16,7 @@ export default defineConfig({
     ],
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
-        sidebar: [
-            {
-                base: '/unity/',
-                text: 'Unity',
-                items: [
-                    {text: '开始', link: '/start'},
-                ]
-            },
-            {
-                text: '服务器',
-                base: '/server/',
-                items: [
-                    {text: '开始', link: '/start'},
-                    {text: 'Runtime API Examples', link: '/api-examples'}
-                ]
-            },
-            {
-                base: '/tools/',
-                text: '工具',
-                items: [
-                    {text: '开始', link: '/start'},
-
-                ]
-            },
-            {
-                base: '/protobuf/',
-                text: '协议',
-                items: [
-                    {text: '开始', link: '/start'},
-                ]
-            },
-            {
-                base: '/docker/',
-                text: 'Docker',
-                items: [
-                    {text: '开始', link: '/start'},
-                ]
-            },
-            {
-                base: '/config/',
-                text: '配置文件',
-                items: [
-                    {text: '开始', link: '/start'},
-                ]
-            },
-        ],
+        sidebar: getSideBars(),
         nav: [
             {text: 'Unity客户端', link: '/unity/'},
             {text: '服务器', link: '/server/'},
@@ -122,4 +79,39 @@ export default defineConfig({
         }
     }
 })
+
+function getSideBars(): any[] {
+    let sidebars = []
+    const docsPath = path.dirname(__dirname); // docs 目录路径
+
+    (function getSlideBar(docsPath, link = "") {
+        let sidebar = [];
+        const files = fs.readdirSync(docsPath);
+        files.forEach((fileName, index) => {
+            if (fileName.startsWith('.') || !fileName) {
+                return;
+            }
+            const filePath = path.join(docsPath, fileName);
+            const stat = fs.statSync(filePath);
+            const extname = path.extname(filePath);
+            const basename = path.basename(filePath, extname);
+            if (stat.isDirectory()) {
+                getSlideBar(filePath, `/${fileName}`);
+            } else {
+                if (extname === '.md' && fileName !== "index.md") {
+                    sidebar.push({
+                        text: basename,
+                        link: `${link}/${basename}`,
+                    })
+                }
+            }
+        })
+
+        sidebars.push({
+            text: link.replace("/", ""),
+            items: sidebar,
+        })
+    })(docsPath)
+    return sidebars;
+}
 

@@ -5,6 +5,8 @@
     "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
     "vitepress": "^1.2.3"
   }
 }
