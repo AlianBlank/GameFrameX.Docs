@@ -5,6 +5,7 @@ export default defineConfig({
     title: "GameFrameX文档",
     description: "GameFrameX.Docs",
     titleTemplate: ':title',
+    cleanUrls: true,
     lastUpdated: true,
     srcExclude: [
         '**/README.md',
