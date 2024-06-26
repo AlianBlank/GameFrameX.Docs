@@ -97,6 +97,11 @@ export default defineConfig({
             provider: 'local'
         }
     },
+    head: [
+        [
+            'script', {}, '<script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?03c5721e4ea2defb6320b799780d7d30";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>'
+        ]
+    ],
     markdown: {
         image: {
             // 默认禁用图片懒加载
