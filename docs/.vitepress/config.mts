@@ -7,6 +7,7 @@ export default defineConfig({
     title: "GameFrameX文档",
     description: "GameFrameX.Docs",
     titleTemplate: ':title',
+    base: '/docs/',
     lang: 'zh-CN',
     cleanUrls: true,
     lastUpdated: true,
