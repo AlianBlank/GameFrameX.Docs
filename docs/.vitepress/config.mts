@@ -99,8 +99,10 @@ function getSideBars(): any[] {
                 getSlideBar(filePath, `/${fileName}`);
             } else {
                 if (extname === '.md' && fileName !== "index.md") {
+                    let content = fs.readFileSync(filePath, {encoding: 'utf-8', flag: 'r'});
+                    let title = content.split('\n')[0].replace('#', '').trim()
                     sidebar.push({
-                        text: basename,
+                        text: title,
                         link: `${link}/${basename}`,
                     })
                 }
