@@ -19,12 +19,12 @@ export default defineConfig({
         // https://vitepress.dev/reference/default-theme-config
         sidebar: getSideBars(),
         nav: [
-            {text: 'Unity客户端', link: '/unity/'},
-            {text: '服务器', link: '/server/'},
-            {text: '工具', link: '/tools/'},
-            {text: '协议', link: '/protobuf/'},
-            {text: 'Docker', link: '/docker/'},
-            {text: '配置文件', link: '/config/'},
+            {text: 'Unity客户端', link: '/docs/unity/'},
+            {text: '服务器', link: '/docs/server/'},
+            {text: '工具', link: '/docs/tools/'},
+            {text: '协议', link: '/docs/protobuf/'},
+            {text: 'Docker', link: '/docs/docker/'},
+            {text: '配置文件', link: '/docs/config/'},
         ],
         socialLinks: [
             {icon: 'github', link: 'https://github.com/alianblank'}
