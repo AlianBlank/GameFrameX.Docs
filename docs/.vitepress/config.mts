@@ -35,7 +35,7 @@ export default defineConfig({
             {
                 text: '简介',
                 base: '/guide/',
-                collapsed: true,
+                collapsed: false,
                 items: [
                     {text: '什么是GameFrameX?', link: '/introduce'},
                     {text: '准备工作', link: '/ready'},
@@ -44,6 +44,7 @@ export default defineConfig({
             {
                 text: 'Unity客户端',
                 base: '/unity/',
+                collapsed: false,
                 items: [
                     {text: 'Runtime API Examples', link: '/api-examples'}
                 ]
@@ -51,6 +52,7 @@ export default defineConfig({
             {
                 text: '服务器',
                 base: '/server/',
+                collapsed: false,
                 items: [
                     {text: '开始', link: '/start'},
                     {text: 'Runtime API Examples', link: '/api-examples'}
@@ -59,6 +61,7 @@ export default defineConfig({
             {
                 text: '工具',
                 base: '/tools/',
+                collapsed: false,
                 items: [
                     {text: '开始', link: '/start'},
                     {text: 'Runtime API Examples', link: '/api-examples'}
@@ -67,6 +70,7 @@ export default defineConfig({
             {
                 text: '协议',
                 base: '/protobuf/',
+                collapsed: false,
                 items: [
                     {text: '开始', link: '/start'},
                     {text: 'Runtime API Examples', link: '/api-examples'}
@@ -75,6 +79,7 @@ export default defineConfig({
             {
                 text: 'Docker',
                 base: '/docker/',
+                collapsed: false,
                 items: [
                     {text: '开始', link: '/start'},
                     {text: 'Runtime API Examples', link: '/api-examples'}
@@ -83,6 +88,7 @@ export default defineConfig({
             {
                 text: '配置文件',
                 base: '/config/',
+                collapsed: false,
                 items: [
                     {text: '开始', link: '/start'},
                     {text: 'Runtime API Examples', link: '/api-examples'}
