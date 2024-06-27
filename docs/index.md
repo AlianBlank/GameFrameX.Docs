@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "My Awesome Project"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  name: "Game Frame X Doc"
+  text: "GameFrameX 文档"
+  tagline: 一体化游戏前后端解决方案
   actions:
     - theme: brand
       text: Markdown Examples
