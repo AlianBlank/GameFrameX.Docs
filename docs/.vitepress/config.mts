@@ -17,7 +17,7 @@ export default defineConfig({
         nav: [
             {text: 'Home', link: '/'},
             {text: 'Examples', link: '/markdown-examples'},
-            {text: 'Unity客户端', link: '/docs/unity/'},
+            {text: 'Unity客户端', link: '/unity/'},
             {text: '服务器', link: '/docs/server/'},
             {text: '工具', link: '/docs/tools/'},
             {text: '协议', link: '/docs/protobuf/'},
