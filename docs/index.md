@@ -6,13 +6,13 @@ hero:
   name: "Game Frame X Doc"
   text: "GameFrameX 文档"
   tagline: 一体化游戏前后端解决方案
-#  actions:
-#    - theme: brand
-#      text: Markdown Examples
-#      link: /markdown-examples
-#    - theme: alt
-#      text: API Examples
-#      link: /api-examples
+  actions:
+    - theme: brand
+      text: 快速开始Unity客户端
+      link: /unity/
+    - theme: alt
+      text: 快速开始服务端
+      link: /server/
 
 features:
   - title: 没有语言学习障碍
