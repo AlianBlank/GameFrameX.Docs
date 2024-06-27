@@ -8,10 +8,12 @@ hero:
   tagline: 一体化游戏前后端解决方案
   actions:
     - theme: brand
+      text: 开启 GameFrameX =>
+      link: /guide/
+    - theme: alt
       text: 快速开始Unity客户端
       link: /unity/
-#    - theme: alt
-    - theme: brand
+    - theme: alt
       text: 快速开始服务端
       link: /server/
 
