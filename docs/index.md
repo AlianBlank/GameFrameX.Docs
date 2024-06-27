@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 开启 GameFrameX =>
-      link: /guide/
+      link: /guide/introduce
     - theme: alt
       text: 快速开始Unity客户端
       link: /unity/
