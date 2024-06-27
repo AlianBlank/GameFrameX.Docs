@@ -35,7 +35,7 @@ export default defineConfig({
             },
             {
                 text: 'Unity客户端',
-                target: '/unity/',
+                base: '/unity/',
                 items: [
                     {text: '开始', link: '/start'},
                     {text: 'Runtime API Examples', link: '/api-examples'}
