@@ -10,7 +10,8 @@ hero:
     - theme: brand
       text: 快速开始Unity客户端
       link: /unity/
-    - theme: alt
+#    - theme: alt
+    - theme: brand
       text: 快速开始服务端
       link: /server/
 
