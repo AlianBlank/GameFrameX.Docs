@@ -16,7 +16,6 @@ export default defineConfig({
         // https://vitepress.dev/reference/default-theme-config
         nav: [
             {text: 'Home', link: '/'},
-            {text: 'Examples', link: '/markdown-examples'},
             {text: 'Unity客户端', link: '/unity/'},
             {text: '服务器', link: '/server/'},
             {text: '工具', link: '/tools/'},
