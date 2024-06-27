@@ -40,6 +40,46 @@ export default defineConfig({
                     {text: '开始', link: '/start'},
                     {text: 'Runtime API Examples', link: '/api-examples'}
                 ]
+            },
+            {
+                text: '服务器',
+                base: '/server/',
+                items: [
+                    {text: '开始', link: '/start'},
+                    {text: 'Runtime API Examples', link: '/api-examples'}
+                ]
+            },
+            {
+                text: '工具',
+                base: '/tools/',
+                items: [
+                    {text: '开始', link: '/start'},
+                    {text: 'Runtime API Examples', link: '/api-examples'}
+                ]
+            },
+            {
+                text: '协议',
+                base: '/protobuf/',
+                items: [
+                    {text: '开始', link: '/start'},
+                    {text: 'Runtime API Examples', link: '/api-examples'}
+                ]
+            },
+            {
+                text: 'Docker',
+                base: '/docker/',
+                items: [
+                    {text: '开始', link: '/start'},
+                    {text: 'Runtime API Examples', link: '/api-examples'}
+                ]
+            },
+            {
+                text: '配置文件',
+                base: '/config/',
+                items: [
+                    {text: '开始', link: '/start'},
+                    {text: 'Runtime API Examples', link: '/api-examples'}
+                ]
             }
         ],
 
