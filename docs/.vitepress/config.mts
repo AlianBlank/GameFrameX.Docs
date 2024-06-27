@@ -33,10 +33,18 @@ export default defineConfig({
                 ]
             },
             {
+                text: '简介',
+                base: '/guide/',
+                collapsed: true,
+                items: [
+                    {text: '什么是GameFrameX?', link: '/introduce'},
+                    {text: '准备工作', link: '/ready'},
+                ]
+            },
+            {
                 text: 'Unity客户端',
                 base: '/unity/',
                 items: [
-                    {text: '开始', link: '/start'},
                     {text: 'Runtime API Examples', link: '/api-examples'}
                 ]
             },
