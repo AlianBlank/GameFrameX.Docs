@@ -5,6 +5,7 @@ export default defineConfig({
     title: "Game Frame X Doc",
     description: "Game Frame X 文档",
     titleTemplate: ':title',
+    lang: 'zh-CN',
     cleanUrls: true,
     lastUpdated: true,
     srcExclude: [
