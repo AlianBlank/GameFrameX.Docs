@@ -32,6 +32,14 @@ export default defineConfig({
                     {text: 'Markdown Examples', link: '/markdown-examples'},
                     {text: 'Runtime API Examples', link: '/api-examples'}
                 ]
+            },
+            {
+                text: 'Unity客户端',
+                target: '/unity/',
+                items: [
+                    {text: '开始', link: '/start'},
+                    {text: 'Runtime API Examples', link: '/api-examples'}
+                ]
             }
         ],
 
