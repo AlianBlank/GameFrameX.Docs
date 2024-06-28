@@ -73,7 +73,7 @@ export default defineConfig({
                 base: '/protobuf/',
                 collapsed: false,
                 items: [
-                    {text: '注意事项!!!', link: '/node'},
+                    {text: '注意事项!!!', link: '/note'},
                     {text: '规范及使用', link: '/require'},
                 ]
             },
