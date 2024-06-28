@@ -6,7 +6,7 @@ hero:
   name: "Game Frame X 文档"
   text: ""
   image:
-    src: /images/home/home.png
+    src: /logo.png
   tagline: 一体化游戏前后端解决方案
   actions:
     - theme: brand
