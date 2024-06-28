@@ -3,8 +3,10 @@
 layout: home
 
 hero:
-  name: "Game Frame X Doc"
-  text: "GameFrameX 文档"
+  name: "Game Frame X 文档"
+  text: ""
+  image:
+    src: /images/home/home.png
   tagline: 一体化游戏前后端解决方案
   actions:
     - theme: brand
@@ -33,5 +35,27 @@ features:
   - title: 更容易、快速部署的启动服务器
     details: 使用Docker容器来实现快速的迁移、部署、启动和扩容.可以直接结合DevOps 来快速迭代
 ---
+
+<style>
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe 60%, #41d1ff);
+
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
+  --vp-home-hero-image-filter: blur(44px);
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 1080px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+}
+</style>
 
 
