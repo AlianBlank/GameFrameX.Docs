@@ -1,24 +1,7 @@
----
+# 通讯协议
 
+## 协议方案
 
-hero:
-  name: "GameFrameX.Docs"
-  text: "GameFrameX.Doc"
-  tagline: My great project tagline
-  actions:
-    - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+默认采用Google Proto Buffer 实现。采用第三方库 [protobuf.net](https://github.com/protobuf-net/protobuf-net) 实现库
 
-features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-
-
+在其中增加了类标签的继承实现和ProtoMember 的继承实现

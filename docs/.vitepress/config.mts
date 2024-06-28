@@ -72,8 +72,8 @@ export default defineConfig({
                 base: '/protobuf/',
                 collapsed: false,
                 items: [
-                    {text: '开始', link: '/start'},
-                    {text: 'Runtime API Examples', link: '/api-examples'}
+                    {text: '注意事项!!!', link: '/node'},
+                    {text: '规范及使用', link: '/require'},
                 ]
             },
             {
