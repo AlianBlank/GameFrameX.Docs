@@ -39,6 +39,7 @@ export default defineConfig({
                 items: [
                     {text: '什么是GameFrameX?', link: '/introduce'},
                     {text: '准备工作', link: '/ready'},
+                    {text: '开始', link: '/start'},
                 ]
             },
             {
