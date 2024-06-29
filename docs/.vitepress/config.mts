@@ -26,13 +26,6 @@ export default defineConfig({
 
         sidebar: [
             {
-                text: 'Examples',
-                items: [
-                    {text: 'Markdown Examples', link: '/markdown-examples'},
-                    {text: 'Runtime API Examples', link: '/api-examples'}
-                ]
-            },
-            {
                 text: '简介',
                 base: '/guide/',
                 collapsed: false,
@@ -56,7 +49,6 @@ export default defineConfig({
                 collapsed: false,
                 items: [
                     {text: '开始', link: '/start'},
-                    {text: 'Runtime API Examples', link: '/api-examples'}
                 ]
             },
             {
@@ -65,7 +57,6 @@ export default defineConfig({
                 collapsed: false,
                 items: [
                     {text: '开始', link: '/start'},
-                    {text: 'Runtime API Examples', link: '/api-examples'}
                 ]
             },
             {
@@ -83,7 +74,6 @@ export default defineConfig({
                 collapsed: false,
                 items: [
                     {text: '开始', link: '/start'},
-                    {text: 'Runtime API Examples', link: '/api-examples'}
                 ]
             },
             {
@@ -92,7 +82,6 @@ export default defineConfig({
                 collapsed: false,
                 items: [
                     {text: '开始', link: '/start'},
-                    {text: 'Runtime API Examples', link: '/api-examples'}
                 ]
             }
         ],
