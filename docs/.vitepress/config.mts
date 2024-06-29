@@ -40,7 +40,7 @@ export default defineConfig({
                 base: '/unity/',
                 collapsed: false,
                 items: [
-                    {text: 'Runtime API Examples', link: '/api-examples'}
+                    {text: '准备工作', link: '/ready'},
                 ]
             },
             {
