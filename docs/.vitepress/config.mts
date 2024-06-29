@@ -87,7 +87,7 @@ export default defineConfig({
         ],
 
         socialLinks: [
-            {icon: 'github', link: 'https://github.com/alianblank'}
+            {icon: 'github', link: 'https://github.com/alianblank/gameframex'}
         ],
         editLink: {
             text: '编辑纠错',
