@@ -15,13 +15,13 @@ export default defineConfig({
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
         nav: [
-            {text: 'Home', link: '/'},
-            {text: 'Unity客户端', link: '/unity/'},
-            {text: '服务器', link: '/server/'},
-            {text: '工具', link: '/tools/'},
-            {text: '协议', link: '/protobuf/'},
-            {text: 'Docker', link: '/docker/'},
-            {text: '配置文件', link: '/config/'},
+            {text: '🏡Home', link: '/'},
+            {text: '🥰Unity客户端', link: '/unity/'},
+            {text: '🍻服务器', link: '/server/'},
+            {text: '🚀工具', link: '/tools/'},
+            {text: '🛸协议', link: '/protobuf/'},
+            {text: '🐳Docker', link: '/docker/'},
+            {text: '🎆配置文件', link: '/config/'},
         ],
 
         sidebar: [
@@ -97,7 +97,7 @@ export default defineConfig({
         },
         footer: {
             message: '<a href="https://github.com/AlianBlank/GameFrameX/blob/main/LICENSE.md">Apache License</a>.',
-            copyright: `Copyright © 2019-${new Date().getFullYear()} <a href="https://github.com/AlianBlank">Blank</a>`
+            copyright: `Copyright ©️ 2019-${new Date().getFullYear()} <a href="https://github.com/AlianBlank">Blank</a>`
         },
         docFooter: {
             prev: '上一页',
