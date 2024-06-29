@@ -121,7 +121,7 @@ export default defineConfig({
         logo: '/logo.png',
 
     },
-    head: [['link', {rel: 'icon', href: '/favicon.ico'}]],
+    head: [['link', {rel: 'icon', href: '/logo.png'}]],
     markdown: {
         image: {
             // 默认禁用图片懒加载
