@@ -90,7 +90,7 @@ export default defineConfig({
             {icon: 'github', link: 'https://github.com/alianblank/gameframex'}
         ],
         editLink: {
-            text: '编辑纠错',
+            text: '🤣编辑纠错🤣',
             pattern: ({filePath}) => {
                 return `https://github.com/AlianBlank/GameFrameX.Docs/edit/main/docs/${filePath}`
             }
