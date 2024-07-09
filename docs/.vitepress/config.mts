@@ -49,6 +49,8 @@ export default defineConfig({
                 collapsed: false,
                 items: [
                     {text: '开始', link: '/start'},
+                    {text: '消息ID设计', link: '/message-id-design'},
+                    {text: '网络通信协议', link: '/network-proto'},
                 ]
             },
             {
