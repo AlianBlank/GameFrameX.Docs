@@ -59,7 +59,15 @@ export default defineConfig({
                 base: '/tools/',
                 collapsed: false,
                 items: [
-                    {text: '开始', link: '/start'},
+                    {
+                        text: '协议工具',
+                        base: '/tools/proto/',
+                        collapsed: false,
+                        items: [
+                            {text: '导出模式', link: '/export-mode'},
+                            {text: '启动参数', link: '/launcher-params'},
+                        ]
+                    },
                 ]
             },
             {
