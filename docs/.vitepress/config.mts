@@ -50,6 +50,7 @@ export default defineConfig({
                 items: [
                     {text: '开始', link: '/start'},
                     {text: '消息ID设计', link: '/message-id-design'},
+                    {text: 'HTTP处理器', link: '/http-handler'},
                     {text: '网络通信协议', link: '/network-proto'},
                 ]
             },
