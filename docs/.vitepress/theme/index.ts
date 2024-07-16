@@ -1,6 +1,6 @@
 import DefaultTheme from 'vitepress/theme'
 // import './style/index.css'
-import './style/appreciate.css';
+// @ts-ignore
 import Appreciate from './components/Appreciate.vue'
 import {h} from 'vue'
 import {useData, useRoute} from 'vitepress'
