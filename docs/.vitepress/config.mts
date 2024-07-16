@@ -53,6 +53,31 @@ export default defineConfig({
                     {text: '消息ID设计', link: '/message-id-design'},
                     {text: 'HTTP处理器', link: '/http-handler'},
                     {text: '网络通信协议', link: '/network-proto'},
+                    {
+                        text: '组件',
+                        base: '/server/component/',
+                        collapsed: false,
+                        items: [
+                            {text: '内核', link: '/core'},
+                            {text: '内核基础', link: '/core-abstractions'},
+                            {text: '扩展', link: '/extension'},
+                            {text: '日志', link: '/log'},
+                            {text: '监控', link: '/monitor'},
+                            {text: '网络基础', link: '/network-abstractions'},
+                            {text: '网络', link: '/network'},
+                            {text: 'HTTP网络消息', link: '/network-http'},
+                            {text: '网络消息', link: '/network-message'},
+                            {text: '服务器管理', link: '/server-manager'},
+                            {text: '设置', link: '/setting'},
+                            {text: '启动器', link: '/start-up'},
+                            {text: '工具集', link: '/utility'},
+                            {text: '数据库服务', link: '/dbserver'},
+                            {text: '数据库MongoDB', link: '/dbserver-mongo'},
+                            {text: '数据库非关系型服务', link: '/dbserver-nosql'},
+                            {text: '数据库非关系型服务Redis', link: '/dbserver-nosql-redis'},
+                            {text: '数据库服务', link: '/dbserver'},
+                        ]
+                    },
                 ]
             },
             {
