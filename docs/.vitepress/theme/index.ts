@@ -1,8 +1,9 @@
 import DefaultTheme from 'vitepress/theme'
 // import './style/index.css'
-
-import { h } from 'vue'
-import { useData , useRoute } from 'vitepress'
+import './style/appreciate.css';
+import Appreciate from './components/Appreciate.vue'
+import {h} from 'vue'
+import {useData, useRoute} from 'vitepress'
 
 import giscusTalk from 'vitepress-plugin-comment-with-giscus';
 
@@ -13,21 +14,23 @@ export default {
     Layout: () => {
         const props: Record<string, any> = {}
         // 获取 frontmatter
-        const { frontmatter } = useData()
+        const {frontmatter} = useData()
 
         /* 添加自定义 class */
         if (frontmatter.value?.layoutClass) {
             props.class = frontmatter.value.layoutClass
         }
 
-        return h(DefaultTheme.Layout, props)
+        return h(DefaultTheme.Layout, props, {
+            'doc-footer-before': () => h(Appreciate),
+        })
     },
 
     setup() {
         const route = useRoute();
 
         // Get frontmatter and route
-        const { frontmatter } = useData();
+        const {frontmatter} = useData();
 
 
         // giscus配置
