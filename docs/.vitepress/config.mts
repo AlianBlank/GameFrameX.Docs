@@ -85,7 +85,9 @@ export default defineConfig({
                 base: '/docker/',
                 collapsed: false,
                 items: [
-                    {text: '开始', link: '/start'},
+                    {text: '构建', link: '/build'},
+                    {text: '发布', link: '/publish'},
+                    {text: '部署', link: '/deployment'},
                 ]
             },
             {
