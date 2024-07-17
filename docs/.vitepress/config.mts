@@ -98,7 +98,6 @@ export default defineConfig({
                             {text: '数据库MongoDB', link: '/dbserver-mongo'},
                             {text: '数据库非关系型服务', link: '/dbserver-nosql'},
                             {text: '数据库非关系型服务Redis', link: '/dbserver-nosql-redis'},
-                            {text: '数据库服务', link: '/dbserver'},
                         ]
                     },
                 ]
