@@ -160,7 +160,10 @@ export default defineConfig({
         logo: '/logo.png',
 
     },
-    head: [['link', {rel: 'icon', href: '/logo.png'}]],
+    head: [
+        ['link', {rel: 'icon', href: '/logo.png'}],
+        ['script', {src: '/live2d.js'}],
+    ],
     markdown: {
         image: {
             // 默认禁用图片懒加载
