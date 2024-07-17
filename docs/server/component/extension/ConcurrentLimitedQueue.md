@@ -5,7 +5,7 @@
 
 ## 定长队列(ConcurrentLimitedQueue)
 
-### ConcurrentLimitedQueue<T>
+### `ConcurrentLimitedQueue<T>`
 
 #### 功能描述
 
@@ -63,7 +63,7 @@ ConcurrentLimitedQueue<int> queue = new ConcurrentLimitedQueue<int>(5);
 
 ---
 
-### .ctor(IEnumerable<T> list)
+### `.ctor(IEnumerable<T> list)`
 
 #### 功能描述
 
@@ -120,7 +120,7 @@ queue.Enqueue(4); // 此时队列将移除1，队列内容变为[2, 3, 4]
 
 ---
 
-### static implicit operator ConcurrentLimitedQueue<T>(List<T> list)
+### `static implicit operator ConcurrentLimitedQueue<T>(List<T> list)`
 
 #### 功能描述
 

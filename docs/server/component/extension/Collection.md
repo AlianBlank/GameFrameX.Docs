@@ -5,7 +5,7 @@
 
 ## 集合处理(CollectionExtensions)
 
-### Merge<TKey, TValue>
+### `Merge<TKey, TValue>`
 
 #### 功能描述
 
@@ -40,7 +40,7 @@ dictionary.Merge("key1", 10, (x, y) => x + y);
 dictionary.Merge("key2", 20, (x, y) => x + y);
 ```
 
-### GetOrAdd<TKey, TValue>
+### `GetOrAdd<TKey, TValue>`
 
 #### 功能描述
 
@@ -79,7 +79,7 @@ var dictionary = new Dictionary<string, int>();
 var value = dictionary.GetOrAdd("key1", k => k.GetHashCode());
 ```
 
-### GetOrAdd<TKey, TValue>
+### `GetOrAdd<TKey, TValue>`
 
 #### 功能描述
 
@@ -111,7 +111,7 @@ var dictionary = new Dictionary<string, int>();
 var value = dictionary.GetOrAdd("key1");
 ```
 
-### RemoveIf<TKey, TValue>
+### `RemoveIf<TKey, TValue>`
 
 #### 功能描述
 
@@ -155,7 +155,7 @@ dictionary.Add("key2", 20);
 var removedCount = dictionary.RemoveIf((k, v) => v > 15);
 ```
 
-### IsNullOrEmpty<T>
+### `IsNullOrEmpty<T>`
 
 #### 功能描述
 
@@ -186,7 +186,7 @@ var list = new List<int>();
 bool isEmpty = list.IsNullOrEmpty();
 ```
 
-### Random<T>
+### `Random<T>`
 
 #### 功能描述
 
@@ -220,7 +220,7 @@ var list = new List<int> { 1, 2, 3, 4, 5 };
 var randomItem = list.Random();
 ```
 
-### Shuffer<T>
+### `Shuffer<T>`
 
 #### 功能描述
 
@@ -257,7 +257,7 @@ var list = new List<int> { 1, 2, 3, 4, 5 };
 list.Shuffer();
 ```
 
-### RemoveIf<T>
+### `RemoveIf<T>`
 
 #### 功能描述
 
@@ -294,7 +294,7 @@ var list = new List<int> { 1, 2, 3, 4, 5 };
 list.RemoveIf(x => x % 2 == 0);
 ```
 
-### AddRange<T>
+### `AddRange<T>`
 
 #### 功能描述
 
