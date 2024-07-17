@@ -6,7 +6,7 @@ import {h} from 'vue'
 import {useData, useRoute} from 'vitepress'
 
 import giscusTalk from 'vitepress-plugin-comment-with-giscus';
-import {useLive2d} from 'vitepress-theme-website'
+// import {useLive2d, useWaline} from 'vitepress-theme-website'
 
 export default {
     extends: DefaultTheme,
@@ -51,6 +51,10 @@ export default {
             //您可以使用“comment:true”序言在页面上单独启用它
             true
         );
+        /*
+        useWaline({
+            serverURL: 'https://gameframex.doc.alianblank.com'
+        })
         //看板娘
         useLive2d({
             enable: true,
@@ -71,7 +75,7 @@ export default {
             react: {
                 opacity: 0.8
             }
-        })
+        })*/
     },
 
 }

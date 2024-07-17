@@ -177,7 +177,7 @@ export default defineConfig({
         // Logo
         ['link', {rel: 'icon', href: '/logo.png'}],
         // 看板娘引用库
-        ['script', {src: '/live2d.js'}],
+        // ['script', {src: '/live2d.js'}],
     ],
     markdown: {
         image: {
