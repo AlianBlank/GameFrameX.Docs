@@ -4,8 +4,6 @@
 
 [core-config.md](core-config.md)
 
-[扩展](extension.md)
-
 [日志](log.md)
 
 [监控](monitor.md)
