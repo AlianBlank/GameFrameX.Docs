@@ -72,7 +72,7 @@ export default defineConfig({
                             {text: '网络消息', link: '/network-message'},
                             {text: '服务器管理', link: '/server-manager'},
                             {text: '设置', link: '/setting'},
-                            {text: '启动器', link: '/start-up'},
+                            {text: '启动器', link: '/startUp'},
                             {text: '工具集', link: '/utility'},
                             {text: '数据库服务', link: '/dbserver'},
                             {text: '数据库MongoDB', link: '/dbserver-mongo'},

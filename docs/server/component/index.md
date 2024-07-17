@@ -22,7 +22,7 @@
 
 [设置](setting.md)
 
-[启动器](start-up.md)
+[启动器](startUp.md)
 
 [工具集](utility.md)
 
