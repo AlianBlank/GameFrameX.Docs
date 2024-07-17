@@ -1,6 +1,7 @@
 import {defineConfig} from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
+// @ts-ignore
 export default defineConfig({
     title: "Game Frame X Doc",
     description: "Game Frame X 文档",
@@ -14,6 +15,7 @@ export default defineConfig({
     ],
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
+        // 顶部菜单导航栏
         nav: [
             {text: '🏡Home', link: '/'},
             {text: '🥰Unity客户端', link: '/unity/'},
@@ -24,6 +26,7 @@ export default defineConfig({
             {text: '🎆配置文件', link: '/config/'},
         ],
 
+        // 左侧侧边栏配置
         sidebar: [
             {
                 text: '简介',
@@ -125,36 +128,45 @@ export default defineConfig({
             }
         ],
 
+        // 社交连接
         socialLinks: [
             {icon: 'github', link: 'https://github.com/alianblank/gameframex'}
         ],
+        // 文档编辑纠错
         editLink: {
             text: '🤣编辑纠错🤣',
             pattern: ({filePath}) => {
                 return `https://github.com/AlianBlank/GameFrameX.Docs/edit/main/docs/${filePath}`
             }
         },
+        // 页脚
         footer: {
             message: '<a href="https://github.com/AlianBlank/GameFrameX/blob/main/LICENSE.md">Apache License</a>.',
             copyright: `Copyright ©️ 2019-${new Date().getFullYear()} <a href="https://github.com/AlianBlank">Blank</a>`
         },
+        // 底部的上一页和下一页
         docFooter: {
-            prev: '上一页',
-            next: '下一页'
+            prev: false,
+            next: false
         },
+        // 右侧大纲
         outline: {
             level: 'deep',
             label: '页面导航'
         },
         lastUpdated: {
-            text: '最后更新于',
+            text: '⏱️最后更新于🪂',
             formatOptions: {
-                forceLocale: true,
+                // @ts-ignore
+                dateStyle: 'full',
+                timeStyle: 'medium',
+                // forceLocale: true,
             }
         },
         lightModeSwitchTitle: '切换到浅色模式',
         darkModeSwitchTitle: '切换到深色模式',
         returnToTopLabel: '回到顶部',
+        // 搜索设置
         search: {
             provider: 'local'
         },
@@ -162,12 +174,14 @@ export default defineConfig({
 
     },
     head: [
+        // Logo
         ['link', {rel: 'icon', href: '/logo.png'}],
+        // 看板娘引用库
         ['script', {src: '/live2d.js'}],
     ],
     markdown: {
         image: {
-            // 默认禁用图片懒加载
+            // 默认使用图片懒加载
             lazyLoading: true
         }
         ,
