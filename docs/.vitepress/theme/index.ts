@@ -2,6 +2,8 @@ import DefaultTheme from 'vitepress/theme'
 // import './style/index.css'
 // @ts-ignore
 import Appreciate from './components/Appreciate.vue'
+// @ts-ignore
+import DocFooter from "./components/DocFooter.vue";
 import {h} from 'vue'
 import {useData, useRoute} from 'vitepress'
 
@@ -23,6 +25,7 @@ export default {
 
         return h(DefaultTheme.Layout, props, {
             'doc-footer-before': () => h(Appreciate),
+            'doc-bottom': () => h(DocFooter),
         })
     },
 
