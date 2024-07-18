@@ -130,10 +130,10 @@ export default defineConfig({
                             {text: '设置', link: '/setting'},
                             {text: '启动器', link: '/startUp'},
                             {text: '工具集', link: '/utility'},
-                            {text: '数据库服务', link: '/dbserver'},
-                            {text: '数据库MongoDB', link: '/dbserver-mongo'},
-                            {text: '数据库非关系型服务', link: '/dbserver-nosql'},
-                            {text: '数据库非关系型服务Redis', link: '/dbserver-nosql-redis'},
+                            {text: '数据库服务', link: '/database'},
+                            {text: '数据库MongoDB', link: '/database-mongo'},
+                            {text: '数据库非关系型服务', link: '/database-nosql'},
+                            {text: '数据库非关系型服务Redis', link: '/database-nosql-redis'},
                         ]
                     },
                 ]

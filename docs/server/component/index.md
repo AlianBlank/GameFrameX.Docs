@@ -24,10 +24,10 @@
 
 [工具集](utility.md)
 
-[dbserver.md](dbserver.md)
+[dbserver.md](database)
 
-[dbserver-mongo.md](dbserver-mongo.md)
+[dbserver-mongo.md](database-mongo)
 
-[dbserver-nosql.md](dbserver-nosql.md)
+[dbserver-nosql.md](database-nosql)
 
-[dbserver-nosql-redis.md](dbserver-nosql-redis.md)
+[dbserver-nosql-redis.md](database-nosql-redis)
