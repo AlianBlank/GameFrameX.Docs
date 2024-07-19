@@ -7,13 +7,24 @@ import Analytics from './components/Analytics.vue'
 // @ts-ignore
 import DocFooter from "./components/DocFooter.vue";
 import {h} from 'vue'
+// import {useLive2d, useWaline} from 'vitepress-theme-website'
 import {useData, useRoute} from 'vitepress'
 
 import giscusTalk from 'vitepress-plugin-comment-with-giscus';
-// import {useLive2d, useWaline} from 'vitepress-theme-website'
 
 export default {
     extends: DefaultTheme,
+    // 百度统计
+    enhanceApp({app, router, siteData}) {
+        router.onBeforeRouteChange = (to) => {
+            console.log('路由将改变为: ', to);
+            // @ts-ignore
+            if (typeof _hmt !== 'undefined') {
+                // @ts-ignore
+                _hmt.push(['_trackPageview', to]);
+            }
+        };
+    },
 
     Layout: () => {
         const props: Record<string, any> = {}

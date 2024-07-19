@@ -233,6 +233,20 @@ export default defineConfig({
         ['link', {rel: 'icon', href: '/logo.png'}],
         // 看板娘引用库
         // ['script', {src: '/live2d.js'}],
+        // 百度统计
+        [
+            'script',
+            {},
+            `
+      window._hmt = window._hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?bb98fe196aa7f73b90177c872e5644ab";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      `,
+        ],
     ],
     markdown: {
         image: {
