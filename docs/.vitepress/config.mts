@@ -31,7 +31,7 @@ export default defineConfig({
             {
                 text: '简介',
                 base: '/guide/',
-                collapsed: true,
+                collapsed: false,
                 items: [
                     {text: '什么是GameFrameX?', link: '/introduce'},
                     {text: '准备工作', link: '/ready'},
@@ -41,13 +41,13 @@ export default defineConfig({
             {
                 text: 'Unity客户端',
                 base: '/unity/',
-                collapsed: true,
+                collapsed: false,
                 items: [
                     {text: '准备工作', link: '/ready'},
                     {
                         text: '组件',
                         base: '/unity/component/',
-                        collapsed: true,
+                        collapsed: false,
                         items: [
                             {text: '事件', link: '/event'},
                             {text: '资源', link: '/asset'},
@@ -85,7 +85,7 @@ export default defineConfig({
             {
                 text: '服务器',
                 base: '/server/',
-                collapsed: true,
+                collapsed: false,
                 items: [
                     {text: '开始', link: '/start'},
                     {text: '启动模式', link: '/launcher-params'},
@@ -95,12 +95,12 @@ export default defineConfig({
                     {
                         text: '组件',
                         base: '/server/component/',
-                        collapsed: true,
+                        collapsed: false,
                         items: [
                             {
                                 text: '扩展',
                                 base: '/server/component/extension/',
-                                collapsed: true,
+                                collapsed: false,
                                 items: [
                                     {text: '双向字典', link: '/BidirectionalDictionary'},
                                     {text: '字节处理', link: '/Byte'},
@@ -142,12 +142,12 @@ export default defineConfig({
             {
                 text: '工具',
                 base: '/tools/',
-                collapsed: true,
+                collapsed: false,
                 items: [
                     {
                         text: '协议工具',
                         base: '/tools/proto/',
-                        collapsed: true,
+                        collapsed: false,
                         items: [
                             {text: '导出模式', link: '/export-mode'},
                             {text: '启动参数', link: '/launcher-params'},
@@ -158,7 +158,7 @@ export default defineConfig({
             {
                 text: '协议',
                 base: '/protobuf/',
-                collapsed: true,
+                collapsed: false,
                 items: [
                     {text: '注意事项!!!', link: '/note'},
                     {text: '规范及使用', link: '/require'},
@@ -167,7 +167,7 @@ export default defineConfig({
             {
                 text: 'Docker',
                 base: '/docker/',
-                collapsed: true,
+                collapsed: false,
                 items: [
                     {text: '构建', link: '/build'},
                     {text: '发布', link: '/publish'},
@@ -177,7 +177,7 @@ export default defineConfig({
             {
                 text: '配置文件',
                 base: '/config/',
-                collapsed: true,
+                collapsed: false,
                 items: [
                     {text: '开始', link: '/start'},
                 ]
