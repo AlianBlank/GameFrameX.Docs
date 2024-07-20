@@ -182,6 +182,14 @@ export default defineConfig({
                 items: [
                     {text: '开始', link: '/start'},
                 ]
+            },
+            {
+                text: '发展历程',
+                base: '/development-history/',
+                collapsed: false,
+                items: [
+                    {text: '发展历程', link: '/history'},
+                ]
             }
         ],
 
