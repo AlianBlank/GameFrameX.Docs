@@ -190,6 +190,7 @@ export default defineConfig({
                 items: [
                     {text: '发展历程', link: '/history'},
                     {text: '商业案例', link: '/case'},
+                    {text: '打赏记录', link: '/reward-list'},
                 ]
             }
         ],
