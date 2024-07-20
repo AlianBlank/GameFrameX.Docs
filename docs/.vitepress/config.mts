@@ -1,5 +1,6 @@
 import {defineConfig} from 'vitepress'
 
+import timeline from "vitepress-markdown-timeline";
 // https://vitepress.dev/reference/site-config
 // @ts-ignore
 export default defineConfig({
@@ -268,6 +269,11 @@ export default defineConfig({
                     '信息',
                 detailsLabel:
                     '详细信息'
-            }
+            },
+
+        //时间线
+        config: (md) => {
+            md.use(timeline);
+        },
     }
 })

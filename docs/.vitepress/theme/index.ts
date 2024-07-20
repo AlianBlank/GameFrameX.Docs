@@ -12,6 +12,9 @@ import {useData, useRoute} from 'vitepress'
 
 import giscusTalk from 'vitepress-plugin-comment-with-giscus';
 
+// 引入时间线样式
+import "vitepress-markdown-timeline/dist/theme/index.css";
+
 export default {
     extends: DefaultTheme,
     // 百度统计
