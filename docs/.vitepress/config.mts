@@ -189,6 +189,7 @@ export default defineConfig({
                 collapsed: false,
                 items: [
                     {text: '发展历程', link: '/history'},
+                    {text: '商业案例', link: '/case'},
                 ]
             }
         ],
