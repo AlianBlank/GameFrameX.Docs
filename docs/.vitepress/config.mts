@@ -67,7 +67,7 @@ export default defineConfig({
                             {text: '广告', link: '/advertisement'},
                             {text: '对象存储', link: '/object-storage'},
                             {text: '数据统计', link: '/game-analytics'},
-                            {text: '粘贴板操作', link: '/operationclipboard'},
+                            {text: '粘贴板操作', link: '/operation-clipboard'},
                             {text: '寻路', link: '/pathfinding'},
                             {text: '流程', link: '/procedure'},
                             {text: 'ProtoBuf.Net', link: '/protobuf-net'},
