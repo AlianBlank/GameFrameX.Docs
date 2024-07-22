@@ -6,7 +6,7 @@ import Appreciate from './components/Appreciate.vue'
 import Analytics from './components/Analytics.vue'
 // @ts-ignore
 import DocFooter from "./components/DocFooter.vue";
-import {h} from 'vue'
+import {h, nextTick, onMounted, watch} from 'vue'
 // import {useLive2d, useWaline} from 'vitepress-theme-website'
 import {useData, useRoute} from 'vitepress'
 
@@ -14,6 +14,9 @@ import giscusTalk from 'vitepress-plugin-comment-with-giscus';
 
 // 引入时间线样式
 import "vitepress-markdown-timeline/dist/theme/index.css";
+
+// 图片缩放
+import mediumZoom from 'medium-zoom';
 
 export default {
     extends: DefaultTheme,
@@ -72,6 +75,19 @@ export default {
             //如果为false，则表示未启用
             //您可以使用“comment:true”序言在页面上单独启用它
             true
+        );
+
+        // 图片缩放
+        const initZoom = () => {
+            // mediumZoom('[data-zoomable]', { background: 'var(--vp-c-bg)' }); // 默认
+            mediumZoom('.main img', {background: 'var(--vp-c-bg)'}); // 不显式添加{data-zoomable}的情况下为所有图像启用此功能
+        };
+        onMounted(() => {
+            initZoom();
+        });
+        watch(
+            () => route.path,
+            () => nextTick(() => initZoom())
         );
         /*
         useWaline({
