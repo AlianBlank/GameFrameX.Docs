@@ -51,6 +51,7 @@ export default defineConfig({
                         collapsed: false,
                         items: [
                             {text: '事件', link: '/event'},
+                            {text: '镜像地址', link: '/sync-image'},
                             {text: '资源', link: '/asset'},
                             {text: '配置表', link: '/config'},
                             {text: '协程', link: '/coroutine'},
