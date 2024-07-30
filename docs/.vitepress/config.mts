@@ -28,12 +28,15 @@ export default defineConfig({
             {
                 text: '镜像站点',
                 items: [
-                    { text: '码云(gitee)', link: 'https://gitee.com/gameframex' },
-                    { text: '开放原子开源基金会(atomgit)', link: 'https://atomgit.com/gameframex' },
-                    { text: 'CSDN(gitcode)', link: 'https://gitcode.net/gameframex' },
-                    { text: 'GitLab官方(gitlab)', link: 'https://gitlab.com/gameframex' },
-                    { text: '法国公司 基于GitLab(framagit)', link: 'https://framagit.org/gameframex' },
-                    { text: '中国计算机学会-开源发展委员会(www.gitlink.org.cn)', link: 'https://gitlink.org.cn/GameFrameX' },
+                    {text: '码云(gitee)', link: 'https://gitee.com/gameframex'},
+                    {text: '开放原子开源基金会(atomgit)', link: 'https://atomgit.com/gameframex'},
+                    {text: 'CSDN(gitcode)', link: 'https://gitcode.net/gameframex'},
+                    {text: 'GitLab官方(gitlab)', link: 'https://gitlab.com/gameframex'},
+                    {text: '法国公司 基于GitLab(framagit)', link: 'https://framagit.org/gameframex'},
+                    {
+                        text: '中国计算机学会-开源发展委员会(www.gitlink.org.cn)',
+                        link: 'https://gitlink.org.cn/GameFrameX'
+                    },
                 ]
             }
         ],
@@ -193,6 +196,17 @@ export default defineConfig({
                 collapsed: false,
                 items: [
                     {text: '开始', link: '/start'},
+                ]
+            },
+            {
+                text: '常见问题',
+                base: '/fqa/',
+                collapsed: false,
+                items: [
+                    {
+                        text: '协议工具',
+                        link: '/tools-proto'
+                    },
                 ]
             },
             {
