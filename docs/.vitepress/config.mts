@@ -203,10 +203,10 @@ export default defineConfig({
                 base: '/fqa/',
                 collapsed: false,
                 items: [
-                    {
-                        text: '协议工具',
-                        link: '/tools-proto'
-                    },
+                    {text: '协议工具', link: '/tools-proto'},
+                    {text: 'Unity', link: '/unity'},
+                    {text: '服务器', link: '/server'},
+                    {text: 'Docker', link: '/docker'},
                 ]
             },
             {
