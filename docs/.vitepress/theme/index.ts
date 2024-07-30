@@ -1,5 +1,5 @@
 import DefaultTheme from 'vitepress/theme'
-// import './style/index.css'
+import './style/index.css'
 // @ts-ignore
 import Appreciate from './components/Appreciate.vue'
 // @ts-ignore
