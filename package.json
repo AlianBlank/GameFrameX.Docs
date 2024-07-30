@@ -10,6 +10,7 @@
     "vitepress-markdown-timeline": "^1.2.1",
     "vitepress-plugin-comment-with-giscus": "^1.1.15",
     "vitepress-theme-website": "^1.0.8",
+    "vitepress-sidebar": "^1.24.0",
     "vue": "^3.4.31"
   }
 }
