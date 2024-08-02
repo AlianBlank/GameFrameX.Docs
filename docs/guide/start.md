@@ -12,10 +12,10 @@
 3. 接下来，我们将要克隆下列Github项目到您的本地文件夹，依次在命令行中输入以下命令：
 
    ```
-   git clone https://github.com/AlianBlank/GameFrameX.git
-   git clone https://github.com/AlianBlank/GameFrameX.Server.git ./GameFrameX/Server
-   git clone https://github.com/AlianBlank/GameFrameX.Tools.git ./GameFrameX/Tools
-   git clone https://github.com/AlianBlank/GameFrameX.Unity.git ./GameFrameX/Unity
+   git clone https://github.com/GameFrameX/GameFrameX.git
+   git clone https://github.com/GameFrameX/GameFrameX.Server.git ./GameFrameX/Server
+   git clone https://github.com/GameFrameX/GameFrameX.Tools.git ./GameFrameX/Tools
+   git clone https://github.com/GameFrameX/GameFrameX.Unity.git ./GameFrameX/Unity
    ```
 
    当您输入完上述命令后，按Enter键执行。等待全部下载完成。

@@ -14,9 +14,9 @@ Packing时，需要调用1次SetPass（以及6到10次批处理）。在游戏�
 
 1. 直接在 `manifest.json` 文件中添加以下内容
    ```json
-      {"com.gameframex.unity.yasirkula.debugconsole": "https://github.com/AlianBlank/com.gameframex.unity.yasirkula.debugconsole.git"}
+      {"com.gameframex.unity.yasirkula.debugconsole": "https://github.com/GameFrameX/com.gameframex.unity.yasirkula.debugconsole.git"}
     ```
 2. 在Unity 的`Packages Manager` 中使用`Git URL`
-   的方式添加库,地址为：https://github.com/AlianBlank/com.gameframex.unity.yasirkula.debugconsole.git
+   的方式添加库,地址为：https://github.com/GameFrameX/com.gameframex.unity.yasirkula.debugconsole.git
 
 3. 直接下载仓库放置到Unity 项目的`Packages` 目录下。会自动加载识别

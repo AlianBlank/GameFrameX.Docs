@@ -150,9 +150,9 @@ public void Event(string eventName, float eventValue, Dictionary<string, string>
 
 1. 直接在 `manifest.json` 的文件中的 `dependencies` 节点下添加以下内容
    ```json
-      {"com.gameframex.unity.gameanalytics": "https://github.com/AlianBlank/com.gameframex.unity.gameanalytics.git"}
+      {"com.gameframex.unity.gameanalytics": "https://github.com/GameFrameX/com.gameframex.unity.gameanalytics.git"}
     ```
 2. 在Unity 的`Packages Manager` 中使用`Git URL`
-   的方式添加库,地址为：https://github.com/AlianBlank/com.gameframex.unity.gameanalytics.git
+   的方式添加库,地址为：https://github.com/GameFrameX/com.gameframex.unity.gameanalytics.git
 
 3. 直接下载仓库放置到Unity 项目的`Packages` 目录下。会自动加载识别

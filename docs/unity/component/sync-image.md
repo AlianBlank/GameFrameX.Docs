@@ -12,9 +12,9 @@
 
 ## 示例
 
-原地址:  https://`github.com`/AlianBlank/com.gameframex.unity.asset.git
+原地址:  https://`github.com`/GameFrameX/com.gameframex.unity.asset.git
 
-镜像地址: https://`gitee.com`/AlianBlank/com.gameframex.unity.asset.git
+镜像地址: https://`gitee.com`/GameFrameX/com.gameframex.unity.asset.git
 
 ## 镜像列表
 

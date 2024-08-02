@@ -302,7 +302,7 @@ export default defineConfig({
 
         // 社交连接
         socialLinks: [
-            {icon: 'github', link: 'https://github.com/alianblank/gameframex'}
+            {icon: 'github', link: 'https://github.com/GameFrameX/gameframex'}
         ],
         // 文档编辑纠错
         editLink: {
@@ -313,7 +313,7 @@ export default defineConfig({
         },
         // 页脚
         footer: {
-            message: '<a href="https://github.com/AlianBlank/GameFrameX/blob/main/LICENSE.md">Apache License</a>.',
+            message: '<a href="https://github.com/GameFrameX/GameFrameX/blob/main/LICENSE.md">Apache License</a>.',
             copyright: `Copyright ©️ 2019-${new Date().getFullYear()} <a href="https://github.com/AlianBlank">Blank</a>`
         },
         // 底部的上一页和下一页
