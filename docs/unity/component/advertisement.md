@@ -8,7 +8,7 @@
 
 ## 注意
 
-::: warn
+::: warning
 
 抖音SDK com.bytedance.starksdk 版本 5.51.0 没有实现广告播放的成功和失败的回调.所以展示广告成功和失败的回调不会触发.
 
