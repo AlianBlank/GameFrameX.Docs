@@ -9,7 +9,7 @@ export default defineConfig({
     description: "Game Frame X 文档",
     titleTemplate: ':title',
     lang: 'zh-CN',
-    cleanUrls: true,
+    cleanUrls: false,
     lastUpdated: true,
     srcExclude: [
         '**/README.md',
