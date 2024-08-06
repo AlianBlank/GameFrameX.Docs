@@ -22,13 +22,13 @@ GameFrameX 的 Setting 配置信息组件
 
 ### 方法
 
-- **Awake**  
+- **`Awake`**  
   初始化设置管理器和设置助手。
 
-- **Start**  
+- **`Start`**  
   负责加载设置。
 
-- **Save**  
+- **`Save`**  
   保存当前所有游戏配置项。
 
 - **`GetAllSettingNames() / GetAllSettingNames(List<string>)`**  
@@ -40,7 +40,7 @@ GameFrameX 的 Setting 配置信息组件
 - **`RemoveSetting(string)`**  
   移除指定的游戏配置项。
 
-- **RemoveAllSettings**  
+- **`RemoveAllSettings`**  
   清空所有游戏配置项。
 
 - **`GetBool(string)`, `GetBool(string, bool)`**  
@@ -58,13 +58,13 @@ GameFrameX 的 Setting 配置信息组件
 - **`GetFloat(string), GetFloat(string, float)`**  
   获取浮点数类型的配置信息，可以提供默认值。
 
-- **SetFloat(string, float)**  
+- **`SetFloat(string, float)`**  
   设置浮点数类型的配置信息。
 
-- **GetString(string), GetString(string, string)**  
+- **`GetString(string), GetString(string, string)`**  
   获取字符串类型的配置信息，可以提供默认值。
 
-- **SetString(string, string)**  
+- **`SetString(string, string)`**  
   设置字符串类型的配置信息。
 
 - **`GetObject<T>(string), GetObject(Type, string), GetObject<T>(string, T), GetObject(Type, string, object)`**  
