@@ -1,7 +1,14 @@
 # 场景
 
-[[toc]]
+
+GameFrameX 的 Scene 场景管理组件
+
+**Scene 场景管理组件 (Scene Component)** - 负责管理游戏的场景，允许在场景之间切换或追加。
+
 ---
+
+[[toc]]
+
 
 
 ## 使用方式(任选其一)
