@@ -2,14 +2,16 @@
 
 GameFrameX 的 Mono 生命周期组件
 
-**Mono 生命周期组件 (Mono Component)** - 用于管理游戏中 MonoBehaviour 的事件和更新周期，例如
-FixedUpdate、LateUpdate、OnDestroy
-等，并提供了一种简便的方式来添加和移除这些事件的监听。
+**Mono 生命周期组件 (Mono Component)** - 用于管理游戏中 MonoBehaviour 的事件和更新周期，例如FixedUpdate、LateUpdate、OnDestroy等，并提供了一种简便的方式来添加和移除这些事件的监听。
 
 
 ---
 
 [[toc]]
+
+::: tip
+没有实现物理或者Unity的其他事件.如需使用碰撞或者物理或者动画事件 回调相关的内容。请自行创建单独的类来接收对应的消息
+:::
 
 ## 功能特点
 
