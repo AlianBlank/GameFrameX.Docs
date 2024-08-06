@@ -1,17 +1,23 @@
 # 游戏分析(数据统计)
 
 GameFrameX 的 GameAnalytics 游戏数据分析的组件
-
-**GameAnalytics 游戏数据分析的组件 (GameAnalytics Component)** -
 提供游戏开发者集成和使用游戏数据分析的功能的接口。包含了不同类型的事件上报和计时器功能。该组件作为游戏框架的一部分，便于游戏开发者集成和使用游戏数据分析的功能。
 
 ---
 [[toc]]
 
+::: tip
+支持多个实现库共存。按照组件列表的顺序依次执行上报调用
+:::
+
 ## 初始化(自动初始化.)
 
 在Unity的`Awake`方法中，`GameAnalyticsComponent`被初始化，并创建了一个`GameAnalyticsManager`实例。通过调用`Init`
 方法，完成具体的初始化过程，并设置`_isInit`标志为`true`，以确保后续的方法只在初始化之后被执行。
+
+::: tip
+在初始化的时候将会把实现类中的参数列表以字典的方式传递给实现类。根据自己的需求获取所需要的字段内容
+:::
 
 ```csharp
 public void Init()
