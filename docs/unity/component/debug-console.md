@@ -10,6 +10,40 @@ Packing时，需要调用1次SetPass（以及6到10次批处理）。在游戏�
 
 [[toc]]
 
+## 帮助(help)
+
+- `help` 打印所有命令
+- `help [命令名称]` 打印匹配的命令
+
+## 系统信息(sysinfo)
+
+- `sysinfo` 打印设备的信息
+
+## 时间控制(time.scale)
+
+- `time.scale [float 时间缩放值]` 设置或获取当前的时间缩放
+
+## 场景
+
+- `scene.load [场景名称]` 以单个场景的方式`同步`加载指定名称的场景
+- `scene.loadasync [场景名称]` 以单个场景的方式`异步`加载指定名称的场景
+- `scene.load [场景名称] [加载模式]` 以指定加载模式的方式`同步`加载指定名称的场景
+- `scene.loadasync [场景名称] [加载模式]` 以指定加载模式的方式`异步`加载指定名称的场景
+- `scene.unload [场景名称]` 以异步的方式卸载指定的场景
+- `scene.restart` 以单个场景的方式重新加载当前场景
+
+## 用户配置
+
+- `prefs.int [key] [value]` 获取或设置 指定Key的 int 值
+- `prefs.float [key] [value]` 获取或设置 指定Key的 float 值
+- `prefs.string [key] [value]` 获取或设置 指定Key的 string 值
+- `prefs.delete [key]` 删除 指定Key和值
+- `prefs.clear` 删除 所有Key和值
+
+## 日志存档
+
+- `logs.save [存储路径]` 将日志写入到文件.后面可选路径
+
 ## 使用方式(三种方式)
 
 1. 直接在 `manifest.json` 文件中添加以下内容
