@@ -12,4 +12,4 @@
 
 ## 如何使用
 
-参考官方文档。
+参考[`官方文档`](https://hybridclr.doc.code-philosophy.com)。

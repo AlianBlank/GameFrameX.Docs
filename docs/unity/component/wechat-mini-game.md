@@ -14,4 +14,6 @@
 
 ## 如何使用
 
-请以官方文档为准
+请以[`官方文档`](https://wechat-miniprogram.github.io/minigame-unity-webgl-transform)为准
+
+
