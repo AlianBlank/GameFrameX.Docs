@@ -27,7 +27,7 @@ export default defineConfig({
             {text: '🐳Docker', link: '/docker/'},
             {text: '🎆配置文件', link: '/config/'},
             {
-                text: '镜像站点',
+                text: '😎镜像站点',
                 items: [
                     {
                         text: '码云(gitee)',
@@ -53,6 +53,15 @@ export default defineConfig({
                         text: '中国计算机学会-开源发展委员会(www.gitlink.org.cn)',
                         link: 'https://gitlink.org.cn/GameFrameX'
                     },
+                ]
+            },
+            {
+                text: '✡️加入讨论',
+                items: [
+                    {
+                        text: '🐧QQ群',
+                        link: '<a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="GameFrameX" title="GameFrameX"></a>'
+                    }
                 ]
             }
         ],
