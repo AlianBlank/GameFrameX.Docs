@@ -59,8 +59,8 @@ export default defineConfig({
                 text: '✡️加入讨论',
                 items: [
                     {
-                        text: '🐧QQ群',
-                        link: '<a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="GameFrameX" title="GameFrameX"></a>'
+                        text: '🐧QQ群(467608841)',
+                        link: 'https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN'
                     }
                 ]
             }
