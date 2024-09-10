@@ -8,7 +8,7 @@
 // })();
 
 </script>
-
+<script defer src="https://cloud.umami.is/script.js" data-website-id="92a468c9-7c0e-4e55-bea3-0e3c3bb0330e"></script>
 <template>
 </template>
 
