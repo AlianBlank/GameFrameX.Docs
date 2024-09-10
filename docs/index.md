@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "Game Frame X 文档"
-  text: ""
+  name: "Game Frame X"
+  text: "独立游戏&中小型项目的福音"
   image:
     src: /logo.png
   tagline: 一体化游戏前后端解决方案
