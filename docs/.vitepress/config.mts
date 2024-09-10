@@ -372,7 +372,8 @@ export default defineConfig({
         s.parentNode.insertBefore(hm, s);
       })();
       `,
-        ], [
+        ],
+        /*[
             'script',
             {},
             `
@@ -381,11 +382,11 @@ export default defineConfig({
         var umami = document.createElement("script");
         umami.src = "https://cloud.umami.is/script.js";
         umami.data-website-id = "92a468c9-7c0e-4e55-bea3-0e3c3bb0330e";
-        var s = document.getElementsByTagName("script")[0]; 
+        var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(umami, s);
       })();
       `,
-        ],
+        ],*/
     ],
     markdown: {
         image: {
