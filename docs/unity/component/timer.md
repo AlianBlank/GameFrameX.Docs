@@ -16,7 +16,7 @@ GameFrameX 的 Timer 计时器组件
 
 **参数：**
 
-- `float interval`：间隔时间，以毫秒为单位。
+- `float interval`：间隔时间，以秒为单位。
 - `int repeat`：重复次数，0 表示任务会无限重复。
 - `Action<object> callback`：任务触发时执行的回调函数。
 - `object callbackParam`（可选）：回调函数的参数。
@@ -33,7 +33,7 @@ Add(1000, 5, MyMethod);
 
 **参数：**
 
-- `float interval`：间隔时间，以毫秒为单位。
+- `float interval`：间隔时间，以秒为单位。
 - `Action<object> callback`：任务触发时执行的回调函数。
 - `object callbackParam`（可选）：回调函数的参数。
 
