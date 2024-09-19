@@ -18,6 +18,9 @@ hero:
     - theme: alt
       text: 快速开始服务端
       link: /server/
+    - theme: alt
+      text: 观看视频入门教程
+      link: https://www.bilibili.com/video/BV1yrpeepEn7
 
 features:
   - title: 没有语言学习障碍
