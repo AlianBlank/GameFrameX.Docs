@@ -21,6 +21,9 @@ hero:
     - theme: alt
       text: 观看视频入门教程
       link: https://www.bilibili.com/video/BV1yrpeepEn7
+    - theme: brand
+      text: 查看管理后台
+      link: https://game.admin.web.vue.alianblank.com
 
 features:
   - title: 没有语言学习障碍
