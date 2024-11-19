@@ -19,7 +19,6 @@ export default defineConfig({
         // https://vitepress.dev/reference/default-theme-config
         // 顶部菜单导航栏
         nav: [
-            {text: '🏡Home', link: '/'},
             {text: '🥰Unity客户端', link: '/unity/'},
             {text: '🍻服务器', link: '/server/'},
             {text: '🚀工具', link: '/tools/'},
