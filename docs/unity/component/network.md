@@ -1,4 +1,4 @@
-# 网络
+# 网络长连接
 
 GameFrameX 的 Network 长连接网络组件
 
@@ -52,6 +52,19 @@ GameFrameX 的 Network 长连接网络组件
 
 宏定义的快捷开关可以通过菜单 `GameFrameX` > `Log Scripting Define Symbols` > 下的Network组.快捷设置
 
+#### WebSocket
+
+由于特殊情况可能需要在其他环境也使用 `WebSocket` 的通讯协议。所以增加了强制开启 `WebSocket` 的功能的宏定义
+`FORCE_ENABLE_GAME_FRAME_X_WEB_SOCKET`
+
+当然,肯定不会让用户去手动定义。只需要
+
+通过菜单 `GameFrameX` > `Log Scripting Define Symbols` > `Enable Force WebSocket` 点击一下即可`添加`宏定义
+`FORCE_ENABLE_GAME_FRAME_X_WEB_SOCKET`
+
+通过菜单 `GameFrameX` > `Log Scripting Define Symbols` > `Disable Force WebSocket` 点击一下即可`删除`宏定义
+`FORCE_ENABLE_GAME_FRAME_X_WEB_SOCKET`
+
 ### 消息ID打印忽略
 
 ::: tip
@@ -75,7 +88,8 @@ GameFrameX 的 Network 长连接网络组件
 ### 注意点
 
 - 实现类必须继承实现`IMessageHandler` 接口。
-- 在函数上标记 `MessageHandler` 第一个参数为消息类型`必须`实现`INotifyMessage`. 第二个参数为接收的函数名称。 `注意`： 不是消息类型。
+- 在函数上标记 `MessageHandler` 第一个参数为消息类型`必须`实现`INotifyMessage`. 第二个参数为接收的函数名称。 `注意`：
+  不是消息类型。
 - 在一个类中。不要监听一个消息多次。不然可能会出现未知错误
 
 ### 最佳实践
