@@ -1,4 +1,4 @@
-# HTTP请求
+# HTTP请求短连接
 
 GameFrameX 的Web 请求组件
 
