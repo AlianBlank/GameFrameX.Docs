@@ -2,8 +2,6 @@
 
 # 环境搭建
 
-## [环境搭建](environment)
-
 [macosx 本地开发环境](environment/macosx)
 
 [windows 本地开发环境](environment/windows)
