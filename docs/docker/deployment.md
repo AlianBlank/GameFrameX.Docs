@@ -8,32 +8,42 @@
 
 ```yaml
 services:
-  server.game:
+  gameframex:
+    # 镜像地址
     image: registry.cn-shenzhen.aliyuncs.com/gameframex/server.launcher:1.0.0
-    container_name: game
+    # 容器名称
+    container_name: gameframex
+    # 端口映射
     ports:
-      - 20001:20001
-      - 8898:8898
-      - 25001:25001
+      # APM 端口
+      - "29090:29090"
+      # TCP 端口
+      - "29100:29100"
+      # WebSocket 端口
+      - "29110:29110"
+    # 环境变量(启动参数配置)
     environment:
       - ServerType=Game
-      - ServerId=000
-      - APMPort=9090
+      - ServerId=1000
+      - APMPort=29090
       - InnerIp=127.0.0.1
-      - InnerPort=9001
+      - InnerPort=29100
       - OuterIp=127.0.0.1
-      - OuterPort=9010
-      - MinModuleId=
-      - MaxModuleId=999
-      - WsPort=9110
+      - OuterPort=29100
+      - MinModuleId=10
+      - MaxModuleId=9999
+      - WsPort=29110
       - DiscoveryCenterIp=127.0.0.1
-      - DiscoveryCenterPort=1001
+      - DiscoveryCenterPort=10001
       - HttpCode=inner_httpcode
       - DataBaseUrl=mongodb+srv://gameframex:xxx@gameframex.db.mongodb.net/?retryWrites=true&w=majority
       - DataBaseName=gameframex
+    # 目录映射
     volumes:
       - "./running/hotfix:/app/hotfix"
       - "./running/json:/app/json"
+      - "./running/logs:/app/logs"
+    # 加入的网络
     networks:
       - frontend
       - backend
