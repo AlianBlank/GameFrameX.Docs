@@ -29,7 +29,7 @@ services:
       - DiscoveryCenterIp=127.0.0.1
       - DiscoveryCenterPort=1001
       - HttpCode=inner_httpcode
-      - DataBaseUrl="mongodb+srv://gameframex:xxx@gameframex.db.mongodb.net/?retryWrites=true&w=majority"
+      - DataBaseUrl=mongodb+srv://gameframex:xxx@gameframex.db.mongodb.net/?retryWrites=true&w=majority
       - DataBaseName=gameframex
     volumes:
       - "./running/hotfix:/app/hotfix"
