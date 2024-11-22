@@ -36,7 +36,7 @@ sudo apt-get update
 ### 6. 安装最新版本的Docker
 
 ```shell
-sudo apt install docker-ce docker-ce-cli containerd.io
+sudo apt install docker-ce docker-compose docker-ce-cli containerd.io
 ```
 
 ### 7. 等待安装完成
