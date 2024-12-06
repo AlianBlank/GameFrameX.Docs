@@ -62,7 +62,8 @@ export default defineConfig({
                         link: 'https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN'
                     }
                 ]
-            }
+            },
+            {text: '🤖API', link: 'https://gameframex.github.io/GameFrameX.Server/index.html'},
         ],
 
 
