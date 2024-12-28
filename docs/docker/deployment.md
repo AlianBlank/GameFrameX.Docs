@@ -61,7 +61,7 @@ networks:
 
 - `container_name` 容器的名称.按照你的业务需求重新修改命名.名字不能和已有的镜像服务重复
 
-- `environment` 启动参数.参考: [launcher-params.md](../server/launcher-params.md#参数解析)
+- `environment` 启动参数.参考: [服务器启动参数](../server/launcher-params.md#参数解析)
 
 - `volumes` 目录映射.因为需要热更新.`hotfix.dll`
   和配置表都将从这里映射出来.不然无法操作镜像内的文件.如果目录不存在.必须新建一个目录.将`hotfix.dll`
