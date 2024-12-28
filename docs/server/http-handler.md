@@ -17,9 +17,9 @@ HTTP 接口主要用于 GM 或外部服务调用，以下是代码命名和使�
 
 ## 生成路径
 
-配置的根地址 + 端口 + 固定值 (`/game/api?command=`) + 当前类去除后缀 `HttpHandler` 的小写名称，且遇见大写字母将转换成下划线分割。
+配置的根地址 + 端口 + 固定值 (`/game/api/`) + 当前类去除后缀 `HttpHandler` 的小写名称，且遇见大写字母将转换成下划线分割。
 
-例如，`TestHttpHandler` 转换结果为：`http://localhost:20001/game/api?command=test`
+例如，`TestHttpHandler` 转换结果为：`http://localhost:20001/game/api/test`
 
 ## 命名要求
 
@@ -31,6 +31,7 @@ HTTP 接口主要用于 GM 或外部服务调用，以下是代码命名和使�
 - `ip`：请求来源地址。
 - `url`：当前处理器的地址。
 - `parameters`：传递进来的参数，根据业务需求从中获取所需内容。
+- `messageObject`：传递进来的消息对象类型的参数，根据业务需求转换为所需的类型使用。
 
 ## 最佳实践
 
@@ -42,7 +43,7 @@ namespace GameFrameX.Hotfix.Logic.Http
 {
     /// <summary>
     /// 测试
-    /// http://localhost:20001/game/api?command=test
+    /// http://localhost:20001/game/api/test
     /// </summary>
     [HttpMessageMapping(typeof(TestHttpHandler))]
     public sealed class TestHttpHandler : BaseHttpHandler
