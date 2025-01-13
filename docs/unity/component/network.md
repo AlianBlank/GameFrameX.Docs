@@ -50,7 +50,7 @@ GameFrameX 的 Network 长连接网络组件
 - `ENABLE_GAMEFRAMEX_NETWORK_RECEIVE_LOG`  接收消息日志的打印
 - `ENABLE_GAMEFRAMEX_NETWORK_SEND_LOG`  发送消息日志的打印
 
-宏定义的快捷开关可以通过菜单 `GameFrameX` > `Log Scripting Define Symbols` > 下的Network组.快捷设置
+宏定义的快捷开关可以通过菜单 `GameFrameX` > `Scripting Define Symbols` > 下的Network组.快捷设置
 
 #### WebSocket
 
@@ -59,10 +59,10 @@ GameFrameX 的 Network 长连接网络组件
 
 当然,肯定不会让用户去手动定义。只需要
 
-通过菜单 `GameFrameX` > `Log Scripting Define Symbols` > `Enable Force WebSocket` 点击一下即可`添加`宏定义
+通过菜单 `GameFrameX` > `Scripting Define Symbols` > `Enable Force WebSocket` 点击一下即可`添加`宏定义
 `FORCE_ENABLE_GAME_FRAME_X_WEB_SOCKET`
 
-通过菜单 `GameFrameX` > `Log Scripting Define Symbols` > `Disable Force WebSocket` 点击一下即可`删除`宏定义
+通过菜单 `GameFrameX` > `Scripting Define Symbols` > `Disable Force WebSocket` 点击一下即可`删除`宏定义
 `FORCE_ENABLE_GAME_FRAME_X_WEB_SOCKET`
 
 ### 消息ID打印忽略
