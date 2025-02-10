@@ -6,12 +6,14 @@
 
 在通讯中，我们为不同类型消息定义了不同的开头名称:
 
-- 请求消息: 必需以 `Req` 或 `C2S_` 开头。
-- 响应消息: 必需以 `Resp`, `S2C_` 开头, 还包括特殊类别 `Notify`.
+- 请求消息: 必需以 `Req` 开头。
+- 响应消息: 必需以 `Resp` 开头, 还包括特殊类别 `Notify`.
+
+消息命名规则 `消息名称` 和 `消息字段` 和 `枚举名称` 和 `枚举定义`  必须遵守  `Upper Camel Case` 命名规则
 
 ## 2. 请求消息
 
-请求消息分为两个类型: `Req` 和 `C2S_`。以下是登录请求的例子:
+请求消息分为两个类型: `Req`。以下是登录请求的例子:
 
 - 使用 `Req`:
 
@@ -28,44 +30,15 @@ message ReqLogin
 }
 ```
 
-- 使用 `C2S_`:
-
-```protobuf
-// 请求账号登录
-message C2S_Login
-{
-  string UserName = 1;    // 用户名
-  string Platform = 2;    // 平台
-  int32 SdkType = 3;      // SDK类型
-  string SdkToken = 4;    // SDK令牌
-  string Device = 5;      // 设备
-  string Password = 6;    // 密码
-}
-```
-
 ## 3. 响应消息
 
-响应消息分为 `Resp`, `S2C_` 和 `Notify` 三种。其中, `Resp` 和 `S2C_` 默认会生成一个 ErrorCode 字段用于返回错误码。
+响应消息分为 `Resp` 和 `Notify` 两种。其中, `Resp` 默认会生成一个 ErrorCode 字段用于返回错误码。改值可以通过参数变量 `isGenerateErrorCode` 忽略生成
 
 - `Resp` 用于响应请求:
 
 ```protobuf
 // 请求账号登录返回
 message RespLogin
-{
-  int32 Code = 1;         // errorCode
-  string RoleName = 2;    // 账号名
-  int64 Id = 3;           // 账号ID
-  uint32 Level = 4;       // 账号等级
-  int64 CreateTime = 5;   // 创建时间
-}
-```
-
-- `S2C_` 用于响应请求:
-
-```protobuf
-// 请求账号登录返回
-message S2C_Login
 {
   int32 Code = 1;         // errorCode
   string RoleName = 2;    // 账号名
