@@ -20,6 +20,8 @@
 | DataBaseName            | 数据库的名称            | `是` | 数据库的名称                                             |
 | APMPort                 | APM监控端口           | 否   | 不配置将不会启动.配置建议29091                                 |
 | IsDebug                 | 是否是Debug模式        | 否   | 打印消息的开关.不开将不会记录                                    |
+| IsMonitorTimeOut        | 是否监控打印超时日志        | 否   | 监控处理器超时的开关,不开启将不会记录和监控                             |
+| MonitorTimeOutSeconds   | 监控处理器超时时间         | 否   | 监控处理器超时时间（秒）,默认值为1秒，只有IsMonitorTimeOut为true时有效     |
 | IsDebugSend             | 是否打印发送的消息内容       | 否   | 打印发送消息的内容.只有在 `IsDebug` 为 `true` 时有效,默认值为 `false`  |
 | IsDebugReceive          | 是否打印接收的消息内容       | 否   | 打印接收消息的内容.只有在 `IsDebug` 为 `true` 时有效,默认值为 `false`  |
 | IsDebugSendHeartBeat    | 是否打印发送的心跳数据       | 否   | 只有在 `IsDebugSend` 为 `true` 时有效,默认值为 `false`        |
