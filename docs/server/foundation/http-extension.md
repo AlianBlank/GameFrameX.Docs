@@ -1,7 +1,7 @@
 # HTTP扩展
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/download)
-[![License](https://img.shields.io/badge/license-Apache--2.0-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache--2.0-green.svg)]()
 
 GameFrameX.Foundation.Http.Extension 是一个为HttpClient提供扩展方法的基础设施库，提供了统一的GET和POST请求接口，简化HTTP请求操作，支持多种数据格式和响应类型。
 
