@@ -400,10 +400,6 @@ private static void TranslateText()
 
 ```
 
-## 许可证
-
-本项目采用 MIT 许可证和 Apache 许可证（版本 2.0）进行分发和使用。详细信息请查看 [LICENSE](LICENSE) 文件。
-
 ## 支持与反馈
 
 - **GitHub Issues**: [提交问题](https://github.com/gameframex/com.gameframex.unity.localization/issues)
