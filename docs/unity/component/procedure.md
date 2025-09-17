@@ -61,3 +61,29 @@ Procedure 流程管理组件 (Procedure Component) - 提供流程管理组件相
    的方式添加库,地址为：https://github.com/GameFrameX/com.gameframex.unity.procedure.git
 
 3. 直接下载仓库放置到Unity 项目的`Packages` 目录下。会自动加载识别
+
+
+# 最佳实践
+
+## 在进入Hotfix 之后重置流程
+
+```csharp
+
+// ---------- 游戏流程重置 ----------
+// 销毁之前的状态机
+GameApp.Fsm.DestroyFsm<IProcedureManager>();
+var procedureManager = GameApp.Procedure.Procedure;
+// 新的流程对象列表
+ProcedureBase[] procedures =
+{
+    new ProcedurePreload(),
+    new ProcedureChangeScene(),
+    new ProcedureEntry(),
+    new ProcedureMovie(),
+    new ProcedureMain(),
+};
+// 初始化新的流程注册列表
+procedureManager.Initialize(GameFrameworkEntry.GetModule<IFsmManager>(), procedures);
+// 重新启动开始流程
+procedureManager.StartProcedure<ProcedurePreload>();
+```
