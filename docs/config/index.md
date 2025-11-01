@@ -12,7 +12,7 @@
 
 - 在正常的系统中。目录将会识别为命名空间。如以下的路径 ./Config/Excels/Tables/GMTable/G-GMConfig-c-GM表.xlsx 将会生成 Tables.GMTable 的命名空间
 - 但是现在可以在GMTable 后面加上`-` 或者 `_` 之后可以跟中文或者任意的别名。但是要以 `-` 或者 `_` 分割不会对命名空间和结果造成影响
-  例如: ./Config/Excels/Tables/GMTable/G-GMConfig-c-GM表.xlsx =>  Tables.GMTable 的命名空间
+-  例如: ./Config/Excels/Tables/GMTable/G-GMConfig-c-GM表.xlsx =>  Tables.GMTable 的命名空间
 
 | 原路径                                                            | 命名空间           |
 |----------------------------------------------------------------|----------------|
