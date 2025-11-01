@@ -35,3 +35,113 @@
 用于启动游戏服务器实例对象.其中会监控程序的异常退出和其他的退出方式
 
 所有的游戏服务器都通过该接口启动.
+
+
+### 游戏逻辑服务器
+
+```csharp
+
+using GameFrameX.Core.Components;
+using GameFrameX.DataBase.Abstractions;
+using GameFrameX.DataBase.Mongo;
+
+namespace GameFrameX.Launcher.StartUp;
+
+/// <summary>
+/// 游戏服务器
+/// </summary>
+[StartUpTag(GlobalConst.GameServiceName)]
+internal sealed class AppStartUpGame : AppStartUpBase
+{
+    public override async Task StartAsync()
+    {
+        Exception exception = null;
+        try
+        {
+            LogHelper.InfoConsole($"开始启动服务器{Setting.ServerType}");
+            var hotfixPath = Directory.GetCurrentDirectory() + "/hotfix";
+            if (!Directory.Exists(hotfixPath))
+            {
+                Directory.CreateDirectory(hotfixPath);
+            }
+
+            LogHelper.DebugConsole("开始配置Actor限制逻辑...");
+            ActorLimit.Init(ActorLimit.RuleType.None);
+            LogHelper.DebugConsole("配置Actor限制逻辑结束...");
+
+            LogHelper.DebugConsole("开始启动数据库服务...");
+            var initResult = await GameDb.Init<MongoDbService>(new DbOptions { ConnectionString = Setting.DataBaseUrl, Name = Setting.DataBaseName });
+            if (initResult == false)
+            {
+                throw new InvalidOperationException("数据库服务启动失败");
+            }
+
+            LogHelper.DebugConsole("启动数据库服务 结束...");
+
+            LogHelper.DebugConsole("注册组件开始...");
+            await ComponentRegister.Init(typeof(AppsHandler).Assembly);
+            LogHelper.DebugConsole("注册组件结束...");
+
+            LogHelper.DebugConsole("开始加载热更新模块...");
+            await HotfixManager.LoadHotfixModule(Setting);
+            LogHelper.DebugConsole("加载热更新模块结束...");
+
+            LogHelper.DebugConsole("进入游戏主循环...");
+            GlobalSettings.LaunchTime = DateTime.Now;
+            GlobalSettings.IsAppRunning = true;
+
+            LogHelper.InfoConsole($"服务器 {Setting.ServerType} 启动结束...");
+            await AppExitToken;
+        }
+        catch (Exception e)
+        {
+            LogHelper.InfoConsole($"服务器执行异常，e:{e}");
+            LogHelper.Fatal(e);
+            exception = e;
+        }
+
+        LogHelper.InfoConsole("退出服务器开始");
+        if (exception != null)
+        {
+            await HotfixManager.Stop(exception.Message + exception.StackTrace);
+        }
+        else
+        {
+            await HotfixManager.Stop("正常退出服务器");
+        }
+
+        LogHelper.InfoConsole("退出服务器成功");
+    }
+
+    protected override void Init()
+    {
+        if (Setting == null)
+        {
+            Setting = new AppSetting
+            {
+                ServerId = GlobalConst.GameServiceServerId,
+                ServerType = GlobalConst.GameServiceName,
+                ServerInstanceId = 40970283642695,
+                InnerPort = 29100,
+                OuterPort = 29100,
+                MetricsPort = 29090,
+                HttpPort = 28080,
+                WsPort = 29110,
+                MinModuleId = 1,
+                MaxModuleId = short.MaxValue,
+                HttpIsDevelopment = true,
+                IsDebug = true,
+                IsDebugSend = true,
+                IsDebugReceive = true,
+                IsDebugReceiveHeartBeat = false,
+                IsDebugSendHeartBeat = false,
+                DataBaseUrl = "mongodb://mongo_axzMtb:mongo_xx1@127.0.0.1:27017/?authSource=admin",
+                DataBaseName = "gameframex"
+            };
+        }
+
+        base.Init();
+    }
+}
+
+```
