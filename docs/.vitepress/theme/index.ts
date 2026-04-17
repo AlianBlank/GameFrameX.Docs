@@ -57,6 +57,18 @@ export default {
         // Get frontmatter and route
         const {frontmatter} = useData();
 
+        // 语言映射表
+        const langMap: Record<string, string> = {
+            'zh-CN': 'zh-CN',
+            'zh-TW': 'zh-TW',
+            'ja': 'ja',
+            'ko': 'ko',
+            'en': 'en',
+        };
+
+        // 获取当前语言
+        const currentLang = route.path.split('/')[1] || 'en';
+        const giscusLang = langMap[currentLang] || 'en';
 
         // giscus配置
         giscusTalk({
@@ -66,7 +78,7 @@ export default {
                 categoryId: 'DIC_kwDOMN61as4Cgd2T', //讨论分类ID
                 mapping: 'pathname',
                 inputPosition: 'bottom',
-                lang: 'zh-CN',
+                lang: giscusLang,
             },
             {
                 frontmatter, route
