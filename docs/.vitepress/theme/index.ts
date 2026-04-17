@@ -57,50 +57,53 @@ export default {
         // Get frontmatter and route
         const {frontmatter} = useData();
 
-        // 语言映射表
-        const langMap: Record<string, string> = {
-            'zh-CN': 'zh-CN',
-            'zh-TW': 'zh-TW',
-            'ja': 'ja',
-            'ko': 'ko',
-            'en': 'en',
-        };
+        // SSR 时跳过需要 document 的代码
+        if (typeof window !== 'undefined') {
+            // 语言映射表
+            const langMap: Record<string, string> = {
+                'zh-CN': 'zh-CN',
+                'zh-TW': 'zh-TW',
+                'ja': 'ja',
+                'ko': 'ko',
+                'en': 'en',
+            };
 
-        // 获取当前语言
-        const currentLang = route.path.split('/')[1] || 'en';
-        const giscusLang = langMap[currentLang] || 'en';
+            // 获取当前语言
+            const currentLang = route.path.split('/')[1] || 'en';
+            const giscusLang = langMap[currentLang] || 'en';
 
-        // giscus配置
-        giscusTalk({
-                repo: 'AlianBlank/GameFrameX.Docs', //仓库
-                repoId: 'R_kgDOMN61ag', //仓库ID
-                category: 'Announcements', // 讨论分类
-                categoryId: 'DIC_kwDOMN61as4Cgd2T', //讨论分类ID
-                mapping: 'pathname',
-                inputPosition: 'bottom',
-                lang: giscusLang,
-            },
-            {
-                frontmatter, route
-            },
-            //默认值为true，表示已启用，此参数可以忽略；
-            //如果为false，则表示未启用
-            //您可以使用”comment:true”序言在页面上单独启用它
-            true
-        );
+            // giscus配置
+            giscusTalk({
+                    repo: 'AlianBlank/GameFrameX.Docs', //仓库
+                    repoId: 'R_kgDOMN61ag', //仓库ID
+                    category: 'Announcements', // 讨论分类
+                    categoryId: 'DIC_kwDOMN61as4Cgd2T', //讨论分类ID
+                    mapping: 'pathname',
+                    inputPosition: 'bottom',
+                    lang: giscusLang,
+                },
+                {
+                    frontmatter, route
+                },
+                //默认值为true，表示已启用，此参数可以忽略；
+                //如果为false，则表示未启用
+                //您可以使用”comment:true”序言在页面上单独启用它
+                true
+            );
 
-        // 图片缩放
-        const initZoom = () => {
-            // mediumZoom('[data-zoomable]', { background: 'var(--vp-c-bg)' }); // 默认
-            mediumZoom('.main img', {background: 'var(--vp-c-bg)'}); // 不显式添加{data-zoomable}的情况下为所有图像启用此功能
-        };
-        onMounted(() => {
-            initZoom();
-        });
-        watch(
-            () => route.path,
-            () => nextTick(() => initZoom())
-        );
+            // 图片缩放
+            const initZoom = () => {
+                // mediumZoom('[data-zoomable]', { background: 'var(--vp-c-bg)' }); // 默认
+                mediumZoom('.main img', {background: 'var(--vp-c-bg)'}); // 不显式添加{data-zoomable}的情况下为所有图像启用此功能
+            };
+            onMounted(() => {
+                initZoom();
+            });
+            watch(
+                () => route.path,
+                () => nextTick(() => initZoom())
+            );
+        }
         /*
         useWaline({
             serverURL: 'https://gameframex.doc.alianblank.com'
