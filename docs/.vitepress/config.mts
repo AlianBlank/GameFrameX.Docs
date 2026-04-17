@@ -59,17 +59,6 @@ export default defineConfig({
                     {text: 'Docker', link: '/en/docker/'},
                     {text: 'Config', link: '/en/config/'},
                     {
-                        text: 'Mirror Sites',
-                        items: [
-                            {text: 'Gitee', link: 'https://gitee.com/gameframex'},
-                            {text: 'AtomGit', link: 'https://atomgit.com/gameframex'},
-                            {text: 'GitCode (CSDN)', link: 'https://gitcode.net/gameframex'},
-                            {text: 'GitLab', link: 'https://gitlab.com/gameframex'},
-                            {text: 'Framagit', link: 'https://framagit.org/gameframex'},
-                            {text: 'GitLink', link: 'https://gitlink.org.cn/GameFrameX'},
-                        ]
-                    },
-                    {
                         text: 'Community',
                         items: [
                             {text: 'QQ Group (467608841)', link: 'https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN'}
@@ -128,17 +117,6 @@ export default defineConfig({
                     {text: '🛸协议', link: '/zh-CN/protobuf/'},
                     {text: '🐳Docker', link: '/zh-CN/docker/'},
                     {text: '🎆配置文件', link: '/zh-CN/config/'},
-                    {
-                        text: '😎镜像站点',
-                        items: [
-                            {text: '码云(gitee)', link: 'https://gitee.com/gameframex'},
-                            {text: '开放原子开源基金会(atomgit)', link: 'https://atomgit.com/gameframex'},
-                            {text: 'CSDN(gitcode)', link: 'https://gitcode.net/gameframex'},
-                            {text: 'GitLab官方(gitlab)', link: 'https://gitlab.com/gameframex'},
-                            {text: '法国公司 基于GitLab(framagit)', link: 'https://framagit.org/gameframex'},
-                            {text: '中国计算机学会-开源发展委员会(www.gitlink.org.cn)', link: 'https://gitlink.org.cn/GameFrameX'},
-                        ]
-                    },
                     {
                         text: '✡️加入讨论',
                         items: [
@@ -217,17 +195,6 @@ export default defineConfig({
                     {text: 'Docker', link: '/zh-TW/docker/'},
                     {text: '配置文件', link: '/zh-TW/config/'},
                     {
-                        text: '鏡像站點',
-                        items: [
-                            {text: '碼雲(gitee)', link: 'https://gitee.com/gameframex'},
-                            {text: '開放原子開源基金會(atomgit)', link: 'https://atomgit.com/gameframex'},
-                            {text: 'CSDN(gitcode)', link: 'https://gitcode.net/gameframex'},
-                            {text: 'GitLab官方(gitlab)', link: 'https://gitlab.com/gameframex'},
-                            {text: '法國公司 基於GitLab(framagit)', link: 'https://framagit.org/gameframex'},
-                            {text: '中國計算機學會-開源發展委員會(www.gitlink.org.cn)', link: 'https://gitlink.org.cn/GameFrameX'},
-                        ]
-                    },
-                    {
                         text: '✡️加入討論',
                         items: [
                             {text: '🐧QQ群(467608841)', link: 'https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN'}
@@ -295,17 +262,6 @@ export default defineConfig({
                     {text: 'Protobuf', link: '/ko/protobuf/'},
                     {text: 'Docker', link: '/ko/docker/'},
                     {text: '설정', link: '/ko/config/'},
-                    {
-                        text: '미러 사이트',
-                        items: [
-                            {text: 'Gitee', link: 'https://gitee.com/gameframex'},
-                            {text: 'AtomGit', link: 'https://atomgit.com/gameframex'},
-                            {text: 'GitCode (CSDN)', link: 'https://gitcode.net/gameframex'},
-                            {text: 'GitLab', link: 'https://gitlab.com/gameframex'},
-                            {text: 'Framagit', link: 'https://framagit.org/gameframex'},
-                            {text: 'GitLink', link: 'https://gitlink.org.cn/GameFrameX'},
-                        ]
-                    },
                     {
                         text: '커뮤니티',
                         items: [
@@ -375,17 +331,6 @@ export default defineConfig({
                     {text: 'Docker', link: '/ja/docker/'},
                     {text: '設定', link: '/ja/config/'},
                     {
-                        text: 'ミラーサイト',
-                        items: [
-                            {text: 'Gitee', link: 'https://gitee.com/gameframex'},
-                            {text: 'AtomGit', link: 'https://atomgit.com/gameframex'},
-                            {text: 'GitCode (CSDN)', link: 'https://gitcode.net/gameframex'},
-                            {text: 'GitLab', link: 'https://gitlab.com/gameframex'},
-                            {text: 'Framagit', link: 'https://framagit.org/gameframex'},
-                            {text: 'GitLink', link: 'https://gitlink.org.cn/GameFrameX'},
-                        ]
-                    },
-                    {
                         text: 'コミュニティ',
                         items: [
                             {text: 'QQグループ (467608841)', link: 'https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN'}
@@ -442,17 +387,6 @@ export default defineConfig({
             {text: 'Protobuf', link: '/zh-CN/protobuf/'},
             {text: 'Docker', link: '/zh-CN/docker/'},
             {text: 'Config', link: '/zh-CN/config/'},
-            {
-                text: 'Mirror Sites',
-                items: [
-                    {text: 'Gitee', link: 'https://gitee.com/gameframex'},
-                    {text: 'AtomGit', link: 'https://atomgit.com/gameframex'},
-                    {text: 'GitCode (CSDN)', link: 'https://gitcode.net/gameframex'},
-                    {text: 'GitLab', link: 'https://gitlab.com/gameframex'},
-                    {text: 'Framagit', link: 'https://framagit.org/gameframex'},
-                    {text: 'GitLink', link: 'https://gitlink.org.cn/GameFrameX'},
-                ]
-            },
             {
                 text: 'Community',
                 items: [
