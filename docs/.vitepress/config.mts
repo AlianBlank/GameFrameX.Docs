@@ -1,6 +1,7 @@
 import {defineConfig} from 'vitepress'
 import timeline from "vitepress-markdown-timeline";
 import {generateSidebar} from 'vitepress-sidebar';
+import {withMermaid} from "vitepress-plugin-mermaid";
 import {en, zhCN, zhTW, ko, ja} from './locales'
 
 // 通用侧边栏配置
@@ -14,7 +15,7 @@ const sidebarOptions = {
 
 // https://vitepress.dev/reference/site-config
 // @ts-ignore
-export default defineConfig({
+export default withMermaid(defineConfig({
     title: "Game Frame X",
     description: "Game Frame X Documentation",
     titleTemplate: ':title',
@@ -135,4 +136,8 @@ export default defineConfig({
             md.use(timeline);
         },
     }
-})
+}), {
+    mermaid: {
+        theme: 'default'
+    }
+} as any)
