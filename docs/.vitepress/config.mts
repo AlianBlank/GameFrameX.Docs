@@ -42,15 +42,15 @@ export default defineConfig({
                         documentRootPath: 'docs/en',
                         scanStartPath: '/',
                         resolvePath: '/en/',
-                        manualSortFileNameByPriority: ['guide', 'unity', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
+                        manualSortFileNameByPriority: ['guide', 'client', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
                     },
                 ]),
                 nav: [
                     {
                         text: 'Client',
                         items: [
-                            {text: 'Unity', link: '/en/unity/'},
-                            {text: 'Godot', link: '/en/godot/'},
+                            {text: 'Unity', link: '/en/client/unity/'},
+                            {text: 'Godot', link: '/en/client/godot/'},
                         ]
                     },
                     {text: 'Server', link: '/en/server/'},
@@ -119,8 +119,8 @@ export default defineConfig({
                     {
                         text: '🥰客户端',
                         items: [
-                            {text: 'Unity', link: '/zh-CN/unity/'},
-                            {text: 'Godot', link: '/zh-CN/godot/'},
+                            {text: 'Unity', link: '/zh-CN/client/unity/'},
+                            {text: 'Godot', link: '/zh-CN/client/godot/'},
                         ]
                     },
                     {text: '🍻服务器', link: '/zh-CN/server/'},
@@ -183,7 +183,7 @@ export default defineConfig({
                         documentRootPath: 'docs/zh-CN',
                         scanStartPath: '/',
                         resolvePath: '/zh-CN/',
-                        manualSortFileNameByPriority: ['guide', 'unity', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
+                        manualSortFileNameByPriority: ['guide', 'client', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
                     },
                 ]),
             },
@@ -200,15 +200,15 @@ export default defineConfig({
                         documentRootPath: 'docs/zh-TW',
                         scanStartPath: '/',
                         resolvePath: '/zh-TW/',
-                        manualSortFileNameByPriority: ['guide', 'unity', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
+                        manualSortFileNameByPriority: ['guide', 'client', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
                     },
                 ]),
                 nav: [
                     {
                         text: '客戶端',
                         items: [
-                            {text: 'Unity', link: '/zh-TW/unity/'},
-                            {text: 'Godot', link: '/zh-TW/godot/'},
+                            {text: 'Unity', link: '/zh-TW/client/unity/'},
+                            {text: 'Godot', link: '/zh-TW/client/godot/'},
                         ]
                     },
                     {text: '伺服器', link: '/zh-TW/server/'},
@@ -279,15 +279,15 @@ export default defineConfig({
                         documentRootPath: 'docs/ko',
                         scanStartPath: '/',
                         resolvePath: '/ko/',
-                        manualSortFileNameByPriority: ['guide', 'unity', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
+                        manualSortFileNameByPriority: ['guide', 'client', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
                     },
                 ]),
                 nav: [
                     {
                         text: '클라이언트',
                         items: [
-                            {text: 'Unity', link: '/ko/unity/'},
-                            {text: 'Godot', link: '/ko/godot/'},
+                            {text: 'Unity', link: '/ko/client/unity/'},
+                            {text: 'Godot', link: '/ko/client/godot/'},
                         ]
                     },
                     {text: '서버', link: '/ko/server/'},
@@ -358,15 +358,15 @@ export default defineConfig({
                         documentRootPath: 'docs/ja',
                         scanStartPath: '/',
                         resolvePath: '/ja/',
-                        manualSortFileNameByPriority: ['guide', 'unity', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
+                        manualSortFileNameByPriority: ['guide', 'client', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
                     },
                 ]),
                 nav: [
                     {
                         text: 'クライアント',
                         items: [
-                            {text: 'Unity', link: '/ja/unity/'},
-                            {text: 'Godot', link: '/ja/godot/'},
+                            {text: 'Unity', link: '/ja/client/unity/'},
+                            {text: 'Godot', link: '/ja/client/godot/'},
                         ]
                     },
                     {text: 'サーバー', link: '/ja/server/'},
@@ -433,8 +433,8 @@ export default defineConfig({
             {
                 text: 'Client',
                 items: [
-                    {text: 'Unity', link: '/zh-CN/unity/'},
-                    {text: 'Godot', link: '/zh-CN/godot/'},
+                    {text: 'Unity', link: '/zh-CN/client/unity/'},
+                    {text: 'Godot', link: '/zh-CN/client/godot/'},
                 ]
             },
             {text: 'Server', link: '/zh-CN/server/'},
@@ -468,7 +468,7 @@ export default defineConfig({
                 documentRootPath: 'docs/zh-CN',
                 scanStartPath: '/',
                 resolvePath: '/',
-                manualSortFileNameByPriority: ['guide', 'unity', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
+                manualSortFileNameByPriority: ['guide', 'client', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
             },
         ]),
         socialLinks: [
