@@ -6,7 +6,7 @@
   <br/>
   <div>快来请作者喝奶茶.我喝不惯咖啡</div>
   <br/>
-  <div><img src="../../../public/images/wechat.jpg" class="image"/></div>
+  <!-- <div><img src="/images/wechat.jpg" class="image"/></div> -->
   <br/>
   <br/>
   <br/>

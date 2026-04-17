@@ -6,4 +6,4 @@
 
 ## 启动流程
 
-![启动流程](../public/images/server/launcher-procedure.png)
+<!-- ![启动流程](/images/server/launcher-procedure.png) -->
