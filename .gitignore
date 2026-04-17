@@ -5,3 +5,4 @@ docs/.vitepress/dist
 .idea
 *.bkp
 .DS_Store
+i18n-migration-plan.md
