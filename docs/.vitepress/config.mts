@@ -3,6 +3,7 @@ import timeline from "vitepress-markdown-timeline";
 import {generateSidebar} from 'vitepress-sidebar';
 import {withMermaid} from "vitepress-plugin-mermaid";
 import {en, zhCN, zhTW, ko, ja} from './locales'
+import {mermaidThemes} from './mermaid-themes'
 
 // 通用侧边栏配置
 const sidebarOptions = {
@@ -136,8 +137,4 @@ export default withMermaid(defineConfig({
             md.use(timeline);
         },
     }
-}), {
-    mermaid: {
-        theme: 'default'
-    }
-} as any)
+}), mermaidThemes.darkHacker)
