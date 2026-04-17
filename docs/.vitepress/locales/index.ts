@@ -1,0 +1,5 @@
+export {en} from './en'
+export {zhCN} from './zh-CN'
+export {zhTW} from './zh-TW'
+export {ko} from './ko'
+export {ja} from './ja'
