@@ -5,7 +5,7 @@ import Appreciate from './components/Appreciate.vue'
 // @ts-ignore
 import Analytics from './components/Analytics.vue'
 // @ts-ignore
-import DocFooter from "./components/DocFooter.vue";
+import DocFooter from './components/DocFooter.vue';
 import {h, nextTick, onMounted, watch} from 'vue'
 // import {useLive2d, useWaline} from 'vitepress-theme-website'
 import {useData, useRoute} from 'vitepress'
@@ -13,7 +13,7 @@ import {useData, useRoute} from 'vitepress'
 import giscusTalk from 'vitepress-plugin-comment-with-giscus';
 
 // 引入时间线样式
-import "vitepress-markdown-timeline/dist/theme/index.css";
+import 'vitepress-markdown-timeline/dist/theme/index.css';
 
 // 图片缩放
 import mediumZoom from 'medium-zoom';
@@ -73,7 +73,7 @@ export default {
             },
             //默认值为true，表示已启用，此参数可以忽略；
             //如果为false，则表示未启用
-            //您可以使用“comment:true”序言在页面上单独启用它
+            //您可以使用”comment:true”序言在页面上单独启用它
             true
         );
 
