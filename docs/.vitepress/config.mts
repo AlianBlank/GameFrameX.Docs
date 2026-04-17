@@ -430,12 +430,18 @@ export default defineConfig({
     // 根级别 themeConfig 作为默认（英文）
     themeConfig: {
         nav: [
-            {text: 'Unity Client', link: '/unity/'},
-            {text: 'Server', link: '/server/'},
-            {text: 'Tools', link: '/tools/'},
-            {text: 'Protobuf', link: '/protobuf/'},
-            {text: 'Docker', link: '/docker/'},
-            {text: 'Config', link: '/config/'},
+            {
+                text: 'Client',
+                items: [
+                    {text: 'Unity', link: '/zh-CN/unity/'},
+                    {text: 'Godot', link: '/zh-CN/godot/'},
+                ]
+            },
+            {text: 'Server', link: '/zh-CN/server/'},
+            {text: 'Tools', link: '/zh-CN/tools/'},
+            {text: 'Protobuf', link: '/zh-CN/protobuf/'},
+            {text: 'Docker', link: '/zh-CN/docker/'},
+            {text: 'Config', link: '/zh-CN/config/'},
             {
                 text: 'Mirror Sites',
                 items: [
@@ -456,10 +462,10 @@ export default defineConfig({
             {text: 'API', link: 'https://gameframex.github.io/GameFrameX.Server/index.html'},
         ],
         sidebar: generateSidebar([
-            // 英文侧边栏
+            // 临时指向 zh-CN 文档（待翻译完成后改为 en）
             {
                 ...sidebarOptions,
-                documentRootPath: 'docs',
+                documentRootPath: 'docs/zh-CN',
                 scanStartPath: '/',
                 resolvePath: '/',
                 manualSortFileNameByPriority: ['guide', 'unity', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
