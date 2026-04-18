@@ -1,6 +1,28 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
+---
+
+<script setup>
+if (typeof window !== 'undefined') {
+  const lang = navigator.language || navigator.languages?.[0] || 'en';
+  const path = window.location.pathname.replace(/^\/$/, '');
+
+  // 语言映射
+  const langMap = {
+    'zh': 'zh-CN',
+    'zh-CN': 'zh-CN',
+    'zh-TW': 'zh-TW',
+    'zh-HK': 'zh-TW',
+    'ko': 'ko',
+    'ja': 'ja',
+  };
+
+  // 获取对应语言路径
+  const targetLang = langMap[lang] || langMap[lang.split('-')[0]] || 'en';
+  window.location.href = '/' + targetLang + path;
+}
+</script>
 
 hero:
   name: "Game Frame X"
