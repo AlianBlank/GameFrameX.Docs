@@ -8,10 +8,19 @@ import {mermaidThemes} from './mermaid-themes'
 // 通用侧边栏配置
 const sidebarOptions = {
     useTitleFromFileHeading: true,
+    useTitleFromFrontmatter: true,
     useFolderTitleFromIndexFile: true,
     collapseDepth: 3,
+    collapsed: false,
     removePrefixAfterOrdering: true,
     prefixSeparator: '.',
+    hyphenToSpace: true,
+    capitalizeEachWords: true,
+    sortFolderTo: 'first',
+    sortMenusByName: true,
+    includeRootIndexFile: false,
+    excludeByGlobPattern: ['**/README.md', '**/TODO.md'],
+    excludeFilesByFrontmatterFieldName: 'exclude',
 };
 
 // https://vitepress.dev/reference/site-config
@@ -62,15 +71,49 @@ export default withMermaid(defineConfig({
             },
             {text: 'API', link: 'https://gameframex.github.io/GameFrameX.Server/index.html'},
         ],
-        sidebar: generateSidebar([
-            {
-                ...sidebarOptions,
-                documentRootPath: 'docs/zh-CN',
-                scanStartPath: '/',
-                resolvePath: '/',
-                manualSortFileNameByPriority: ['guide', 'client', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
-            },
-        ]),
+        sidebar: {
+            '/zh-CN/': generateSidebar([
+                {
+                    ...sidebarOptions,
+                    documentRootPath: 'docs/zh-CN',
+                    scanStartPath: '/',
+                    resolvePath: '/',
+                    manualSortFileNameByPriority: ['guide', 'client', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
+                },
+            ]),
+            '/en/': generateSidebar([
+                {
+                    ...sidebarOptions,
+                    documentRootPath: 'docs/en',
+                    scanStartPath: '/',
+                    resolvePath: '/',
+                },
+            ]),
+            '/zh-TW/': generateSidebar([
+                {
+                    ...sidebarOptions,
+                    documentRootPath: 'docs/zh-TW',
+                    scanStartPath: '/',
+                    resolvePath: '/',
+                },
+            ]),
+            '/ko/': generateSidebar([
+                {
+                    ...sidebarOptions,
+                    documentRootPath: 'docs/ko',
+                    scanStartPath: '/',
+                    resolvePath: '/',
+                },
+            ]),
+            '/ja/': generateSidebar([
+                {
+                    ...sidebarOptions,
+                    documentRootPath: 'docs/ja',
+                    scanStartPath: '/',
+                    resolvePath: '/',
+                },
+            ]),
+        },
         socialLinks: [
             {icon: 'github', link: 'https://github.com/GameFrameX/gameframex'},
             {
