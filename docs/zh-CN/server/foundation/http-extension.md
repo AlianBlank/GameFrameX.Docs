@@ -1,11 +1,11 @@
-# HTTP扩展
+# HTTP扩展（为HttpClient提供统一请求扩展的基础设施库）
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/download)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green.svg)]()
 
 GameFrameX.Foundation.Http.Extension 是一个为HttpClient提供扩展方法的基础设施库，提供了统一的GET和POST请求接口，简化HTTP请求操作，支持多种数据格式和响应类型。
 
-## 🎯 核心特性
+## 特性
 
 - **GET请求扩展** - 提供多种GET请求方法，支持字符串、字节数组、流等响应格式
 - **POST请求扩展** - 支持JSON、表单、文件等多种POST请求方式
@@ -16,17 +16,13 @@ GameFrameX.Foundation.Http.Extension 是一个为HttpClient提供扩展方法的
 - **异步支持** - 全面支持异步操作和取消令牌
 - **错误处理** - 完善的参数验证和异常处理
 
-## 📦 安装
+## 安装
 
 ```bash
-# 通过 NuGet 包管理器安装
-Install-Package GameFrameX.Foundation.Http.Extension
-
-# 或通过 .NET CLI 安装
 dotnet add package GameFrameX.Foundation.Http.Extension
 ```
 
-## 🚀 快速开始
+## 快速开始
 
 ### 基本使用
 
@@ -70,7 +66,7 @@ string postResponse = await httpClient.PostJsonToStringAsync(
     timeout: 30);
 ```
 
-## 📋 详细使用指南
+## 详细用法
 
 ### 1. GET请求扩展方法
 
@@ -242,7 +238,7 @@ string response = await httpClient.PostMultipartFileToStringAsync(
     additionalData);           // 额外表单数据
 ```
 
-## 🎨 高级用法
+## 高级用法
 
 ### 1. 自定义JSON序列化配置
 
@@ -373,162 +369,7 @@ public class CachedHttpClient
 }
 ```
 
-## 💡 最佳实践
-
-### 1. HttpClient生命周期管理
-
-```csharp
-// 推荐：使用IHttpClientFactory
-public class ApiService
-{
-    private readonly HttpClient httpClient;
-    
-    public ApiService(IHttpClientFactory httpClientFactory)
-    {
-        httpClient = httpClientFactory.CreateClient("ApiClient");
-    }
-    
-    public async Task<string> GetDataAsync()
-    {
-        return await httpClient.GetToStringAsync<string>("https://api.example.com/data");
-    }
-}
-
-// 在Startup.cs或Program.cs中注册
-services.AddHttpClient("ApiClient", client =>
-{
-    client.BaseAddress = new Uri("https://api.example.com/");
-    client.DefaultRequestHeaders.Add("User-Agent", "MyApp/1.0");
-});
-```
-
-### 2. 统一错误处理
-
-```csharp
-public class ApiClient
-{
-    private readonly HttpClient httpClient;
-    private readonly ILogger<ApiClient> logger;
-    
-    public ApiClient(HttpClient httpClient, ILogger<ApiClient> logger)
-    {
-        this.httpClient = httpClient;
-        this.logger = logger;
-    }
-    
-    public async Task<T> GetAsync<T>(string url) where T : class
-    {
-        try
-        {
-            var response = await httpClient.GetToStringAsync<T>(url);
-            return JsonSerializer.Deserialize<T>(response);
-        }
-        catch (HttpRequestException ex)
-        {
-            logger.LogError(ex, "HTTP请求失败: {Url}", url);
-            throw new ApiException($"请求失败: {ex.Message}", ex);
-        }
-        catch (TaskCanceledException ex)
-        {
-            logger.LogError(ex, "请求超时: {Url}", url);
-            throw new ApiException("请求超时", ex);
-        }
-        catch (JsonException ex)
-        {
-            logger.LogError(ex, "JSON反序列化失败: {Url}", url);
-            throw new ApiException("数据格式错误", ex);
-        }
-    }
-}
-
-public class ApiException : Exception
-{
-    public ApiException(string message) : base(message) { }
-    public ApiException(string message, Exception innerException) : base(message, innerException) { }
-}
-```
-
-### 3. 配置管理
-
-```csharp
-public class ApiConfiguration
-{
-    public string BaseUrl { get; set; }
-    public int TimeoutSeconds { get; set; } = 30;
-    public Dictionary<string, string> DefaultHeaders { get; set; } = new();
-}
-
-public class ConfiguredApiClient
-{
-    private readonly HttpClient httpClient;
-    private readonly ApiConfiguration config;
-    
-    public ConfiguredApiClient(HttpClient httpClient, IOptions<ApiConfiguration> config)
-    {
-        this.httpClient = httpClient;
-        this.config = config.Value;
-        
-        // 应用配置
-        httpClient.BaseAddress = new Uri(this.config.BaseUrl);
-        httpClient.Timeout = TimeSpan.FromSeconds(this.config.TimeoutSeconds);
-        
-        foreach (var header in this.config.DefaultHeaders)
-        {
-            httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
-        }
-    }
-    
-    public async Task<string> GetAsync(string endpoint)
-    {
-        return await httpClient.GetToStringAsync<string>(endpoint);
-    }
-}
-```
-
-### 4. 请求/响应日志记录
-
-```csharp
-public class LoggingHttpClient
-{
-    private readonly HttpClient httpClient;
-    private readonly ILogger<LoggingHttpClient> logger;
-    
-    public LoggingHttpClient(HttpClient httpClient, ILogger<LoggingHttpClient> logger)
-    {
-        this.httpClient = httpClient;
-        this.logger = logger;
-    }
-    
-    public async Task<string> GetWithLoggingAsync<T>(string url)
-    {
-        var stopwatch = Stopwatch.StartNew();
-        
-        logger.LogInformation("开始GET请求: {Url}", url);
-        
-        try
-        {
-            var response = await httpClient.GetToStringAsync<T>(url);
-            
-            stopwatch.Stop();
-            logger.LogInformation("GET请求成功: {Url}, 耗时: {ElapsedMs}ms, 响应长度: {Length}", 
-                url, stopwatch.ElapsedMilliseconds, response.Length);
-            
-            return response;
-        }
-        catch (Exception ex)
-        {
-            stopwatch.Stop();
-            logger.LogError(ex, "GET请求失败: {Url}, 耗时: {ElapsedMs}ms", 
-                url, stopwatch.ElapsedMilliseconds);
-            throw;
-        }
-    }
-}
-```
-
-## 🔧 扩展功能
-
-### 1. 自定义响应处理器
+### 5. 自定义响应处理器
 
 ```csharp
 public static class HttpClientResponseExtensions
@@ -563,7 +404,7 @@ public class ApiResponse<T>
 }
 ```
 
-### 2. 请求拦截器
+### 6. 请求拦截器
 
 ```csharp
 public class InterceptorHttpClient
@@ -612,7 +453,7 @@ public class InterceptorHttpClient
 }
 ```
 
-### 3. 并发限制
+### 7. 并发限制
 
 ```csharp
 public class ThrottledHttpClient
@@ -641,69 +482,152 @@ public class ThrottledHttpClient
 }
 ```
 
-## 🔍 故障排除
+## 最佳实践
 
-### 常见问题
+### HttpClient生命周期管理
 
-#### 1. 超时问题
-**问题**: 请求经常超时
-**解决方案**: 适当增加超时时间，使用重试机制
-
-```csharp
-// 增加超时时间
-string response = await httpClient.GetToStringAsync<string>(url, headers, timeout: 120);
-
-// 使用重试机制
-string response = await httpClient.GetWithRetryAsync<string>(url, maxRetries: 3);
-```
-
-#### 2. 内存泄漏问题
-**问题**: HttpClient使用不当导致内存泄漏
-**解决方案**: 使用IHttpClientFactory或正确管理HttpClient生命周期
+推荐使用 `IHttpClientFactory` 管理 HttpClient 生命周期，避免套接字耗尽：
 
 ```csharp
 // 推荐：使用IHttpClientFactory
-services.AddHttpClient<ApiService>();
-
-// 或者：正确使用using语句
-using var httpClient = new HttpClient();
-```
-
-#### 3. 序列化问题
-**问题**: JSON序列化/反序列化失败
-**解决方案**: 检查数据模型和序列化选项
-
-```csharp
-// 使用自定义序列化选项
-var options = new JsonSerializerOptions
+public class ApiService
 {
-    PropertyNameCaseInsensitive = true,
-    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-};
-
-string response = await httpClient.PostJsonToStringAsync(url, data, options);
-```
-
-### 调试技巧
-
-```csharp
-// 启用详细日志
-public static class HttpClientDebugExtensions
-{
-    public static async Task<string> GetWithDebugAsync<T>(
-        this HttpClient httpClient, 
-        string url, 
-        ILogger logger = null)
+    private readonly HttpClient httpClient;
+    
+    public ApiService(IHttpClientFactory httpClientFactory)
     {
-        logger?.LogDebug("发送GET请求到: {Url}", url);
-        
-        var stopwatch = Stopwatch.StartNew();
+        httpClient = httpClientFactory.CreateClient("ApiClient");
+    }
+    
+    public async Task<string> GetDataAsync()
+    {
+        return await httpClient.GetToStringAsync<string>("https://api.example.com/data");
+    }
+}
+
+// 在Startup.cs或Program.cs中注册
+services.AddHttpClient("ApiClient", client =>
+{
+    client.BaseAddress = new Uri("https://api.example.com/");
+    client.DefaultRequestHeaders.Add("User-Agent", "MyApp/1.0");
+});
+```
+
+### 统一错误处理
+
+封装统一的异常处理逻辑，区分网络错误、超时和序列化问题：
+
+```csharp
+public class ApiClient
+{
+    private readonly HttpClient httpClient;
+    private readonly ILogger<ApiClient> logger;
+    
+    public ApiClient(HttpClient httpClient, ILogger<ApiClient> logger)
+    {
+        this.httpClient = httpClient;
+        this.logger = logger;
+    }
+    
+    public async Task<T> GetAsync<T>(string url) where T : class
+    {
         try
         {
             var response = await httpClient.GetToStringAsync<T>(url);
-            stopwatch.Stop();
+            return JsonSerializer.Deserialize<T>(response);
+        }
+        catch (HttpRequestException ex)
+        {
+            logger.LogError(ex, "HTTP请求失败: {Url}", url);
+            throw new ApiException($"请求失败: {ex.Message}", ex);
+        }
+        catch (TaskCanceledException ex)
+        {
+            logger.LogError(ex, "请求超时: {Url}", url);
+            throw new ApiException("请求超时", ex);
+        }
+        catch (JsonException ex)
+        {
+            logger.LogError(ex, "JSON反序列化失败: {Url}", url);
+            throw new ApiException("数据格式错误", ex);
+        }
+    }
+}
+
+public class ApiException : Exception
+{
+    public ApiException(string message) : base(message) { }
+    public ApiException(string message, Exception innerException) : base(message, innerException) { }
+}
+```
+
+### 配置管理
+
+将 API 地址、超时时间和默认请求头等配置外部化：
+
+```csharp
+public class ApiConfiguration
+{
+    public string BaseUrl { get; set; }
+    public int TimeoutSeconds { get; set; } = 30;
+    public Dictionary<string, string> DefaultHeaders { get; set; } = new();
+}
+
+public class ConfiguredApiClient
+{
+    private readonly HttpClient httpClient;
+    private readonly ApiConfiguration config;
+    
+    public ConfiguredApiClient(HttpClient httpClient, IOptions<ApiConfiguration> config)
+    {
+        this.httpClient = httpClient;
+        this.config = config.Value;
+        
+        // 应用配置
+        httpClient.BaseAddress = new Uri(this.config.BaseUrl);
+        httpClient.Timeout = TimeSpan.FromSeconds(this.config.TimeoutSeconds);
+        
+        foreach (var header in this.config.DefaultHeaders)
+        {
+            httpClient.DefaultRequestHeaders.Add(header.Key, header.Value);
+        }
+    }
+    
+    public async Task<string> GetAsync(string endpoint)
+    {
+        return await httpClient.GetToStringAsync<string>(endpoint);
+    }
+}
+```
+
+### 请求/响应日志记录
+
+记录请求耗时和响应信息，便于排查问题：
+
+```csharp
+public class LoggingHttpClient
+{
+    private readonly HttpClient httpClient;
+    private readonly ILogger<LoggingHttpClient> logger;
+    
+    public LoggingHttpClient(HttpClient httpClient, ILogger<LoggingHttpClient> logger)
+    {
+        this.httpClient = httpClient;
+        this.logger = logger;
+    }
+    
+    public async Task<string> GetWithLoggingAsync<T>(string url)
+    {
+        var stopwatch = Stopwatch.StartNew();
+        
+        logger.LogInformation("开始GET请求: {Url}", url);
+        
+        try
+        {
+            var response = await httpClient.GetToStringAsync<T>(url);
             
-            logger?.LogDebug("GET请求成功: {Url}, 耗时: {ElapsedMs}ms, 响应长度: {Length}", 
+            stopwatch.Stop();
+            logger.LogInformation("GET请求成功: {Url}, 耗时: {ElapsedMs}ms, 响应长度: {Length}", 
                 url, stopwatch.ElapsedMilliseconds, response.Length);
             
             return response;
@@ -711,7 +635,7 @@ public static class HttpClientDebugExtensions
         catch (Exception ex)
         {
             stopwatch.Stop();
-            logger?.LogError(ex, "GET请求失败: {Url}, 耗时: {ElapsedMs}ms", 
+            logger.LogError(ex, "GET请求失败: {Url}, 耗时: {ElapsedMs}ms", 
                 url, stopwatch.ElapsedMilliseconds);
             throw;
         }
@@ -719,22 +643,21 @@ public static class HttpClientDebugExtensions
 }
 ```
 
-## 📄 许可证
+## API 参考
 
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
-
----
-
-**GameFrameX.Foundation.Http.Extension** - 让HTTP请求更简单、更统一！
+| 方法 | 返回类型 | 说明 |
+|------|----------|------|
+| `GetToStringAsync<T>(url)` | ``Task<string>`` | GET 请求，返回字符串响应 |
+| `GetToStringAsync<T>(url, headers, timeout)` | ``Task<string>`` | GET 请求，支持自定义请求头和超时 |
+| `GetToByteArrayAsync<T>(url)` | ``Task<byte[]>`` | GET 请求，返回字节数组响应 |
+| `GetToStreamAsync<T>(url)` | ``Task<Stream>`` | GET 请求，返回流响应 |
+| `PostJsonToStringAsync(url, data)` | ``Task<string>`` | POST JSON 数据，返回字符串 |
+| `PostJsonToStringAsync(url, data, options)` | ``Task<string>`` | POST JSON 数据，自定义序列化选项 |
+| `PostJsonToStringAsync(url, data, headers, timeout)` | ``Task<string>`` | POST JSON 数据，支持请求头和超时 |
+| `PostJsonToByteArrayAsync(url, data)` | ``Task<byte[]>`` | POST JSON 数据，返回字节数组 |
+| `PostJsonToStreamAsync(url, data)` | ``Task<Stream>`` | POST JSON 数据，返回流 |
+| `PostFormToStringAsync(url, formData)` | ``Task<string>`` | POST 表单数据 |
+| `PostFormToStringAsync(url, formData, headers, timeout)` | ``Task<string>`` | POST 表单数据，支持请求头和超时 |
+| `PostFileToStringAsync(url, filePath)` | ``Task<string>`` | 上传单个文件 |
+| `PostFileToStringAsync(url, filePath, headers, timeout)` | ``Task<string>`` | 上传单个文件，支持请求头和超时 |
+| `PostMultipartFileToStringAsync(url, fieldName, filePath, formData)` | ``Task<string>`` | Multipart 表单文件上传 |

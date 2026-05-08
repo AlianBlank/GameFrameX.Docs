@@ -1,134 +1,134 @@
-# Hash计算
+# Hash 計算（多演算法統一雜湊庫）
 
 [![NuGet](https://img.shields.io/nuget/v/GameFrameX.Foundation.Hash.svg)](https://www.nuget.org/packages/GameFrameX.Foundation.Hash/)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/GameFrameX/GameFrameX/blob/main/LICENSE)
 
-GameFrameX.Foundation.Hash 是 GameFrameX 框架的基础设施库，提供了多种高性能哈希算法的统一接口。该库支持常用的加密哈希算法（MD5、SHA系列）和高性能非加密哈希算法（xxHash、MurmurHash3、CRC等）。
+GameFrameX.Foundation.Hash 是 GameFrameX 框架的基礎設施庫，提供了多種高效能雜湊演算法的統一介面。該庫支援常用的加密雜湊演算法（MD5、SHA 系列）和高效能非加密雜湊演算法（xxHash、MurmurHash3、CRC 等）。
 
-## 🎯 核心特性
+## 特性
 
-- **多种哈希算法支持** - MD5、SHA-1、SHA-256、SHA-512、xxHash、MurmurHash3、CRC32/64、HMAC-SHA256
-- **高性能实现** - 基于.NET原生算法和优化的第三方库
-- **统一API设计** - 所有算法提供一致的调用接口
-- **多种输入格式** - 支持字符串、字节数组、流和文件路径
-- **类型安全** - 完整的参数验证和异常处理
-- **加盐支持** - MD5等算法支持加盐哈希
-- **验证功能** - 内置哈希值验证方法
+- **多種雜湊演算法支援** - MD5、SHA-1、SHA-256、SHA-512、xxHash、MurmurHash3、CRC32/64、HMAC-SHA256
+- **高效能實作** - 基於 .NET 原生演算法和最佳化的第三方庫
+- **統一 API 設計** - 所有演算法提供一致的呼叫介面
+- **多種輸入格式** - 支援字串、位元組陣列、串流和檔案路徑
+- **型別安全** - 完整的參數驗證和例外處理
+- **加鹽支援** - MD5 等演算法支援加鹽雜湊
+- **驗證功能** - 內建雜湊值驗證方法
 
-## 📦 安装
+## 安裝
 
 ```bash
 dotnet add package GameFrameX.Foundation.Hash
 ```
 
-## 🚀 快速开始
+## 快速開始
 
-### MD5 哈希
+### MD5 雜湊
 
 ```csharp
 using GameFrameX.Foundation.Hash;
 
-// 字符串哈希
+// 字串雜湊
 string text = "Hello World";
 string hash = Md5Helper.Hash(text);
-Console.WriteLine(hash); // 输出: b10a8db164e0754105b7a99be72e3fe5
+Console.WriteLine(hash); // 輸出: b10a8db164e0754105b7a99be72e3fe5
 
-// 加盐哈希
+// 加鹽雜湊
 string saltedHash = Md5Helper.HashWithSalt(text, "salt123");
 
-// 文件哈希
+// 檔案雜湊
 string fileHash = Md5Helper.HashByFilePath("path/to/file.txt");
 
-// 验证哈希
+// 驗證雜湊
 bool isValid = Md5Helper.IsVerify(text, hash);
 ```
 
-### SHA-256 哈希
+### SHA-256 雜湊
 
 ```csharp
 using GameFrameX.Foundation.Hash;
 
-// 字符串哈希
+// 字串雜湊
 string text = "Hello World";
 string hash = Sha256Helper.ComputeHash(text);
 
-// 文件哈希
+// 檔案雜湊
 string fileHash = Sha256Helper.ComputeFileHash("path/to/file.txt");
 
-// 验证哈希
+// 驗證雜湊
 bool isValid = Sha256Helper.VerifyHash(text, hash);
 ```
 
-### xxHash 高性能哈希
+### xxHash 高效能雜湊
 
 ```csharp
 using GameFrameX.Foundation.Hash;
 
-// 32位哈希
+// 32 位元雜湊
 uint hash32 = XxHashHelper.Hash32("Hello World");
 
-// 64位哈希
+// 64 位元雜湊
 ulong hash64 = XxHashHelper.Hash64("Hello World");
 
-// 128位哈希
+// 128 位元雜湊
 uint128 hash128 = XxHashHelper.Hash128("Hello World");
 
-// 类型哈希
+// 型別雜湊
 uint typeHash = XxHashHelper.Hash32<MyClass>();
 ```
 
-## 📖 详细使用指南
+## 詳細用法
 
-### MD5 哈希算法
+### MD5 雜湊演算法
 
-MD5Helper 提供了完整的MD5哈希功能：
+MD5Helper 提供了完整的 MD5 雜湊功能：
 
 ```csharp
-// 基本哈希
+// 基本雜湊
 string hash = Md5Helper.Hash("input text");
 
-// 大写格式
+// 大寫格式
 string upperHash = Md5Helper.Hash("input text", isUpper: true);
 
-// 字节数组哈希
+// 位元組陣列雜湊
 byte[] data = Encoding.UTF8.GetBytes("input text");
 string hash = Md5Helper.Hash(data);
 
-// 流哈希
+// 串流雜湊
 using var stream = new MemoryStream(data);
 string hash = Md5Helper.Hash(stream);
 
-// 加盐哈希（字符串盐）
+// 加鹽雜湊（字串鹽）
 string saltedHash = Md5Helper.HashWithSalt("input", "salt");
 
-// 加盐哈希（字节数组盐）
+// 加鹽雜湊（位元組陣列鹽）
 byte[] salt = Encoding.UTF8.GetBytes("salt");
 string saltedHash = Md5Helper.HashWithSalt("input", salt);
 
-// 验证哈希
+// 驗證雜湊
 bool isValid = Md5Helper.IsVerify("input", hash);
 bool isSaltedValid = Md5Helper.IsVerifyWithSalt("input", "salt", saltedHash);
 ```
 
-### SHA 系列哈希算法
+### SHA 系列雜湊演算法
 
 #### SHA-256
 
 ```csharp
-// 基本哈希
+// 基本雜湊
 string hash = Sha256Helper.ComputeHash("input text");
 
-// 指定编码
+// 指定編碼
 string hash = Sha256Helper.ComputeHash("input text", Encoding.ASCII);
 
-// 字节数组哈希
+// 位元組陣列雜湊
 byte[] data = Encoding.UTF8.GetBytes("input text");
 string hash = Sha256Helper.ComputeHash(data);
 
-// 文件哈希
+// 檔案雜湊
 string fileHash = Sha256Helper.ComputeFileHash("path/to/file.txt");
 
-// 验证哈希
+// 驗證雜湊
 bool isValid = Sha256Helper.VerifyHash("input text", hash);
 bool isFileValid = Sha256Helper.VerifyFileHash("path/to/file.txt", fileHash);
 ```
@@ -145,62 +145,62 @@ string sha512Hash = Sha512Helper.ComputeHash("input text");
 bool sha512Valid = Sha512Helper.VerifyHash("input text", sha512Hash);
 ```
 
-### xxHash 高性能哈希
+### xxHash 高效能雜湊
 
-xxHash 是专为高性能设计的非加密哈希算法：
+xxHash 是專為高效能設計的非加密雜湊演算法：
 
 ```csharp
-// 32位哈希
+// 32 位元雜湊
 uint hash32 = XxHashHelper.Hash32("input text");
 uint hash32FromBytes = XxHashHelper.Hash32(Encoding.UTF8.GetBytes("input"));
 
-// 64位哈希
+// 64 位元雜湊
 ulong hash64 = XxHashHelper.Hash64("input text");
 ulong hash64FromBytes = XxHashHelper.Hash64(Encoding.UTF8.GetBytes("input"));
 
-// 128位哈希
+// 128 位元雜湊
 uint128 hash128 = XxHashHelper.Hash128("input text");
 uint128 hash128FromBytes = XxHashHelper.Hash128(Encoding.UTF8.GetBytes("input"));
 
-// 指定长度的128位哈希
+// 指定長度的 128 位元雜湊
 byte[] data = Encoding.UTF8.GetBytes("input text");
-uint128 hash128Limited = XxHashHelper.Hash128(data, 5); // 只使用前5个字节
+uint128 hash128Limited = XxHashHelper.Hash128(data, 5); // 只使用前 5 個位元組
 
-// 类型哈希
+// 型別雜湊
 uint typeHash32 = XxHashHelper.Hash32<string>();
 ulong typeHash64 = XxHashHelper.Hash64<MyClass>();
 
-// 检查128位哈希是否为默认值
+// 檢查 128 位元雜湊是否為預設值
 bool isDefault = XxHashHelper.IsDefault(hash128);
 ```
 
-### MurmurHash3 算法
+### MurmurHash3 演算法
 
 ```csharp
-// 32位 MurmurHash3
+// 32 位元 MurmurHash3
 uint murmurHash = MurmurHash3Helper.Hash32("input text");
 
-// 指定种子值
+// 指定種子值
 uint murmurHashWithSeed = MurmurHash3Helper.Hash32("input text", seed: 12345);
 
-// 字节数组哈希
+// 位元組陣列雜湊
 byte[] data = Encoding.UTF8.GetBytes("input text");
 uint murmurHashFromBytes = MurmurHash3Helper.Hash32(data);
 ```
 
-### CRC 校验算法
+### CRC 校驗演算法
 
 #### CRC32
 
 ```csharp
-// 基本CRC32
+// 基本 CRC32
 uint crc32 = CrcHelper.Crc32("input text");
 
-// 字节数组CRC32
+// 位元組陣列 CRC32
 byte[] data = Encoding.UTF8.GetBytes("input text");
 uint crc32FromBytes = CrcHelper.Crc32(data);
 
-// 流CRC32
+// 串流 CRC32
 using var stream = new MemoryStream(data);
 uint crc32FromStream = CrcHelper.Crc32(stream);
 ```
@@ -208,43 +208,43 @@ uint crc32FromStream = CrcHelper.Crc32(stream);
 #### CRC64
 
 ```csharp
-// 基本CRC64
+// 基本 CRC64
 ulong crc64 = CrcHelper.Crc64("input text");
 
-// 字节数组CRC64
+// 位元組陣列 CRC64
 byte[] data = Encoding.UTF8.GetBytes("input text");
 ulong crc64FromBytes = CrcHelper.Crc64(data);
 ```
 
-### HMAC-SHA256 算法
+### HMAC-SHA256 演算法
 
 ```csharp
-// 基本HMAC-SHA256
+// 基本 HMAC-SHA256
 string hmac = HmacSha256Helper.ComputeHash("input text", "secret key");
 
-// 字节数组输入
+// 位元組陣列輸入
 byte[] data = Encoding.UTF8.GetBytes("input text");
 byte[] key = Encoding.UTF8.GetBytes("secret key");
 string hmacFromBytes = HmacSha256Helper.ComputeHash(data, key);
 
-// 验证HMAC
+// 驗證 HMAC
 bool isValid = HmacSha256Helper.VerifyHash("input text", "secret key", hmac);
 ```
 
-## 🎨 高级用法
+## 進階用法
 
-### 批量哈希计算
+### 批次雜湊計算
 
 ```csharp
-// 批量计算多个字符串的哈希值
+// 批次計算多個字串的雜湊值
 var inputs = new[] { "text1", "text2", "text3" };
 var hashes = inputs.Select(Md5Helper.Hash).ToArray();
 
-// 批量验证
+// 批次驗證
 var results = inputs.Zip(hashes, Md5Helper.IsVerify).ToArray();
 ```
 
-### 文件完整性校验
+### 檔案完整性校驗
 
 ```csharp
 public class FileIntegrityChecker
@@ -273,7 +273,7 @@ public class FileIntegrityChecker
 }
 ```
 
-### 密码哈希最佳实践
+### 密碼雜湊最佳實踐
 
 ```csharp
 public class PasswordHasher
@@ -282,11 +282,11 @@ public class PasswordHasher
     
     public static string HashPassword(string password)
     {
-        // 生成随机盐
+        // 產生隨機鹽
         var salt = GenerateRandomSalt();
         var hash = Md5Helper.HashWithSalt(password, salt);
         
-        // 返回盐和哈希的组合
+        // 回傳鹽和雜湊的組合
         return $"{salt}:{hash}";
     }
     
@@ -310,7 +310,7 @@ public class PasswordHasher
 }
 ```
 
-### 性能基准测试
+### 效能基準測試
 
 ```csharp
 public class HashPerformanceTest
@@ -354,57 +354,75 @@ public class HashPerformanceTest
 }
 ```
 
-## 💡 最佳实践
-
-### 算法选择指南
-
-1. **加密安全场景**
-    - 密码存储：使用 SHA-256 或更高强度算法
-    - 数字签名：使用 SHA-256 或 SHA-512
-    - 避免使用 MD5 和 SHA-1（已不安全）
-
-2. **高性能场景**
-    - 哈希表：使用 xxHash32 或 xxHash64
-    - 数据完整性校验：使用 CRC32 或 CRC64
-    - 缓存键生成：使用 xxHash 系列
-
-3. **兼容性场景**
-    - 与旧系统兼容：可能需要使用 MD5
-    - 标准协议：根据协议要求选择算法
-
-### 安全注意事项
+### 自訂編碼
 
 ```csharp
-// ❌ 不安全：直接哈希密码
+// 使用不同的字元編碼
+string hash1 = Sha256Helper.ComputeHash("測試文字", Encoding.UTF8);
+string hash2 = Sha256Helper.ComputeHash("測試文字", Encoding.Unicode);
+string hash3 = Sha256Helper.ComputeHash("測試文字", Encoding.ASCII);
+```
+
+### xxHash 種子值
+
+```csharp
+// MurmurHash3 支援自訂種子值
+uint hash1 = MurmurHash3Helper.Hash32("input", seed: 0);
+uint hash2 = MurmurHash3Helper.Hash32("input", seed: 12345);
+// 相同輸入，不同種子會產生不同的雜湊值
+```
+
+## 最佳實踐
+
+### 演算法選擇指南
+
+1. **加密安全場景**
+    - 密碼儲存：使用 SHA-256 或更高強度演算法
+    - 數位簽章：使用 SHA-256 或 SHA-512
+    - 避免使用 MD5 和 SHA-1（已不安全）
+
+2. **高效能場景**
+    - 雜湊表：使用 xxHash32 或 xxHash64
+    - 資料完整性校驗：使用 CRC32 或 CRC64
+    - 快取鍵產生：使用 xxHash 系列
+
+3. **相容性場景**
+    - 與舊系統相容：可能需要使用 MD5
+    - 標準協定：根據協定要求選擇演算法
+
+### 安全注意事項
+
+```csharp
+// 不安全：直接雜湊密碼
 string unsafeHash = Md5Helper.Hash(password);
 
-// ✅ 安全：使用盐值
+// 安全：使用鹽值
 string salt = GenerateRandomSalt();
 string safeHash = Sha256Helper.ComputeHash(password + salt);
 
-// ✅ 更安全：使用专门的密码哈希算法（如 bcrypt、scrypt、Argon2）
-// 注意：本库主要提供通用哈希算法，密码存储建议使用专门的密码哈希库
+// 更安全：使用專門的密碼雜湊演算法（如 bcrypt、scrypt、Argon2）
+// 注意：本庫主要提供通用雜湊演算法，密碼儲存建議使用專門的密碼雜湊庫
 ```
 
-### 性能优化建议
+### 效能最佳化建議
 
 ```csharp
-// ✅ 重用字节数组避免重复编码
+// 重用位元組陣列避免重複編碼
 byte[] data = Encoding.UTF8.GetBytes(input);
 string md5Hash = Md5Helper.Hash(data);
 string sha256Hash = Sha256Helper.ComputeHash(data);
 
-// ✅ 对于大文件，使用流式处理
+// 對於大檔案，使用串流處理
 using var fileStream = File.OpenRead(largeFilePath);
 string hash = Md5Helper.Hash(fileStream);
 
-// ✅ 批量操作时考虑并行处理
+// 批次操作時考慮平行處理
 var hashes = inputs.AsParallel()
     .Select(input => new { Input = input, Hash = XxHashHelper.Hash64(input) })
     .ToArray();
 ```
 
-### 错误处理
+### 錯誤處理
 
 ```csharp
 public static class SafeHashHelper
@@ -415,61 +433,39 @@ public static class SafeHashHelper
         {
             if (!File.Exists(filePath))
             {
-                throw new FileNotFoundException($"文件不存在: {filePath}");
+                throw new FileNotFoundException($"檔案不存在: {filePath}");
             }
             
             return Sha256Helper.ComputeFileHash(filePath);
         }
         catch (UnauthorizedAccessException)
         {
-            throw new InvalidOperationException($"没有权限访问文件: {filePath}");
+            throw new InvalidOperationException($"沒有權限存取檔案: {filePath}");
         }
         catch (IOException ex)
         {
-            throw new InvalidOperationException($"读取文件时发生IO错误: {ex.Message}");
+            throw new InvalidOperationException($"讀取檔案時發生 IO 錯誤: {ex.Message}");
         }
     }
 }
 ```
 
-## 🔧 配置选项
+### 故障排除
 
-### 自定义编码
-
+**Q: MD5 雜湊結果與線上工具不一致？**
 ```csharp
-// 使用不同的字符编码
-string hash1 = Sha256Helper.ComputeHash("测试文本", Encoding.UTF8);
-string hash2 = Sha256Helper.ComputeHash("测试文本", Encoding.Unicode);
-string hash3 = Sha256Helper.ComputeHash("测试文本", Encoding.ASCII);
-```
-
-### xxHash 种子值
-
-```csharp
-// MurmurHash3 支持自定义种子值
-uint hash1 = MurmurHash3Helper.Hash32("input", seed: 0);
-uint hash2 = MurmurHash3Helper.Hash32("input", seed: 12345);
-// 相同输入，不同种子会产生不同的哈希值
-```
-
-## 🔍 故障排除
-
-### 常见问题
-
-**Q: MD5 哈希结果与在线工具不一致？**
-```csharp
-// 确保使用相同的编码和格式
+// 確保使用相同的編碼和格式
 string input = "Hello World";
-string hash = Md5Helper.Hash(input, isUpper: false); // 小写
-string upperHash = Md5Helper.Hash(input, isUpper: true); // 大写
+string hash = Md5Helper.Hash(input, isUpper: false); // 小寫
+string upperHash = Md5Helper.Hash(input, isUpper: true); // 大寫
 ```
 
-**Q: 文件哈希计算失败？**
+**Q: 檔案雜湊計算失敗？**
 ```csharp
-// 检查文件是否存在和权限
+// 檢查檔案是否存在和權限
 if (!File.Exists(filePath))
 {
-    Console.WriteLine("文件不存在");
+    Console.WriteLine("檔案不存在");
     return;
 }
 
@@ -479,27 +475,27 @@ try
 }
 catch (UnauthorizedAccessException)
 {
-    Console.WriteLine("没有文件访问权限");
+    Console.WriteLine("沒有檔案存取權限");
 }
 ```
 
-**Q: 大文件哈希计算内存占用过高？**
+**Q: 大檔案雜湊計算記憶體佔用過高？**
 ```csharp
-// 使用流式处理而不是一次性读取整个文件
+// 使用串流處理而不是一次性讀取整個檔案
 using var fileStream = File.OpenRead(largeFilePath);
 string hash = Md5Helper.Hash(fileStream);
 ```
 
-### 调试技巧
+### 偵錯技巧
 
 ```csharp
-// 启用详细日志记录
+// 啟用詳細日誌記錄
 public static class HashDebugHelper
 {
     public static void DebugHash(string input)
     {
-        Console.WriteLine($"输入: {input}");
-        Console.WriteLine($"UTF8字节: {string.Join(",", Encoding.UTF8.GetBytes(input))}");
+        Console.WriteLine($"輸入: {input}");
+        Console.WriteLine($"UTF8 位元組: {string.Join(",", Encoding.UTF8.GetBytes(input))}");
         Console.WriteLine($"MD5: {Md5Helper.Hash(input)}");
         Console.WriteLine($"SHA256: {Sha256Helper.ComputeHash(input)}");
         Console.WriteLine($"xxHash32: {XxHashHelper.Hash32(input)}");
@@ -508,31 +504,47 @@ public static class HashDebugHelper
 }
 ```
 
-## 📊 性能对比
+## API 參考
 
-| 算法 | 安全性 | 性能 | 输出长度 | 适用场景 |
+| 類別 | 方法 | 參數 | 回傳值 | 說明 |
+|---|------|------|--------|------|
+| **Md5Helper** | Hash | `string` / `string, bool` | `string` | 計算 MD5 雜湊 |
+| | Hash | `byte[]` | `string` | 位元組陣列 MD5 雜湊 |
+| | Hash | `Stream` | `string` | 串流 MD5 雜湊 |
+| | HashWithSalt | `string, string` / `string, byte[]` | `string` | 加鹽 MD5 雜湊 |
+| | HashByFilePath | `string` | `string` | 檔案 MD5 雜湊 |
+| | IsVerify | `string, string` | `bool` | 驗證雜湊值 |
+| | IsVerifyWithSalt | `string, string, string` | `bool` | 驗證加鹽雜湊 |
+| **Sha256Helper** | ComputeHash | `string` / `string, Encoding` | `string` | 計算 SHA-256 雜湊 |
+| | ComputeHash | `byte[]` | `string` | 位元組陣列 SHA-256 |
+| | ComputeFileHash | `string` | `string` | 檔案 SHA-256 |
+| | VerifyHash | `string, string` | `bool` | 驗證雜湊值 |
+| | VerifyFileHash | `string, string` | `bool` | 驗證檔案雜湊 |
+| **Sha1Helper** | ComputeHash | `string` | `string` | 計算 SHA-1 雜湊 |
+| | VerifyHash | `string, string` | `bool` | 驗證雜湊值 |
+| **Sha512Helper** | ComputeHash | `string` | `string` | 計算 SHA-512 雜湊 |
+| | VerifyHash | `string, string` | `bool` | 驗證雜湊值 |
+| **XxHashHelper** | Hash32 | `string` / `byte[]` | `uint` | 32 位元 xxHash |
+| | Hash64 | `string` / `byte[]` | `ulong` | 64 位元 xxHash |
+| | Hash128 | `string` / `byte[]` / `byte[], int` | `uint128` | 128 位元 xxHash |
+| | Hash32\<T\> | 無 | `uint` | 型別雜湊（32 位元） |
+| | Hash64\<T\> | 無 | `ulong` | 型別雜湊（64 位元） |
+| | IsDefault | `uint128` | `bool` | 檢查是否為預設值 |
+| **MurmurHash3Helper** | Hash32 | `string` / `string, int` / `byte[]` | `uint` | MurmurHash3（支援種子） |
+| **CrcHelper** | Crc32 | `string` / `byte[]` / `Stream` | `uint` | CRC32 校驗 |
+| | Crc64 | `string` / `byte[]` | `ulong` | CRC64 校驗 |
+| **HmacSha256Helper** | ComputeHash | `string, string` / `byte[], byte[]` | `string` | HMAC-SHA256 |
+| | VerifyHash | `string, string, string` | `bool` | 驗證 HMAC |
+
+### 效能對比
+
+| 演算法 | 安全性 | 效能 | 輸出長度 | 適用場景 |
 |------|--------|------|----------|----------|
-| MD5 | ❌ 低 | ⭐⭐⭐ | 32字符 | 兼容性需求 |
-| SHA-1 | ⚠️ 中 | ⭐⭐ | 40字符 | 兼容性需求 |
-| SHA-256 | ✅ 高 | ⭐⭐ | 64字符 | 安全哈希 |
-| SHA-512 | ✅ 高 | ⭐ | 128字符 | 高安全需求 |
-| xxHash32 | ❌ 无 | ⭐⭐⭐⭐⭐ | 8字符 | 高性能场景 |
-| xxHash64 | ❌ 无 | ⭐⭐⭐⭐⭐ | 16字符 | 高性能场景 |
-| CRC32 | ❌ 无 | ⭐⭐⭐⭐ | 8字符 | 数据校验 |
-| HMAC-SHA256 | ✅ 高 | ⭐⭐ | 64字符 | 消息认证 |
-
-## 📄 许可证
-
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
+| MD5 | 低 | 高 | 32 字元 | 相容性需求 |
+| SHA-1 | 中 | 中 | 40 字元 | 相容性需求 |
+| SHA-256 | 高 | 中 | 64 字元 | 安全雜湊 |
+| SHA-512 | 高 | 中低 | 128 字元 | 高安全需求 |
+| xxHash32 | 無 | 極高 | 8 字元 | 高效能場景 |
+| xxHash64 | 無 | 極高 | 16 字元 | 高效能場景 |
+| CRC32 | 無 | 高 | 8 字元 | 資料校驗 |
+| HMAC-SHA256 | 高 | 中 | 64 字元 | 訊息認證 |

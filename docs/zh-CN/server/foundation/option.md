@@ -1,17 +1,23 @@
-# 启动参数解析器
+# 启动参数解析器（命令行参数与环境变量自动映射）
 
 一个强大的命令行参数和环境变量解析库，支持将命令行参数和环境变量自动映射到强类型配置对象。
 
 ## 特性
 
-- ✅ **参数优先级处理**: 命令行参数 > 环境变量 > 默认值
-- ✅ **泛型支持**: 支持任意强类型配置类
-- ✅ **多种启动方式兼容**: 支持Docker、exe、shell等启动方式
-- ✅ **自动前缀处理**: 自动为参数添加`--`前缀
-- ✅ **布尔参数支持**: 支持多种布尔参数格式
-- ✅ **环境变量映射**: 自动映射环境变量到配置属性
-- ✅ **类型转换**: 自动转换字符串参数到目标类型
-- ✅ **特性支持**: 支持丰富的配置特性
+- **参数优先级处理**: 命令行参数 > 环境变量 > 默认值
+- **泛型支持**: 支持任意强类型配置类
+- **多种启动方式兼容**: 支持Docker、exe、shell等启动方式
+- **自动前缀处理**: 自动为参数添加`--`前缀
+- **布尔参数支持**: 支持多种布尔参数格式
+- **环境变量映射**: 自动映射环境变量到配置属性
+- **类型转换**: 自动转换字符串参数到目标类型
+- **特性支持**: 支持丰富的配置特性
+
+## 安装
+
+```bash
+dotnet add package GameFrameX.Foundation.Options
+```
 
 ## 快速开始
 
@@ -52,7 +58,7 @@ class Program
 }
 ```
 
-## 使用方式
+## 详细用法
 
 ### 命令行参数
 
@@ -102,7 +108,7 @@ docker run myapp --host example.com --port 9090 --debug
 docker run -e HOST=example.com -e PORT=9090 -e DEBUG=true myapp
 ```
 
-## 高级特性
+## 高级用法
 
 ### 使用特性配置
 
@@ -146,7 +152,7 @@ var builder = new OptionsBuilder<AppConfig>(
 var config = builder.Build(skipValidation: false); // 是否跳过验证
 ```
 
-## 参数优先级
+### 参数优先级
 
 参数按以下优先级应用（高优先级覆盖低优先级）：
 
@@ -154,7 +160,7 @@ var config = builder.Build(skipValidation: false); // 是否跳过验证
 2. **环境变量**
 3. **默认值** (最低优先级)
 
-### 示例
+#### 示例
 
 ```csharp
 public class Config
@@ -177,7 +183,7 @@ myapp.exe --host cmd.example.com
 # Port = 7070               (来自环境变量)
 ```
 
-## 布尔参数处理
+### 布尔参数处理
 
 支持多种布尔参数格式：
 
@@ -197,7 +203,7 @@ myapp.exe --debug false              # debug = false
 true, false, 1, 0, yes, no, on, off
 ```
 
-## 类型转换
+### 类型转换
 
 自动支持以下类型转换：
 
@@ -211,7 +217,7 @@ true, false, 1, 0, yes, no, on, off
 - `Guid`, `Guid?` - GUID转换
 - `Enum` - 枚举转换
 
-### 示例
+#### 示例
 
 ```csharp
 public class TypedConfig
@@ -232,9 +238,9 @@ public enum LogLevel
 myapp.exe --port 9090 --debug true --start-time "2024-01-01 10:00:00" --level Info
 ```
 
-## 错误处理
+### 错误处理
 
-### 必需参数验证
+#### 必需参数验证
 
 ```csharp
 public class Config
@@ -250,9 +256,13 @@ public class Config
 缺少必需的选项: api-key
 ```
 
-### 类型转换错误
+#### 类型转换错误
 
 当参数值无法转换为目标类型时，会使用默认值并在控制台输出警告信息。
+
+### 调试模式
+
+在开发过程中，可以通过启用调试模式来查看参数解析的详细过程，便于排查配置问题。
 
 ## 最佳实践
 
@@ -326,7 +336,32 @@ services:
     command: ["--log-level", "info"]
 ```
 
-## 完整示例
+## API 参考
+
+### `OptionsBuilder<T>`
+
+| 方法 | 说明 |
+|------|------|
+| `OptionsBuilder<T>(args)` | 创建构建器，传入命令行参数 |
+| `Build()` | 构建配置对象 |
+| `Build(skipValidation)` | 构建配置对象，可选跳过验证 |
+
+### 特性 (Attributes)
+
+| 特性 | 说明 |
+|------|------|
+| `[Option(shortName, longName)]` | 配置选项映射 |
+| `[FlagOption(shortName, longName)]` | 布尔标志选项 |
+| `[RequiredOption(longName)]` | 必需选项 |
+| `[EnvironmentVariable(name)]` | 环境变量映射 |
+| `[DefaultValue(value)]` | 默认值 |
+| `[HelpText(text)]` | 帮助文本描述 |
+
+### CommandLineArgumentConverter
+
+`CommandLineArgumentConverter` 提供底层的命令行参数转换功能，支持将字符串参数转换为目标类型。通常通过 `OptionsBuilder` 间接使用，无需直接调用。
+
+### 完整示例
 
 ```csharp
 using GameFrameX.Foundation.Options;
@@ -410,20 +445,3 @@ namespace MyApp
     }
 }
 ```
-
-
-## 📄 许可证
-
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法

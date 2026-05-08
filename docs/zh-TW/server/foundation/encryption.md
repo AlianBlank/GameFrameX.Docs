@@ -1,46 +1,65 @@
-# 加密解密
+# 加密解密（多演算法統一加密庫）
 
-GameFrameX.Foundation.Encryption 是一个功能全面的 .NET 加密库，提供了多种主流加密算法的实现，包括对称加密、非对称加密、国密算法和数字签名等。该库专为游戏开发和企业应用设计，提供高性能、易用的加密解密功能。
+GameFrameX.Foundation.Encryption 是一個功能全面的 .NET 加密庫，提供了多種主流加密演算法的實作，包括對稱加密、非對稱加密、國密演算法和數位簽章等。該庫專為遊戲開發和企業應用設計，提供高效能、易用的加密解密功能。
 
 ## 特性
 
-- 🔐 **多种加密算法** - 支持AES、RSA、SM2、SM4、DSA、XOR等主流加密算法
-- 🇨🇳 **国密算法支持** - 完整支持SM2、SM4国产密码算法
-- 🚀 **高性能** - 优化的算法实现，支持快速加密模式
-- 🛡️ **安全可靠** - 遵循密码学最佳实践，提供安全的默认配置
-- 📦 **轻量级** - 基于.NET标准库，无额外依赖
-- 🔧 **易于使用** - 简洁的API设计，支持多种数据格式
+- **多種加密演算法** - 支援 AES、RSA、SM2、SM4、DSA、XOR 等主流加密演算法
+- **國密演算法支援** - 完整支援 SM2、SM4 國產密碼演算法
+- **高效能** - 最佳化的演算法實作，支援快速加密模式
+- **安全可靠** - 遵循密碼學最佳實踐，提供安全的預設設定
+- **輕量級** - 基於 .NET 標準庫，無額外依賴
+- **易於使用** - 簡潔的 API 設計，支援多種資料格式
 
-## 安装
+## 安裝
 
 ```bash
 dotnet add package GameFrameX.Foundation.Encryption
 ```
 
-## 主要组件
-
-### 1. AES对称加密 (AesHelper)
-
-AES（Advanced Encryption Standard）是目前最广泛使用的对称加密算法：
+## 快速開始
 
 ```csharp
 using GameFrameX.Foundation.Encryption;
 
-// 生成随机密钥和IV
+// 產生隨機金鑰和 IV
 byte[] key = AesHelper.GenerateKey();
 byte[] iv = AesHelper.GenerateIV();
 
-// 字符串加密解密
+// 字串加密解密
 string plainText = "Hello, World!";
 string encrypted = AesHelper.Encrypt(plainText, key, iv);
 string decrypted = AesHelper.Decrypt(encrypted, key, iv);
 
-// 字节数组加密解密
-byte[] data = Encoding.UTF8.GetBytes("敏感数据");
+Console.WriteLine($"原文: {plainText}");
+Console.WriteLine($"密文: {encrypted}");
+Console.WriteLine($"解密: {decrypted}");
+```
+
+## 詳細用法
+
+### 1. AES 對稱加密 (AesHelper)
+
+AES（Advanced Encryption Standard）是目前最廣泛使用的對稱加密演算法：
+
+```csharp
+using GameFrameX.Foundation.Encryption;
+
+// 產生隨機金鑰和 IV
+byte[] key = AesHelper.GenerateKey();
+byte[] iv = AesHelper.GenerateIV();
+
+// 字串加密解密
+string plainText = "Hello, World!";
+string encrypted = AesHelper.Encrypt(plainText, key, iv);
+string decrypted = AesHelper.Decrypt(encrypted, key, iv);
+
+// 位元組陣列加密解密
+byte[] data = Encoding.UTF8.GetBytes("敏感資料");
 byte[] encryptedBytes = AesHelper.Encrypt(data, key, iv);
 byte[] decryptedBytes = AesHelper.Decrypt(encryptedBytes, key, iv);
 
-// 使用密码派生密钥（PBKDF2）
+// 使用密碼衍生金鑰（PBKDF2）
 string password = "MySecretPassword";
 string salt = "MySalt";
 byte[] derivedKey = AesHelper.DeriveKeyFromPassword(password, salt);
@@ -48,225 +67,225 @@ string encryptedWithPassword = AesHelper.EncryptWithPassword(plainText, password
 string decryptedWithPassword = AesHelper.DecryptWithPassword(encryptedWithPassword, password, salt);
 ```
 
-### 2. RSA非对称加密 (RsaHelper)
+### 2. RSA 非對稱加密 (RsaHelper)
 
-RSA是最常用的非对称加密算法，支持加密解密和数字签名：
+RSA 是最常用的非對稱加密演算法，支援加密解密和數位簽章：
 
 ```csharp
 using GameFrameX.Foundation.Encryption;
 
-// 生成RSA密钥对
+// 產生 RSA 金鑰對
 var (publicKey, privateKey) = RsaHelper.GenerateKeyPair(2048);
 
-// 公钥加密，私钥解密
-string message = "机密信息";
+// 公鑰加密，私鑰解密
+string message = "機密資訊";
 string encrypted = RsaHelper.Encrypt(message, publicKey);
 string decrypted = RsaHelper.Decrypt(encrypted, privateKey);
 
-// 私钥签名，公钥验证
-string dataToSign = "需要签名的数据";
+// 私鑰簽章，公鑰驗證
+string dataToSign = "需要簽章的資料";
 string signature = RsaHelper.Sign(dataToSign, privateKey);
 bool isValid = RsaHelper.Verify(dataToSign, signature, publicKey);
 
-// 字节数组操作
-byte[] dataBytes = Encoding.UTF8.GetBytes("二进制数据");
+// 位元組陣列操作
+byte[] dataBytes = Encoding.UTF8.GetBytes("二進位資料");
 byte[] encryptedBytes = RsaHelper.Encrypt(dataBytes, publicKey);
 byte[] decryptedBytes = RsaHelper.Decrypt(encryptedBytes, privateKey);
 
-// 大数据分块加密（RSA有长度限制）
+// 大資料分塊加密（RSA 有長度限制）
 byte[] largeData = new byte[1000];
 byte[] encryptedLargeData = RsaHelper.EncryptLargeData(largeData, publicKey);
 byte[] decryptedLargeData = RsaHelper.DecryptLargeData(encryptedLargeData, privateKey);
 ```
 
-### 3. SM2国密椭圆曲线加密 (Sm2Helper)
+### 3. SM2 國密橢圓曲線加密 (Sm2Helper)
 
-SM2是中国国家密码管理局发布的椭圆曲线公钥密码算法：
+SM2 是中國國家密碼管理局發布的橢圓曲線公鑰密碼演算法：
 
 ```csharp
 using GameFrameX.Foundation.Encryption;
 
-// 生成SM2密钥对
+// 產生 SM2 金鑰對
 var (publicKey, privateKey) = Sm2Helper.GenerateKeyPair();
 
-// 公钥加密，私钥解密
-string plainText = "国密加密测试";
+// 公鑰加密，私鑰解密
+string plainText = "國密加密測試";
 string encrypted = Sm2Helper.Encrypt(plainText, publicKey);
 string decrypted = Sm2Helper.Decrypt(encrypted, privateKey);
 
-// 数字签名和验证
-string dataToSign = "需要签名的重要文档";
+// 數位簽章和驗證
+string dataToSign = "需要簽章的重要文件";
 string signature = Sm2Helper.Sign(dataToSign, privateKey);
 bool isValid = Sm2Helper.Verify(dataToSign, signature, publicKey);
 
-// 字节数组操作
-byte[] data = Encoding.UTF8.GetBytes("国密算法测试数据");
+// 位元組陣列操作
+byte[] data = Encoding.UTF8.GetBytes("國密演算法測試資料");
 byte[] encryptedData = Sm2Helper.Encrypt(data, publicKey);
 byte[] decryptedData = Sm2Helper.Decrypt(encryptedData, privateKey);
 
-// 密钥交换（ECDH）
+// 金鑰交換（ECDH）
 var (alicePublic, alicePrivate) = Sm2Helper.GenerateKeyPair();
 var (bobPublic, bobPrivate) = Sm2Helper.GenerateKeyPair();
 byte[] aliceSharedKey = Sm2Helper.GenerateSharedKey(alicePrivate, bobPublic);
 byte[] bobSharedKey = Sm2Helper.GenerateSharedKey(bobPrivate, alicePublic);
-// aliceSharedKey 和 bobSharedKey 相同，可用作对称加密密钥
+// aliceSharedKey 和 bobSharedKey 相同，可用作對稱加密金鑰
 ```
 
-### 4. SM4国密分组加密 (Sm4Helper)
+### 4. SM4 國密分組加密 (Sm4Helper)
 
-SM4是中国国家标准的分组密码算法：
+SM4 是中國國家標準的分組密碼演算法：
 
 ```csharp
 using GameFrameX.Foundation.Encryption;
 
-// 生成SM4密钥
+// 產生 SM4 金鑰
 byte[] key = Sm4Helper.GenerateKey();
 
-// ECB模式加密解密（不推荐用于生产环境）
-string plainText = "SM4加密测试";
+// ECB 模式加密解密（不建議用於正式環境）
+string plainText = "SM4加密測試";
 string encryptedECB = Sm4Helper.EncryptECB(plainText, key);
 string decryptedECB = Sm4Helper.DecryptECB(encryptedECB, key);
 
-// CBC模式加密解密（推荐）
+// CBC 模式加密解密（建議）
 byte[] iv = Sm4Helper.GenerateIV();
 string encryptedCBC = Sm4Helper.EncryptCBC(plainText, key, iv);
 string decryptedCBC = Sm4Helper.DecryptCBC(encryptedCBC, key, iv);
 
-// 字节数组操作
-byte[] data = Encoding.UTF8.GetBytes("国密SM4算法");
+// 位元組陣列操作
+byte[] data = Encoding.UTF8.GetBytes("國密SM4演算法");
 byte[] encryptedBytes = Sm4Helper.EncryptCBC(data, key, iv);
 byte[] decryptedBytes = Sm4Helper.DecryptCBC(encryptedBytes, key, iv);
 
-// 流式加密（适用于大文件）
+// 串流加密（適用於大檔案）
 using var inputStream = new MemoryStream(data);
 using var outputStream = new MemoryStream();
 Sm4Helper.EncryptStream(inputStream, outputStream, key, iv);
 ```
 
-### 5. DSA数字签名算法 (DsaHelper)
+### 5. DSA 數位簽章演算法 (DsaHelper)
 
-DSA（Digital Signature Algorithm）专门用于数字签名：
+DSA（Digital Signature Algorithm）專門用於數位簽章：
 
 ```csharp
 using GameFrameX.Foundation.Encryption;
 
-// 生成DSA密钥对
+// 產生 DSA 金鑰對
 var (publicKey, privateKey) = DsaHelper.GenerateKeyPair(2048);
 
-// 数字签名
-string document = "重要合同内容";
+// 數位簽章
+string document = "重要合約內容";
 string signature = DsaHelper.Sign(document, privateKey);
 
-// 签名验证
+// 簽章驗證
 bool isValid = DsaHelper.Verify(document, signature, publicKey);
-Console.WriteLine($"签名验证结果: {isValid}");
+Console.WriteLine($"簽章驗證結果: {isValid}");
 
-// 字节数组签名
-byte[] documentBytes = Encoding.UTF8.GetBytes("二进制文档");
+// 位元組陣列簽章
+byte[] documentBytes = Encoding.UTF8.GetBytes("二進位文件");
 byte[] signatureBytes = DsaHelper.Sign(documentBytes, privateKey);
 bool isBytesValid = DsaHelper.Verify(documentBytes, signatureBytes, publicKey);
 
-// 哈希签名（提高性能）
-string documentHash = "SHA256哈希值";
+// 雜湊簽章（提高效能）
+string documentHash = "SHA256雜湊值";
 string hashSignature = DsaHelper.SignHash(documentHash, privateKey);
 bool isHashValid = DsaHelper.VerifyHash(documentHash, hashSignature, publicKey);
 ```
 
-### 6. XOR异或加密 (XorHelper)
+### 6. XOR 異或加密 (XorHelper)
 
-XOR是一种简单但有效的加密方式，适用于快速加密场景：
+XOR 是一種簡單但有效的加密方式，適用於快速加密場景：
 
 ```csharp
 using GameFrameX.Foundation.Encryption;
 
-// 准备数据和密钥
-byte[] data = Encoding.UTF8.GetBytes("需要加密的数据");
+// 準備資料和金鑰
+byte[] data = Encoding.UTF8.GetBytes("需要加密的資料");
 byte[] key = Encoding.UTF8.GetBytes("MySecretKey");
 
 // 完整加密解密
 byte[] encrypted = XorHelper.GetXorBytes(data, key);
-byte[] decrypted = XorHelper.GetXorBytes(encrypted, key); // XOR的可逆性
+byte[] decrypted = XorHelper.GetXorBytes(encrypted, key); // XOR 的可逆性
 
-// 快速加密（只加密前220字节，适用于大文件头部加密）
+// 快速加密（只加密前 220 位元組，適用於大檔案頭部加密）
 byte[] quickEncrypted = XorHelper.GetQuickXorBytes(data, key);
 byte[] quickDecrypted = XorHelper.GetQuickXorBytes(quickEncrypted, key);
 
-// 原地加密（节省内存）
+// 原地加密（節省記憶體）
 byte[] dataToEncrypt = (byte[])data.Clone();
-XorHelper.GetSelfXorBytes(dataToEncrypt, key); // 直接修改原数组
-XorHelper.GetSelfXorBytes(dataToEncrypt, key); // 再次异或恢复原数据
+XorHelper.GetSelfXorBytes(dataToEncrypt, key); // 直接修改原陣列
+XorHelper.GetSelfXorBytes(dataToEncrypt, key); // 再次異或恢復原資料
 
-// 部分加密（指定范围）
-byte[] partialEncrypted = XorHelper.GetXorBytes(data, 5, 10, key); // 从索引5开始，加密10个字节
+// 部分加密（指定範圍）
+byte[] partialEncrypted = XorHelper.GetXorBytes(data, 5, 10, key); // 從索引 5 開始，加密 10 個位元組
 
 // 快速原地加密
 byte[] quickData = (byte[])data.Clone();
 XorHelper.GetQuickSelfXorBytes(quickData, key);
 ```
 
-## 高级用法示例
+## 進階用法
 
 ### 混合加密（RSA + AES）
 
-结合非对称和对称加密的优势：
+結合非對稱和對稱加密的優勢：
 
 ```csharp
-// 生成RSA密钥对和AES密钥
+// 產生 RSA 金鑰對和 AES 金鑰
 var (rsaPublic, rsaPrivate) = RsaHelper.GenerateKeyPair(2048);
 byte[] aesKey = AesHelper.GenerateKey();
 byte[] aesIV = AesHelper.GenerateIV();
 
-// 大数据用AES加密
-string largeData = "这是一个很长的数据...";
+// 大資料用 AES 加密
+string largeData = "這是一個很長的資料...";
 string encryptedData = AesHelper.Encrypt(largeData, aesKey, aesIV);
 
-// AES密钥用RSA加密
+// AES 金鑰用 RSA 加密
 string encryptedAesKey = RsaHelper.Encrypt(Convert.ToBase64String(aesKey), rsaPublic);
 string encryptedAesIV = RsaHelper.Encrypt(Convert.ToBase64String(aesIV), rsaPublic);
 
-// 解密过程
+// 解密過程
 byte[] decryptedAesKey = Convert.FromBase64String(RsaHelper.Decrypt(encryptedAesKey, rsaPrivate));
 byte[] decryptedAesIV = Convert.FromBase64String(RsaHelper.Decrypt(encryptedAesIV, rsaPrivate));
 string decryptedData = AesHelper.Decrypt(encryptedData, decryptedAesKey, decryptedAesIV);
 ```
 
-### 文件加密
+### 檔案加密
 
 ```csharp
-// 文件加密示例
+// 檔案加密範例
 public static void EncryptFile(string inputFile, string outputFile, byte[] key, byte[] iv)
 {
     using var inputStream = File.OpenRead(inputFile);
     using var outputStream = File.Create(outputFile);
     
-    // 使用AES加密文件流
+    // 使用 AES 加密檔案串流
     using var cryptoStream = AesHelper.CreateEncryptStream(outputStream, key, iv);
     inputStream.CopyTo(cryptoStream);
 }
 
-// 大文件快速加密（只加密文件头）
+// 大檔案快速加密（只加密檔案頭）
 public static void QuickEncryptFile(string filePath, byte[] key)
 {
     byte[] fileHeader = File.ReadAllBytes(filePath).Take(220).ToArray();
     byte[] encryptedHeader = XorHelper.GetQuickXorBytes(fileHeader, key);
     
-    // 将加密后的头部写回文件
+    // 將加密後的頭部寫回檔案
     using var stream = File.OpenWrite(filePath);
     stream.Write(encryptedHeader, 0, encryptedHeader.Length);
 }
 ```
 
-### 数字证书和签名链
+### 數位憑證和簽章鏈
 
 ```csharp
-// 创建签名链
+// 建立簽章鏈
 public class DocumentSignatureChain
 {
     private readonly List<(string signer, string signature)> _signatures = new();
     
     public void AddSignature(string document, string signer, string privateKey)
     {
-        // 对文档和之前的签名一起签名
+        // 對文件和之前的簽章一起簽章
         string contentToSign = document + string.Join("", _signatures.Select(s => s.signature));
         string signature = RsaHelper.Sign(contentToSign, privateKey);
         _signatures.Add((signer, signature));
@@ -290,12 +309,99 @@ public class DocumentSignatureChain
 }
 ```
 
-## 性能优化建议
+### 國密演算法合規
 
-### 1. 密钥管理
+對於需要符合中國密碼法規的應用：
 
 ```csharp
-// 好的做法：重用密钥对象
+// 國密合規範例
+public class GMCompliantEncryption
+{
+    // 使用 SM4 進行對稱加密
+    public static string EncryptWithSM4(string data, byte[] key)
+    {
+        byte[] iv = Sm4Helper.GenerateIV();
+        return Sm4Helper.EncryptCBC(data, key, iv);
+    }
+    
+    // 使用 SM2 進行非對稱加密和簽章
+    public static (string encrypted, string signature) SecureWithSM2(
+        string data, string publicKey, string privateKey)
+    {
+        string encrypted = Sm2Helper.Encrypt(data, publicKey);
+        string signature = Sm2Helper.Sign(data, privateKey);
+        return (encrypted, signature);
+    }
+    
+    // 混合使用 SM2 和 SM4
+    public static string HybridGMEncrypt(string data, string sm2PublicKey)
+    {
+        // 產生 SM4 金鑰
+        byte[] sm4Key = Sm4Helper.GenerateKey();
+        byte[] sm4IV = Sm4Helper.GenerateIV();
+        
+        // 用 SM4 加密資料
+        string encryptedData = Sm4Helper.EncryptCBC(data, sm4Key, sm4IV);
+        
+        // 用 SM2 加密 SM4 金鑰
+        string encryptedKey = Sm2Helper.Encrypt(Convert.ToBase64String(sm4Key), sm2PublicKey);
+        string encryptedIV = Sm2Helper.Encrypt(Convert.ToBase64String(sm4IV), sm2PublicKey);
+        
+        // 組合結果
+        return $"{encryptedKey}|{encryptedIV}|{encryptedData}";
+    }
+}
+```
+
+### 測試和驗證
+
+```csharp
+// 加密演算法測試範例
+[TestClass]
+public class EncryptionTests
+{
+    [TestMethod]
+    public void AES_EncryptDecrypt_ShouldReturnOriginalData()
+    {
+        // Arrange
+        string original = "測試資料";
+        byte[] key = AesHelper.GenerateKey();
+        byte[] iv = AesHelper.GenerateIV();
+        
+        // Act
+        string encrypted = AesHelper.Encrypt(original, key, iv);
+        string decrypted = AesHelper.Decrypt(encrypted, key, iv);
+        
+        // Assert
+        Assert.AreEqual(original, decrypted);
+        Assert.AreNotEqual(original, encrypted);
+    }
+    
+    [TestMethod]
+    public void RSA_SignVerify_ShouldValidateSignature()
+    {
+        // Arrange
+        var (publicKey, privateKey) = RsaHelper.GenerateKeyPair(2048);
+        string data = "需要簽章的資料";
+        
+        // Act
+        string signature = RsaHelper.Sign(data, privateKey);
+        bool isValid = RsaHelper.Verify(data, signature, publicKey);
+        bool isInvalid = RsaHelper.Verify(data + "篡改", signature, publicKey);
+        
+        // Assert
+        Assert.IsTrue(isValid);
+        Assert.IsFalse(isInvalid);
+    }
+}
+```
+
+## 最佳實踐
+
+### 金鑰管理
+
+```csharp
+// 好的做法：重複使用金鑰物件
 public class EncryptionService
 {
     private static readonly byte[] _aesKey = AesHelper.GenerateKey();
@@ -307,17 +413,17 @@ public class EncryptionService
     }
 }
 
-// 避免：每次都生成新密钥
+// 避免：每次都產生新金鑰
 // string encrypted = AesHelper.Encrypt(data, AesHelper.GenerateKey(), AesHelper.GenerateIV());
 ```
 
-### 2. 大数据处理
+### 大資料處理
 
 ```csharp
-// 好的做法：使用流式处理
+// 好的做法：使用串流處理
 public static void EncryptLargeFile(string inputFile, string outputFile, byte[] key, byte[] iv)
 {
-    const int bufferSize = 64 * 1024; // 64KB缓冲区
+    const int bufferSize = 64 * 1024; // 64KB 緩衝區
     using var input = File.OpenRead(inputFile);
     using var output = File.Create(outputFile);
     using var cryptoStream = AesHelper.CreateEncryptStream(output, key, iv);
@@ -325,21 +431,21 @@ public static void EncryptLargeFile(string inputFile, string outputFile, byte[] 
     input.CopyTo(cryptoStream, bufferSize);
 }
 
-// 避免：一次性加载整个文件到内存
+// 避免：一次性載入整個檔案到記憶體
 // byte[] allData = File.ReadAllBytes(largeFile);
 ```
 
-### 3. 选择合适的算法
+### 選擇合適的演算法
 
 ```csharp
-// 性能对比（仅供参考）
-// XOR: 最快，适用于简单混淆
-// AES: 快速，适用于大量数据
-// SM4: 中等，国密要求场景
-// RSA: 较慢，适用于密钥交换和签名
-// SM2: 较慢，国密要求的非对称加密
+// 效能對比（僅供參考）
+// XOR: 最快，適用於簡單混淆
+// AES: 快速，適用於大量資料
+// SM4: 中等，國密要求場景
+// RSA: 較慢，適用於金鑰交換和簽章
+// SM2: 較慢，國密要求的非對稱加密
 
-// 根据场景选择
+// 根據場景選擇
 public static class EncryptionStrategy
 {
     public static byte[] EncryptBySize(byte[] data, EncryptionLevel level)
@@ -358,38 +464,36 @@ public static class EncryptionStrategy
 }
 ```
 
-## 安全最佳实践
-
-### 1. 密钥安全
+### 金鑰安全
 
 ```csharp
-// 好的做法：使用安全的密钥存储
+// 好的做法：使用安全的金鑰儲存
 public class SecureKeyManager
 {
     public static byte[] GetKey(string keyName)
     {
-        // 从安全存储（如Azure Key Vault、Windows DPAPI等）获取密钥
+        // 從安全儲存（如 Azure Key Vault、Windows DPAPI 等）取得金鑰
         return SecureStorage.GetKey(keyName);
     }
     
     public static void StoreKey(string keyName, byte[] key)
     {
-        // 安全存储密钥
+        // 安全儲存金鑰
         SecureStorage.StoreKey(keyName, key);
         
-        // 清除内存中的密钥
+        // 清除記憶體中的金鑰
         Array.Clear(key, 0, key.Length);
     }
 }
 
-// 避免：硬编码密钥
+// 避免：硬編碼金鑰
 // const string HardcodedKey = "MySecretKey123"; // 不安全！
 ```
 
-### 2. 随机数生成
+### 隨機數產生
 
 ```csharp
-// 好的做法：使用密码学安全的随机数生成器
+// 好的做法：使用密碼學安全的隨機數產生器
 public static byte[] GenerateSecureRandom(int length)
 {
     using var rng = RandomNumberGenerator.Create();
@@ -398,13 +502,13 @@ public static byte[] GenerateSecureRandom(int length)
     return randomBytes;
 }
 
-// 避免：使用普通Random类生成密钥
+// 避免：使用普通 Random 類別產生金鑰
 // var random = new Random();
 // byte[] key = new byte[32];
 // random.NextBytes(key); // 不安全！
 ```
 
-### 3. 错误处理
+### 錯誤處理
 
 ```csharp
 public static class SafeEncryption
@@ -417,13 +521,13 @@ public static class SafeEncryption
         }
         catch (CryptographicException ex)
         {
-            // 记录错误但不暴露敏感信息
+            // 記錄錯誤但不暴露敏感資訊
             Logger.LogError("Encryption failed", ex);
-            throw new ApplicationException("加密操作失败");
+            throw new ApplicationException("加密操作失敗");
         }
         finally
         {
-            // 清理敏感数据
+            // 清理敏感資料
             if (key != null) Array.Clear(key, 0, key.Length);
             if (iv != null) Array.Clear(iv, 0, iv.Length);
         }
@@ -431,109 +535,45 @@ public static class SafeEncryption
 }
 ```
 
-## 国密算法合规
+## API 參考
 
-对于需要符合中国密码法规的应用：
-
-```csharp
-// 国密合规示例
-public class GMCompliantEncryption
-{
-    // 使用SM4进行对称加密
-    public static string EncryptWithSM4(string data, byte[] key)
-    {
-        byte[] iv = Sm4Helper.GenerateIV();
-        return Sm4Helper.EncryptCBC(data, key, iv);
-    }
-    
-    // 使用SM2进行非对称加密和签名
-    public static (string encrypted, string signature) SecureWithSM2(
-        string data, string publicKey, string privateKey)
-    {
-        string encrypted = Sm2Helper.Encrypt(data, publicKey);
-        string signature = Sm2Helper.Sign(data, privateKey);
-        return (encrypted, signature);
-    }
-    
-    // 混合使用SM2和SM4
-    public static string HybridGMEncrypt(string data, string sm2PublicKey)
-    {
-        // 生成SM4密钥
-        byte[] sm4Key = Sm4Helper.GenerateKey();
-        byte[] sm4IV = Sm4Helper.GenerateIV();
-        
-        // 用SM4加密数据
-        string encryptedData = Sm4Helper.EncryptCBC(data, sm4Key, sm4IV);
-        
-        // 用SM2加密SM4密钥
-        string encryptedKey = Sm2Helper.Encrypt(Convert.ToBase64String(sm4Key), sm2PublicKey);
-        string encryptedIV = Sm2Helper.Encrypt(Convert.ToBase64String(sm4IV), sm2PublicKey);
-        
-        // 组合结果
-        return $"{encryptedKey}|{encryptedIV}|{encryptedData}";
-    }
-}
-```
-
-## 测试和验证
-
-```csharp
-// 加密算法测试示例
-[TestClass]
-public class EncryptionTests
-{
-    [TestMethod]
-    public void AES_EncryptDecrypt_ShouldReturnOriginalData()
-    {
-        // Arrange
-        string original = "测试数据";
-        byte[] key = AesHelper.GenerateKey();
-        byte[] iv = AesHelper.GenerateIV();
-        
-        // Act
-        string encrypted = AesHelper.Encrypt(original, key, iv);
-        string decrypted = AesHelper.Decrypt(encrypted, key, iv);
-        
-        // Assert
-        Assert.AreEqual(original, decrypted);
-        Assert.AreNotEqual(original, encrypted);
-    }
-    
-    [TestMethod]
-    public void RSA_SignVerify_ShouldValidateSignature()
-    {
-        // Arrange
-        var (publicKey, privateKey) = RsaHelper.GenerateKeyPair(2048);
-        string data = "需要签名的数据";
-        
-        // Act
-        string signature = RsaHelper.Sign(data, privateKey);
-        bool isValid = RsaHelper.Verify(data, signature, publicKey);
-        bool isInvalid = RsaHelper.Verify(data + "篡改", signature, publicKey);
-        
-        // Assert
-        Assert.IsTrue(isValid);
-        Assert.IsFalse(isInvalid);
-    }
-}
-```
-
-## 📄 许可证
-
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
-
----
-
-GameFrameX.Foundation.Encryption 致力于为.NET应用提供安全、高效、易用的加密解决方案，满足从游戏开发到企业应用的各种加密需求。
+| 類別 | 方法 | 參數 | 回傳值 | 說明 |
+|---|------|------|--------|------|
+| **AesHelper** | GenerateKey | 無 | `byte[]` | 產生隨機 AES 金鑰 |
+| | GenerateIV | 無 | `byte[]` | 產生隨機 IV |
+| | Encrypt | `string, byte[], byte[]` | `string` | 字串加密 |
+| | Decrypt | `string, byte[], byte[]` | `string` | 字串解密 |
+| | Encrypt | `byte[], byte[], byte[]` | `byte[]` | 位元組陣列加密 |
+| | Decrypt | `byte[], byte[], byte[]` | `byte[]` | 位元組陣列解密 |
+| | EncryptWithPassword | `string, string, string` | `string` | 使用密碼加密 |
+| | DecryptWithPassword | `string, string, string` | `string` | 使用密碼解密 |
+| | DeriveKeyFromPassword | `string, string` | `byte[]` | PBKDF2 金鑰衍生 |
+| **RsaHelper** | GenerateKeyPair | `int` | `(string, string)` | 產生 RSA 金鑰對 |
+| | Encrypt | `string, string` | `string` | 公鑰加密 |
+| | Decrypt | `string, string` | `string` | 私鑰解密 |
+| | Sign | `string, string` | `string` | 私鑰簽章 |
+| | Verify | `string, string, string` | `bool` | 公鑰驗章 |
+| | EncryptLargeData | `byte[], string` | `byte[]` | 大資料分塊加密 |
+| **Sm2Helper** | GenerateKeyPair | 無 | `(string, string)` | 產生 SM2 金鑰對 |
+| | Encrypt | `string, string` | `string` | 公鑰加密 |
+| | Decrypt | `string, string` | `string` | 私鑰解密 |
+| | Sign | `string, string` | `string` | 私鑰簽章 |
+| | Verify | `string, string, string` | `bool` | 公鑰驗章 |
+| | GenerateSharedKey | `string, string` | `byte[]` | ECDH 金鑰交換 |
+| **Sm4Helper** | GenerateKey | 無 | `byte[]` | 產生 SM4 金鑰 |
+| | GenerateIV | 無 | `byte[]` | 產生 IV |
+| | EncryptCBC | `string, byte[], byte[]` | `string` | CBC 模式加密 |
+| | DecryptCBC | `string, byte[], byte[]` | `string` | CBC 模式解密 |
+| | EncryptECB | `string, byte[]` | `string` | ECB 模式加密 |
+| | DecryptECB | `string, byte[]` | `string` | ECB 模式解密 |
+| | EncryptStream | `Stream, Stream, byte[], byte[]` | `void` | 串流加密 |
+| **DsaHelper** | GenerateKeyPair | `int` | `(string, string)` | 產生 DSA 金鑰對 |
+| | Sign | `string, string` | `string` | 數位簽章 |
+| | Verify | `string, string, string` | `bool` | 簽章驗證 |
+| | SignHash | `string, string` | `string` | 雜湊簽章 |
+| | VerifyHash | `string, string, string` | `bool` | 雜湊驗章 |
+| **XorHelper** | GetXorBytes | `byte[], byte[]` | `byte[]` | XOR 加密/解密 |
+| | GetQuickXorBytes | `byte[], byte[]` | `byte[]` | 快速 XOR（前 220 位元組） |
+| | GetSelfXorBytes | `byte[], byte[]` | `void` | 原地 XOR |
+| | GetQuickSelfXorBytes | `byte[], byte[]` | `void` | 快速原地 XOR |
+| | GetXorBytes | `byte[], int, int, byte[]` | `byte[]` | 部分範圍 XOR |

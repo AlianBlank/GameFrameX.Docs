@@ -1,101 +1,124 @@
-# 系统扩展
+# システム拡張（機能豊富な .NET 拡張メソッドライブラリ）
 
-GameFrameX.Foundation.Extensions 是一个功能丰富的 .NET 扩展方法库，提供了大量实用的扩展方法和工具类，用于简化日常开发工作。该库包含字符串处理、集合操作、类型转换、对象操作等多个方面的扩展功能。
+GameFrameX.Foundation.Extensions は、機能豊富な .NET 拡張メソッドライブラリです。日常的な開発作業を簡素化するための多数の便利な拡張メソッドとユーティリティクラスを提供しています。文字列処理、コレクション操作、型変換、オブジェクト操作など、多くの拡張機能を含んでいます。
 
-## 特性
+## 特徴
 
-- 🔧 **丰富的扩展方法** - 提供字符串、集合、对象、类型等多种扩展方法
-- 🚀 **高性能** - 优化的算法实现，确保高效执行
-- 🛡️ **类型安全** - 完整的泛型支持和类型检查
-- 📦 **轻量级** - 无外部依赖，易于集成
-- 🔄 **双向映射** - 提供双向字典等高级数据结构
-- 🎯 **线程安全** - 部分组件支持并发操作
+- **豊富な拡張メソッド** - 文字列、コレクション、オブジェクト、型などの多数の拡張メソッドを提供
+- **高性能** - 最適化されたアルゴリズム実装による効率的な実行
+- **型安全性** - 完全なジェネリックサポートと型チェック
+- **軽量** - 外部依存関係がなく、統合が容易
+- **双方向マッピング** - 双方向辞書などの高度なデータ構造を提供
+- **スレッドセーフ** - 一部のコンポーネントは並行操作をサポート
 
-## 安装
+## インストール
 
 ```bash
 dotnet add package GameFrameX.Foundation.Extensions
 ```
 
-## 主要组件
+## クイックスタート
 
-### 1. 字符串扩展 (StringExtensions)
-
-提供丰富的字符串处理扩展方法：
+以下の例は、最も一般的な拡張メソッドの使用方法を示しています：
 
 ```csharp
 using GameFrameX.Foundation.Extensions;
 
-// 字符串验证
+// 文字列操作
+string email = "user@example.com";
+bool isValid = email.IsValidEmail(); // true
+
+string text = "hello world";
+string pascalCase = text.ToPascalCase(); // "HelloWorld"
+
+// コレクション操作
+List<int> numbers = new List<int> { 1, 2, 3 };
+bool isEmpty = numbers.IsNullOrEmpty(); // false
+
+// バイト配列変換
+byte[] bytes = { 0x48, 0x65, 0x6C, 0x6C, 0x6F }; // "Hello" in ASCII
+string decoded = bytes.ToUtf8String(); // "Hello"
+```
+
+## 詳細な使い方
+
+### 文字列拡張 (StringExtensions)
+
+豊富な文字列処理拡張メソッドを提供します：
+
+```csharp
+using GameFrameX.Foundation.Extensions;
+
+// 文字列検証
 string email = "user@example.com";
 bool isValid = email.IsValidEmail(); // true
 
 string url = "https://www.example.com";
 bool isValidUrl = url.IsValidUrl(); // true
 
-// 字符串转换
+// 文字列変換
 string text = "hello world";
 string camelCase = text.ToCamelCase(); // "helloWorld"
 string pascalCase = text.ToPascalCase(); // "HelloWorld"
 string kebabCase = text.ToKebabCase(); // "hello-world"
 
-// 字符串截取
+// 文字列切り詰め
 string longText = "This is a very long text";
 string truncated = longText.Truncate(10); // "This is a..."
 string truncatedCustom = longText.Truncate(10, "***"); // "This is a***"
 
-// 安全转换
+// 安全な変換
 string numberStr = "123";
 int number = numberStr.ToIntOrDefault(); // 123
 int defaultValue = "abc".ToIntOrDefault(999); // 999
 
-// 字符串清理
+// 文字列クリーニング
 string dirtyText = "  Hello\t\nWorld  ";
 string cleaned = dirtyText.CleanWhitespace(); // "Hello World"
 
-// Base64 编码/解码
+// Base64 エンコード/デコード
 string original = "Hello World";
 string encoded = original.ToBase64(); // "SGVsbG8gV29ybGQ="
 string decoded = encoded.FromBase64(); // "Hello World"
 ```
 
-### 2. 集合扩展 (CollectionExtensions & IEnumerableExtensions)
+### コレクション拡張 (CollectionExtensions & IEnumerableExtensions)
 
-提供强大的集合操作扩展：
+強力なコレクション操作拡張を提供します：
 
 ```csharp
 using GameFrameX.Foundation.Extensions;
 
-// 集合判断
+// コレクション判定
 List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
 bool isEmpty = numbers.IsNullOrEmpty(); // false
 bool hasElements = numbers.IsNotNullOrEmpty(); // true
 
-// 安全操作
+// 安全な操作
 List<string> items = null;
-items.AddIfNotNull("test"); // 不会抛出异常
+items.AddIfNotNull("test"); // 例外をスローしない
 
 List<string> validItems = new List<string> { "a", "b", "c" };
-validItems.AddIfNotNull("d"); // 添加成功
+validItems.AddIfNotNull("d"); // 追加成功
 
-// 批量操作
+// 一括操作
 var moreItems = new[] { "e", "f", "g" };
 validItems.AddRange(moreItems);
 
-// 去重操作
+// 重複排除
 var duplicates = new[] { 1, 2, 2, 3, 3, 4 };
 var unique = duplicates.Distinct().ToList(); // [1, 2, 3, 4]
 
-// 分页操作
+// ページング操作
 var allItems = Enumerable.Range(1, 100);
-var page1 = allItems.Skip(0).Take(10); // 第1页，每页10条
-var page2 = allItems.Skip(10).Take(10); // 第2页，每页10条
+var page1 = allItems.Skip(0).Take(10); // 1ページ目、ページサイズ10
+var page2 = allItems.Skip(10).Take(10); // 2ページ目、ページサイズ10
 
-// 随机选择
-var randomItem = numbers.RandomElement(); // 随机选择一个元素
-var randomItems = numbers.RandomElements(3); // 随机选择3个元素
+// ランダム選択
+var randomItem = numbers.RandomElement(); // ランダムに1つの要素を選択
+var randomItems = numbers.RandomElements(3); // ランダムに3つの要素を選択
 
-// 分组操作
+// グループ化操作
 var people = new[]
 {
     new { Name = "Alice", Age = 25 },
@@ -105,33 +128,33 @@ var people = new[]
 var groupedByAge = people.GroupBy(p => p.Age);
 ```
 
-### 3. 对象扩展 (ObjectExtensions)
+### オブジェクト拡張 (ObjectExtensions)
 
-提供对象操作和转换的扩展方法：
+オブジェクトの操作と変換の拡張メソッドを提供します：
 
 ```csharp
 using GameFrameX.Foundation.Extensions;
 
-// 空值检查
+// nullチェック
 object obj = null;
 bool isNull = obj.IsNull(); // true
 bool isNotNull = obj.IsNotNull(); // false
 
-// 类型检查和转换
+// 型チェックと変換
 object value = "123";
 bool isString = value.Is<string>(); // true
 string stringValue = value.As<string>(); // "123"
 
-// 安全转换
+// 安全な変換
 object numberObj = 42;
 int? intValue = numberObj.AsOrDefault<int>(); // 42
 string stringFromInt = numberObj.AsOrDefault<string>(); // null
 
-// 深拷贝（如果对象支持序列化）
+// ディープコピー（オブジェクトがシリアライズをサポートする場合）
 var original = new { Name = "Test", Value = 123 };
-var copy = original.DeepClone(); // 深拷贝对象
+var copy = original.DeepClone(); // オブジェクトのディープコピー
 
-// 属性复制
+// プロパティコピー
 public class Source { public string Name { get; set; } public int Age { get; set; } }
 public class Target { public string Name { get; set; } public int Age { get; set; } }
 
@@ -140,143 +163,143 @@ var target = new Target();
 source.CopyPropertiesTo(target); // target.Name = "Alice", target.Age = 25
 ```
 
-### 4. 类型扩展 (TypeExtensions)
+### 型拡張 (TypeExtensions)
 
-提供类型信息和反射操作的扩展：
+型情報とリフレクション操作の拡張を提供します：
 
 ```csharp
 using GameFrameX.Foundation.Extensions;
 
-// 类型检查
+// 型チェック
 Type stringType = typeof(string);
 bool isNullable = stringType.IsNullable(); // false
 
 Type nullableIntType = typeof(int?);
 bool isNullableInt = nullableIntType.IsNullable(); // true
 
-// 获取默认值
+// デフォルト値の取得
 Type intType = typeof(int);
 object defaultValue = intType.GetDefaultValue(); // 0
 
-// 类型比较
+// 型の比較
 bool isAssignable = typeof(string).IsAssignableFrom(typeof(object)); // false
 bool isAssignableReverse = typeof(object).IsAssignableFrom(typeof(string)); // true
 
-// 获取泛型参数
+// ジェネリック引数の取得
 Type listType = typeof(List<string>);
 Type[] genericArgs = listType.GetGenericArguments(); // [typeof(string)]
 
-// 检查是否为集合类型
+// コレクション型かどうかのチェック
 bool isList = typeof(List<int>).IsCollection(); // true
 bool isArray = typeof(int[]).IsCollection(); // true
-bool isString = typeof(string).IsCollection(); // false (字符串不被视为集合)
+bool isString = typeof(string).IsCollection(); // false（文字列はコレクションとして扱われません）
 ```
 
-### 5. 字节扩展 (ByteExtensions)
+### バイト拡張 (ByteExtensions)
 
-提供字节数组处理的扩展方法：
+バイト配列処理の拡張メソッドを提供します：
 
 ```csharp
 using GameFrameX.Foundation.Extensions;
 
-// 字节数组转换
+// バイト配列の変換
 byte[] bytes = { 0x48, 0x65, 0x6C, 0x6C, 0x6F }; // "Hello" in ASCII
 string text = bytes.ToUtf8String(); // "Hello"
 string hex = bytes.ToHexString(); // "48656C6C6F"
 string hexWithSeparator = bytes.ToHexString("-"); // "48-65-6C-6C-6F"
 
-// 字符串转字节数组
+// 文字列からバイト配列への変換
 string message = "Hello World";
 byte[] utf8Bytes = message.ToUtf8Bytes();
 byte[] asciiBytes = message.ToAsciiBytes();
 
-// 十六进制字符串转字节数组
+// 16進数文字列からバイト配列への変換
 string hexString = "48656C6C6F";
 byte[] fromHex = hexString.FromHexString(); // [0x48, 0x65, 0x6C, 0x6C, 0x6F]
 
-// Base64 转换
+// Base64 変換
 byte[] data = { 1, 2, 3, 4, 5 };
 string base64 = data.ToBase64String(); // "AQIDBAU="
 byte[] fromBase64 = base64.FromBase64String(); // [1, 2, 3, 4, 5]
 ```
 
-### 6. 双向字典 (BidirectionalDictionary)
+### 双方向辞書 (BidirectionalDictionary)
 
-提供键值双向映射的高效数据结构：
+キーと値の双方向マッピングを提供する効率的なデータ構造です：
 
 ```csharp
 using GameFrameX.Foundation.Extensions;
 
-// 创建双向字典
+// 双方向辞書の作成
 var biDict = new BidirectionalDictionary<string, int>();
 
-// 添加键值对
+// キーと値のペアの追加
 bool added1 = biDict.TryAdd("one", 1); // true
 bool added2 = biDict.TryAdd("two", 2); // true
-bool added3 = biDict.TryAdd("one", 3); // false - 键已存在
-bool added4 = biDict.TryAdd("three", 1); // false - 值已存在
+bool added3 = biDict.TryAdd("one", 3); // false - キーが既に存在
+bool added4 = biDict.TryAdd("three", 1); // false - 値が既に存在
 
-// 双向查找
+// 双方向検索
 if (biDict.TryGetValue("one", out int value))
 {
-    Console.WriteLine($"Key 'one' maps to value {value}"); // 输出: 1
+    Console.WriteLine($"Key 'one' maps to value {value}"); // 出力: 1
 }
 
 if (biDict.TryGetKey(2, out string key))
 {
-    Console.WriteLine($"Value 2 maps to key '{key}'"); // 输出: "two"
+    Console.WriteLine($"Value 2 maps to key '{key}'"); // 出力: "two"
 }
 
-// 清空字典
+// 辞書のクリア
 biDict.Clear();
 
-// 使用初始容量优化性能
+// 初期容量を指定してパフォーマンスを最適化
 var optimizedBiDict = new BidirectionalDictionary<string, int>(100);
 ```
 
-### 7. 并发限制队列 (ConcurrentLimitedQueue)
+### 同時実行制限キュー (ConcurrentLimitedQueue)
 
-提供线程安全的定长队列实现：
+スレッドセーフな固定長キューの実装です：
 
 ```csharp
 using GameFrameX.Foundation.Extensions;
 
-// 创建定长队列
-var queue = new ConcurrentLimitedQueue<string>(3); // 最大容量为3
+// 固定長キューの作成
+var queue = new ConcurrentLimitedQueue<string>(3); // 最大容量3
 
-// 添加元素
+// 要素の追加
 queue.Enqueue("first");
 queue.Enqueue("second");
 queue.Enqueue("third");
 Console.WriteLine(queue.Count); // 3
 
-// 添加第4个元素，会自动移除最旧的元素
+// 4番目の要素を追加すると、最も古い要素が自動的に削除される
 queue.Enqueue("fourth");
-Console.WriteLine(queue.Count); // 仍然是3
+Console.WriteLine(queue.Count); // 引き続き3
 
-// 检查队列内容
+// キューの内容を確認
 if (queue.TryDequeue(out string item))
 {
-    Console.WriteLine(item); // "second" (first被自动移除了)
+    Console.WriteLine(item); // "second"（firstは自動削除済み）
 }
 
-// 从现有集合创建
+// 既存のコレクションから作成
 var initialData = new List<string> { "a", "b", "c" };
 var queueFromList = new ConcurrentLimitedQueue<string>(initialData);
 
-// 隐式转换
+// 暗黙的変換
 List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
-ConcurrentLimitedQueue<int> numberQueue = numbers; // 隐式转换
+ConcurrentLimitedQueue<int> numberQueue = numbers; // 暗黙的変換
 
-// 动态调整限制
-queue.Limit = 5; // 调整队列最大容量
+// 制限の動的調整
+queue.Limit = 5; // キューの最大容量を調整
 ```
 
-## 高级用法示例
+## 高度な使い方
 
-### 链式调用
+### メソッドチェーン
 
-扩展方法支持链式调用，让代码更加简洁：
+拡張メソッドはメソッドチェーンをサポートし、コードをより簡潔にします：
 
 ```csharp
 var result = "  Hello World  "
@@ -292,106 +315,49 @@ var processedList = new[] { 1, 2, 2, 3, 4, 4, 5 }
     .ToList(); // [5, 4, 3]
 ```
 
-### 性能优化建议
+### パフォーマンス最適化の提案
 
 ```csharp
-// 1. 使用合适的初始容量
+// 1. 適切な初期容量を使用する
 var biDict = new BidirectionalDictionary<string, int>(expectedSize);
 
-// 2. 批量操作优于单个操作
+// 2. 個別操作よりも一括操作を選択する
 var items = new List<string>();
-items.AddRange(newItems); // 优于多次调用 Add
+items.AddRange(newItems); // 複数回の Add 呼び出しよりも優れています
 
-// 3. 使用 TryXxx 方法避免异常
+// 3. TryXxx メソッドを使用して例外を回避する
 if (biDict.TryGetValue(key, out var value))
 {
-    // 处理找到的值
+    // 見つかった値の処理
 }
 else
 {
-    // 处理未找到的情况
+    // 見つからなかった場合の処理
 }
 
-// 4. 合理使用并发集合
+// 4. 同時実行コレクションを適切に使用する
 var concurrentQueue = new ConcurrentLimitedQueue<Task>(maxConcurrency);
 ```
 
-### 错误处理
+### エラー処理
 
 ```csharp
-// 安全的类型转换
+// 安全な型変換
 object unknownValue = GetValueFromSomewhere();
-int safeInt = unknownValue.AsOrDefault<int>(); // 转换失败返回默认值
+int safeInt = unknownValue.AsOrDefault<int>(); // 変換失敗時はデフォルト値を返す
 
-// 安全的字符串操作
+// 安全な文字列操作
 string input = null;
 string safe = input.IsNullOrEmpty() ? "default" : input.Trim();
 
-// 安全的集合操作
+// 安全なコレクション操作
 List<string> items = null;
 int count = items.IsNullOrEmpty() ? 0 : items.Count;
 ```
 
-## 最佳实践
+### 拡張とカスタマイズ
 
-### 1. 命名空间使用
-
-```csharp
-// 推荐：明确引用命名空间
-using GameFrameX.Foundation.Extensions;
-
-// 避免：使用全局 using（除非整个项目都需要）
-```
-
-### 2. 性能考虑
-
-```csharp
-// 好的做法：预分配容量
-var biDict = new BidirectionalDictionary<string, int>(1000);
-
-// 好的做法：使用合适的数据结构
-var limitedQueue = new ConcurrentLimitedQueue<LogEntry>(maxLogEntries);
-
-// 避免：在循环中进行昂贵的操作
-foreach (var item in items)
-{
-    // 避免在这里进行复杂的字符串操作或反射
-}
-```
-
-### 3. 线程安全
-
-```csharp
-// ConcurrentLimitedQueue 是线程安全的
-var queue = new ConcurrentLimitedQueue<WorkItem>(100);
-
-// 可以在多线程环境中安全使用
-Parallel.ForEach(workItems, item =>
-{
-    queue.Enqueue(item); // 线程安全
-});
-
-// BidirectionalDictionary 不是线程安全的，需要外部同步
-var biDict = new BidirectionalDictionary<string, int>();
-lock (biDict)
-{
-    biDict.TryAdd(key, value);
-}
-```
-
-### 4. 内存管理
-
-```csharp
-// 及时清理大型集合
-largeBidirectionalDictionary.Clear();
-
-// 合理设置队列限制
-var logQueue = new ConcurrentLimitedQueue<LogEntry>(1000); // 避免无限增长
-```
-
-## 扩展和自定义
-
-如果需要添加自定义扩展方法，建议遵循以下模式：
+カスタム拡張メソッドを追加する場合、以下のパターンに従うことをお勧めします：
 
 ```csharp
 public static class CustomExtensions
@@ -409,26 +375,75 @@ public static class CustomExtensions
     }
 }
 
-// 使用示例
+// 使用例
 string result = someObject.SafeExecute(x => x.ToString().ToUpper(), "DEFAULT");
 ```
 
-## 📄 许可证
+## ベストプラクティス
 
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
+### 名前空間の使用
 
-## 🤝 贡献
+```csharp
+// 推奨：名前空間を明示的に参照する
+using GameFrameX.Foundation.Extensions;
 
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
+// 非推奨：グローバル using の使用（プロジェクト全体で必要な場合を除く）
+```
 
-## 📞 支持
+### パフォーマンスに関する考慮事項
 
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
+```csharp
+// 良い実践：容量を事前に割り当てる
+var biDict = new BidirectionalDictionary<string, int>(1000);
 
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
+// 良い実践：適切なデータ構造を使用する
+var limitedQueue = new ConcurrentLimitedQueue<LogEntry>(maxLogEntries);
 
----
+// 避けるべき：ループ内でのコストの高い操作
+foreach (var item in items)
+{
+    // ここでの複雑な文字列操作やリフレクションは避けてください
+}
+```
 
-GameFrameX.Foundation.Extensions 致力于提供高质量、高性能的扩展方法库，让 .NET 开发更加高效和愉快。
+### スレッドセーフティ
+
+```csharp
+// ConcurrentLimitedQueue はスレッドセーフです
+var queue = new ConcurrentLimitedQueue<WorkItem>(100);
+
+// マルチスレッド環境で安全に使用可能
+Parallel.ForEach(workItems, item =>
+{
+    queue.Enqueue(item); // スレッドセーフ
+});
+
+// BidirectionalDictionary はスレッドセーフではないため、外部同期が必要
+var biDict = new BidirectionalDictionary<string, int>();
+lock (biDict)
+{
+    biDict.TryAdd(key, value);
+}
+```
+
+### メモリ管理
+
+```csharp
+// 大きなコレクションは適時にクリアする
+largeBidirectionalDictionary.Clear();
+
+// キューの制限は適切に設定する
+var logQueue = new ConcurrentLimitedQueue<LogEntry>(1000); // 無制限の増加を防ぐ
+```
+
+## API リファレンス
+
+| クラス / モジュール | 説明 |
+|-----------|------|
+| `StringExtensions` | 文字列の検証、変換、切り詰め、Base64 エンコード/デコード |
+| `CollectionExtensions` / `IEnumerableExtensions` | コレクションの空判定、安全な追加、重複排除、ページング、ランダム選択 |
+| `ObjectExtensions` | nullチェック、型変換、ディープコピー、プロパティコピー |
+| `TypeExtensions` | Null許容型の判定、デフォルト値の取得、コレクション型の検出 |
+| `ByteExtensions` | バイト配列と文字列、16進数、Base64 の相互変換 |
+| `BidirectionalDictionary<TKey, TValue>` | 双方向マッピング辞書 |
+| `ConcurrentLimitedQueue<T>` | スレッドセーフな固定長キュー |

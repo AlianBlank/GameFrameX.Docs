@@ -1,15 +1,15 @@
-# 系统扩展
+# 系统扩展（功能丰富的 .NET 扩展方法库）
 
 GameFrameX.Foundation.Extensions 是一个功能丰富的 .NET 扩展方法库，提供了大量实用的扩展方法和工具类，用于简化日常开发工作。该库包含字符串处理、集合操作、类型转换、对象操作等多个方面的扩展功能。
 
 ## 特性
 
-- 🔧 **丰富的扩展方法** - 提供字符串、集合、对象、类型等多种扩展方法
-- 🚀 **高性能** - 优化的算法实现，确保高效执行
-- 🛡️ **类型安全** - 完整的泛型支持和类型检查
-- 📦 **轻量级** - 无外部依赖，易于集成
-- 🔄 **双向映射** - 提供双向字典等高级数据结构
-- 🎯 **线程安全** - 部分组件支持并发操作
+- **丰富的扩展方法** - 提供字符串、集合、对象、类型等多种扩展方法
+- **高性能** - 优化的算法实现，确保高效执行
+- **类型安全** - 完整的泛型支持和类型检查
+- **轻量级** - 无外部依赖，易于集成
+- **双向映射** - 提供双向字典等高级数据结构
+- **线程安全** - 部分组件支持并发操作
 
 ## 安装
 
@@ -17,9 +17,32 @@ GameFrameX.Foundation.Extensions 是一个功能丰富的 .NET 扩展方法库�
 dotnet add package GameFrameX.Foundation.Extensions
 ```
 
-## 主要组件
+## 快速开始
 
-### 1. 字符串扩展 (StringExtensions)
+以下示例展示了最常见的扩展方法用法：
+
+```csharp
+using GameFrameX.Foundation.Extensions;
+
+// 字符串操作
+string email = "user@example.com";
+bool isValid = email.IsValidEmail(); // true
+
+string text = "hello world";
+string pascalCase = text.ToPascalCase(); // "HelloWorld"
+
+// 集合操作
+List<int> numbers = new List<int> { 1, 2, 3 };
+bool isEmpty = numbers.IsNullOrEmpty(); // false
+
+// 字节数组转换
+byte[] bytes = { 0x48, 0x65, 0x6C, 0x6C, 0x6F }; // "Hello" in ASCII
+string decoded = bytes.ToUtf8String(); // "Hello"
+```
+
+## 详细用法
+
+### 字符串扩展 (StringExtensions)
 
 提供丰富的字符串处理扩展方法：
 
@@ -59,7 +82,7 @@ string encoded = original.ToBase64(); // "SGVsbG8gV29ybGQ="
 string decoded = encoded.FromBase64(); // "Hello World"
 ```
 
-### 2. 集合扩展 (CollectionExtensions & IEnumerableExtensions)
+### 集合扩展 (CollectionExtensions & IEnumerableExtensions)
 
 提供强大的集合操作扩展：
 
@@ -105,7 +128,7 @@ var people = new[]
 var groupedByAge = people.GroupBy(p => p.Age);
 ```
 
-### 3. 对象扩展 (ObjectExtensions)
+### 对象扩展 (ObjectExtensions)
 
 提供对象操作和转换的扩展方法：
 
@@ -140,7 +163,7 @@ var target = new Target();
 source.CopyPropertiesTo(target); // target.Name = "Alice", target.Age = 25
 ```
 
-### 4. 类型扩展 (TypeExtensions)
+### 类型扩展 (TypeExtensions)
 
 提供类型信息和反射操作的扩展：
 
@@ -172,7 +195,7 @@ bool isArray = typeof(int[]).IsCollection(); // true
 bool isString = typeof(string).IsCollection(); // false (字符串不被视为集合)
 ```
 
-### 5. 字节扩展 (ByteExtensions)
+### 字节扩展 (ByteExtensions)
 
 提供字节数组处理的扩展方法：
 
@@ -200,7 +223,7 @@ string base64 = data.ToBase64String(); // "AQIDBAU="
 byte[] fromBase64 = base64.FromBase64String(); // [1, 2, 3, 4, 5]
 ```
 
-### 6. 双向字典 (BidirectionalDictionary)
+### 双向字典 (BidirectionalDictionary)
 
 提供键值双向映射的高效数据结构：
 
@@ -234,7 +257,7 @@ biDict.Clear();
 var optimizedBiDict = new BidirectionalDictionary<string, int>(100);
 ```
 
-### 7. 并发限制队列 (ConcurrentLimitedQueue)
+### 并发限制队列 (ConcurrentLimitedQueue)
 
 提供线程安全的定长队列实现：
 
@@ -272,7 +295,7 @@ ConcurrentLimitedQueue<int> numberQueue = numbers; // 隐式转换
 queue.Limit = 5; // 调整队列最大容量
 ```
 
-## 高级用法示例
+## 高级用法
 
 ### 链式调用
 
@@ -332,64 +355,7 @@ List<string> items = null;
 int count = items.IsNullOrEmpty() ? 0 : items.Count;
 ```
 
-## 最佳实践
-
-### 1. 命名空间使用
-
-```csharp
-// 推荐：明确引用命名空间
-using GameFrameX.Foundation.Extensions;
-
-// 避免：使用全局 using（除非整个项目都需要）
-```
-
-### 2. 性能考虑
-
-```csharp
-// 好的做法：预分配容量
-var biDict = new BidirectionalDictionary<string, int>(1000);
-
-// 好的做法：使用合适的数据结构
-var limitedQueue = new ConcurrentLimitedQueue<LogEntry>(maxLogEntries);
-
-// 避免：在循环中进行昂贵的操作
-foreach (var item in items)
-{
-    // 避免在这里进行复杂的字符串操作或反射
-}
-```
-
-### 3. 线程安全
-
-```csharp
-// ConcurrentLimitedQueue 是线程安全的
-var queue = new ConcurrentLimitedQueue<WorkItem>(100);
-
-// 可以在多线程环境中安全使用
-Parallel.ForEach(workItems, item =>
-{
-    queue.Enqueue(item); // 线程安全
-});
-
-// BidirectionalDictionary 不是线程安全的，需要外部同步
-var biDict = new BidirectionalDictionary<string, int>();
-lock (biDict)
-{
-    biDict.TryAdd(key, value);
-}
-```
-
-### 4. 内存管理
-
-```csharp
-// 及时清理大型集合
-largeBidirectionalDictionary.Clear();
-
-// 合理设置队列限制
-var logQueue = new ConcurrentLimitedQueue<LogEntry>(1000); // 避免无限增长
-```
-
-## 扩展和自定义
+### 扩展和自定义
 
 如果需要添加自定义扩展方法，建议遵循以下模式：
 
@@ -413,22 +379,71 @@ public static class CustomExtensions
 string result = someObject.SafeExecute(x => x.ToString().ToUpper(), "DEFAULT");
 ```
 
-## 📄 许可证
+## 最佳实践
 
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
+### 命名空间使用
 
-## 🤝 贡献
+```csharp
+// 推荐：明确引用命名空间
+using GameFrameX.Foundation.Extensions;
 
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
+// 避免：使用全局 using（除非整个项目都需要）
+```
 
-## 📞 支持
+### 性能考虑
 
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
+```csharp
+// 好的做法：预分配容量
+var biDict = new BidirectionalDictionary<string, int>(1000);
 
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
+// 好的做法：使用合适的数据结构
+var limitedQueue = new ConcurrentLimitedQueue<LogEntry>(maxLogEntries);
 
----
+// 避免：在循环中进行昂贵的操作
+foreach (var item in items)
+{
+    // 避免在这里进行复杂的字符串操作或反射
+}
+```
 
-GameFrameX.Foundation.Extensions 致力于提供高质量、高性能的扩展方法库，让 .NET 开发更加高效和愉快。
+### 线程安全
+
+```csharp
+// ConcurrentLimitedQueue 是线程安全的
+var queue = new ConcurrentLimitedQueue<WorkItem>(100);
+
+// 可以在多线程环境中安全使用
+Parallel.ForEach(workItems, item =>
+{
+    queue.Enqueue(item); // 线程安全
+});
+
+// BidirectionalDictionary 不是线程安全的，需要外部同步
+var biDict = new BidirectionalDictionary<string, int>();
+lock (biDict)
+{
+    biDict.TryAdd(key, value);
+}
+```
+
+### 内存管理
+
+```csharp
+// 及时清理大型集合
+largeBidirectionalDictionary.Clear();
+
+// 合理设置队列限制
+var logQueue = new ConcurrentLimitedQueue<LogEntry>(1000); // 避免无限增长
+```
+
+## API 参考
+
+| 类 / 模块 | 说明 |
+|-----------|------|
+| `StringExtensions` | 字符串验证、转换、截取、Base64 编解码 |
+| `CollectionExtensions` / `IEnumerableExtensions` | 集合判空、安全添加、去重、分页、随机选择 |
+| `ObjectExtensions` | 空值检查、类型转换、深拷贝、属性复制 |
+| `TypeExtensions` | 可空类型判断、默认值获取、集合类型检测 |
+| `ByteExtensions` | 字节数组与字符串、十六进制、Base64 互转 |
+| `BidirectionalDictionary<TKey, TValue>` | 双向映射字典 |
+| `ConcurrentLimitedQueue<T>` | 线程安全的定长队列 |

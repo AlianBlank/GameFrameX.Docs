@@ -1,10 +1,10 @@
-# HTTP消息标准化
+# HTTP消息标准化（统一HTTP响应结构的基础设施库）
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/download) [![License](https://img.shields.io/badge/license-Apache--2.0-green.svg)]()
 
 GameFrameX.Foundation.Http.Normalization 是一个用于统一HTTP响应结构的基础设施库，提供了标准化的JSON响应格式和处理工具，确保整个框架的HTTP响应结构一致性。
 
-## 🎯 核心特性
+## 特性
 
 - **统一响应结构** - 提供标准化的HTTP JSON响应格式
 - **多种响应状态** - 支持成功、失败、错误等多种响应状态
@@ -15,17 +15,13 @@ GameFrameX.Foundation.Http.Normalization 是一个用于统一HTTP响应结构�
 - **错误处理** - 完善的异常处理和日志记录
 - **特性支持** - 提供描述特性用于文档生成
 
-## 📦 安装
+## 安装
 
 ```bash
-# 通过 NuGet 包管理器安装
-Install-Package GameFrameX.Foundation.Http.Normalization
-
-# 或通过 .NET CLI 安装
 dotnet add package GameFrameX.Foundation.Http.Normalization
 ```
 
-## 🚀 快速开始
+## 快速开始
 
 ### 基本使用
 
@@ -62,7 +58,7 @@ string successWithDataJson = HttpJsonResult.SuccessString(user);
 string failJson = HttpJsonResult.FailString("操作失败");
 ```
 
-## 📋 详细使用指南
+## 详细用法
 
 ### 1. HttpJsonResult 响应类
 
@@ -181,9 +177,7 @@ else
 }
 ```
 
-## 🎨 高级用法
-
-### 1. 自定义响应状态码
+### 6. 自定义响应状态码
 
 ```csharp
 // 业务自定义状态码
@@ -198,7 +192,7 @@ public static class BusinessCodes
 var response = HttpJsonResult.Error(BusinessCodes.UserNotFound, "用户不存在");
 ```
 
-### 2. 响应数据封装
+### 7. 响应数据封装
 
 ```csharp
 public class ApiResponse<T>
@@ -225,7 +219,7 @@ public class ApiResponse<T>
 }
 ```
 
-### 3. 批量数据处理
+### 8. 批量数据处理
 
 ```csharp
 public class PagedResult<T>
@@ -248,7 +242,7 @@ var pagedUsers = new PagedResult<UserInfo>
 var response = HttpJsonResult.Success(pagedUsers);
 ```
 
-### 4. 使用描述特性
+### 9. 使用描述特性
 
 ```csharp
 public enum ApiErrorCode
@@ -270,9 +264,87 @@ public enum ApiErrorCode
 var response = HttpJsonResult.Error((int)ApiErrorCode.UserNotFound, "用户不存在");
 ```
 
-## 💡 最佳实践
+## 高级用法
 
-### 1. 统一错误处理
+### 自定义序列化选项
+
+```csharp
+public static class CustomHttpJsonResult
+{
+    private static readonly JsonSerializerOptions Options = new JsonSerializerOptions
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        WriteIndented = true
+    };
+    
+    public static string SerializeWithOptions(object data)
+    {
+        return JsonSerializer.Serialize(data, Options);
+    }
+}
+```
+
+### 响应时间统计
+
+```csharp
+public class TimedHttpJsonResult : HttpJsonResult
+{
+    public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+    public long ProcessingTimeMs { get; set; }
+    
+    public static TimedHttpJsonResult TimedSuccess(object data, long processingTime)
+    {
+        return new TimedHttpJsonResult
+        {
+            Code = 0,
+            Message = string.Empty,
+            Data = JsonSerializer.Serialize(data),
+            ProcessingTimeMs = processingTime
+        };
+    }
+}
+```
+
+### 多语言支持
+
+```csharp
+public static class LocalizedMessages
+{
+    private static readonly Dictionary<string, Dictionary<int, string>> Messages = new()
+    {
+        ["zh-CN"] = new Dictionary<int, string>
+        {
+            [0] = "操作成功",
+            [400] = "验证失败",
+            [401] = "未授权访问",
+            [404] = "资源未找到",
+            [500] = "服务器内部错误"
+        },
+        ["en-US"] = new Dictionary<int, string>
+        {
+            [0] = "Success",
+            [400] = "Validation failed",
+            [401] = "Unauthorized access",
+            [404] = "Resource not found",
+            [500] = "Internal server error"
+        }
+    };
+    
+    public static string GetMessage(int code, string culture = "zh-CN")
+    {
+        return Messages.TryGetValue(culture, out var cultureMessages) && 
+               cultureMessages.TryGetValue(code, out var message) 
+               ? message 
+               : "Unknown error";
+    }
+}
+```
+
+## 最佳实践
+
+### 统一错误处理
+
+在全局异常处理器中使用标准化的错误响应，保持 API 行为一致：
 
 ```csharp
 public class GlobalExceptionHandler
@@ -290,7 +362,9 @@ public class GlobalExceptionHandler
 }
 ```
 
-### 2. API控制器集成
+### API控制器集成
+
+控制器方法统一返回 `HttpJsonResult`，客户端只需解析一种格式：
 
 ```csharp
 [ApiController]
@@ -339,7 +413,9 @@ public class UserController : ControllerBase
 }
 ```
 
-### 3. 客户端响应处理
+### 客户端响应处理
+
+客户端使用 `ToHttpJsonResultData<T>` 扩展方法进行类型安全的反序列化：
 
 ```csharp
 public class ApiClient
@@ -367,7 +443,9 @@ public class ApiClient
 }
 ```
 
-### 4. 响应缓存
+### 响应缓存
+
+对高频使用的静态响应进行缓存，减少重复序列化开销：
 
 ```csharp
 public static class ResponseCache
@@ -386,161 +464,42 @@ public static class ResponseCache
 }
 ```
 
-## 🔧 扩展功能
+## API 参考
 
-### 1. 自定义序列化选项
+### HttpJsonResult 静态方法
 
-```csharp
-public static class CustomHttpJsonResult
-{
-    private static readonly JsonSerializerOptions Options = new JsonSerializerOptions
-    {
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        WriteIndented = true
-    };
-    
-    public static string SerializeWithOptions(object data)
-    {
-        return JsonSerializer.Serialize(data, Options);
-    }
-}
-```
+| 方法 | 返回类型 | 说明 |
+|------|----------|------|
+| `Success()` | `HttpJsonResult` | 创建空成功响应 (code=0) |
+| `Success(data)` | `HttpJsonResult` | 创建带数据的成功响应 |
+| `Success(message, data)` | `HttpJsonResult` | 创建带消息和数据的成功响应 |
+| `Success(code, message, data)` | `HttpJsonResult` | 创建自定义状态码的成功响应 |
+| `Fail(message)` | `HttpJsonResult` | 创建失败响应 (code=-1) |
+| `Error(code, message)` | `HttpJsonResult` | 创建自定义错误码的错误响应 |
+| `ValidationError()` | `HttpJsonResult` | 验证失败响应 (code=400) |
+| `Unauthorized()` | `HttpJsonResult` | 未授权响应 (code=401) |
+| `NotFound()` | `HttpJsonResult` | 资源未找到响应 (code=404) |
+| `ServerError()` | `HttpJsonResult` | 服务器内部错误响应 (code=500) |
+| `ParamError()` | `HttpJsonResult` | 参数错误响应 (code=403) |
+| `Illegal()` | `HttpJsonResult` | 非法请求响应 |
+| `SuccessString(...)` | `string` | 上述成功方法的 JSON 字符串版本 |
+| `FailString(...)` | `string` | 上述失败方法的 JSON 字符串版本 |
+| `NotFoundString()` | `string` | 资源未找到的 JSON 字符串版本 |
+| `UnauthorizedString()` | `string` | 未授权的 JSON 字符串版本 |
+| `ServerErrorString()` | `string` | 服务器错误的 JSON 字符串版本 |
+| `ValidationErrorString()` | `string` | 验证失败的 JSON 字符串版本 |
 
-### 2. 响应时间统计
+### HttpJsonResultData&lt;T&gt; 属性
 
-```csharp
-public class TimedHttpJsonResult : HttpJsonResult
-{
-    public DateTime Timestamp { get; set; } = DateTime.UtcNow;
-    public long ProcessingTimeMs { get; set; }
-    
-    public static TimedHttpJsonResult TimedSuccess(object data, long processingTime)
-    {
-        return new TimedHttpJsonResult
-        {
-            Code = 0,
-            Message = string.Empty,
-            Data = JsonSerializer.Serialize(data),
-            ProcessingTimeMs = processingTime
-        };
-    }
-}
-```
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `IsSuccess` | `bool` | 是否成功 (code=0) |
+| `Code` | `int` | 响应状态码 |
+| `Message` | `string` | 响应消息 |
+| `Data` | `T` | 强类型响应数据 |
 
-### 3. 多语言支持
+### 扩展方法
 
-```csharp
-public static class LocalizedMessages
-{
-    private static readonly Dictionary<string, Dictionary<int, string>> Messages = new()
-    {
-        ["zh-CN"] = new Dictionary<int, string>
-        {
-            [0] = "操作成功",
-            [400] = "验证失败",
-            [401] = "未授权访问",
-            [404] = "资源未找到",
-            [500] = "服务器内部错误"
-        },
-        ["en-US"] = new Dictionary<int, string>
-        {
-            [0] = "Success",
-            [400] = "Validation failed",
-            [401] = "Unauthorized access",
-            [404] = "Resource not found",
-            [500] = "Internal server error"
-        }
-    };
-    
-    public static string GetMessage(int code, string culture = "zh-CN")
-    {
-        return Messages.TryGetValue(culture, out var cultureMessages) && 
-               cultureMessages.TryGetValue(code, out var message) 
-               ? message 
-               : "Unknown error";
-    }
-}
-```
-
-## 🔍 故障排除
-
-### 常见问题
-
-#### 1. 序列化问题
-
-**问题**: 复杂对象序列化失败
-**解决方案**: 确保对象可序列化，避免循环引用
-
-```csharp
-// 使用JsonIgnore特性避免循环引用
-public class User
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    
-    [JsonIgnore]
-    public List<Order> Orders { get; set; }
-}
-```
-
-#### 2. 数据转换问题
-
-**问题**: ToHttpJsonResultData转换失败
-**解决方案**: 确保JSON格式正确，目标类型有无参构造函数
-
-```csharp
-// 确保类有无参构造函数
-public class ApiData
-{
-    public ApiData() { } // 必需的无参构造函数
-    
-    public string Value { get; set; }
-}
-```
-
-#### 3. 性能问题
-
-**问题**: 大量响应创建导致性能问题
-**解决方案**: 使用响应缓存和对象池
-
-```csharp
-// 使用对象池
-private static readonly ObjectPool<HttpJsonResult> ResultPool = 
-    new DefaultObjectPool<HttpJsonResult>(new HttpJsonResultPooledObjectPolicy());
-```
-
-### 调试技巧
-
-```csharp
-// 启用详细日志
-public static class DebugHelper
-{
-    public static void LogResponse(HttpJsonResult result)
-    {
-        Console.WriteLine($"响应码: {result.Code}");
-        Console.WriteLine($"消息: {result.Message}");
-        Console.WriteLine($"数据: {result.Data}");
-        Console.WriteLine($"JSON: {result.ToString()}");
-    }
-}
-```
-
-## 📄 许可证
-
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
-
----
-
-**GameFrameX.Foundation.Http.Normalization** - 让HTTP响应更规范、更统一！
+| 方法 | 说明 |
+|------|------|
+| `string.ToHttpJsonResultData<T>()` | 将 JSON 字符串反序列化为 `HttpJsonResultData<T>` |

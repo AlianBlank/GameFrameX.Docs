@@ -1,157 +1,153 @@
-# HTTP消息标准化
+# HTTP 메시지 표준화 (통합 HTTP 응답 구조 기반 라이브러리)
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/download) [![License](https://img.shields.io/badge/license-Apache--2.0-green.svg)]()
 
-GameFrameX.Foundation.Http.Normalization 是一个用于统一HTTP响应结构的基础设施库，提供了标准化的JSON响应格式和处理工具，确保整个框架的HTTP响应结构一致性。
+GameFrameX.Foundation.Http.Normalization은 통합 HTTP 응답 구조를 위한 기반 라이브러리로, 표준화된 JSON 응답 형식과 처리 도구를 제공하여 전체 프레임워크의 HTTP 응답 구조 일관성을 보장합니다.
 
-## 🎯 核心特性
+## 특징
 
-- **统一响应结构** - 提供标准化的HTTP JSON响应格式
-- **多种响应状态** - 支持成功、失败、错误等多种响应状态
-- **类型安全** - 泛型支持，确保数据类型安全
-- **便捷方法** - 提供丰富的静态方法快速创建响应
-- **扩展支持** - 支持自定义状态码和消息
-- **序列化优化** - 基于System.Text.Json的高性能序列化
-- **错误处理** - 完善的异常处理和日志记录
-- **特性支持** - 提供描述特性用于文档生成
+- **통합 응답 구조** - 표준화된 HTTP JSON 응답 형식 제공
+- **다양한 응답 상태** - 성공, 실패, 오류 등 다양한 응답 상태 지원
+- **형식 안전성** - 제네릭 지원으로 데이터 형식 안전성 보장
+- **편의 메서드** - 풍부한 정적 메서드로 빠른 응답 생성 지원
+- **확장 지원** - 사용자 정의 상태 코드 및 메시지 지원
+- **직렬화 최적화** - System.Text.Json 기반의 고성능 직렬화
+- **오류 처리** - 완전한 예외 처리 및 로그 기록
+- **특성 지원** - 문서 생성을 위한 설명 특성 제공
 
-## 📦 安装
+## 설치
 
 ```bash
-# 通过 NuGet 包管理器安装
-Install-Package GameFrameX.Foundation.Http.Normalization
-
-# 或通过 .NET CLI 安装
 dotnet add package GameFrameX.Foundation.Http.Normalization
 ```
 
-## 🚀 快速开始
+## 빠른 시작
 
-### 基本使用
+### 기본 사용
 
 ```csharp
 using GameFrameX.Foundation.Http.Normalization;
 
-// 创建成功响应
+// 성공 응답 생성
 var successResponse = HttpJsonResult.Success();
 Console.WriteLine(successResponse.ToString());
-// 输出: {"code":0,"message":"","data":null}
+// 출력: {"code":0,"message":"","data":null}
 
-// 创建带数据的成功响应
-var user = new { Name = "张三", Age = 25 };
+// 데이터가 포함된 성공 응답 생성
+var user = new { Name = "홍길동", Age = 25 };
 var successWithData = HttpJsonResult.Success(user);
 Console.WriteLine(successWithData.ToString());
-// 输出: {"code":0,"message":"","data":"{\"Name\":\"张三\",\"Age\":25}"}
+// 출력: {"code":0,"message":"","data":"{\"Name\":\"홍길동\",\"Age\":25}"}
 
-// 创建失败响应
-var failResponse = HttpJsonResult.Fail("用户不存在");
+// 실패 응답 생성
+var failResponse = HttpJsonResult.Fail("사용자를 찾을 수 없습니다");
 Console.WriteLine(failResponse.ToString());
-// 输出: {"code":-1,"message":"用户不存在","data":null}
+// 출력: {"code":-1,"message":"사용자를 찾을 수 없습니다","data":null}
 ```
 
-### 直接获取JSON字符串
+### JSON 문자열 직접 가져오기
 
 ```csharp
-// 获取成功响应的JSON字符串
+// 성공 응답의 JSON 문자열 가져오기
 string successJson = HttpJsonResult.SuccessString();
 
-// 获取带数据的成功响应JSON字符串
+// 데이터가 포함된 성공 응답 JSON 문자열 가져오기
 string successWithDataJson = HttpJsonResult.SuccessString(user);
 
-// 获取失败响应的JSON字符串
-string failJson = HttpJsonResult.FailString("操作失败");
+// 실패 응답의 JSON 문자열 가져오기
+string failJson = HttpJsonResult.FailString("작업 실패");
 ```
 
-## 📋 详细使用指南
+## 상세 사용법
 
-### 1. HttpJsonResult 响应类
+### 1. HttpJsonResult 응답 클래스
 
-#### 基本属性
+#### 기본 속성
 
 ```csharp
 public sealed class HttpJsonResult
 {
-    public int Code { get; set; }        // 响应码，0表示成功
-    public string Message { get; set; }  // 响应消息
-    public string Data { get; set; }     // 响应数据（JSON字符串）
+    public int Code { get; set; }        // 응답 코드, 0은 성공
+    public string Message { get; set; }  // 응답 메시지
+    public string Data { get; set; }     // 응답 데이터 (JSON 문자열)
 }
 ```
 
-#### 常用响应码
+#### 일반적인 응답 코드
 
-- `0` - 成功
-- `-1` - 一般性失败
-- `400` - 验证失败
-- `401` - 未授权
-- `403` - 参数错误
-- `404` - 资源未找到
-- `500` - 服务器内部错误
+- `0` - 성공
+- `-1` - 일반적인 실패
+- `400` - 유효성 검사 실패
+- `401` - 인증되지 않음
+- `403` - 매개변수 오류
+- `404` - 리소스를 찾을 수 없음
+- `500` - 서버 내부 오류
 
-### 2. 成功响应方法
+### 2. 성공 응답 메서드
 
 ```csharp
-// 基本成功响应
+// 기본 성공 응답
 var response1 = HttpJsonResult.Success();
 
-// 带数据的成功响应
+// 데이터가 포함된 성공 응답
 var response2 = HttpJsonResult.Success(userData);
 
-// 带JSON字符串数据的成功响应
+// JSON 문자열 데이터가 포함된 성공 응답
 var response3 = HttpJsonResult.Success("{\"id\":1,\"name\":\"test\"}");
 
-// 自定义状态码和消息的成功响应
-var response4 = HttpJsonResult.Success(200, "操作成功", jsonData);
+// 사용자 정의 상태 코드와 메시지가 포함된 성공 응답
+var response4 = HttpJsonResult.Success(200, "작업 성공", jsonData);
 
-// 自定义消息的成功响应
-var response5 = HttpJsonResult.Success("创建成功", jsonData);
+// 사용자 정의 메시지가 포함된 성공 응답
+var response5 = HttpJsonResult.Success("생성 성공", jsonData);
 ```
 
-### 3. 错误响应方法
+### 3. 오류 응답 메서드
 
 ```csharp
-// 一般失败响应
-var failResponse = HttpJsonResult.Fail("操作失败");
+// 일반 실패 응답
+var failResponse = HttpJsonResult.Fail("작업 실패");
 
-// 自定义错误码和消息
-var errorResponse = HttpJsonResult.Error(1001, "业务逻辑错误");
+// 사용자 정의 오류 코드와 메시지
+var errorResponse = HttpJsonResult.Error(1001, "비즈니스 로직 오류");
 
-// 验证失败响应
+// 유효성 검사 실패 응답
 var validationResponse = HttpJsonResult.ValidationError();
 
-// 未授权响应
+// 인증되지 않음 응답
 var unauthorizedResponse = HttpJsonResult.Unauthorized();
 
-// 资源未找到响应
+// 리소스를 찾을 수 없음 응답
 var notFoundResponse = HttpJsonResult.NotFound();
 
-// 服务器错误响应
+// 서버 오류 응답
 var serverErrorResponse = HttpJsonResult.ServerError();
 
-// 参数错误响应
+// 매개변수 오류 응답
 var paramErrorResponse = HttpJsonResult.ParamError();
 
-// 非法请求响应
+// 잘못된 요청 응답
 var illegalResponse = HttpJsonResult.Illegal();
 ```
 
-### 4. HttpJsonResultData&lt;T&gt; 泛型响应类
+### 4. HttpJsonResultData&lt;T&gt; 제네릭 응답 클래스
 
 ```csharp
 public sealed class HttpJsonResultData<T>
 {
-    public bool IsSuccess { get; set; }  // 是否成功
-    public int Code { get; set; }        // 响应码
-    public string Message { get; set; }  // 错误消息
-    public T Data { get; set; }          // 强类型数据
+    public bool IsSuccess { get; set; }  // 성공 여부
+    public int Code { get; set; }        // 응답 코드
+    public string Message { get; set; }  // 오류 메시지
+    public T Data { get; set; }          // 강력한 형식의 데이터
 }
 ```
 
-### 5. 响应转换和处理
+### 5. 응답 변환 및 처리
 
 ```csharp
 using GameFrameX.Foundation.Http.Normalization;
 
-// 定义数据模型
+// 데이터 모델 정의
 public class UserInfo
 {
     public int Id { get; set; }
@@ -159,34 +155,32 @@ public class UserInfo
     public string Email { get; set; }
 }
 
-// 将JSON响应转换为强类型结果
-string jsonResponse = HttpJsonResult.SuccessString(new UserInfo 
-{ 
-    Id = 1, 
-    Name = "张三", 
-    Email = "zhangsan@example.com" 
+// JSON 응답을 강력한 형식의 결과로 변환
+string jsonResponse = HttpJsonResult.SuccessString(new UserInfo
+{
+    Id = 1,
+    Name = "홍길동",
+    Email = "hong@example.com"
 });
 
-// 使用扩展方法转换
+// 확장 메서드를 사용한 변환
 HttpJsonResultData<UserInfo> result = jsonResponse.ToHttpJsonResultData<UserInfo>();
 
 if (result.IsSuccess)
 {
-    Console.WriteLine($"用户姓名: {result.Data.Name}");
-    Console.WriteLine($"用户邮箱: {result.Data.Email}");
+    Console.WriteLine($"사용자 이름: {result.Data.Name}");
+    Console.WriteLine($"사용자 이메일: {result.Data.Email}");
 }
 else
 {
-    Console.WriteLine($"请求失败: {result.Message} (错误码: {result.Code})");
+    Console.WriteLine($"요청 실패: {result.Message} (오류 코드: {result.Code})");
 }
 ```
 
-## 🎨 高级用法
-
-### 1. 自定义响应状态码
+### 6. 사용자 정의 응답 상태 코드
 
 ```csharp
-// 业务自定义状态码
+// 비즈니스 사용자 정의 상태 코드
 public static class BusinessCodes
 {
     public const int UserNotFound = 1001;
@@ -194,11 +188,11 @@ public static class BusinessCodes
     public const int OrderExpired = 1003;
 }
 
-// 使用自定义状态码
-var response = HttpJsonResult.Error(BusinessCodes.UserNotFound, "用户不存在");
+// 사용자 정의 상태 코드 사용
+var response = HttpJsonResult.Error(BusinessCodes.UserNotFound, "사용자를 찾을 수 없습니다");
 ```
 
-### 2. 响应数据封装
+### 7. 응답 데이터 캡슐화
 
 ```csharp
 public class ApiResponse<T>
@@ -212,7 +206,7 @@ public class ApiResponse<T>
             data = data
         });
     }
-    
+
     public static HttpJsonResult Error(string message)
     {
         return HttpJsonResult.Fail(new
@@ -225,7 +219,7 @@ public class ApiResponse<T>
 }
 ```
 
-### 3. 批量数据处理
+### 8. 일괄 데이터 처리
 
 ```csharp
 public class PagedResult<T>
@@ -236,7 +230,7 @@ public class PagedResult<T>
     public int PageSize { get; set; }
 }
 
-// 分页数据响应
+// 페이징 데이터 응답
 var pagedUsers = new PagedResult<UserInfo>
 {
     Items = userList,
@@ -248,31 +242,109 @@ var pagedUsers = new PagedResult<UserInfo>
 var response = HttpJsonResult.Success(pagedUsers);
 ```
 
-### 4. 使用描述特性
+### 9. 설명 특성 사용
 
 ```csharp
 public enum ApiErrorCode
 {
-    [HttpJsonCodeDescription("操作成功")]
+    [HttpJsonCodeDescription("작업 성공")]
     Success = 0,
-    
-    [HttpJsonCodeDescription("用户不存在")]
+
+    [HttpJsonCodeDescription("사용자를 찾을 수 없음")]
     UserNotFound = 1001,
-    
-    [HttpJsonCodeDescription("余额不足")]
+
+    [HttpJsonCodeDescription("잔액 부족")]
     InsufficientBalance = 1002,
-    
-    [HttpJsonCodeDescription("订单已过期")]
+
+    [HttpJsonCodeDescription("주문이 만료됨")]
     OrderExpired = 1003
 }
 
-// 使用枚举创建响应
-var response = HttpJsonResult.Error((int)ApiErrorCode.UserNotFound, "用户不存在");
+// 열거형을 사용한 응답 생성
+var response = HttpJsonResult.Error((int)ApiErrorCode.UserNotFound, "사용자를 찾을 수 없습니다");
 ```
 
-## 💡 最佳实践
+## 고급 사용법
 
-### 1. 统一错误处理
+### 사용자 정의 직렬화 옵션
+
+```csharp
+public static class CustomHttpJsonResult
+{
+    private static readonly JsonSerializerOptions Options = new JsonSerializerOptions
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        WriteIndented = true
+    };
+
+    public static string SerializeWithOptions(object data)
+    {
+        return JsonSerializer.Serialize(data, Options);
+    }
+}
+```
+
+### 응답 시간 통계
+
+```csharp
+public class TimedHttpJsonResult : HttpJsonResult
+{
+    public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+    public long ProcessingTimeMs { get; set; }
+
+    public static TimedHttpJsonResult TimedSuccess(object data, long processingTime)
+    {
+        return new TimedHttpJsonResult
+        {
+            Code = 0,
+            Message = string.Empty,
+            Data = JsonSerializer.Serialize(data),
+            ProcessingTimeMs = processingTime
+        };
+    }
+}
+```
+
+### 다국어 지원
+
+```csharp
+public static class LocalizedMessages
+{
+    private static readonly Dictionary<string, Dictionary<int, string>> Messages = new()
+    {
+        ["ko-KR"] = new Dictionary<int, string>
+        {
+            [0] = "작업 성공",
+            [400] = "유효성 검사 실패",
+            [401] = "인증되지 않은 접근",
+            [404] = "리소스를 찾을 수 없음",
+            [500] = "서버 내부 오류"
+        },
+        ["en-US"] = new Dictionary<int, string>
+        {
+            [0] = "Success",
+            [400] = "Validation failed",
+            [401] = "Unauthorized access",
+            [404] = "Resource not found",
+            [500] = "Internal server error"
+        }
+    };
+
+    public static string GetMessage(int code, string culture = "ko-KR")
+    {
+        return Messages.TryGetValue(culture, out var cultureMessages) &&
+               cultureMessages.TryGetValue(code, out var message)
+               ? message
+               : "알 수 없는 오류";
+    }
+}
+```
+
+## 모범 사례
+
+### 통합 오류 처리
+
+전역 예외 처리기에서 표준화된 오류 응답을 사용하여 API 동작의 일관성을 유지합니다:
 
 ```csharp
 public class GlobalExceptionHandler
@@ -290,7 +362,9 @@ public class GlobalExceptionHandler
 }
 ```
 
-### 2. API控制器集成
+### API 컨트롤러 통합
+
+컨트롤러 메서드는 통합적으로 `HttpJsonResult`를 반환하며, 클라이언트는 하나의 형식만 파싱하면 됩니다:
 
 ```csharp
 [ApiController]
@@ -307,16 +381,16 @@ public class UserController : ControllerBase
             {
                 return Ok(HttpJsonResult.NotFoundString());
             }
-            
+
             return Ok(HttpJsonResult.SuccessString(user));
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "获取用户信息失败");
+            logger.LogError(ex, "사용자 정보 가져오기 실패");
             return Ok(HttpJsonResult.ServerErrorString());
         }
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request)
     {
@@ -324,28 +398,30 @@ public class UserController : ControllerBase
         {
             return Ok(HttpJsonResult.ValidationErrorString());
         }
-        
+
         try
         {
             var user = await userService.CreateUserAsync(request);
-            return Ok(HttpJsonResult.SuccessString("用户创建成功", JsonSerializer.Serialize(user)));
+            return Ok(HttpJsonResult.SuccessString("사용자 생성 성공", JsonSerializer.Serialize(user)));
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "创建用户失败");
-            return Ok(HttpJsonResult.FailString("创建用户失败"));
+            logger.LogError(ex, "사용자 생성 실패");
+            return Ok(HttpJsonResult.FailString("사용자 생성 실패"));
         }
     }
 }
 ```
 
-### 3. 客户端响应处理
+### 클라이언트 응답 처리
+
+클라이언트는 `ToHttpJsonResultData<T>` 확장 메서드를 사용하여 형식이 안전한 역직렬화를 수행합니다:
 
 ```csharp
 public class ApiClient
 {
     private readonly HttpClient httpClient;
-    
+
     public async Task<HttpJsonResultData<T>> GetAsync<T>(string url) where T : class, new()
     {
         try
@@ -355,192 +431,75 @@ public class ApiClient
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "API请求失败");
+            logger.LogError(ex, "API 요청 실패");
             return new HttpJsonResultData<T>
             {
                 IsSuccess = false,
                 Code = 500,
-                Message = "网络请求失败"
+                Message = "네트워크 요청 실패"
             };
         }
     }
 }
 ```
 
-### 4. 响应缓存
+### 응답 캐싱
+
+빈번하게 사용되는 정적 응답을 캐싱하여 반복적인 직렬화 비용을 줄입니다:
 
 ```csharp
 public static class ResponseCache
 {
     private static readonly ConcurrentDictionary<string, string> Cache = new();
-    
+
     public static string GetCachedResponse(string key, Func<string> factory)
     {
         return Cache.GetOrAdd(key, _ => factory());
     }
-    
-    // 缓存常用响应
+
+    // 자주 사용되는 응답 캐싱
     public static readonly string SuccessResponse = HttpJsonResult.SuccessString();
     public static readonly string UnauthorizedResponse = HttpJsonResult.UnauthorizedString();
     public static readonly string NotFoundResponse = HttpJsonResult.NotFoundString();
 }
 ```
 
-## 🔧 扩展功能
+## API 레퍼런스
 
-### 1. 自定义序列化选项
+### HttpJsonResult 정적 메서드
 
-```csharp
-public static class CustomHttpJsonResult
-{
-    private static readonly JsonSerializerOptions Options = new JsonSerializerOptions
-    {
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        WriteIndented = true
-    };
-    
-    public static string SerializeWithOptions(object data)
-    {
-        return JsonSerializer.Serialize(data, Options);
-    }
-}
-```
+| 메서드 | 반환 형식 | 설명 |
+|------|----------|------|
+| `Success()` | `HttpJsonResult` | 빈 성공 응답 생성 (code=0) |
+| `Success(data)` | `HttpJsonResult` | 데이터가 포함된 성공 응답 생성 |
+| `Success(message, data)` | `HttpJsonResult` | 메시지와 데이터가 포함된 성공 응답 생성 |
+| `Success(code, message, data)` | `HttpJsonResult` | 사용자 정의 상태 코드의 성공 응답 생성 |
+| `Fail(message)` | `HttpJsonResult` | 실패 응답 생성 (code=-1) |
+| `Error(code, message)` | `HttpJsonResult` | 사용자 정의 오류 코드의 오류 응답 생성 |
+| `ValidationError()` | `HttpJsonResult` | 유효성 검사 실패 응답 (code=400) |
+| `Unauthorized()` | `HttpJsonResult` | 인증되지 않음 응답 (code=401) |
+| `NotFound()` | `HttpJsonResult` | 리소스를 찾을 수 없음 응답 (code=404) |
+| `ServerError()` | `HttpJsonResult` | 서버 내부 오류 응답 (code=500) |
+| `ParamError()` | `HttpJsonResult` | 매개변수 오류 응답 (code=403) |
+| `Illegal()` | `HttpJsonResult` | 잘못된 요청 응답 |
+| `SuccessString(...)` | `string` | 위 성공 메서드의 JSON 문자열 버전 |
+| `FailString(...)` | `string` | 위 실패 메서드의 JSON 문자열 버전 |
+| `NotFoundString()` | `string` | 리소스를 찾을 수 없음의 JSON 문자열 버전 |
+| `UnauthorizedString()` | `string` | 인증되지 않음의 JSON 문자열 버전 |
+| `ServerErrorString()` | `string` | 서버 오류의 JSON 문자열 버전 |
+| `ValidationErrorString()` | `string` | 유효성 검사 실패의 JSON 문자열 버전 |
 
-### 2. 响应时间统计
+### HttpJsonResultData&lt;T&gt; 속성
 
-```csharp
-public class TimedHttpJsonResult : HttpJsonResult
-{
-    public DateTime Timestamp { get; set; } = DateTime.UtcNow;
-    public long ProcessingTimeMs { get; set; }
-    
-    public static TimedHttpJsonResult TimedSuccess(object data, long processingTime)
-    {
-        return new TimedHttpJsonResult
-        {
-            Code = 0,
-            Message = string.Empty,
-            Data = JsonSerializer.Serialize(data),
-            ProcessingTimeMs = processingTime
-        };
-    }
-}
-```
+| 속성 | 형식 | 설명 |
+|------|------|------|
+| `IsSuccess` | `bool` | 성공 여부 (code=0) |
+| `Code` | `int` | 응답 상태 코드 |
+| `Message` | `string` | 응답 메시지 |
+| `Data` | `T` | 강력한 형식의 응답 데이터 |
 
-### 3. 多语言支持
+### 확장 메서드
 
-```csharp
-public static class LocalizedMessages
-{
-    private static readonly Dictionary<string, Dictionary<int, string>> Messages = new()
-    {
-        ["zh-CN"] = new Dictionary<int, string>
-        {
-            [0] = "操作成功",
-            [400] = "验证失败",
-            [401] = "未授权访问",
-            [404] = "资源未找到",
-            [500] = "服务器内部错误"
-        },
-        ["en-US"] = new Dictionary<int, string>
-        {
-            [0] = "Success",
-            [400] = "Validation failed",
-            [401] = "Unauthorized access",
-            [404] = "Resource not found",
-            [500] = "Internal server error"
-        }
-    };
-    
-    public static string GetMessage(int code, string culture = "zh-CN")
-    {
-        return Messages.TryGetValue(culture, out var cultureMessages) && 
-               cultureMessages.TryGetValue(code, out var message) 
-               ? message 
-               : "Unknown error";
-    }
-}
-```
-
-## 🔍 故障排除
-
-### 常见问题
-
-#### 1. 序列化问题
-
-**问题**: 复杂对象序列化失败
-**解决方案**: 确保对象可序列化，避免循环引用
-
-```csharp
-// 使用JsonIgnore特性避免循环引用
-public class User
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    
-    [JsonIgnore]
-    public List<Order> Orders { get; set; }
-}
-```
-
-#### 2. 数据转换问题
-
-**问题**: ToHttpJsonResultData转换失败
-**解决方案**: 确保JSON格式正确，目标类型有无参构造函数
-
-```csharp
-// 确保类有无参构造函数
-public class ApiData
-{
-    public ApiData() { } // 必需的无参构造函数
-    
-    public string Value { get; set; }
-}
-```
-
-#### 3. 性能问题
-
-**问题**: 大量响应创建导致性能问题
-**解决方案**: 使用响应缓存和对象池
-
-```csharp
-// 使用对象池
-private static readonly ObjectPool<HttpJsonResult> ResultPool = 
-    new DefaultObjectPool<HttpJsonResult>(new HttpJsonResultPooledObjectPolicy());
-```
-
-### 调试技巧
-
-```csharp
-// 启用详细日志
-public static class DebugHelper
-{
-    public static void LogResponse(HttpJsonResult result)
-    {
-        Console.WriteLine($"响应码: {result.Code}");
-        Console.WriteLine($"消息: {result.Message}");
-        Console.WriteLine($"数据: {result.Data}");
-        Console.WriteLine($"JSON: {result.ToString()}");
-    }
-}
-```
-
-## 📄 许可证
-
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
-
----
-
-**GameFrameX.Foundation.Http.Normalization** - 让HTTP响应更规范、更统一！
+| 메서드 | 설명 |
+|------|------|
+| `string.ToHttpJsonResultData<T>()` | JSON 문자열을 `HttpJsonResultData<T>`로 역직렬화 |

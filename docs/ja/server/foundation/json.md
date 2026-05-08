@@ -1,38 +1,32 @@
-# JSON
+# JSON（高性能シリアライズライブラリ）
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/download) [![License](https://img.shields.io/badge/license-MIT-green.svg)]()
 
-GameFrameX.Foundation.Json 是一个基于 System.Text.Json 的高性能 JSON 序列化和反序列化库，提供了丰富的配置选项和特殊值处理能力。
+GameFrameX.Foundation.Json は、System.Text.Json に基づく高性能 JSON シリアライズ・デシリアライズライブラリです。豊富な設定オプションと特殊値処理機能を提供します。
 
-## 🎯 核心特性
+## 特徴
 
-- **高性能序列化** - 基于 System.Text.Json 的高性能实现
-- **特殊浮点值支持** - 完美处理 NaN、Infinity、-Infinity 等特殊浮点值
-- **多种配置选项** - 提供默认和格式化两种预配置选项
-- **容错性强** - 多重容错机制，确保序列化/反序列化的稳定性
-- **UTF8 字节数组支持** - 支持直接操作 UTF8 字节数组
-- **Try 模式** - 提供安全的尝试序列化/反序列化方法
-- **枚举字符串化** - 枚举值自动序列化为字符串形式
-- **循环引用处理** - 自动忽略循环引用，避免序列化异常
+- **高性能シリアライズ** - System.Text.Json に基づく高性能な実装
+- **特殊浮動小数点値サポート** - NaN、Infinity、-Infinity などの特殊浮動小数点値を完全に処理
+- **複数の設定オプション** - デフォルトとフォーマット済みの2つのプリセットオプションを提供
+- **高いフォールトトレランス** - 多重のフォールトトレランス機構により、シリアライズ/デシリアライズの安定性を確保
+- **UTF8 バイト配列サポート** - UTF8 バイト配列の直接操作をサポート
+- **Try パターン** - 安全なシリアライズ/デシリアライズ試行メソッドを提供
+- **列挙型文字列化** - 列挙値を自動的に文字列形式でシリアライズ
+- **循環参照処理** - 循環参照を自動的に無視し、シリアライズ例外を回避
 
-## 📦 安装
+## インストール
 
 ```bash
-# 通过 NuGet 包管理器安装
-Install-Package GameFrameX.Foundation.Json
-
-# 或通过 .NET CLI 安装
 dotnet add package GameFrameX.Foundation.Json
 ```
 
-## 🚀 快速开始
-
-### 基本使用
+## クイックスタート
 
 ```csharp
 using GameFrameX.Foundation.Json;
 
-// 定义数据模型
+// データモデルの定義
 public class User
 {
     public string Name { get; set; }
@@ -41,10 +35,10 @@ public class User
     public double Score { get; set; }
 }
 
-// 序列化对象
+// オブジェクトのシリアライズ
 var user = new User 
 { 
-    Name = "张三", 
+    Name = "張三", 
     Age = 25, 
     IsActive = true, 
     Score = 95.5 
@@ -52,143 +46,134 @@ var user = new User
 
 string json = JsonHelper.Serialize(user);
 Console.WriteLine(json);
-// 输出: {"Name":"张三","Age":25,"IsActive":true,"Score":95.5}
+// 出力: {"Name":"張三","Age":25,"IsActive":true,"Score":95.5}
 
-// 反序列化对象
+// オブジェクトのデシリアライズ
 User deserializedUser = JsonHelper.Deserialize<User>(json);
-Console.WriteLine($"姓名: {deserializedUser.Name}, 年龄: {deserializedUser.Age}");
-```
+Console.WriteLine($"氏名: {deserializedUser.Name}, 年齢: {deserializedUser.Age}");
 
-### 格式化序列化
-
-```csharp
-// 生成格式化的 JSON（包含缩进和换行）
+// フォーマット済みシリアライズ
 string formattedJson = JsonHelper.SerializeFormat(user);
-Console.WriteLine(formattedJson);
-/* 输出:
-{
-  "Name": "张三",
-  "Age": 25,
-  "IsActive": true,
-  "Score": 95.5
-}
-*/
 ```
 
-## 📋 详细使用指南
+## 詳細な使い方
 
-### 1. 序列化方法
+### シリアライズメソッド
 
-#### 基本序列化
+#### 基本シリアライズ
+
 ```csharp
-// 使用默认配置序列化
+// デフォルト設定でシリアライズ
 string json = JsonHelper.Serialize(obj);
 
-// 使用自定义配置序列化
+// カスタム設定でシリアライズ
 var customOptions = new JsonSerializerOptions { WriteIndented = true };
 string json = JsonHelper.Serialize(obj, customOptions);
 
-// 格式化序列化（自动缩进）
+// フォーマット済みシリアライズ（自動インデント）
 string formattedJson = JsonHelper.SerializeFormat(obj);
 ```
 
-#### UTF8 字节数组序列化
+#### UTF8 バイト配列シリアライズ
+
 ```csharp
-// 序列化为 UTF8 字节数组
+// UTF8 バイト配列にシリアライズ
 byte[] utf8Bytes = JsonHelper.SerializeToUtf8Bytes(obj);
 
-// 格式化序列化为 UTF8 字节数组
+// フォーマット済みで UTF8 バイト配列にシリアライズ
 byte[] formattedUtf8Bytes = JsonHelper.SerializeToUtf8BytesFormat(obj);
 ```
 
-### 2. 反序列化方法
+### デシリアライズメソッド
 
-#### 基本反序列化
+#### 基本デシリアライズ
+
 ```csharp
-// 泛型反序列化
+// ジェネリックデシリアライズ
 User user = JsonHelper.Deserialize<User>(json);
 
-// Type 类型反序列化
+// Type 型指定デシリアライズ
 object obj = JsonHelper.Deserialize(json, typeof(User));
 
-// 使用自定义配置反序列化
+// カスタム設定でデシリアライズ
 User user = JsonHelper.Deserialize<User>(json, customOptions);
 ```
 
-#### UTF8 字节数组反序列化
+#### UTF8 バイト配列デシリアライズ
+
 ```csharp
-// 从 UTF8 字节数组反序列化
+// UTF8 バイト配列からデシリアライズ
 User user = JsonHelper.DeserializeFromUtf8Bytes<User>(utf8Bytes);
 
-// 使用自定义配置从 UTF8 字节数组反序列化
+// カスタム設定で UTF8 バイト配列からデシリアライズ
 User user = JsonHelper.DeserializeFromUtf8Bytes<User>(utf8Bytes, customOptions);
 ```
 
-### 3. 安全的 Try 方法
+### 安全な Try メソッド
 
 ```csharp
-// 安全序列化
+// 安全なシリアライズ
 if (JsonHelper.TrySerialize(user, out string result))
 {
-    Console.WriteLine($"序列化成功: {result}");
+    Console.WriteLine($"シリアライズ成功: {result}");
 }
 else
 {
-    Console.WriteLine("序列化失败");
+    Console.WriteLine("シリアライズ失敗");
 }
 
-// 安全反序列化
+// 安全なデシリアライズ
 if (JsonHelper.TryDeserialize<User>(json, out User user))
 {
-    Console.WriteLine($"反序列化成功: {user.Name}");
+    Console.WriteLine($"デシリアライズ成功: {user.Name}");
 }
 else
 {
-    Console.WriteLine("反序列化失败");
+    Console.WriteLine("デシリアライズ失敗");
 }
 ```
 
-## ⚙️ 配置选项
+### 設定オプション
 
-### 默认配置 (DefaultOptions)
+#### デフォルト設定 (DefaultOptions)
 
 ```csharp
 public static readonly JsonSerializerOptions DefaultOptions = new JsonSerializerOptions
 {
-    // 忽略 null 值属性
+    // null値プロパティを無視
     DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-    // 忽略循环引用
+    // 循環参照を無視
     ReferenceHandler = ReferenceHandler.IgnoreCycles,
-    // 忽略 JSON 注释
+    // JSONコメントを無視
     ReadCommentHandling = JsonCommentHandling.Skip,
-    // 使用宽松的 JavaScript 编码器
+    // 緩やかな JavaScript エンコーダーを使用
     Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-    // 允许尾随逗号
+    // 末尾カンマを許可
     AllowTrailingCommas = true,
-    // 属性名称大小写不敏感
+    // プロパティ名の大文字小文字を区別しない
     PropertyNameCaseInsensitive = true,
-    // 允许从字符串读取数字和特殊浮点值
+    // 文字列からの数値読み取りと特殊浮動小数点値を許可
     NumberHandling = JsonNumberHandling.AllowReadingFromString | 
                     JsonNumberHandling.AllowNamedFloatingPointLiterals,
-    // 自定义转换器
+    // カスタムコンバーター
     Converters = {
-        new JsonStringEnumConverter(), // 枚举字符串转换
-        new SpecialFloatingPointConverter(), // 特殊浮点值转换 (double)
-        new SpecialFloatingPointConverterFloat(), // 特殊浮点值转换 (float)
-        new SpecialFloatingPointDocumentConverter(), // JSON 文档特殊浮点值转换
+        new JsonStringEnumConverter(), // 列挙型文字列変換
+        new SpecialFloatingPointConverter(), // 特殊浮動小数点値変換 (double)
+        new SpecialFloatingPointConverterFloat(), // 特殊浮動小数点値変換 (float)
+        new SpecialFloatingPointDocumentConverter(), // JSON ドキュメント特殊浮動小数点値変換
     }
 };
 ```
 
-### 格式化配置 (FormatOptions)
+#### フォーマット設定 (FormatOptions)
 
-格式化配置在默认配置基础上增加了 `WriteIndented = true`，用于生成格式化的 JSON 输出。
+フォーマット設定はデフォルト設定に `WriteIndented = true` を追加したもので、フォーマット済みの JSON 出力を生成します。
 
-## 🔧 特殊功能
+### 特殊機能
 
-### 1. 特殊浮点值处理
+#### 特殊浮動小数点値処理
 
-库内置了对特殊浮点值的完整支持：
+ライブラリは特殊浮動小数点値の完全なサポートを内蔵しています：
 
 ```csharp
 public class TestData
@@ -201,13 +186,13 @@ public class TestData
 
 var data = new TestData();
 string json = JsonHelper.Serialize(data);
-// 输出: {"NaNValue":"NaN","InfinityValue":"Infinity","NegativeInfinityValue":"-Infinity","FloatNaN":"NaN"}
+// 出力: {"NaNValue":"NaN","InfinityValue":"Infinity","NegativeInfinityValue":"-Infinity","FloatNaN":"NaN"}
 
 TestData deserializedData = JsonHelper.Deserialize<TestData>(json);
-// 特殊值正确还原
+// 特殊値が正しく復元される
 ```
 
-### 2. 枚举处理
+#### 列挙型処理
 
 ```csharp
 public enum Status
@@ -224,27 +209,27 @@ public class Order
 
 var order = new Order();
 string json = JsonHelper.Serialize(order);
-// 输出: {"Status":"Active"}  (字符串形式，而非数字)
+// 出力: {"Status":"Active"}  （数値ではなく文字列形式）
 ```
 
-### 3. 容错机制
+#### フォールトトレランス機構
 
-库提供了多重容错机制：
+ライブラリは多重のフォールトトレランス機構を提供します：
 
-1. **配置容错** - 默认配置失败时自动尝试格式化配置
-2. **特殊值预处理** - 自动处理非标准格式的特殊浮点值
-3. **多次尝试** - 失败时进行多种方式的重试
+1. **設定フォールトトレランス** - デフォルト設定で失敗した場合、自動的にフォーマット設定を試行
+2. **特殊値事前処理** - 非標準形式の特殊浮動小数点値を自動的に処理
+3. **複数回試行** - 失敗時に複数の方式でリトライ
 
 ```csharp
-// 即使 JSON 包含非标准格式的特殊值，也能正确处理
+// JSONに非標準形式の特殊値が含まれていても正しく処理される
 string problematicJson = @"{""value"": NaN, ""score"": Infinity}";
 var result = JsonHelper.Deserialize<Dictionary<string, double>>(problematicJson);
-// 成功反序列化，NaN 和 Infinity 被正确处理
+// デシリアライズ成功、NaN と Infinity が正しく処理される
 ```
 
-## 🎨 高级用法
+## 高度な使い方
 
-### 自定义配置
+### カスタム設定
 
 ```csharp
 var customOptions = new JsonSerializerOptions
@@ -254,69 +239,69 @@ var customOptions = new JsonSerializerOptions
     DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault
 };
 
-// 添加 GameFrameX 的特殊转换器
+// GameFrameX の特殊コンバーターを追加
 customOptions.Converters.Add(new SpecialFloatingPointConverter());
 customOptions.Converters.Add(new JsonStringEnumConverter());
 
 string json = JsonHelper.Serialize(data, customOptions);
 ```
 
-### 批量处理
+### バッチ処理
 
 ```csharp
 var users = new List<User>
 {
-    new User { Name = "张三", Age = 25 },
+    new User { Name = "張三", Age = 25 },
     new User { Name = "李四", Age = 30 },
     new User { Name = "王五", Age = 35 }
 };
 
-// 序列化列表
+// リストのシリアライズ
 string json = JsonHelper.Serialize(users);
 
-// 反序列化列表
+// リストのデシリアライズ
 List<User> deserializedUsers = JsonHelper.Deserialize<List<User>>(json);
 ```
 
-### 性能优化
+### パフォーマンス最適化
 
 ```csharp
-// 对于大量数据，使用 UTF8 字节数组可以提高性能
+// 大量データには UTF8 バイト配列を使用してパフォーマンスを向上
 byte[] utf8Data = JsonHelper.SerializeToUtf8Bytes(largeDataSet);
 
-// 直接从字节数组反序列化，避免字符串转换开销
+// バイト配列から直接デシリアライズし、文字列変換のオーバーヘッドを回避
 var result = JsonHelper.DeserializeFromUtf8Bytes<LargeDataSet>(utf8Data);
 ```
 
-## 💡 最佳实践
+## ベストプラクティス
 
-### 1. 选择合适的序列化方法
+### 適切なシリアライズメソッドの選択
 
 ```csharp
-// 对于调试和日志，使用格式化序列化
+// デバッグやログにはフォーマット済みシリアライズを使用
 string debugJson = JsonHelper.SerializeFormat(debugData);
 
-// 对于网络传输和存储，使用默认序列化（更紧凑）
+// ネットワーク転送や保存にはデフォルトシリアライズを使用（よりコンパクト）
 string compactJson = JsonHelper.Serialize(networkData);
 
-// 对于高性能场景，使用 UTF8 字节数组
+// 高性能シナリオには UTF8 バイト配列を使用
 byte[] highPerfData = JsonHelper.SerializeToUtf8Bytes(data);
 ```
 
-### 2. 错误处理
+### エラー処理
 
 ```csharp
-// 对于可能失败的操作，使用 Try 方法
+// 失敗する可能性のある操作には Try メソッドを使用
 if (!JsonHelper.TryDeserialize<User>(userJson, out User user))
 {
-    // 记录错误日志
-    logger.LogError("用户数据反序列化失败: {Json}", userJson);
-    // 使用默认值或抛出业务异常
-    user = new User { Name = "未知用户" };
+    // エラーログを記録
+    logger.LogError("ユーザーデータのデシリアライズに失敗しました: {Json}", userJson);
+    // デフォルト値を使用するか、ビジネス例外をスロー
+    user = new User { Name = "不明なユーザー" };
 }
 ```
 
-### 3. 数据模型设计
+### データモデル設計
 
 ```csharp
 public class ApiResponse<T>
@@ -326,15 +311,15 @@ public class ApiResponse<T>
     public T Data { get; set; }
     public DateTime Timestamp { get; set; } = DateTime.UtcNow;
     
-    // 对于可能为 null 的属性，明确标记
+    // nullの可能性のあるプロパティは明示的にマーク
     public string ErrorCode { get; set; } = null;
 }
 ```
 
-### 4. 配置管理
+### 設定管理
 
 ```csharp
-// 为不同场景创建专用配置
+// シナリオごとに専用の設定を作成
 public static class JsonConfigurations
 {
     public static readonly JsonSerializerOptions ApiOptions = new JsonSerializerOptions
@@ -352,58 +337,57 @@ public static class JsonConfigurations
 }
 ```
 
-## 🔍 故障排除
+### トラブルシューティング
 
-### 常见问题
+#### よくある問題
 
-#### 1. 特殊浮点值序列化问题
-**问题**: 序列化包含 NaN 或 Infinity 的对象时出错
-**解决方案**: 使用 GameFrameX.Foundation.Json，它内置了特殊浮点值处理
+**特殊浮動小数点値のシリアライズ問題**
+問題: NaN や Infinity を含むオブジェクトのシリアライズ時にエラーが発生する
+解決策: GameFrameX.Foundation.Json を使用してください。特殊浮動小数点値処理が内蔵されています
 
-#### 2. 循环引用问题
-**问题**: 对象间存在循环引用导致序列化失败
-**解决方案**: 库的默认配置已启用 `ReferenceHandler.IgnoreCycles`
+**循環参照の問題**
+問題: オブジェクト間に循環参照があり、シリアライズが失敗する
+解決策: ライブラリのデフォルト設定で `ReferenceHandler.IgnoreCycles` が有効になっています
 
-#### 3. 枚举序列化问题
-**问题**: 希望枚举序列化为字符串而非数字
-**解决方案**: 库默认包含 `JsonStringEnumConverter`
+**列挙型シリアライズの問題**
+問題: 列挙型を数値ではなく文字列としてシリアライズしたい
+解決策: ライブラリにデフォルトで `JsonStringEnumConverter` が含まれています
 
-#### 4. 性能问题
-**问题**: 大数据量序列化性能不佳
-**解决方案**: 使用 UTF8 字节数组方法，避免字符串转换开销
+**パフォーマンスの問題**
+問題: 大量データのシリアライズパフォーマンスが良くない
+解決策: UTF8 バイト配列メソッドを使用し、文字列変換のオーバーヘッドを回避してください
 
-### 调试技巧
+#### デバッグのヒント
 
 ```csharp
-// 启用详细的错误信息
+// 詳細なエラー情報を有効にする
 try
 {
     var result = JsonHelper.Deserialize<ComplexObject>(json);
 }
 catch (JsonException ex)
 {
-    Console.WriteLine($"JSON 解析错误: {ex.Message}");
-    Console.WriteLine($"错误位置: Line {ex.LineNumber}, Position {ex.BytePositionInLine}");
-    Console.WriteLine($"问题路径: {ex.Path}");
+    Console.WriteLine($"JSON 解析エラー: {ex.Message}");
+    Console.WriteLine($"エラー位置: Line {ex.LineNumber}, Position {ex.BytePositionInLine}");
+    Console.WriteLine($"問題のパス: {ex.Path}");
 }
 ```
 
-## 📄 许可证
+## API リファレンス
 
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
-
----
-
-**GameFrameX.Foundation.Json** - 让 JSON 处理更简单、更可靠！
+| メソッド | パラメータ | 戻り値 | 説明 |
+|------|------|--------|------|
+| Serialize | `T` | `string` | デフォルト設定でオブジェクトをシリアライズ |
+| Serialize | `T, JsonSerializerOptions` | `string` | カスタム設定でシリアライズ |
+| SerializeFormat | `T` | `string` | フォーマット済みシリアライズ（自動インデント） |
+| SerializeToUtf8Bytes | `T` | `byte[]` | UTF8バイト配列にシリアライズ |
+| SerializeToUtf8BytesFormat | `T` | `byte[]` | フォーマット済みでUTF8バイト配列にシリアライズ |
+| Deserialize\<T\> | `string` | `T` | ジェネリックデシリアライズ |
+| Deserialize | `string, Type` | `object` | 型指定デシリアライズ |
+| Deserialize\<T\> | `string, JsonSerializerOptions` | `T` | カスタム設定でデシリアライズ |
+| DeserializeFromUtf8Bytes\<T\> | `byte[]` | `T` | UTF8バイト配列からデシリアライズ |
+| DeserializeFromUtf8Bytes\<T\> | `byte[], JsonSerializerOptions` | `T` | カスタム設定でUTF8バイト配列からデシリアライズ |
+| TrySerialize | `T, out string` | `bool` | 安全なシリアライズ試行 |
+| TryDeserialize\<T\> | `string, out T` | `bool` | 安全なデシリアライズ試行 |
+| DefaultOptions | なし | `JsonSerializerOptions` | デフォルト設定（静的プロパティ） |
+| FormatOptions | なし | `JsonSerializerOptions` | フォーマット設定（静的プロパティ） |

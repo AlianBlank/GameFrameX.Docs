@@ -1,11 +1,11 @@
-# Hash计算
+# Hash计算（多算法统一哈希库）
 
 [![NuGet](https://img.shields.io/nuget/v/GameFrameX.Foundation.Hash.svg)](https://www.nuget.org/packages/GameFrameX.Foundation.Hash/)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/GameFrameX/GameFrameX/blob/main/LICENSE)
 
 GameFrameX.Foundation.Hash 是 GameFrameX 框架的基础设施库，提供了多种高性能哈希算法的统一接口。该库支持常用的加密哈希算法（MD5、SHA系列）和高性能非加密哈希算法（xxHash、MurmurHash3、CRC等）。
 
-## 🎯 核心特性
+## 特性
 
 - **多种哈希算法支持** - MD5、SHA-1、SHA-256、SHA-512、xxHash、MurmurHash3、CRC32/64、HMAC-SHA256
 - **高性能实现** - 基于.NET原生算法和优化的第三方库
@@ -15,13 +15,13 @@ GameFrameX.Foundation.Hash 是 GameFrameX 框架的基础设施库，提供了�
 - **加盐支持** - MD5等算法支持加盐哈希
 - **验证功能** - 内置哈希值验证方法
 
-## 📦 安装
+## 安装
 
 ```bash
 dotnet add package GameFrameX.Foundation.Hash
 ```
 
-## 🚀 快速开始
+## 快速开始
 
 ### MD5 哈希
 
@@ -77,7 +77,7 @@ uint128 hash128 = XxHashHelper.Hash128("Hello World");
 uint typeHash = XxHashHelper.Hash32<MyClass>();
 ```
 
-## 📖 详细使用指南
+## 详细用法
 
 ### MD5 哈希算法
 
@@ -231,7 +231,7 @@ string hmacFromBytes = HmacSha256Helper.ComputeHash(data, key);
 bool isValid = HmacSha256Helper.VerifyHash("input text", "secret key", hmac);
 ```
 
-## 🎨 高级用法
+## 高级用法
 
 ### 批量哈希计算
 
@@ -354,7 +354,25 @@ public class HashPerformanceTest
 }
 ```
 
-## 💡 最佳实践
+### 自定义编码
+
+```csharp
+// 使用不同的字符编码
+string hash1 = Sha256Helper.ComputeHash("测试文本", Encoding.UTF8);
+string hash2 = Sha256Helper.ComputeHash("测试文本", Encoding.Unicode);
+string hash3 = Sha256Helper.ComputeHash("测试文本", Encoding.ASCII);
+```
+
+### xxHash 种子值
+
+```csharp
+// MurmurHash3 支持自定义种子值
+uint hash1 = MurmurHash3Helper.Hash32("input", seed: 0);
+uint hash2 = MurmurHash3Helper.Hash32("input", seed: 12345);
+// 相同输入，不同种子会产生不同的哈希值
+```
+
+## 最佳实践
 
 ### 算法选择指南
 
@@ -375,30 +393,30 @@ public class HashPerformanceTest
 ### 安全注意事项
 
 ```csharp
-// ❌ 不安全：直接哈希密码
+// 不安全：直接哈希密码
 string unsafeHash = Md5Helper.Hash(password);
 
-// ✅ 安全：使用盐值
+// 安全：使用盐值
 string salt = GenerateRandomSalt();
 string safeHash = Sha256Helper.ComputeHash(password + salt);
 
-// ✅ 更安全：使用专门的密码哈希算法（如 bcrypt、scrypt、Argon2）
+// 更安全：使用专门的密码哈希算法（如 bcrypt、scrypt、Argon2）
 // 注意：本库主要提供通用哈希算法，密码存储建议使用专门的密码哈希库
 ```
 
 ### 性能优化建议
 
 ```csharp
-// ✅ 重用字节数组避免重复编码
+// 重用字节数组避免重复编码
 byte[] data = Encoding.UTF8.GetBytes(input);
 string md5Hash = Md5Helper.Hash(data);
 string sha256Hash = Sha256Helper.ComputeHash(data);
 
-// ✅ 对于大文件，使用流式处理
+// 对于大文件，使用流式处理
 using var fileStream = File.OpenRead(largeFilePath);
 string hash = Md5Helper.Hash(fileStream);
 
-// ✅ 批量操作时考虑并行处理
+// 批量操作时考虑并行处理
 var hashes = inputs.AsParallel()
     .Select(input => new { Input = input, Hash = XxHashHelper.Hash64(input) })
     .ToArray();
@@ -432,29 +450,7 @@ public static class SafeHashHelper
 }
 ```
 
-## 🔧 配置选项
-
-### 自定义编码
-
-```csharp
-// 使用不同的字符编码
-string hash1 = Sha256Helper.ComputeHash("测试文本", Encoding.UTF8);
-string hash2 = Sha256Helper.ComputeHash("测试文本", Encoding.Unicode);
-string hash3 = Sha256Helper.ComputeHash("测试文本", Encoding.ASCII);
-```
-
-### xxHash 种子值
-
-```csharp
-// MurmurHash3 支持自定义种子值
-uint hash1 = MurmurHash3Helper.Hash32("input", seed: 0);
-uint hash2 = MurmurHash3Helper.Hash32("input", seed: 12345);
-// 相同输入，不同种子会产生不同的哈希值
-```
-
-## 🔍 故障排除
-
-### 常见问题
+### 故障排除
 
 **Q: MD5 哈希结果与在线工具不一致？**
 ```csharp
@@ -508,31 +504,47 @@ public static class HashDebugHelper
 }
 ```
 
-## 📊 性能对比
+## API 参考
+
+| 类 | 方法 | 参数 | 返回值 | 说明 |
+|---|------|------|--------|------|
+| **Md5Helper** | Hash | `string` / `string, bool` | `string` | 计算MD5哈希 |
+| | Hash | `byte[]` | `string` | 字节数组MD5哈希 |
+| | Hash | `Stream` | `string` | 流MD5哈希 |
+| | HashWithSalt | `string, string` / `string, byte[]` | `string` | 加盐MD5哈希 |
+| | HashByFilePath | `string` | `string` | 文件MD5哈希 |
+| | IsVerify | `string, string` | `bool` | 验证哈希值 |
+| | IsVerifyWithSalt | `string, string, string` | `bool` | 验证加盐哈希 |
+| **Sha256Helper** | ComputeHash | `string` / `string, Encoding` | `string` | 计算SHA-256哈希 |
+| | ComputeHash | `byte[]` | `string` | 字节数组SHA-256 |
+| | ComputeFileHash | `string` | `string` | 文件SHA-256 |
+| | VerifyHash | `string, string` | `bool` | 验证哈希值 |
+| | VerifyFileHash | `string, string` | `bool` | 验证文件哈希 |
+| **Sha1Helper** | ComputeHash | `string` | `string` | 计算SHA-1哈希 |
+| | VerifyHash | `string, string` | `bool` | 验证哈希值 |
+| **Sha512Helper** | ComputeHash | `string` | `string` | 计算SHA-512哈希 |
+| | VerifyHash | `string, string` | `bool` | 验证哈希值 |
+| **XxHashHelper** | Hash32 | `string` / `byte[]` | `uint` | 32位xxHash |
+| | Hash64 | `string` / `byte[]` | `ulong` | 64位xxHash |
+| | Hash128 | `string` / `byte[]` / `byte[], int` | `uint128` | 128位xxHash |
+| | Hash32\<T\> | 无 | `uint` | 类型哈希（32位） |
+| | Hash64\<T\> | 无 | `ulong` | 类型哈希（64位） |
+| | IsDefault | `uint128` | `bool` | 检查是否为默认值 |
+| **MurmurHash3Helper** | Hash32 | `string` / `string, int` / `byte[]` | `uint` | MurmurHash3（支持种子） |
+| **CrcHelper** | Crc32 | `string` / `byte[]` / `Stream` | `uint` | CRC32校验 |
+| | Crc64 | `string` / `byte[]` | `ulong` | CRC64校验 |
+| **HmacSha256Helper** | ComputeHash | `string, string` / `byte[], byte[]` | `string` | HMAC-SHA256 |
+| | VerifyHash | `string, string, string` | `bool` | 验证HMAC |
+
+### 性能对比
 
 | 算法 | 安全性 | 性能 | 输出长度 | 适用场景 |
 |------|--------|------|----------|----------|
-| MD5 | ❌ 低 | ⭐⭐⭐ | 32字符 | 兼容性需求 |
-| SHA-1 | ⚠️ 中 | ⭐⭐ | 40字符 | 兼容性需求 |
-| SHA-256 | ✅ 高 | ⭐⭐ | 64字符 | 安全哈希 |
-| SHA-512 | ✅ 高 | ⭐ | 128字符 | 高安全需求 |
-| xxHash32 | ❌ 无 | ⭐⭐⭐⭐⭐ | 8字符 | 高性能场景 |
-| xxHash64 | ❌ 无 | ⭐⭐⭐⭐⭐ | 16字符 | 高性能场景 |
-| CRC32 | ❌ 无 | ⭐⭐⭐⭐ | 8字符 | 数据校验 |
-| HMAC-SHA256 | ✅ 高 | ⭐⭐ | 64字符 | 消息认证 |
-
-## 📄 许可证
-
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
+| MD5 | 低 | 高 | 32字符 | 兼容性需求 |
+| SHA-1 | 中 | 中 | 40字符 | 兼容性需求 |
+| SHA-256 | 高 | 中 | 64字符 | 安全哈希 |
+| SHA-512 | 高 | 中低 | 128字符 | 高安全需求 |
+| xxHash32 | 无 | 极高 | 8字符 | 高性能场景 |
+| xxHash64 | 无 | 极高 | 16字符 | 高性能场景 |
+| CRC32 | 无 | 高 | 8字符 | 数据校验 |
+| HMAC-SHA256 | 高 | 中 | 64字符 | 消息认证 |

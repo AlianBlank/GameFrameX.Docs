@@ -1,139 +1,139 @@
-# Hash计算
+# 해시 계산 (다중 알고리즘 통합 해시 라이브러리)
 
 [![NuGet](https://img.shields.io/nuget/v/GameFrameX.Foundation.Hash.svg)](https://www.nuget.org/packages/GameFrameX.Foundation.Hash/)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/GameFrameX/GameFrameX/blob/main/LICENSE)
 
-GameFrameX.Foundation.Hash 是 GameFrameX 框架的基础设施库，提供了多种高性能哈希算法的统一接口。该库支持常用的加密哈希算法（MD5、SHA系列）和高性能非加密哈希算法（xxHash、MurmurHash3、CRC等）。
+GameFrameX.Foundation.Hash는 GameFrameX 프레임워크의 기반 라이브러리로, 다양한 고성능 해시 알고리즘의 통합 인터페이스를 제공합니다. 이 라이브러리는 일반적인 암호화 해시 알고리즘(MD5, SHA 시리즈)과 고성능 비암호화 해시 알고리즘(xxHash, MurmurHash3, CRC 등)을 지원합니다.
 
-## 🎯 核心特性
+## 특징
 
-- **多种哈希算法支持** - MD5、SHA-1、SHA-256、SHA-512、xxHash、MurmurHash3、CRC32/64、HMAC-SHA256
-- **高性能实现** - 基于.NET原生算法和优化的第三方库
-- **统一API设计** - 所有算法提供一致的调用接口
-- **多种输入格式** - 支持字符串、字节数组、流和文件路径
-- **类型安全** - 完整的参数验证和异常处理
-- **加盐支持** - MD5等算法支持加盐哈希
-- **验证功能** - 内置哈希值验证方法
+- **다양한 해시 알고리즘 지원** - MD5, SHA-1, SHA-256, SHA-512, xxHash, MurmurHash3, CRC32/64, HMAC-SHA256
+- **고성능 구현** - .NET 네이티브 알고리즘 및 최적화된 서드파티 라이브러리 기반
+- **통합 API 설계** - 모든 알고리즘이 일관된 호출 인터페이스 제공
+- **다양한 입력 형식** - 문자열, 바이트 배열, 스트림 및 파일 경로 지원
+- **형식 안전성** - 완전한 매개변수 검증 및 예외 처리
+- **솔트 지원** - MD5 등 알고리즘의 솔트 해시 지원
+- **검증 기능** - 내장 해시값 검증 메서드
 
-## 📦 安装
+## 설치
 
 ```bash
 dotnet add package GameFrameX.Foundation.Hash
 ```
 
-## 🚀 快速开始
+## 빠른 시작
 
-### MD5 哈希
+### MD5 해시
 
 ```csharp
 using GameFrameX.Foundation.Hash;
 
-// 字符串哈希
+// 문자열 해시
 string text = "Hello World";
 string hash = Md5Helper.Hash(text);
-Console.WriteLine(hash); // 输出: b10a8db164e0754105b7a99be72e3fe5
+Console.WriteLine(hash); // 출력: b10a8db164e0754105b7a99be72e3fe5
 
-// 加盐哈希
+// 솔트 해시
 string saltedHash = Md5Helper.HashWithSalt(text, "salt123");
 
-// 文件哈希
+// 파일 해시
 string fileHash = Md5Helper.HashByFilePath("path/to/file.txt");
 
-// 验证哈希
+// 해시 검증
 bool isValid = Md5Helper.IsVerify(text, hash);
 ```
 
-### SHA-256 哈希
+### SHA-256 해시
 
 ```csharp
 using GameFrameX.Foundation.Hash;
 
-// 字符串哈希
+// 문자열 해시
 string text = "Hello World";
 string hash = Sha256Helper.ComputeHash(text);
 
-// 文件哈希
+// 파일 해시
 string fileHash = Sha256Helper.ComputeFileHash("path/to/file.txt");
 
-// 验证哈希
+// 해시 검증
 bool isValid = Sha256Helper.VerifyHash(text, hash);
 ```
 
-### xxHash 高性能哈希
+### xxHash 고성능 해시
 
 ```csharp
 using GameFrameX.Foundation.Hash;
 
-// 32位哈希
+// 32비트 해시
 uint hash32 = XxHashHelper.Hash32("Hello World");
 
-// 64位哈希
+// 64비트 해시
 ulong hash64 = XxHashHelper.Hash64("Hello World");
 
-// 128位哈希
+// 128비트 해시
 uint128 hash128 = XxHashHelper.Hash128("Hello World");
 
-// 类型哈希
+// 형식 해시
 uint typeHash = XxHashHelper.Hash32<MyClass>();
 ```
 
-## 📖 详细使用指南
+## 상세 사용법
 
-### MD5 哈希算法
+### MD5 해시 알고리즘
 
-MD5Helper 提供了完整的MD5哈希功能：
+MD5Helper는 완전한 MD5 해시 기능을 제공합니다:
 
 ```csharp
-// 基本哈希
+// 기본 해시
 string hash = Md5Helper.Hash("input text");
 
-// 大写格式
+// 대문자 형식
 string upperHash = Md5Helper.Hash("input text", isUpper: true);
 
-// 字节数组哈希
+// 바이트 배열 해시
 byte[] data = Encoding.UTF8.GetBytes("input text");
 string hash = Md5Helper.Hash(data);
 
-// 流哈希
+// 스트림 해시
 using var stream = new MemoryStream(data);
 string hash = Md5Helper.Hash(stream);
 
-// 加盐哈希（字符串盐）
+// 솔트 해시 (문자열 솔트)
 string saltedHash = Md5Helper.HashWithSalt("input", "salt");
 
-// 加盐哈希（字节数组盐）
+// 솔트 해시 (바이트 배열 솔트)
 byte[] salt = Encoding.UTF8.GetBytes("salt");
 string saltedHash = Md5Helper.HashWithSalt("input", salt);
 
-// 验证哈希
+// 해시 검증
 bool isValid = Md5Helper.IsVerify("input", hash);
 bool isSaltedValid = Md5Helper.IsVerifyWithSalt("input", "salt", saltedHash);
 ```
 
-### SHA 系列哈希算法
+### SHA 시리즈 해시 알고리즘
 
 #### SHA-256
 
 ```csharp
-// 基本哈希
+// 기본 해시
 string hash = Sha256Helper.ComputeHash("input text");
 
-// 指定编码
+// 인코딩 지정
 string hash = Sha256Helper.ComputeHash("input text", Encoding.ASCII);
 
-// 字节数组哈希
+// 바이트 배열 해시
 byte[] data = Encoding.UTF8.GetBytes("input text");
 string hash = Sha256Helper.ComputeHash(data);
 
-// 文件哈希
+// 파일 해시
 string fileHash = Sha256Helper.ComputeFileHash("path/to/file.txt");
 
-// 验证哈希
+// 해시 검증
 bool isValid = Sha256Helper.VerifyHash("input text", hash);
 bool isFileValid = Sha256Helper.VerifyFileHash("path/to/file.txt", fileHash);
 ```
 
-#### SHA-1 和 SHA-512
+#### SHA-1 및 SHA-512
 
 ```csharp
 // SHA-1
@@ -145,62 +145,62 @@ string sha512Hash = Sha512Helper.ComputeHash("input text");
 bool sha512Valid = Sha512Helper.VerifyHash("input text", sha512Hash);
 ```
 
-### xxHash 高性能哈希
+### xxHash 고성능 해시
 
-xxHash 是专为高性能设计的非加密哈希算法：
+xxHash는 고성능을 위해 설계된 비암호화 해시 알고리즘입니다:
 
 ```csharp
-// 32位哈希
+// 32비트 해시
 uint hash32 = XxHashHelper.Hash32("input text");
 uint hash32FromBytes = XxHashHelper.Hash32(Encoding.UTF8.GetBytes("input"));
 
-// 64位哈希
+// 64비트 해시
 ulong hash64 = XxHashHelper.Hash64("input text");
 ulong hash64FromBytes = XxHashHelper.Hash64(Encoding.UTF8.GetBytes("input"));
 
-// 128位哈希
+// 128비트 해시
 uint128 hash128 = XxHashHelper.Hash128("input text");
 uint128 hash128FromBytes = XxHashHelper.Hash128(Encoding.UTF8.GetBytes("input"));
 
-// 指定长度的128位哈希
+// 지정된 길이의 128비트 해시
 byte[] data = Encoding.UTF8.GetBytes("input text");
-uint128 hash128Limited = XxHashHelper.Hash128(data, 5); // 只使用前5个字节
+uint128 hash128Limited = XxHashHelper.Hash128(data, 5); // 처음 5바이트만 사용
 
-// 类型哈希
+// 형식 해시
 uint typeHash32 = XxHashHelper.Hash32<string>();
 ulong typeHash64 = XxHashHelper.Hash64<MyClass>();
 
-// 检查128位哈希是否为默认值
+// 128비트 해시가 기본값인지 확인
 bool isDefault = XxHashHelper.IsDefault(hash128);
 ```
 
-### MurmurHash3 算法
+### MurmurHash3 알고리즘
 
 ```csharp
-// 32位 MurmurHash3
+// 32비트 MurmurHash3
 uint murmurHash = MurmurHash3Helper.Hash32("input text");
 
-// 指定种子值
+// 시드값 지정
 uint murmurHashWithSeed = MurmurHash3Helper.Hash32("input text", seed: 12345);
 
-// 字节数组哈希
+// 바이트 배열 해시
 byte[] data = Encoding.UTF8.GetBytes("input text");
 uint murmurHashFromBytes = MurmurHash3Helper.Hash32(data);
 ```
 
-### CRC 校验算法
+### CRC 체크섬 알고리즘
 
 #### CRC32
 
 ```csharp
-// 基本CRC32
+// 기본 CRC32
 uint crc32 = CrcHelper.Crc32("input text");
 
-// 字节数组CRC32
+// 바이트 배열 CRC32
 byte[] data = Encoding.UTF8.GetBytes("input text");
 uint crc32FromBytes = CrcHelper.Crc32(data);
 
-// 流CRC32
+// 스트림 CRC32
 using var stream = new MemoryStream(data);
 uint crc32FromStream = CrcHelper.Crc32(stream);
 ```
@@ -208,43 +208,43 @@ uint crc32FromStream = CrcHelper.Crc32(stream);
 #### CRC64
 
 ```csharp
-// 基本CRC64
+// 기본 CRC64
 ulong crc64 = CrcHelper.Crc64("input text");
 
-// 字节数组CRC64
+// 바이트 배열 CRC64
 byte[] data = Encoding.UTF8.GetBytes("input text");
 ulong crc64FromBytes = CrcHelper.Crc64(data);
 ```
 
-### HMAC-SHA256 算法
+### HMAC-SHA256 알고리즘
 
 ```csharp
-// 基本HMAC-SHA256
+// 기본 HMAC-SHA256
 string hmac = HmacSha256Helper.ComputeHash("input text", "secret key");
 
-// 字节数组输入
+// 바이트 배열 입력
 byte[] data = Encoding.UTF8.GetBytes("input text");
 byte[] key = Encoding.UTF8.GetBytes("secret key");
 string hmacFromBytes = HmacSha256Helper.ComputeHash(data, key);
 
-// 验证HMAC
+// HMAC 검증
 bool isValid = HmacSha256Helper.VerifyHash("input text", "secret key", hmac);
 ```
 
-## 🎨 高级用法
+## 고급 사용법
 
-### 批量哈希计算
+### 일괄 해시 계산
 
 ```csharp
-// 批量计算多个字符串的哈希值
+// 여러 문자열의 해시값 일괄 계산
 var inputs = new[] { "text1", "text2", "text3" };
 var hashes = inputs.Select(Md5Helper.Hash).ToArray();
 
-// 批量验证
+// 일괄 검증
 var results = inputs.Zip(hashes, Md5Helper.IsVerify).ToArray();
 ```
 
-### 文件完整性校验
+### 파일 무결성 검증
 
 ```csharp
 public class FileIntegrityChecker
@@ -273,7 +273,7 @@ public class FileIntegrityChecker
 }
 ```
 
-### 密码哈希最佳实践
+### 비밀번호 해시 모범 사례
 
 ```csharp
 public class PasswordHasher
@@ -282,11 +282,11 @@ public class PasswordHasher
     
     public static string HashPassword(string password)
     {
-        // 生成随机盐
+        // 임의의 솔트 생성
         var salt = GenerateRandomSalt();
         var hash = Md5Helper.HashWithSalt(password, salt);
         
-        // 返回盐和哈希的组合
+        // 솔트와 해시의 조합 반환
         return $"{salt}:{hash}";
     }
     
@@ -310,7 +310,7 @@ public class PasswordHasher
 }
 ```
 
-### 性能基准测试
+### 성능 벤치마크
 
 ```csharp
 public class HashPerformanceTest
@@ -354,57 +354,75 @@ public class HashPerformanceTest
 }
 ```
 
-## 💡 最佳实践
-
-### 算法选择指南
-
-1. **加密安全场景**
-    - 密码存储：使用 SHA-256 或更高强度算法
-    - 数字签名：使用 SHA-256 或 SHA-512
-    - 避免使用 MD5 和 SHA-1（已不安全）
-
-2. **高性能场景**
-    - 哈希表：使用 xxHash32 或 xxHash64
-    - 数据完整性校验：使用 CRC32 或 CRC64
-    - 缓存键生成：使用 xxHash 系列
-
-3. **兼容性场景**
-    - 与旧系统兼容：可能需要使用 MD5
-    - 标准协议：根据协议要求选择算法
-
-### 安全注意事项
+### 사용자 정의 인코딩
 
 ```csharp
-// ❌ 不安全：直接哈希密码
+// 다른 문자 인코딩 사용
+string hash1 = Sha256Helper.ComputeHash("테스트 텍스트", Encoding.UTF8);
+string hash2 = Sha256Helper.ComputeHash("테스트 텍스트", Encoding.Unicode);
+string hash3 = Sha256Helper.ComputeHash("테스트 텍스트", Encoding.ASCII);
+```
+
+### xxHash 시드값
+
+```csharp
+// MurmurHash3는 사용자 정의 시드값을 지원합니다
+uint hash1 = MurmurHash3Helper.Hash32("input", seed: 0);
+uint hash2 = MurmurHash3Helper.Hash32("input", seed: 12345);
+// 동일한 입력이라도 시드가 다르면 다른 해시값이 생성됩니다
+```
+
+## 모범 사례
+
+### 알고리즘 선택 가이드
+
+1. **암호화 보안 시나리오**
+    - 비밀번호 저장: SHA-256 이상의 강도를 가진 알고리즘 사용
+    - 디지털 서명: SHA-256 또는 SHA-512 사용
+    - MD5 및 SHA-1은 피하세요 (더 이상 안전하지 않음)
+
+2. **고성능 시나리오**
+    - 해시 테이블: xxHash32 또는 xxHash64 사용
+    - 데이터 무결성 검증: CRC32 또는 CRC64 사용
+    - 캐시 키 생성: xxHash 시리즈 사용
+
+3. **호환성 시나리오**
+    - 기존 시스템과의 호환성: MD5를 사용해야 할 수 있음
+    - 표준 프로토콜: 프로토콜 요구 사항에 따라 알고리즘 선택
+
+### 보안 주의사항
+
+```csharp
+// 안전하지 않음: 비밀번호를 직접 해시
 string unsafeHash = Md5Helper.Hash(password);
 
-// ✅ 安全：使用盐值
+// 안전함: 솔트값 사용
 string salt = GenerateRandomSalt();
 string safeHash = Sha256Helper.ComputeHash(password + salt);
 
-// ✅ 更安全：使用专门的密码哈希算法（如 bcrypt、scrypt、Argon2）
-// 注意：本库主要提供通用哈希算法，密码存储建议使用专门的密码哈希库
+// 더 안전함: 전용 비밀번호 해시 알고리즘 사용 (예: bcrypt, scrypt, Argon2)
+// 참고: 이 라이브러리는 주로 범용 해시 알고리즘을 제공하며, 비밀번호 저장에는 전용 비밀번호 해시 라이브러리 사용을 권장합니다
 ```
 
-### 性能优化建议
+### 성능 최적화 제안
 
 ```csharp
-// ✅ 重用字节数组避免重复编码
+// 바이트 배열을 재사용하여 반복적인 인코딩 방지
 byte[] data = Encoding.UTF8.GetBytes(input);
 string md5Hash = Md5Helper.Hash(data);
 string sha256Hash = Sha256Helper.ComputeHash(data);
 
-// ✅ 对于大文件，使用流式处理
+// 대용량 파일에는 스트림 처리 사용
 using var fileStream = File.OpenRead(largeFilePath);
 string hash = Md5Helper.Hash(fileStream);
 
-// ✅ 批量操作时考虑并行处理
+// 일괄 작업 시 병렬 처리 고려
 var hashes = inputs.AsParallel()
     .Select(input => new { Input = input, Hash = XxHashHelper.Hash64(input) })
     .ToArray();
 ```
 
-### 错误处理
+### 오류 처리
 
 ```csharp
 public static class SafeHashHelper
@@ -415,61 +433,39 @@ public static class SafeHashHelper
         {
             if (!File.Exists(filePath))
             {
-                throw new FileNotFoundException($"文件不存在: {filePath}");
+                throw new FileNotFoundException($"파일이 존재하지 않음: {filePath}");
             }
             
             return Sha256Helper.ComputeFileHash(filePath);
         }
         catch (UnauthorizedAccessException)
         {
-            throw new InvalidOperationException($"没有权限访问文件: {filePath}");
+            throw new InvalidOperationException($"파일 접근 권한 없음: {filePath}");
         }
         catch (IOException ex)
         {
-            throw new InvalidOperationException($"读取文件时发生IO错误: {ex.Message}");
+            throw new InvalidOperationException($"파일 읽기 중 IO 오류 발생: {ex.Message}");
         }
     }
 }
 ```
 
-## 🔧 配置选项
+### 문제 해결
 
-### 自定义编码
-
+**Q: MD5 해시 결과가 온라인 도구와 일치하지 않나요?**
 ```csharp
-// 使用不同的字符编码
-string hash1 = Sha256Helper.ComputeHash("测试文本", Encoding.UTF8);
-string hash2 = Sha256Helper.ComputeHash("测试文本", Encoding.Unicode);
-string hash3 = Sha256Helper.ComputeHash("测试文本", Encoding.ASCII);
-```
-
-### xxHash 种子值
-
-```csharp
-// MurmurHash3 支持自定义种子值
-uint hash1 = MurmurHash3Helper.Hash32("input", seed: 0);
-uint hash2 = MurmurHash3Helper.Hash32("input", seed: 12345);
-// 相同输入，不同种子会产生不同的哈希值
-```
-
-## 🔍 故障排除
-
-### 常见问题
-
-**Q: MD5 哈希结果与在线工具不一致？**
-```csharp
-// 确保使用相同的编码和格式
+// 동일한 인코딩과 형식을 사용했는지 확인하세요
 string input = "Hello World";
-string hash = Md5Helper.Hash(input, isUpper: false); // 小写
-string upperHash = Md5Helper.Hash(input, isUpper: true); // 大写
+string hash = Md5Helper.Hash(input, isUpper: false); // 소문자
+string upperHash = Md5Helper.Hash(input, isUpper: true); // 대문자
 ```
 
-**Q: 文件哈希计算失败？**
+**Q: 파일 해시 계산이 실패하나요?**
 ```csharp
-// 检查文件是否存在和权限
+// 파일 존재 여부 및 권한을 확인하세요
 if (!File.Exists(filePath))
 {
-    Console.WriteLine("文件不存在");
+    Console.WriteLine("파일이 존재하지 않습니다");
     return;
 }
 
@@ -479,27 +475,27 @@ try
 }
 catch (UnauthorizedAccessException)
 {
-    Console.WriteLine("没有文件访问权限");
+    Console.WriteLine("파일 접근 권한이 없습니다");
 }
 ```
 
-**Q: 大文件哈希计算内存占用过高？**
+**Q: 대용량 파일 해시 계산 시 메모리 사용량이 너무 높나요?**
 ```csharp
-// 使用流式处理而不是一次性读取整个文件
+// 전체 파일을 한 번에 읽지 말고 스트림 처리를 사용하세요
 using var fileStream = File.OpenRead(largeFilePath);
 string hash = Md5Helper.Hash(fileStream);
 ```
 
-### 调试技巧
+### 디버깅 팁
 
 ```csharp
-// 启用详细日志记录
+// 상세 로깅 활성화
 public static class HashDebugHelper
 {
     public static void DebugHash(string input)
     {
-        Console.WriteLine($"输入: {input}");
-        Console.WriteLine($"UTF8字节: {string.Join(",", Encoding.UTF8.GetBytes(input))}");
+        Console.WriteLine($"입력: {input}");
+        Console.WriteLine($"UTF8 바이트: {string.Join(",", Encoding.UTF8.GetBytes(input))}");
         Console.WriteLine($"MD5: {Md5Helper.Hash(input)}");
         Console.WriteLine($"SHA256: {Sha256Helper.ComputeHash(input)}");
         Console.WriteLine($"xxHash32: {XxHashHelper.Hash32(input)}");
@@ -508,31 +504,47 @@ public static class HashDebugHelper
 }
 ```
 
-## 📊 性能对比
+## API 레퍼런스
 
-| 算法 | 安全性 | 性能 | 输出长度 | 适用场景 |
+| 클래스 | 메서드 | 매개변수 | 반환값 | 설명 |
+|---|------|------|--------|------|
+| **Md5Helper** | Hash | `string` / `string, bool` | `string` | MD5 해시 계산 |
+| | Hash | `byte[]` | `string` | 바이트 배열 MD5 해시 |
+| | Hash | `Stream` | `string` | 스트림 MD5 해시 |
+| | HashWithSalt | `string, string` / `string, byte[]` | `string` | 솔트가 포함된 MD5 해시 |
+| | HashByFilePath | `string` | `string` | 파일 MD5 해시 |
+| | IsVerify | `string, string` | `bool` | 해시값 검증 |
+| | IsVerifyWithSalt | `string, string, string` | `bool` | 솔트 해시 검증 |
+| **Sha256Helper** | ComputeHash | `string` / `string, Encoding` | `string` | SHA-256 해시 계산 |
+| | ComputeHash | `byte[]` | `string` | 바이트 배열 SHA-256 |
+| | ComputeFileHash | `string` | `string` | 파일 SHA-256 |
+| | VerifyHash | `string, string` | `bool` | 해시값 검증 |
+| | VerifyFileHash | `string, string` | `bool` | 파일 해시 검증 |
+| **Sha1Helper** | ComputeHash | `string` | `string` | SHA-1 해시 계산 |
+| | VerifyHash | `string, string` | `bool` | 해시값 검증 |
+| **Sha512Helper** | ComputeHash | `string` | `string` | SHA-512 해시 계산 |
+| | VerifyHash | `string, string` | `bool` | 해시값 검증 |
+| **XxHashHelper** | Hash32 | `string` / `byte[]` | `uint` | 32비트 xxHash |
+| | Hash64 | `string` / `byte[]` | `ulong` | 64비트 xxHash |
+| | Hash128 | `string` / `byte[]` / `byte[], int` | `uint128` | 128비트 xxHash |
+| | Hash32\<T\> | 없음 | `uint` | 형식 해시 (32비트) |
+| | Hash64\<T\> | 없음 | `ulong` | 형식 해시 (64비트) |
+| | IsDefault | `uint128` | `bool` | 기본값 여부 확인 |
+| **MurmurHash3Helper** | Hash32 | `string` / `string, int` / `byte[]` | `uint` | MurmurHash3 (시드 지원) |
+| **CrcHelper** | Crc32 | `string` / `byte[]` / `Stream` | `uint` | CRC32 체크섬 |
+| | Crc64 | `string` / `byte[]` | `ulong` | CRC64 체크섬 |
+| **HmacSha256Helper** | ComputeHash | `string, string` / `byte[], byte[]` | `string` | HMAC-SHA256 |
+| | VerifyHash | `string, string, string` | `bool` | HMAC 검증 |
+
+### 성능 비교
+
+| 알고리즘 | 보안성 | 성능 | 출력 길이 | 적용 시나리오 |
 |------|--------|------|----------|----------|
-| MD5 | ❌ 低 | ⭐⭐⭐ | 32字符 | 兼容性需求 |
-| SHA-1 | ⚠️ 中 | ⭐⭐ | 40字符 | 兼容性需求 |
-| SHA-256 | ✅ 高 | ⭐⭐ | 64字符 | 安全哈希 |
-| SHA-512 | ✅ 高 | ⭐ | 128字符 | 高安全需求 |
-| xxHash32 | ❌ 无 | ⭐⭐⭐⭐⭐ | 8字符 | 高性能场景 |
-| xxHash64 | ❌ 无 | ⭐⭐⭐⭐⭐ | 16字符 | 高性能场景 |
-| CRC32 | ❌ 无 | ⭐⭐⭐⭐ | 8字符 | 数据校验 |
-| HMAC-SHA256 | ✅ 高 | ⭐⭐ | 64字符 | 消息认证 |
-
-## 📄 许可证
-
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
+| MD5 | 낮음 | 높음 | 32문자 | 호환성 요구 |
+| SHA-1 | 중간 | 중간 | 40문자 | 호환성 요구 |
+| SHA-256 | 높음 | 중간 | 64문자 | 보안 해시 |
+| SHA-512 | 높음 | 중낮음 | 128문자 | 높은 보안 요구 |
+| xxHash32 | 없음 | 매우 높음 | 8문자 | 고성능 시나리오 |
+| xxHash64 | 없음 | 매우 높음 | 16문자 | 고성능 시나리오 |
+| CRC32 | 없음 | 높음 | 8문자 | 데이터 검증 |
+| HMAC-SHA256 | 높음 | 중간 | 64문자 | 메시지 인증 |

@@ -1,21 +1,27 @@
-# 启动参数解析器
+# 起動パラメーターパーサー（コマンドライン引数と環境変数の自動マッピング）
 
-一个强大的命令行参数和环境变量解析库，支持将命令行参数和环境变量自动映射到强类型配置对象。
+コマンドライン引数と環境変数を強く型付けされた設定オブジェクトに自動マッピングする、強力なコマンドライン引数・環境変数解析ライブラリです。
 
-## 特性
+## 特徴
 
-- ✅ **参数优先级处理**: 命令行参数 > 环境变量 > 默认值
-- ✅ **泛型支持**: 支持任意强类型配置类
-- ✅ **多种启动方式兼容**: 支持Docker、exe、shell等启动方式
-- ✅ **自动前缀处理**: 自动为参数添加`--`前缀
-- ✅ **布尔参数支持**: 支持多种布尔参数格式
-- ✅ **环境变量映射**: 自动映射环境变量到配置属性
-- ✅ **类型转换**: 自动转换字符串参数到目标类型
-- ✅ **特性支持**: 支持丰富的配置特性
+- **パラメーター優先度処理**: コマンドライン引数 > 環境変数 > デフォルト値
+- **ジェネリックサポート**: 任意の強く型付けされた設定クラスをサポート
+- **複数起動方式互換**: Docker、exe、shellなどの起動方式をサポート
+- **自動プレフィックス処理**: パラメーターに自動的に`--`プレフィックスを追加
+- **ブールパラメーターサポート**: 複数のブールパラメーター形式をサポート
+- **環境変数マッピング**: 環境変数を設定プロパティに自動マッピング
+- **型変換**: 文字列パラメーターをターゲット型に自動変換
+- **属性サポート**: 豊富な設定属性をサポート
 
-## 快速开始
+## インストール
 
-### 1. 定义配置类
+```bash
+dotnet add package GameFrameX.Foundation.Options
+```
+
+## クイックスタート
+
+### 1. 設定クラスの定義
 
 ```csharp
 public class AppConfig
@@ -28,7 +34,7 @@ public class AppConfig
 }
 ```
 
-### 2. 使用OptionsBuilder
+### 2. OptionsBuilderの使用
 
 ```csharp
 using GameFrameX.Foundation.Options;
@@ -37,54 +43,54 @@ class Program
 {
     static void Main(string[] args)
     {
-        // 创建选项构建器
+        // オプションビルダーの作成
         var builder = new OptionsBuilder<AppConfig>(args);
         
-        // 构建配置对象
+        // 設定オブジェクトの構築
         var config = builder.Build();
         
-        // 使用配置
-        Console.WriteLine($"服务器: {config.Host}:{config.Port}");
-        Console.WriteLine($"调试模式: {config.Debug}");
-        Console.WriteLine($"日志级别: {config.LogLevel}");
-        Console.WriteLine($"超时时间: {config.Timeout}秒");
+        // 設定の使用
+        Console.WriteLine($"サーバー: {config.Host}:{config.Port}");
+        Console.WriteLine($"デバッグモード: {config.Debug}");
+        Console.WriteLine($"ログレベル: {config.LogLevel}");
+        Console.WriteLine($"タイムアウト: {config.Timeout}秒");
     }
 }
 ```
 
-## 使用方式
+## 詳細な使い方
 
-### 命令行参数
+### コマンドライン引数
 
-支持多种参数格式：
+複数のパラメーター形式をサポートしています：
 
 ```bash
-# 键值对格式
+# キー・バリュー形式
 myapp.exe --host=example.com --port=9090 --debug=true
 
-# 分离格式
+# セパレータ形式
 myapp.exe --host example.com --port 9090 --debug true
 
-# 布尔标志格式
+# ブールフラグ形式
 myapp.exe --host example.com --port 9090 --debug
 
-# 混合格式
+# 混合形式
 myapp.exe --host=example.com --port 9090 --debug
 ```
 
-### 环境变量
+### 環境変数
 
 ```bash
-# 设置环境变量
+# 環境変数の設定
 export HOST=example.com
 export PORT=9090
 export DEBUG=true
 
-# 运行程序
+# プログラムの実行
 myapp.exe
 ```
 
-### Docker支持
+### Dockerサポート
 
 ```dockerfile
 # Dockerfile
@@ -95,16 +101,16 @@ ENTRYPOINT ["dotnet", "MyApp.dll"]
 ```
 
 ```bash
-# Docker运行
+# Dockerでの実行
 docker run myapp --host example.com --port 9090 --debug
 
-# 或使用环境变量
+# または環境変数を使用
 docker run -e HOST=example.com -e PORT=9090 -e DEBUG=true myapp
 ```
 
-## 高级特性
+## 高度な使い方
 
-### 使用特性配置
+### 属性による設定
 
 ```csharp
 using GameFrameX.Foundation.Options.Attributes;
@@ -112,20 +118,20 @@ using GameFrameX.Foundation.Options.Attributes;
 public class AdvancedConfig
 {
     [Option("h", "host", Required = false, DefaultValue = "localhost")]
-    [HelpText("服务器主机地址")]
+    [HelpText("サーバーのホストアドレス")]
     public string Host { get; set; }
 
     [Option("p", "port", Required = true)]
-    [HelpText("服务器端口号")]
+    [HelpText("サーバーのポート番号")]
     public int Port { get; set; }
 
     [FlagOption("d", "debug")]
-    [HelpText("启用调试模式")]
+    [HelpText("デバッグモードを有効化")]
     public bool Debug { get; set; }
 
     [RequiredOption("api-key", Required = true)]
     [EnvironmentVariable("API_KEY")]
-    [HelpText("API密钥")]
+    [HelpText("APIキー")]
     public string ApiKey { get; set; }
 
     [DefaultValue(30.0)]
@@ -133,85 +139,85 @@ public class AdvancedConfig
 }
 ```
 
-### 构建器选项
+### ビルダーオプション
 
 ```csharp
 var builder = new OptionsBuilder<AppConfig>(
     args: args,
-    boolFormat: BoolArgumentFormat.Flag,        // 布尔参数格式
-    ensurePrefixedKeys: true,                   // 确保参数有前缀
-    useEnvironmentVariables: true              // 使用环境变量
+    boolFormat: BoolArgumentFormat.Flag,        // ブールパラメーター形式
+    ensurePrefixedKeys: true,                   // パラメーターにプレフィックスがあることを確認
+    useEnvironmentVariables: true              // 環境変数を使用
 );
 
-var config = builder.Build(skipValidation: false); // 是否跳过验证
+var config = builder.Build(skipValidation: false); // 検証をスキップするかどうか
 ```
 
-## 参数优先级
+### パラメーター優先度
 
-参数按以下优先级应用（高优先级覆盖低优先级）：
+パラメーターは以下の優先度で適用されます（高優先度が低優先度を上書きします）：
 
-1. **命令行参数** (最高优先级)
-2. **环境变量**
-3. **默认值** (最低优先级)
+1. **コマンドライン引数**（最高優先度）
+2. **環境変数**
+3. **デフォルト値**（最低優先度）
 
-### 示例
+#### 例
 
 ```csharp
 public class Config
 {
-    public string Host { get; set; } = "localhost";  // 默认值
-    public int Port { get; set; } = 8080;           // 默认值
+    public string Host { get; set; } = "localhost";  // デフォルト値
+    public int Port { get; set; } = 8080;           // デフォルト値
 }
 ```
 
 ```bash
-# 设置环境变量
+# 環境変数の設定
 export HOST=env.example.com
 export PORT=7070
 
-# 运行程序（命令行参数覆盖环境变量）
+# プログラムの実行（コマンドライン引数が環境変数を上書き）
 myapp.exe --host cmd.example.com
 
-# 结果：
-# Host = "cmd.example.com"  (来自命令行参数)
-# Port = 7070               (来自环境变量)
+# 結果：
+# Host = "cmd.example.com"  （コマンドライン引数から）
+# Port = 7070               （環境変数から）
 ```
 
-## 布尔参数处理
+### ブールパラメーター処理
 
-支持多种布尔参数格式：
+複数のブールパラメーター形式をサポートしています：
 
 ```bash
-# 标志格式（推荐）
+# フラグ形式（推奨）
 myapp.exe --debug                    # debug = true
 
-# 键值对格式
+# キー・バリュー形式
 myapp.exe --debug=true               # debug = true
 myapp.exe --debug=false              # debug = false
 
-# 分离格式
+# セパレータ形式
 myapp.exe --debug true               # debug = true
 myapp.exe --debug false              # debug = false
 
-# 支持的布尔值
+# サポートされるブール値
 true, false, 1, 0, yes, no, on, off
 ```
 
-## 类型转换
+### 型変換
 
-自动支持以下类型转换：
+以下の型変換を自動的にサポートします：
 
-- `string` - 直接使用
-- `int`, `int?` - 整数转换
-- `bool`, `bool?` - 布尔值转换
-- `double`, `double?` - 双精度浮点数转换
-- `float`, `float?` - 单精度浮点数转换
-- `decimal`, `decimal?` - 十进制数转换
-- `DateTime`, `DateTime?` - 日期时间转换
-- `Guid`, `Guid?` - GUID转换
-- `Enum` - 枚举转换
+- `string` - そのまま使用
+- `int`, `int?` - 整数変換
+- `bool`, `bool?` - ブール値変換
+- `double`, `double?` - 倍精度浮動小数点数変換
+- `float`, `float?` - 単精度浮動小数点数変換
+- `decimal`, `decimal?` - 10進数変換
+- `DateTime`, `DateTime?` - 日時変換
+- `Guid`, `Guid?` - GUID変換
+- `Enum` - 列挙型変換
 
-### 示例
+#### 例
 
 ```csharp
 public class TypedConfig
@@ -219,7 +225,7 @@ public class TypedConfig
     public int Port { get; set; }
     public bool Debug { get; set; }
     public DateTime StartTime { get; set; }
-    public LogLevel Level { get; set; }  // 枚举
+    public LogLevel Level { get; set; }  // 列挙型
 }
 
 public enum LogLevel
@@ -232,9 +238,9 @@ public enum LogLevel
 myapp.exe --port 9090 --debug true --start-time "2024-01-01 10:00:00" --level Info
 ```
 
-## 错误处理
+### エラー処理
 
-### 必需参数验证
+#### 必須パラメーターの検証
 
 ```csharp
 public class Config
@@ -244,38 +250,42 @@ public class Config
 }
 ```
 
-如果缺少必需参数，会抛出 `ArgumentException`：
+必須パラメーターが不足している場合、`ArgumentException` がスローされます：
 
 ```
-缺少必需的选项: api-key
+必須オプションが不足しています: api-key
 ```
 
-### 类型转换错误
+#### 型変換エラー
 
-当参数值无法转换为目标类型时，会使用默认值并在控制台输出警告信息。
+パラメーター値をターゲット型に変換できない場合、デフォルト値が使用され、コンソールに警告メッセージが出力されます。
 
-## 最佳实践
+### デバッグモード
 
-### 1. 配置类设计
+開発中にデバッグモードを有効にすると、パラメーター解析の詳細なプロセスを確認でき、設定問題の切り分けに役立ちます。
+
+## ベストプラクティス
+
+### 1. 設定クラスの設計
 
 ```csharp
 public class AppConfig
 {
-    // 使用有意义的默认值
+    // 意味のあるデフォルト値を使用
     public string Host { get; set; } = "localhost";
     public int Port { get; set; } = 8080;
     
-    // 布尔属性默认为false
+    // ブールプロパティのデフォルトはfalse
     public bool Debug { get; set; } = false;
     
-    // 使用特性提供更多信息
+    // 属性を使用して詳細情報を提供
     [RequiredOption("database-url", Required = true)]
     [EnvironmentVariable("DATABASE_URL")]
     public string DatabaseUrl { get; set; }
 }
 ```
 
-### 2. 错误处理
+### 2. エラー処理
 
 ```csharp
 try
@@ -283,17 +293,17 @@ try
     var builder = new OptionsBuilder<AppConfig>(args);
     var config = builder.Build();
     
-    // 使用配置启动应用
+    // 設定を使用してアプリケーションを起動
     StartApplication(config);
 }
 catch (ArgumentException ex)
 {
-    Console.WriteLine($"配置错误: {ex.Message}");
+    Console.WriteLine($"設定エラー: {ex.Message}");
     Environment.Exit(1);
 }
 ```
 
-### 3. Docker集成
+### 3. Docker統合
 
 ```csharp
 // Program.cs
@@ -304,8 +314,8 @@ public class Program
         var builder = new OptionsBuilder<AppConfig>(args);
         var config = builder.Build();
         
-        // 在Docker中，通常使用环境变量
-        // 在开发中，通常使用命令行参数
+        // Dockerでは通常、環境変数を使用
+        // 開発では通常、コマンドライン引数を使用
         
         var app = CreateApplication(config);
         app.Run();
@@ -326,7 +336,32 @@ services:
     command: ["--log-level", "info"]
 ```
 
-## 完整示例
+## API リファレンス
+
+### `OptionsBuilder<T>`
+
+| メソッド | 説明 |
+|------|------|
+| `OptionsBuilder<T>(args)` | ビルダーを作成し、コマンドライン引数を渡す |
+| `Build()` | 設定オブジェクトを構築 |
+| `Build(skipValidation)` | 設定オブジェクトを構築。検証スキップの選択可能 |
+
+### 属性 (Attributes)
+
+| 属性 | 説明 |
+|------|------|
+| `[Option(shortName, longName)]` | 設定オプションのマッピング |
+| `[FlagOption(shortName, longName)]` | ブールフラグオプション |
+| `[RequiredOption(longName)]` | 必須オプション |
+| `[EnvironmentVariable(name)]` | 環境変数マッピング |
+| `[DefaultValue(value)]` | デフォルト値 |
+| `[HelpText(text)]` | ヘルプテキストの説明 |
+
+### CommandLineArgumentConverter
+
+`CommandLineArgumentConverter` は低レイヤーのコマンドライン引数変換機能を提供し、文字列パラメーターをターゲット型に変換します。通常は `OptionsBuilder` を通じて間接的に使用されるため、直接呼び出す必要はありません。
+
+### 完全な例
 
 ```csharp
 using GameFrameX.Foundation.Options;
@@ -338,27 +373,27 @@ namespace MyApp
     {
         [Option("h", "host", DefaultValue = "localhost")]
         [EnvironmentVariable("SERVER_HOST")]
-        [HelpText("服务器主机地址")]
+        [HelpText("サーバーのホストアドレス")]
         public string Host { get; set; }
 
         [Option("p", "port", DefaultValue = 8080)]
         [EnvironmentVariable("SERVER_PORT")]
-        [HelpText("服务器端口号")]
+        [HelpText("サーバーのポート番号")]
         public int Port { get; set; }
 
         [FlagOption("d", "debug")]
         [EnvironmentVariable("DEBUG")]
-        [HelpText("启用调试模式")]
+        [HelpText("デバッグモードを有効化")]
         public bool Debug { get; set; }
 
         [RequiredOption("database-url", Required = true)]
         [EnvironmentVariable("DATABASE_URL")]
-        [HelpText("数据库连接字符串")]
+        [HelpText("データベース接続文字列")]
         public string DatabaseUrl { get; set; }
 
         [Option("timeout", DefaultValue = 30.0)]
         [EnvironmentVariable("REQUEST_TIMEOUT")]
-        [HelpText("请求超时时间（秒）")]
+        [HelpText("リクエストタイムアウト時間（秒）")]
         public double Timeout { get; set; }
     }
 
@@ -371,19 +406,19 @@ namespace MyApp
                 var builder = new OptionsBuilder<ServerConfig>(args);
                 var config = builder.Build();
 
-                Console.WriteLine("服务器配置:");
-                Console.WriteLine($"  主机: {config.Host}");
-                Console.WriteLine($"  端口: {config.Port}");
-                Console.WriteLine($"  调试: {config.Debug}");
-                Console.WriteLine($"  数据库: {config.DatabaseUrl}");
-                Console.WriteLine($"  超时: {config.Timeout}秒");
+                Console.WriteLine("サーバー設定:");
+                Console.WriteLine($"  ホスト: {config.Host}");
+                Console.WriteLine($"  ポート: {config.Port}");
+                Console.WriteLine($"  デバッグ: {config.Debug}");
+                Console.WriteLine($"  データベース: {config.DatabaseUrl}");
+                Console.WriteLine($"  タイムアウト: {config.Timeout}秒");
 
-                // 启动服务器
+                // サーバーの起動
                 StartServer(config);
             }
             catch (ArgumentException ex)
             {
-                Console.WriteLine($"配置错误: {ex.Message}");
+                Console.WriteLine($"設定エラー: {ex.Message}");
                 ShowHelp();
                 Environment.Exit(1);
             }
@@ -391,39 +426,22 @@ namespace MyApp
 
         static void StartServer(ServerConfig config)
         {
-            // 服务器启动逻辑
-            Console.WriteLine($"服务器启动在 {config.Host}:{config.Port}");
+            // サーバー起動ロジック
+            Console.WriteLine($"サーバーを起動: {config.Host}:{config.Port}");
         }
 
         static void ShowHelp()
         {
-            Console.WriteLine("用法:");
-            Console.WriteLine("  myapp.exe --host <主机> --port <端口> --database-url <数据库URL> [选项]");
+            Console.WriteLine("使用方法:");
+            Console.WriteLine("  myapp.exe --host <ホスト> --port <ポート> --database-url <データベースURL> [オプション]");
             Console.WriteLine();
-            Console.WriteLine("选项:");
-            Console.WriteLine("  -h, --host <主机>           服务器主机地址 (默认: localhost)");
-            Console.WriteLine("  -p, --port <端口>           服务器端口号 (默认: 8080)");
-            Console.WriteLine("  -d, --debug                 启用调试模式");
-            Console.WriteLine("      --database-url <URL>    数据库连接字符串 (必需)");
-            Console.WriteLine("      --timeout <秒>          请求超时时间 (默认: 30.0)");
+            Console.WriteLine("オプション:");
+            Console.WriteLine("  -h, --host <ホスト>           サーバーのホストアドレス (デフォルト: localhost)");
+            Console.WriteLine("  -p, --port <ポート>           サーバーのポート番号 (デフォルト: 8080)");
+            Console.WriteLine("  -d, --debug                 デバッグモードを有効化");
+            Console.WriteLine("      --database-url <URL>    データベース接続文字列 (必須)");
+            Console.WriteLine("      --timeout <秒>          リクエストタイムアウト時間 (デフォルト: 30.0)");
         }
     }
 }
 ```
-
-
-## 📄 许可证
-
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法

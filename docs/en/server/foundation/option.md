@@ -1,21 +1,27 @@
-# 启动参数解析器
+# Startup Argument Parser (Automatic Mapping of Command-Line Arguments and Environment Variables)
 
-一个强大的命令行参数和环境变量解析库，支持将命令行参数和环境变量自动映射到强类型配置对象。
+A powerful command-line argument and environment variable parsing library that supports automatic mapping of command-line arguments and environment variables to strongly typed configuration objects.
 
-## 特性
+## Features
 
-- ✅ **参数优先级处理**: 命令行参数 > 环境变量 > 默认值
-- ✅ **泛型支持**: 支持任意强类型配置类
-- ✅ **多种启动方式兼容**: 支持Docker、exe、shell等启动方式
-- ✅ **自动前缀处理**: 自动为参数添加`--`前缀
-- ✅ **布尔参数支持**: 支持多种布尔参数格式
-- ✅ **环境变量映射**: 自动映射环境变量到配置属性
-- ✅ **类型转换**: 自动转换字符串参数到目标类型
-- ✅ **特性支持**: 支持丰富的配置特性
+- **Argument Priority Handling**: Command-line arguments > Environment variables > Default values
+- **Generic Support**: Supports any strongly typed configuration class
+- **Multiple Launch Mode Compatibility**: Supports Docker, exe, shell, and other launch methods
+- **Automatic Prefix Handling**: Automatically adds the `--` prefix to arguments
+- **Boolean Argument Support**: Supports multiple boolean argument formats
+- **Environment Variable Mapping**: Automatically maps environment variables to configuration properties
+- **Type Conversion**: Automatically converts string arguments to target types
+- **Attribute Support**: Supports a rich set of configuration attributes
 
-## 快速开始
+## Installation
 
-### 1. 定义配置类
+```bash
+dotnet add package GameFrameX.Foundation.Options
+```
+
+## Quick Start
+
+### 1. Define a Configuration Class
 
 ```csharp
 public class AppConfig
@@ -28,7 +34,7 @@ public class AppConfig
 }
 ```
 
-### 2. 使用OptionsBuilder
+### 2. Use OptionsBuilder
 
 ```csharp
 using GameFrameX.Foundation.Options;
@@ -37,13 +43,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        // 创建选项构建器
+        // Create options builder
         var builder = new OptionsBuilder<AppConfig>(args);
         
-        // 构建配置对象
+        // Build configuration object
         var config = builder.Build();
         
-        // 使用配置
+        // Use configuration
         Console.WriteLine($"服务器: {config.Host}:{config.Port}");
         Console.WriteLine($"调试模式: {config.Debug}");
         Console.WriteLine($"日志级别: {config.LogLevel}");
@@ -52,39 +58,39 @@ class Program
 }
 ```
 
-## 使用方式
+## Detailed Usage
 
-### 命令行参数
+### Command-Line Arguments
 
-支持多种参数格式：
+Multiple argument formats are supported:
 
 ```bash
-# 键值对格式
+# Key-value pair format
 myapp.exe --host=example.com --port=9090 --debug=true
 
-# 分离格式
+# Separated format
 myapp.exe --host example.com --port 9090 --debug true
 
-# 布尔标志格式
+# Boolean flag format
 myapp.exe --host example.com --port 9090 --debug
 
-# 混合格式
+# Mixed format
 myapp.exe --host=example.com --port 9090 --debug
 ```
 
-### 环境变量
+### Environment Variables
 
 ```bash
-# 设置环境变量
+# Set environment variables
 export HOST=example.com
 export PORT=9090
 export DEBUG=true
 
-# 运行程序
+# Run the program
 myapp.exe
 ```
 
-### Docker支持
+### Docker Support
 
 ```dockerfile
 # Dockerfile
@@ -95,16 +101,16 @@ ENTRYPOINT ["dotnet", "MyApp.dll"]
 ```
 
 ```bash
-# Docker运行
+# Docker run
 docker run myapp --host example.com --port 9090 --debug
 
-# 或使用环境变量
+# Or use environment variables
 docker run -e HOST=example.com -e PORT=9090 -e DEBUG=true myapp
 ```
 
-## 高级特性
+## Advanced Usage
 
-### 使用特性配置
+### Using Attributes for Configuration
 
 ```csharp
 using GameFrameX.Foundation.Options.Attributes;
@@ -112,20 +118,20 @@ using GameFrameX.Foundation.Options.Attributes;
 public class AdvancedConfig
 {
     [Option("h", "host", Required = false, DefaultValue = "localhost")]
-    [HelpText("服务器主机地址")]
+    [HelpText("Server host address")]
     public string Host { get; set; }
 
     [Option("p", "port", Required = true)]
-    [HelpText("服务器端口号")]
+    [HelpText("Server port number")]
     public int Port { get; set; }
 
     [FlagOption("d", "debug")]
-    [HelpText("启用调试模式")]
+    [HelpText("Enable debug mode")]
     public bool Debug { get; set; }
 
     [RequiredOption("api-key", Required = true)]
     [EnvironmentVariable("API_KEY")]
-    [HelpText("API密钥")]
+    [HelpText("API key")]
     public string ApiKey { get; set; }
 
     [DefaultValue(30.0)]
@@ -133,85 +139,85 @@ public class AdvancedConfig
 }
 ```
 
-### 构建器选项
+### Builder Options
 
 ```csharp
 var builder = new OptionsBuilder<AppConfig>(
     args: args,
-    boolFormat: BoolArgumentFormat.Flag,        // 布尔参数格式
-    ensurePrefixedKeys: true,                   // 确保参数有前缀
-    useEnvironmentVariables: true              // 使用环境变量
+    boolFormat: BoolArgumentFormat.Flag,        // Boolean argument format
+    ensurePrefixedKeys: true,                   // Ensure arguments have prefixes
+    useEnvironmentVariables: true              // Use environment variables
 );
 
-var config = builder.Build(skipValidation: false); // 是否跳过验证
+var config = builder.Build(skipValidation: false); // Whether to skip validation
 ```
 
-## 参数优先级
+### Argument Priority
 
-参数按以下优先级应用（高优先级覆盖低优先级）：
+Arguments are applied with the following priority (higher priority overrides lower priority):
 
-1. **命令行参数** (最高优先级)
-2. **环境变量**
-3. **默认值** (最低优先级)
+1. **Command-line arguments** (highest priority)
+2. **Environment variables**
+3. **Default values** (lowest priority)
 
-### 示例
+#### Example
 
 ```csharp
 public class Config
 {
-    public string Host { get; set; } = "localhost";  // 默认值
-    public int Port { get; set; } = 8080;           // 默认值
+    public string Host { get; set; } = "localhost";  // Default value
+    public int Port { get; set; } = 8080;           // Default value
 }
 ```
 
 ```bash
-# 设置环境变量
+# Set environment variables
 export HOST=env.example.com
 export PORT=7070
 
-# 运行程序（命令行参数覆盖环境变量）
+# Run the program (command-line arguments override environment variables)
 myapp.exe --host cmd.example.com
 
-# 结果：
-# Host = "cmd.example.com"  (来自命令行参数)
-# Port = 7070               (来自环境变量)
+# Result:
+# Host = "cmd.example.com"  (from command-line argument)
+# Port = 7070               (from environment variable)
 ```
 
-## 布尔参数处理
+### Boolean Argument Handling
 
-支持多种布尔参数格式：
+Multiple boolean argument formats are supported:
 
 ```bash
-# 标志格式（推荐）
+# Flag format (recommended)
 myapp.exe --debug                    # debug = true
 
-# 键值对格式
+# Key-value pair format
 myapp.exe --debug=true               # debug = true
 myapp.exe --debug=false              # debug = false
 
-# 分离格式
+# Separated format
 myapp.exe --debug true               # debug = true
 myapp.exe --debug false              # debug = false
 
-# 支持的布尔值
+# Supported boolean values
 true, false, 1, 0, yes, no, on, off
 ```
 
-## 类型转换
+### Type Conversion
 
-自动支持以下类型转换：
+The following type conversions are automatically supported:
 
-- `string` - 直接使用
-- `int`, `int?` - 整数转换
-- `bool`, `bool?` - 布尔值转换
-- `double`, `double?` - 双精度浮点数转换
-- `float`, `float?` - 单精度浮点数转换
-- `decimal`, `decimal?` - 十进制数转换
-- `DateTime`, `DateTime?` - 日期时间转换
-- `Guid`, `Guid?` - GUID转换
-- `Enum` - 枚举转换
+- `string` - Used directly
+- `int`, `int?` - Integer conversion
+- `bool`, `bool?` - Boolean conversion
+- `double`, `double?` - Double-precision floating point conversion
+- `float`, `float?` - Single-precision floating point conversion
+- `decimal`, `decimal?` - Decimal conversion
+- `DateTime`, `DateTime?` - DateTime conversion
+- `Guid`, `Guid?` - GUID conversion
+- `Enum` - Enum conversion
 
-### 示例
+#### Example
 
 ```csharp
 public class TypedConfig
@@ -219,7 +225,7 @@ public class TypedConfig
     public int Port { get; set; }
     public bool Debug { get; set; }
     public DateTime StartTime { get; set; }
-    public LogLevel Level { get; set; }  // 枚举
+    public LogLevel Level { get; set; }  // Enum
 }
 
 public enum LogLevel
@@ -232,9 +238,9 @@ public enum LogLevel
 myapp.exe --port 9090 --debug true --start-time "2024-01-01 10:00:00" --level Info
 ```
 
-## 错误处理
+### Error Handling
 
-### 必需参数验证
+#### Required Argument Validation
 
 ```csharp
 public class Config
@@ -244,38 +250,42 @@ public class Config
 }
 ```
 
-如果缺少必需参数，会抛出 `ArgumentException`：
+If a required argument is missing, an `ArgumentException` is thrown:
 
 ```
 缺少必需的选项: api-key
 ```
 
-### 类型转换错误
+#### Type Conversion Errors
 
-当参数值无法转换为目标类型时，会使用默认值并在控制台输出警告信息。
+When an argument value cannot be converted to the target type, the default value is used and a warning message is printed to the console.
 
-## 最佳实践
+### Debug Mode
 
-### 1. 配置类设计
+During development, you can enable debug mode to view detailed argument parsing information, making it easier to troubleshoot configuration issues.
+
+## Best Practices
+
+### 1. Configuration Class Design
 
 ```csharp
 public class AppConfig
 {
-    // 使用有意义的默认值
+    // Use meaningful default values
     public string Host { get; set; } = "localhost";
     public int Port { get; set; } = 8080;
     
-    // 布尔属性默认为false
+    // Boolean properties default to false
     public bool Debug { get; set; } = false;
     
-    // 使用特性提供更多信息
+    // Use attributes to provide more information
     [RequiredOption("database-url", Required = true)]
     [EnvironmentVariable("DATABASE_URL")]
     public string DatabaseUrl { get; set; }
 }
 ```
 
-### 2. 错误处理
+### 2. Error Handling
 
 ```csharp
 try
@@ -283,17 +293,17 @@ try
     var builder = new OptionsBuilder<AppConfig>(args);
     var config = builder.Build();
     
-    // 使用配置启动应用
+    // Use configuration to start the application
     StartApplication(config);
 }
 catch (ArgumentException ex)
 {
-    Console.WriteLine($"配置错误: {ex.Message}");
+    Console.WriteLine($"Configuration error: {ex.Message}");
     Environment.Exit(1);
 }
 ```
 
-### 3. Docker集成
+### 3. Docker Integration
 
 ```csharp
 // Program.cs
@@ -304,8 +314,8 @@ public class Program
         var builder = new OptionsBuilder<AppConfig>(args);
         var config = builder.Build();
         
-        // 在Docker中，通常使用环境变量
-        // 在开发中，通常使用命令行参数
+        // In Docker, environment variables are typically used
+        // In development, command-line arguments are typically used
         
         var app = CreateApplication(config);
         app.Run();
@@ -326,7 +336,32 @@ services:
     command: ["--log-level", "info"]
 ```
 
-## 完整示例
+## API Reference
+
+### `OptionsBuilder<T>`
+
+| Method | Description |
+|--------|-------------|
+| `OptionsBuilder<T>(args)` | Create a builder, passing in command-line arguments |
+| `Build()` | Build the configuration object |
+| `Build(skipValidation)` | Build the configuration object, optionally skipping validation |
+
+### Attributes
+
+| Attribute | Description |
+|-----------|-------------|
+| `[Option(shortName, longName)]` | Configure option mapping |
+| `[FlagOption(shortName, longName)]` | Boolean flag option |
+| `[RequiredOption(longName)]` | Required option |
+| `[EnvironmentVariable(name)]` | Environment variable mapping |
+| `[DefaultValue(value)]` | Default value |
+| `[HelpText(text)]` | Help text description |
+
+### CommandLineArgumentConverter
+
+`CommandLineArgumentConverter` provides low-level command-line argument conversion functionality, supporting conversion of string arguments to target types. It is typically used indirectly through `OptionsBuilder` and does not need to be called directly.
+
+### Complete Example
 
 ```csharp
 using GameFrameX.Foundation.Options;
@@ -338,27 +373,27 @@ namespace MyApp
     {
         [Option("h", "host", DefaultValue = "localhost")]
         [EnvironmentVariable("SERVER_HOST")]
-        [HelpText("服务器主机地址")]
+        [HelpText("Server host address")]
         public string Host { get; set; }
 
         [Option("p", "port", DefaultValue = 8080)]
         [EnvironmentVariable("SERVER_PORT")]
-        [HelpText("服务器端口号")]
+        [HelpText("Server port number")]
         public int Port { get; set; }
 
         [FlagOption("d", "debug")]
         [EnvironmentVariable("DEBUG")]
-        [HelpText("启用调试模式")]
+        [HelpText("Enable debug mode")]
         public bool Debug { get; set; }
 
         [RequiredOption("database-url", Required = true)]
         [EnvironmentVariable("DATABASE_URL")]
-        [HelpText("数据库连接字符串")]
+        [HelpText("Database connection string")]
         public string DatabaseUrl { get; set; }
 
         [Option("timeout", DefaultValue = 30.0)]
         [EnvironmentVariable("REQUEST_TIMEOUT")]
-        [HelpText("请求超时时间（秒）")]
+        [HelpText("Request timeout in seconds")]
         public double Timeout { get; set; }
     }
 
@@ -371,19 +406,19 @@ namespace MyApp
                 var builder = new OptionsBuilder<ServerConfig>(args);
                 var config = builder.Build();
 
-                Console.WriteLine("服务器配置:");
-                Console.WriteLine($"  主机: {config.Host}");
-                Console.WriteLine($"  端口: {config.Port}");
-                Console.WriteLine($"  调试: {config.Debug}");
-                Console.WriteLine($"  数据库: {config.DatabaseUrl}");
-                Console.WriteLine($"  超时: {config.Timeout}秒");
+                Console.WriteLine("Server configuration:");
+                Console.WriteLine($"  Host: {config.Host}");
+                Console.WriteLine($"  Port: {config.Port}");
+                Console.WriteLine($"  Debug: {config.Debug}");
+                Console.WriteLine($"  Database: {config.DatabaseUrl}");
+                Console.WriteLine($"  Timeout: {config.Timeout}s");
 
-                // 启动服务器
+                // Start the server
                 StartServer(config);
             }
             catch (ArgumentException ex)
             {
-                Console.WriteLine($"配置错误: {ex.Message}");
+                Console.WriteLine($"Configuration error: {ex.Message}");
                 ShowHelp();
                 Environment.Exit(1);
             }
@@ -391,39 +426,22 @@ namespace MyApp
 
         static void StartServer(ServerConfig config)
         {
-            // 服务器启动逻辑
-            Console.WriteLine($"服务器启动在 {config.Host}:{config.Port}");
+            // Server startup logic
+            Console.WriteLine($"Server starting at {config.Host}:{config.Port}");
         }
 
         static void ShowHelp()
         {
-            Console.WriteLine("用法:");
-            Console.WriteLine("  myapp.exe --host <主机> --port <端口> --database-url <数据库URL> [选项]");
+            Console.WriteLine("Usage:");
+            Console.WriteLine("  myapp.exe --host <host> --port <port> --database-url <database-url> [options]");
             Console.WriteLine();
-            Console.WriteLine("选项:");
-            Console.WriteLine("  -h, --host <主机>           服务器主机地址 (默认: localhost)");
-            Console.WriteLine("  -p, --port <端口>           服务器端口号 (默认: 8080)");
-            Console.WriteLine("  -d, --debug                 启用调试模式");
-            Console.WriteLine("      --database-url <URL>    数据库连接字符串 (必需)");
-            Console.WriteLine("      --timeout <秒>          请求超时时间 (默认: 30.0)");
+            Console.WriteLine("Options:");
+            Console.WriteLine("  -h, --host <host>           Server host address (default: localhost)");
+            Console.WriteLine("  -p, --port <port>           Server port number (default: 8080)");
+            Console.WriteLine("  -d, --debug                 Enable debug mode");
+            Console.WriteLine("      --database-url <url>    Database connection string (required)");
+            Console.WriteLine("      --timeout <seconds>     Request timeout (default: 30.0)");
         }
     }
 }
 ```
-
-
-## 📄 许可证
-
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法

@@ -1,38 +1,32 @@
-# JSON
+# JSON (High-Performance Serialization Library)
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/download) [![License](https://img.shields.io/badge/license-MIT-green.svg)]()
 
-GameFrameX.Foundation.Json 是一个基于 System.Text.Json 的高性能 JSON 序列化和反序列化库，提供了丰富的配置选项和特殊值处理能力。
+GameFrameX.Foundation.Json is a high-performance JSON serialization and deserialization library based on System.Text.Json, providing rich configuration options and special value handling capabilities.
 
-## 🎯 核心特性
+## Features
 
-- **高性能序列化** - 基于 System.Text.Json 的高性能实现
-- **特殊浮点值支持** - 完美处理 NaN、Infinity、-Infinity 等特殊浮点值
-- **多种配置选项** - 提供默认和格式化两种预配置选项
-- **容错性强** - 多重容错机制，确保序列化/反序列化的稳定性
-- **UTF8 字节数组支持** - 支持直接操作 UTF8 字节数组
-- **Try 模式** - 提供安全的尝试序列化/反序列化方法
-- **枚举字符串化** - 枚举值自动序列化为字符串形式
-- **循环引用处理** - 自动忽略循环引用，避免序列化异常
+- **High-Performance Serialization** - High-performance implementation based on System.Text.Json
+- **Special Floating-Point Value Support** - Perfectly handles special floating-point values such as NaN, Infinity, -Infinity
+- **Multiple Configuration Options** - Provides both default and formatted pre-configured options
+- **Strong Fault Tolerance** - Multiple fault-tolerance mechanisms to ensure serialization/deserialization stability
+- **UTF8 Byte Array Support** - Supports direct operations on UTF8 byte arrays
+- **Try Pattern** - Provides safe try-serialize/try-deserialize methods
+- **Enum String Serialization** - Enum values are automatically serialized as strings
+- **Circular Reference Handling** - Automatically ignores circular references to avoid serialization exceptions
 
-## 📦 安装
+## Installation
 
 ```bash
-# 通过 NuGet 包管理器安装
-Install-Package GameFrameX.Foundation.Json
-
-# 或通过 .NET CLI 安装
 dotnet add package GameFrameX.Foundation.Json
 ```
 
-## 🚀 快速开始
-
-### 基本使用
+## Quick Start
 
 ```csharp
 using GameFrameX.Foundation.Json;
 
-// 定义数据模型
+// Define data model
 public class User
 {
     public string Name { get; set; }
@@ -41,7 +35,7 @@ public class User
     public double Score { get; set; }
 }
 
-// 序列化对象
+// Serialize object
 var user = new User 
 { 
     Name = "张三", 
@@ -54,141 +48,132 @@ string json = JsonHelper.Serialize(user);
 Console.WriteLine(json);
 // 输出: {"Name":"张三","Age":25,"IsActive":true,"Score":95.5}
 
-// 反序列化对象
+// Deserialize object
 User deserializedUser = JsonHelper.Deserialize<User>(json);
 Console.WriteLine($"姓名: {deserializedUser.Name}, 年龄: {deserializedUser.Age}");
-```
 
-### 格式化序列化
-
-```csharp
-// 生成格式化的 JSON（包含缩进和换行）
+// Formatted serialization
 string formattedJson = JsonHelper.SerializeFormat(user);
-Console.WriteLine(formattedJson);
-/* 输出:
-{
-  "Name": "张三",
-  "Age": 25,
-  "IsActive": true,
-  "Score": 95.5
-}
-*/
 ```
 
-## 📋 详细使用指南
+## Detailed Usage
 
-### 1. 序列化方法
+### Serialization Methods
 
-#### 基本序列化
+#### Basic Serialization
+
 ```csharp
-// 使用默认配置序列化
+// Serialize using default configuration
 string json = JsonHelper.Serialize(obj);
 
-// 使用自定义配置序列化
+// Serialize using custom configuration
 var customOptions = new JsonSerializerOptions { WriteIndented = true };
 string json = JsonHelper.Serialize(obj, customOptions);
 
-// 格式化序列化（自动缩进）
+// Formatted serialization (auto-indent)
 string formattedJson = JsonHelper.SerializeFormat(obj);
 ```
 
-#### UTF8 字节数组序列化
+#### UTF8 Byte Array Serialization
+
 ```csharp
-// 序列化为 UTF8 字节数组
+// Serialize to UTF8 byte array
 byte[] utf8Bytes = JsonHelper.SerializeToUtf8Bytes(obj);
 
-// 格式化序列化为 UTF8 字节数组
+// Formatted serialization to UTF8 byte array
 byte[] formattedUtf8Bytes = JsonHelper.SerializeToUtf8BytesFormat(obj);
 ```
 
-### 2. 反序列化方法
+### Deserialization Methods
 
-#### 基本反序列化
+#### Basic Deserialization
+
 ```csharp
-// 泛型反序列化
+// Generic deserialization
 User user = JsonHelper.Deserialize<User>(json);
 
-// Type 类型反序列化
+// Type-based deserialization
 object obj = JsonHelper.Deserialize(json, typeof(User));
 
-// 使用自定义配置反序列化
+// Deserialize using custom configuration
 User user = JsonHelper.Deserialize<User>(json, customOptions);
 ```
 
-#### UTF8 字节数组反序列化
+#### UTF8 Byte Array Deserialization
+
 ```csharp
-// 从 UTF8 字节数组反序列化
+// Deserialize from UTF8 byte array
 User user = JsonHelper.DeserializeFromUtf8Bytes<User>(utf8Bytes);
 
-// 使用自定义配置从 UTF8 字节数组反序列化
+// Deserialize from UTF8 byte array using custom configuration
 User user = JsonHelper.DeserializeFromUtf8Bytes<User>(utf8Bytes, customOptions);
 ```
 
-### 3. 安全的 Try 方法
+### Safe Try Methods
 
 ```csharp
-// 安全序列化
+// Safe serialization
 if (JsonHelper.TrySerialize(user, out string result))
 {
-    Console.WriteLine($"序列化成功: {result}");
+    Console.WriteLine($"Serialization succeeded: {result}");
 }
 else
 {
-    Console.WriteLine("序列化失败");
+    Console.WriteLine("Serialization failed");
 }
 
-// 安全反序列化
+// Safe deserialization
 if (JsonHelper.TryDeserialize<User>(json, out User user))
 {
-    Console.WriteLine($"反序列化成功: {user.Name}");
+    Console.WriteLine($"Deserialization succeeded: {user.Name}");
 }
 else
 {
-    Console.WriteLine("反序列化失败");
+    Console.WriteLine("Deserialization failed");
 }
 ```
 
-## ⚙️ 配置选项
+### Configuration Options
 
-### 默认配置 (DefaultOptions)
+#### Default Configuration (DefaultOptions)
 
 ```csharp
 public static readonly JsonSerializerOptions DefaultOptions = new JsonSerializerOptions
 {
-    // 忽略 null 值属性
+    // Ignore null value properties
     DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-    // 忽略循环引用
+    // Ignore circular references
     ReferenceHandler = ReferenceHandler.IgnoreCycles,
-    // 忽略 JSON 注释
+    // Ignore JSON comments
     ReadCommentHandling = JsonCommentHandling.Skip,
-    // 使用宽松的 JavaScript 编码器
+    // Use relaxed JavaScript encoder
     Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-    // 允许尾随逗号
+    // Allow trailing commas
     AllowTrailingCommas = true,
-    // 属性名称大小写不敏感
+    // Case-insensitive property names
     PropertyNameCaseInsensitive = true,
-    // 允许从字符串读取数字和特殊浮点值
+    // Allow reading numbers from strings and special floating-point values
     NumberHandling = JsonNumberHandling.AllowReadingFromString | 
                     JsonNumberHandling.AllowNamedFloatingPointLiterals,
-    // 自定义转换器
+    // Custom converters
     Converters = {
-        new JsonStringEnumConverter(), // 枚举字符串转换
-        new SpecialFloatingPointConverter(), // 特殊浮点值转换 (double)
-        new SpecialFloatingPointConverterFloat(), // 特殊浮点值转换 (float)
-        new SpecialFloatingPointDocumentConverter(), // JSON 文档特殊浮点值转换
+        new JsonStringEnumConverter(), // Enum string conversion
+        new SpecialFloatingPointConverter(), // Special floating-point value conversion (double)
+        new SpecialFloatingPointConverterFloat(), // Special floating-point value conversion (float)
+        new SpecialFloatingPointDocumentConverter(), // JSON document special floating-point value conversion
     }
 };
 ```
 
-### 格式化配置 (FormatOptions)
+#### Format Configuration (FormatOptions)
 
-格式化配置在默认配置基础上增加了 `WriteIndented = true`，用于生成格式化的 JSON 输出。
+The format configuration adds `WriteIndented = true` on top of the default configuration to produce formatted JSON output.
 
-## 🔧 特殊功能
+### Special Features
 
-### 1. 特殊浮点值处理
+#### Special Floating-Point Value Handling
 
-库内置了对特殊浮点值的完整支持：
+The library includes built-in comprehensive support for special floating-point values:
 
 ```csharp
 public class TestData
@@ -204,10 +189,10 @@ string json = JsonHelper.Serialize(data);
 // 输出: {"NaNValue":"NaN","InfinityValue":"Infinity","NegativeInfinityValue":"-Infinity","FloatNaN":"NaN"}
 
 TestData deserializedData = JsonHelper.Deserialize<TestData>(json);
-// 特殊值正确还原
+// Special values are correctly restored
 ```
 
-### 2. 枚举处理
+#### Enum Handling
 
 ```csharp
 public enum Status
@@ -224,27 +209,27 @@ public class Order
 
 var order = new Order();
 string json = JsonHelper.Serialize(order);
-// 输出: {"Status":"Active"}  (字符串形式，而非数字)
+// 输出: {"Status":"Active"}  (as a string, not a number)
 ```
 
-### 3. 容错机制
+#### Fault Tolerance Mechanism
 
-库提供了多重容错机制：
+The library provides multiple fault-tolerance mechanisms:
 
-1. **配置容错** - 默认配置失败时自动尝试格式化配置
-2. **特殊值预处理** - 自动处理非标准格式的特殊浮点值
-3. **多次尝试** - 失败时进行多种方式的重试
+1. **Configuration Fallback** - Automatically tries the format configuration when the default configuration fails
+2. **Special Value Preprocessing** - Automatically handles non-standard format special floating-point values
+3. **Multiple Retries** - Retries with various approaches on failure
 
 ```csharp
-// 即使 JSON 包含非标准格式的特殊值，也能正确处理
+// Even if JSON contains non-standard special values, they are handled correctly
 string problematicJson = @"{""value"": NaN, ""score"": Infinity}";
 var result = JsonHelper.Deserialize<Dictionary<string, double>>(problematicJson);
-// 成功反序列化，NaN 和 Infinity 被正确处理
+// Successfully deserialized, NaN and Infinity are correctly handled
 ```
 
-## 🎨 高级用法
+## Advanced Usage
 
-### 自定义配置
+### Custom Configuration
 
 ```csharp
 var customOptions = new JsonSerializerOptions
@@ -254,14 +239,14 @@ var customOptions = new JsonSerializerOptions
     DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault
 };
 
-// 添加 GameFrameX 的特殊转换器
+// Add GameFrameX special converters
 customOptions.Converters.Add(new SpecialFloatingPointConverter());
 customOptions.Converters.Add(new JsonStringEnumConverter());
 
 string json = JsonHelper.Serialize(data, customOptions);
 ```
 
-### 批量处理
+### Batch Processing
 
 ```csharp
 var users = new List<User>
@@ -271,52 +256,52 @@ var users = new List<User>
     new User { Name = "王五", Age = 35 }
 };
 
-// 序列化列表
+// Serialize list
 string json = JsonHelper.Serialize(users);
 
-// 反序列化列表
+// Deserialize list
 List<User> deserializedUsers = JsonHelper.Deserialize<List<User>>(json);
 ```
 
-### 性能优化
+### Performance Optimization
 
 ```csharp
-// 对于大量数据，使用 UTF8 字节数组可以提高性能
+// For large amounts of data, using UTF8 byte arrays can improve performance
 byte[] utf8Data = JsonHelper.SerializeToUtf8Bytes(largeDataSet);
 
-// 直接从字节数组反序列化，避免字符串转换开销
+// Deserialize directly from byte array, avoiding string conversion overhead
 var result = JsonHelper.DeserializeFromUtf8Bytes<LargeDataSet>(utf8Data);
 ```
 
-## 💡 最佳实践
+## Best Practices
 
-### 1. 选择合适的序列化方法
+### Choosing the Right Serialization Method
 
 ```csharp
-// 对于调试和日志，使用格式化序列化
+// For debugging and logging, use formatted serialization
 string debugJson = JsonHelper.SerializeFormat(debugData);
 
-// 对于网络传输和存储，使用默认序列化（更紧凑）
+// For network transmission and storage, use default serialization (more compact)
 string compactJson = JsonHelper.Serialize(networkData);
 
-// 对于高性能场景，使用 UTF8 字节数组
+// For high-performance scenarios, use UTF8 byte arrays
 byte[] highPerfData = JsonHelper.SerializeToUtf8Bytes(data);
 ```
 
-### 2. 错误处理
+### Error Handling
 
 ```csharp
-// 对于可能失败的操作，使用 Try 方法
+// For operations that may fail, use Try methods
 if (!JsonHelper.TryDeserialize<User>(userJson, out User user))
 {
-    // 记录错误日志
-    logger.LogError("用户数据反序列化失败: {Json}", userJson);
-    // 使用默认值或抛出业务异常
-    user = new User { Name = "未知用户" };
+    // Log the error
+    logger.LogError("User data deserialization failed: {Json}", userJson);
+    // Use default value or throw a business exception
+    user = new User { Name = "Unknown User" };
 }
 ```
 
-### 3. 数据模型设计
+### Data Model Design
 
 ```csharp
 public class ApiResponse<T>
@@ -326,15 +311,15 @@ public class ApiResponse<T>
     public T Data { get; set; }
     public DateTime Timestamp { get; set; } = DateTime.UtcNow;
     
-    // 对于可能为 null 的属性，明确标记
+    // For properties that may be null, mark them explicitly
     public string ErrorCode { get; set; } = null;
 }
 ```
 
-### 4. 配置管理
+### Configuration Management
 
 ```csharp
-// 为不同场景创建专用配置
+// Create dedicated configurations for different scenarios
 public static class JsonConfigurations
 {
     public static readonly JsonSerializerOptions ApiOptions = new JsonSerializerOptions
@@ -352,58 +337,57 @@ public static class JsonConfigurations
 }
 ```
 
-## 🔍 故障排除
+### Troubleshooting
 
-### 常见问题
+#### Common Issues
 
-#### 1. 特殊浮点值序列化问题
-**问题**: 序列化包含 NaN 或 Infinity 的对象时出错
-**解决方案**: 使用 GameFrameX.Foundation.Json，它内置了特殊浮点值处理
+**Special Floating-Point Value Serialization Issue**
+Issue: Error when serializing objects containing NaN or Infinity
+Solution: Use GameFrameX.Foundation.Json, which has built-in special floating-point value handling
 
-#### 2. 循环引用问题
-**问题**: 对象间存在循环引用导致序列化失败
-**解决方案**: 库的默认配置已启用 `ReferenceHandler.IgnoreCycles`
+**Circular Reference Issue**
+Issue: Circular references between objects cause serialization to fail
+Solution: The library's default configuration has `ReferenceHandler.IgnoreCycles` enabled
 
-#### 3. 枚举序列化问题
-**问题**: 希望枚举序列化为字符串而非数字
-**解决方案**: 库默认包含 `JsonStringEnumConverter`
+**Enum Serialization Issue**
+Issue: Want enums to be serialized as strings instead of numbers
+Solution: The library includes `JsonStringEnumConverter` by default
 
-#### 4. 性能问题
-**问题**: 大数据量序列化性能不佳
-**解决方案**: 使用 UTF8 字节数组方法，避免字符串转换开销
+**Performance Issue**
+Issue: Poor serialization performance with large data volumes
+Solution: Use UTF8 byte array methods to avoid string conversion overhead
 
-### 调试技巧
+#### Debugging Tips
 
 ```csharp
-// 启用详细的错误信息
+// Enable detailed error information
 try
 {
     var result = JsonHelper.Deserialize<ComplexObject>(json);
 }
 catch (JsonException ex)
 {
-    Console.WriteLine($"JSON 解析错误: {ex.Message}");
-    Console.WriteLine($"错误位置: Line {ex.LineNumber}, Position {ex.BytePositionInLine}");
-    Console.WriteLine($"问题路径: {ex.Path}");
+    Console.WriteLine($"JSON parse error: {ex.Message}");
+    Console.WriteLine($"Error location: Line {ex.LineNumber}, Position {ex.BytePositionInLine}");
+    Console.WriteLine($"Problem path: {ex.Path}");
 }
 ```
 
-## 📄 许可证
+## API Reference
 
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
-
----
-
-**GameFrameX.Foundation.Json** - 让 JSON 处理更简单、更可靠！
+| Method | Parameters | Return Value | Description |
+|------|------|--------|------|
+| Serialize | `T` | `string` | Serialize object using default configuration |
+| Serialize | `T, JsonSerializerOptions` | `string` | Serialize using custom configuration |
+| SerializeFormat | `T` | `string` | Formatted serialization (auto-indent) |
+| SerializeToUtf8Bytes | `T` | `byte[]` | Serialize to UTF8 byte array |
+| SerializeToUtf8BytesFormat | `T` | `byte[]` | Formatted serialization to UTF8 byte array |
+| Deserialize\<T\> | `string` | `T` | Generic deserialization |
+| Deserialize | `string, Type` | `object` | Deserialize by type |
+| Deserialize\<T\> | `string, JsonSerializerOptions` | `T` | Deserialize using custom configuration |
+| DeserializeFromUtf8Bytes\<T\> | `byte[]` | `T` | Deserialize from UTF8 byte array |
+| DeserializeFromUtf8Bytes\<T\> | `byte[], JsonSerializerOptions` | `T` | Deserialize from UTF8 byte array using custom configuration |
+| TrySerialize | `T, out string` | `bool` | Safe serialization attempt |
+| TryDeserialize\<T\> | `string, out T` | `bool` | Safe deserialization attempt |
+| DefaultOptions | none | `JsonSerializerOptions` | Default configuration (static property) |
+| FormatOptions | none | `JsonSerializerOptions` | Format configuration (static property) |

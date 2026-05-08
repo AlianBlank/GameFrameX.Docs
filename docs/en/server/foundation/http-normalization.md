@@ -1,157 +1,153 @@
-# HTTP消息标准化
+# HTTP Message Normalization (Infrastructure Library for Unified HTTP Response Structures)
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-blue.svg)](https://dotnet.microsoft.com/download) [![License](https://img.shields.io/badge/license-Apache--2.0-green.svg)]()
 
-GameFrameX.Foundation.Http.Normalization 是一个用于统一HTTP响应结构的基础设施库，提供了标准化的JSON响应格式和处理工具，确保整个框架的HTTP响应结构一致性。
+GameFrameX.Foundation.Http.Normalization is an infrastructure library for unifying HTTP response structures. It provides standardized JSON response formats and processing tools, ensuring consistent HTTP response structures across the entire framework.
 
-## 🎯 核心特性
+## Features
 
-- **统一响应结构** - 提供标准化的HTTP JSON响应格式
-- **多种响应状态** - 支持成功、失败、错误等多种响应状态
-- **类型安全** - 泛型支持，确保数据类型安全
-- **便捷方法** - 提供丰富的静态方法快速创建响应
-- **扩展支持** - 支持自定义状态码和消息
-- **序列化优化** - 基于System.Text.Json的高性能序列化
-- **错误处理** - 完善的异常处理和日志记录
-- **特性支持** - 提供描述特性用于文档生成
+- **Unified Response Structure** - Provides a standardized HTTP JSON response format
+- **Multiple Response Statuses** - Supports success, failure, error, and other response statuses
+- **Type Safety** - Generic support ensures data type safety
+- **Convenience Methods** - Provides rich static methods for quickly creating responses
+- **Extension Support** - Supports custom status codes and messages
+- **Serialization Optimization** - High-performance serialization based on System.Text.Json
+- **Error Handling** - Comprehensive exception handling and logging
+- **Attribute Support** - Provides description attributes for documentation generation
 
-## 📦 安装
+## Installation
 
 ```bash
-# 通过 NuGet 包管理器安装
-Install-Package GameFrameX.Foundation.Http.Normalization
-
-# 或通过 .NET CLI 安装
 dotnet add package GameFrameX.Foundation.Http.Normalization
 ```
 
-## 🚀 快速开始
+## Quick Start
 
-### 基本使用
+### Basic Usage
 
 ```csharp
 using GameFrameX.Foundation.Http.Normalization;
 
-// 创建成功响应
+// Create a success response
 var successResponse = HttpJsonResult.Success();
 Console.WriteLine(successResponse.ToString());
-// 输出: {"code":0,"message":"","data":null}
+// Output: {"code":0,"message":"","data":null}
 
-// 创建带数据的成功响应
+// Create a success response with data
 var user = new { Name = "张三", Age = 25 };
 var successWithData = HttpJsonResult.Success(user);
 Console.WriteLine(successWithData.ToString());
-// 输出: {"code":0,"message":"","data":"{\"Name\":\"张三\",\"Age\":25}"}
+// Output: {"code":0,"message":"","data":"{\"Name\":\"张三\",\"Age\":25}"}
 
-// 创建失败响应
-var failResponse = HttpJsonResult.Fail("用户不存在");
+// Create a failure response
+var failResponse = HttpJsonResult.Fail("User not found");
 Console.WriteLine(failResponse.ToString());
-// 输出: {"code":-1,"message":"用户不存在","data":null}
+// Output: {"code":-1,"message":"User not found","data":null}
 ```
 
-### 直接获取JSON字符串
+### Getting JSON Strings Directly
 
 ```csharp
-// 获取成功响应的JSON字符串
+// Get the JSON string of a success response
 string successJson = HttpJsonResult.SuccessString();
 
-// 获取带数据的成功响应JSON字符串
+// Get the JSON string of a success response with data
 string successWithDataJson = HttpJsonResult.SuccessString(user);
 
-// 获取失败响应的JSON字符串
-string failJson = HttpJsonResult.FailString("操作失败");
+// Get the JSON string of a failure response
+string failJson = HttpJsonResult.FailString("Operation failed");
 ```
 
-## 📋 详细使用指南
+## Detailed Usage
 
-### 1. HttpJsonResult 响应类
+### 1. HttpJsonResult Response Class
 
-#### 基本属性
+#### Basic Properties
 
 ```csharp
 public sealed class HttpJsonResult
 {
-    public int Code { get; set; }        // 响应码，0表示成功
-    public string Message { get; set; }  // 响应消息
-    public string Data { get; set; }     // 响应数据（JSON字符串）
+    public int Code { get; set; }        // Response code, 0 indicates success
+    public string Message { get; set; }  // Response message
+    public string Data { get; set; }     // Response data (JSON string)
 }
 ```
 
-#### 常用响应码
+#### Common Response Codes
 
-- `0` - 成功
-- `-1` - 一般性失败
-- `400` - 验证失败
-- `401` - 未授权
-- `403` - 参数错误
-- `404` - 资源未找到
-- `500` - 服务器内部错误
+- `0` - Success
+- `-1` - General failure
+- `400` - Validation failure
+- `401` - Unauthorized
+- `403` - Parameter error
+- `404` - Resource not found
+- `500` - Internal server error
 
-### 2. 成功响应方法
+### 2. Success Response Methods
 
 ```csharp
-// 基本成功响应
+// Basic success response
 var response1 = HttpJsonResult.Success();
 
-// 带数据的成功响应
+// Success response with data
 var response2 = HttpJsonResult.Success(userData);
 
-// 带JSON字符串数据的成功响应
+// Success response with JSON string data
 var response3 = HttpJsonResult.Success("{\"id\":1,\"name\":\"test\"}");
 
-// 自定义状态码和消息的成功响应
-var response4 = HttpJsonResult.Success(200, "操作成功", jsonData);
+// Success response with custom status code and message
+var response4 = HttpJsonResult.Success(200, "Operation succeeded", jsonData);
 
-// 自定义消息的成功响应
-var response5 = HttpJsonResult.Success("创建成功", jsonData);
+// Success response with custom message
+var response5 = HttpJsonResult.Success("Created successfully", jsonData);
 ```
 
-### 3. 错误响应方法
+### 3. Error Response Methods
 
 ```csharp
-// 一般失败响应
-var failResponse = HttpJsonResult.Fail("操作失败");
+// General failure response
+var failResponse = HttpJsonResult.Fail("Operation failed");
 
-// 自定义错误码和消息
-var errorResponse = HttpJsonResult.Error(1001, "业务逻辑错误");
+// Custom error code and message
+var errorResponse = HttpJsonResult.Error(1001, "Business logic error");
 
-// 验证失败响应
+// Validation failure response
 var validationResponse = HttpJsonResult.ValidationError();
 
-// 未授权响应
+// Unauthorized response
 var unauthorizedResponse = HttpJsonResult.Unauthorized();
 
-// 资源未找到响应
+// Resource not found response
 var notFoundResponse = HttpJsonResult.NotFound();
 
-// 服务器错误响应
+// Server error response
 var serverErrorResponse = HttpJsonResult.ServerError();
 
-// 参数错误响应
+// Parameter error response
 var paramErrorResponse = HttpJsonResult.ParamError();
 
-// 非法请求响应
+// Illegal request response
 var illegalResponse = HttpJsonResult.Illegal();
 ```
 
-### 4. HttpJsonResultData&lt;T&gt; 泛型响应类
+### 4. HttpJsonResultData&lt;T&gt; Generic Response Class
 
 ```csharp
 public sealed class HttpJsonResultData<T>
 {
-    public bool IsSuccess { get; set; }  // 是否成功
-    public int Code { get; set; }        // 响应码
-    public string Message { get; set; }  // 错误消息
-    public T Data { get; set; }          // 强类型数据
+    public bool IsSuccess { get; set; }  // Whether the operation succeeded
+    public int Code { get; set; }        // Response code
+    public string Message { get; set; }  // Error message
+    public T Data { get; set; }          // Strongly typed data
 }
 ```
 
-### 5. 响应转换和处理
+### 5. Response Conversion and Processing
 
 ```csharp
 using GameFrameX.Foundation.Http.Normalization;
 
-// 定义数据模型
+// Define data model
 public class UserInfo
 {
     public int Id { get; set; }
@@ -159,7 +155,7 @@ public class UserInfo
     public string Email { get; set; }
 }
 
-// 将JSON响应转换为强类型结果
+// Convert JSON response to strongly typed result
 string jsonResponse = HttpJsonResult.SuccessString(new UserInfo 
 { 
     Id = 1, 
@@ -167,26 +163,24 @@ string jsonResponse = HttpJsonResult.SuccessString(new UserInfo
     Email = "zhangsan@example.com" 
 });
 
-// 使用扩展方法转换
+// Use extension method to convert
 HttpJsonResultData<UserInfo> result = jsonResponse.ToHttpJsonResultData<UserInfo>();
 
 if (result.IsSuccess)
 {
-    Console.WriteLine($"用户姓名: {result.Data.Name}");
-    Console.WriteLine($"用户邮箱: {result.Data.Email}");
+    Console.WriteLine($"User name: {result.Data.Name}");
+    Console.WriteLine($"User email: {result.Data.Email}");
 }
 else
 {
-    Console.WriteLine($"请求失败: {result.Message} (错误码: {result.Code})");
+    Console.WriteLine($"Request failed: {result.Message} (Error code: {result.Code})");
 }
 ```
 
-## 🎨 高级用法
-
-### 1. 自定义响应状态码
+### 6. Custom Response Status Codes
 
 ```csharp
-// 业务自定义状态码
+// Business custom status codes
 public static class BusinessCodes
 {
     public const int UserNotFound = 1001;
@@ -194,11 +188,11 @@ public static class BusinessCodes
     public const int OrderExpired = 1003;
 }
 
-// 使用自定义状态码
-var response = HttpJsonResult.Error(BusinessCodes.UserNotFound, "用户不存在");
+// Use custom status codes
+var response = HttpJsonResult.Error(BusinessCodes.UserNotFound, "User not found");
 ```
 
-### 2. 响应数据封装
+### 7. Response Data Encapsulation
 
 ```csharp
 public class ApiResponse<T>
@@ -225,7 +219,7 @@ public class ApiResponse<T>
 }
 ```
 
-### 3. 批量数据处理
+### 8. Batch Data Processing
 
 ```csharp
 public class PagedResult<T>
@@ -236,7 +230,7 @@ public class PagedResult<T>
     public int PageSize { get; set; }
 }
 
-// 分页数据响应
+// Paged data response
 var pagedUsers = new PagedResult<UserInfo>
 {
     Items = userList,
@@ -248,147 +242,31 @@ var pagedUsers = new PagedResult<UserInfo>
 var response = HttpJsonResult.Success(pagedUsers);
 ```
 
-### 4. 使用描述特性
+### 9. Using Description Attributes
 
 ```csharp
 public enum ApiErrorCode
 {
-    [HttpJsonCodeDescription("操作成功")]
+    [HttpJsonCodeDescription("Operation succeeded")]
     Success = 0,
     
-    [HttpJsonCodeDescription("用户不存在")]
+    [HttpJsonCodeDescription("User not found")]
     UserNotFound = 1001,
     
-    [HttpJsonCodeDescription("余额不足")]
+    [HttpJsonCodeDescription("Insufficient balance")]
     InsufficientBalance = 1002,
     
-    [HttpJsonCodeDescription("订单已过期")]
+    [HttpJsonCodeDescription("Order expired")]
     OrderExpired = 1003
 }
 
-// 使用枚举创建响应
-var response = HttpJsonResult.Error((int)ApiErrorCode.UserNotFound, "用户不存在");
+// Use enum to create response
+var response = HttpJsonResult.Error((int)ApiErrorCode.UserNotFound, "User not found");
 ```
 
-## 💡 最佳实践
+## Advanced Usage
 
-### 1. 统一错误处理
-
-```csharp
-public class GlobalExceptionHandler
-{
-    public static HttpJsonResult HandleException(Exception ex)
-    {
-        return ex switch
-        {
-            ArgumentNullException => HttpJsonResult.ParamError(),
-            UnauthorizedAccessException => HttpJsonResult.Unauthorized(),
-            FileNotFoundException => HttpJsonResult.NotFound(),
-            _ => HttpJsonResult.ServerError()
-        };
-    }
-}
-```
-
-### 2. API控制器集成
-
-```csharp
-[ApiController]
-[Route("api/[controller]")]
-public class UserController : ControllerBase
-{
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetUser(int id)
-    {
-        try
-        {
-            var user = await userService.GetUserAsync(id);
-            if (user == null)
-            {
-                return Ok(HttpJsonResult.NotFoundString());
-            }
-            
-            return Ok(HttpJsonResult.SuccessString(user));
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, "获取用户信息失败");
-            return Ok(HttpJsonResult.ServerErrorString());
-        }
-    }
-    
-    [HttpPost]
-    public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request)
-    {
-        if (!ModelState.IsValid)
-        {
-            return Ok(HttpJsonResult.ValidationErrorString());
-        }
-        
-        try
-        {
-            var user = await userService.CreateUserAsync(request);
-            return Ok(HttpJsonResult.SuccessString("用户创建成功", JsonSerializer.Serialize(user)));
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, "创建用户失败");
-            return Ok(HttpJsonResult.FailString("创建用户失败"));
-        }
-    }
-}
-```
-
-### 3. 客户端响应处理
-
-```csharp
-public class ApiClient
-{
-    private readonly HttpClient httpClient;
-    
-    public async Task<HttpJsonResultData<T>> GetAsync<T>(string url) where T : class, new()
-    {
-        try
-        {
-            var response = await httpClient.GetStringAsync(url);
-            return response.ToHttpJsonResultData<T>();
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, "API请求失败");
-            return new HttpJsonResultData<T>
-            {
-                IsSuccess = false,
-                Code = 500,
-                Message = "网络请求失败"
-            };
-        }
-    }
-}
-```
-
-### 4. 响应缓存
-
-```csharp
-public static class ResponseCache
-{
-    private static readonly ConcurrentDictionary<string, string> Cache = new();
-    
-    public static string GetCachedResponse(string key, Func<string> factory)
-    {
-        return Cache.GetOrAdd(key, _ => factory());
-    }
-    
-    // 缓存常用响应
-    public static readonly string SuccessResponse = HttpJsonResult.SuccessString();
-    public static readonly string UnauthorizedResponse = HttpJsonResult.UnauthorizedString();
-    public static readonly string NotFoundResponse = HttpJsonResult.NotFoundString();
-}
-```
-
-## 🔧 扩展功能
-
-### 1. 自定义序列化选项
+### Custom Serialization Options
 
 ```csharp
 public static class CustomHttpJsonResult
@@ -406,7 +284,7 @@ public static class CustomHttpJsonResult
 }
 ```
 
-### 2. 响应时间统计
+### Response Time Tracking
 
 ```csharp
 public class TimedHttpJsonResult : HttpJsonResult
@@ -427,7 +305,7 @@ public class TimedHttpJsonResult : HttpJsonResult
 }
 ```
 
-### 3. 多语言支持
+### Multi-Language Support
 
 ```csharp
 public static class LocalizedMessages
@@ -462,85 +340,166 @@ public static class LocalizedMessages
 }
 ```
 
-## 🔍 故障排除
+## Best Practices
 
-### 常见问题
+### Unified Error Handling
 
-#### 1. 序列化问题
-
-**问题**: 复杂对象序列化失败
-**解决方案**: 确保对象可序列化，避免循环引用
+Use standardized error responses in a global exception handler to keep API behavior consistent:
 
 ```csharp
-// 使用JsonIgnore特性避免循环引用
-public class User
+public class GlobalExceptionHandler
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    
-    [JsonIgnore]
-    public List<Order> Orders { get; set; }
-}
-```
-
-#### 2. 数据转换问题
-
-**问题**: ToHttpJsonResultData转换失败
-**解决方案**: 确保JSON格式正确，目标类型有无参构造函数
-
-```csharp
-// 确保类有无参构造函数
-public class ApiData
-{
-    public ApiData() { } // 必需的无参构造函数
-    
-    public string Value { get; set; }
-}
-```
-
-#### 3. 性能问题
-
-**问题**: 大量响应创建导致性能问题
-**解决方案**: 使用响应缓存和对象池
-
-```csharp
-// 使用对象池
-private static readonly ObjectPool<HttpJsonResult> ResultPool = 
-    new DefaultObjectPool<HttpJsonResult>(new HttpJsonResultPooledObjectPolicy());
-```
-
-### 调试技巧
-
-```csharp
-// 启用详细日志
-public static class DebugHelper
-{
-    public static void LogResponse(HttpJsonResult result)
+    public static HttpJsonResult HandleException(Exception ex)
     {
-        Console.WriteLine($"响应码: {result.Code}");
-        Console.WriteLine($"消息: {result.Message}");
-        Console.WriteLine($"数据: {result.Data}");
-        Console.WriteLine($"JSON: {result.ToString()}");
+        return ex switch
+        {
+            ArgumentNullException => HttpJsonResult.ParamError(),
+            UnauthorizedAccessException => HttpJsonResult.Unauthorized(),
+            FileNotFoundException => HttpJsonResult.NotFound(),
+            _ => HttpJsonResult.ServerError()
+        };
     }
 }
 ```
 
-## 📄 许可证
+### API Controller Integration
 
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
+Controller methods uniformly return `HttpJsonResult`, so clients only need to parse one format:
 
-## 🤝 贡献
+```csharp
+[ApiController]
+[Route("api/[controller]")]
+public class UserController : ControllerBase
+{
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetUser(int id)
+    {
+        try
+        {
+            var user = await userService.GetUserAsync(id);
+            if (user == null)
+            {
+                return Ok(HttpJsonResult.NotFoundString());
+            }
+            
+            return Ok(HttpJsonResult.SuccessString(user));
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Failed to get user information");
+            return Ok(HttpJsonResult.ServerErrorString());
+        }
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request)
+    {
+        if (!ModelState.IsValid)
+        {
+            return Ok(HttpJsonResult.ValidationErrorString());
+        }
+        
+        try
+        {
+            var user = await userService.CreateUserAsync(request);
+            return Ok(HttpJsonResult.SuccessString("User created successfully", JsonSerializer.Serialize(user)));
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Failed to create user");
+            return Ok(HttpJsonResult.FailString("Failed to create user"));
+        }
+    }
+}
+```
 
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
+### Client Response Processing
 
-## 📞 支持
+Clients use the `ToHttpJsonResultData<T>` extension method for type-safe deserialization:
 
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
+```csharp
+public class ApiClient
+{
+    private readonly HttpClient httpClient;
+    
+    public async Task<HttpJsonResultData<T>> GetAsync<T>(string url) where T : class, new()
+    {
+        try
+        {
+            var response = await httpClient.GetStringAsync(url);
+            return response.ToHttpJsonResultData<T>();
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "API request failed");
+            return new HttpJsonResultData<T>
+            {
+                IsSuccess = false,
+                Code = 500,
+                Message = "Network request failed"
+            };
+        }
+    }
+}
+```
 
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
+### Response Caching
 
----
+Cache high-frequency static responses to reduce repeated serialization overhead:
 
-**GameFrameX.Foundation.Http.Normalization** - 让HTTP响应更规范、更统一！
+```csharp
+public static class ResponseCache
+{
+    private static readonly ConcurrentDictionary<string, string> Cache = new();
+    
+    public static string GetCachedResponse(string key, Func<string> factory)
+    {
+        return Cache.GetOrAdd(key, _ => factory());
+    }
+    
+    // Cache commonly used responses
+    public static readonly string SuccessResponse = HttpJsonResult.SuccessString();
+    public static readonly string UnauthorizedResponse = HttpJsonResult.UnauthorizedString();
+    public static readonly string NotFoundResponse = HttpJsonResult.NotFoundString();
+}
+```
+
+## API Reference
+
+### HttpJsonResult Static Methods
+
+| Method | Return Type | Description |
+|--------|-------------|-------------|
+| `Success()` | `HttpJsonResult` | Create an empty success response (code=0) |
+| `Success(data)` | `HttpJsonResult` | Create a success response with data |
+| `Success(message, data)` | `HttpJsonResult` | Create a success response with message and data |
+| `Success(code, message, data)` | `HttpJsonResult` | Create a success response with custom status code |
+| `Fail(message)` | `HttpJsonResult` | Create a failure response (code=-1) |
+| `Error(code, message)` | `HttpJsonResult` | Create an error response with custom error code |
+| `ValidationError()` | `HttpJsonResult` | Validation failure response (code=400) |
+| `Unauthorized()` | `HttpJsonResult` | Unauthorized response (code=401) |
+| `NotFound()` | `HttpJsonResult` | Resource not found response (code=404) |
+| `ServerError()` | `HttpJsonResult` | Internal server error response (code=500) |
+| `ParamError()` | `HttpJsonResult` | Parameter error response (code=403) |
+| `Illegal()` | `HttpJsonResult` | Illegal request response |
+| `SuccessString(...)` | `string` | JSON string version of the success methods above |
+| `FailString(...)` | `string` | JSON string version of the failure methods above |
+| `NotFoundString()` | `string` | JSON string version for resource not found |
+| `UnauthorizedString()` | `string` | JSON string version for unauthorized |
+| `ServerErrorString()` | `string` | JSON string version for server error |
+| `ValidationErrorString()` | `string` | JSON string version for validation failure |
+
+### HttpJsonResultData&lt;T&gt; Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `IsSuccess` | `bool` | Whether the operation succeeded (code=0) |
+| `Code` | `int` | Response status code |
+| `Message` | `string` | Response message |
+| `Data` | `T` | Strongly typed response data |
+
+### Extension Methods
+
+| Method | Description |
+|--------|-------------|
+| `string.ToHttpJsonResultData<T>()` | Deserialize a JSON string into `HttpJsonResultData<T>` |

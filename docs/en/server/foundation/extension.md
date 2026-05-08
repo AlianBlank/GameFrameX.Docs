@@ -1,101 +1,124 @@
-# 系统扩展
+# System Extensions (Feature-Rich .NET Extension Method Library)
 
-GameFrameX.Foundation.Extensions 是一个功能丰富的 .NET 扩展方法库，提供了大量实用的扩展方法和工具类，用于简化日常开发工作。该库包含字符串处理、集合操作、类型转换、对象操作等多个方面的扩展功能。
+GameFrameX.Foundation.Extensions is a feature-rich .NET extension method library that provides a wide range of practical extension methods and utility classes for simplifying everyday development work. The library covers string processing, collection operations, type conversion, object manipulation, and many other areas of extension functionality.
 
-## 特性
+## Features
 
-- 🔧 **丰富的扩展方法** - 提供字符串、集合、对象、类型等多种扩展方法
-- 🚀 **高性能** - 优化的算法实现，确保高效执行
-- 🛡️ **类型安全** - 完整的泛型支持和类型检查
-- 📦 **轻量级** - 无外部依赖，易于集成
-- 🔄 **双向映射** - 提供双向字典等高级数据结构
-- 🎯 **线程安全** - 部分组件支持并发操作
+- **Rich Extension Methods** - Provides string, collection, object, type, and other extension methods
+- **High Performance** - Optimized algorithm implementations for efficient execution
+- **Type Safety** - Complete generic support and type checking
+- **Lightweight** - No external dependencies, easy to integrate
+- **Bidirectional Mapping** - Provides advanced data structures such as bidirectional dictionaries
+- **Thread Safety** - Some components support concurrent operations
 
-## 安装
+## Installation
 
 ```bash
 dotnet add package GameFrameX.Foundation.Extensions
 ```
 
-## 主要组件
+## Quick Start
 
-### 1. 字符串扩展 (StringExtensions)
-
-提供丰富的字符串处理扩展方法：
+The following examples demonstrate the most common extension method usage:
 
 ```csharp
 using GameFrameX.Foundation.Extensions;
 
-// 字符串验证
+// String operations
+string email = "user@example.com";
+bool isValid = email.IsValidEmail(); // true
+
+string text = "hello world";
+string pascalCase = text.ToPascalCase(); // "HelloWorld"
+
+// Collection operations
+List<int> numbers = new List<int> { 1, 2, 3 };
+bool isEmpty = numbers.IsNullOrEmpty(); // false
+
+// Byte array conversion
+byte[] bytes = { 0x48, 0x65, 0x6C, 0x6C, 0x6F }; // "Hello" in ASCII
+string decoded = bytes.ToUtf8String(); // "Hello"
+```
+
+## Detailed Usage
+
+### String Extensions (StringExtensions)
+
+Provides a rich set of string processing extension methods:
+
+```csharp
+using GameFrameX.Foundation.Extensions;
+
+// String validation
 string email = "user@example.com";
 bool isValid = email.IsValidEmail(); // true
 
 string url = "https://www.example.com";
 bool isValidUrl = url.IsValidUrl(); // true
 
-// 字符串转换
+// String conversion
 string text = "hello world";
 string camelCase = text.ToCamelCase(); // "helloWorld"
 string pascalCase = text.ToPascalCase(); // "HelloWorld"
 string kebabCase = text.ToKebabCase(); // "hello-world"
 
-// 字符串截取
+// String truncation
 string longText = "This is a very long text";
 string truncated = longText.Truncate(10); // "This is a..."
 string truncatedCustom = longText.Truncate(10, "***"); // "This is a***"
 
-// 安全转换
+// Safe conversion
 string numberStr = "123";
 int number = numberStr.ToIntOrDefault(); // 123
 int defaultValue = "abc".ToIntOrDefault(999); // 999
 
-// 字符串清理
+// String cleaning
 string dirtyText = "  Hello\t\nWorld  ";
 string cleaned = dirtyText.CleanWhitespace(); // "Hello World"
 
-// Base64 编码/解码
+// Base64 encoding/decoding
 string original = "Hello World";
 string encoded = original.ToBase64(); // "SGVsbG8gV29ybGQ="
 string decoded = encoded.FromBase64(); // "Hello World"
 ```
 
-### 2. 集合扩展 (CollectionExtensions & IEnumerableExtensions)
+### Collection Extensions (CollectionExtensions & IEnumerableExtensions)
 
-提供强大的集合操作扩展：
+Provides powerful collection operation extensions:
 
 ```csharp
 using GameFrameX.Foundation.Extensions;
 
-// 集合判断
+// Collection checks
 List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
 bool isEmpty = numbers.IsNullOrEmpty(); // false
 bool hasElements = numbers.IsNotNullOrEmpty(); // true
 
-// 安全操作
+// Safe operations
 List<string> items = null;
-items.AddIfNotNull("test"); // 不会抛出异常
+items.AddIfNotNull("test"); // Will not throw an exception
 
 List<string> validItems = new List<string> { "a", "b", "c" };
-validItems.AddIfNotNull("d"); // 添加成功
+validItems.AddIfNotNull("d"); // Added successfully
 
-// 批量操作
+// Batch operations
 var moreItems = new[] { "e", "f", "g" };
 validItems.AddRange(moreItems);
 
-// 去重操作
+// Deduplication
 var duplicates = new[] { 1, 2, 2, 3, 3, 4 };
 var unique = duplicates.Distinct().ToList(); // [1, 2, 3, 4]
 
-// 分页操作
+// Pagination
 var allItems = Enumerable.Range(1, 100);
-var page1 = allItems.Skip(0).Take(10); // 第1页，每页10条
-var page2 = allItems.Skip(10).Take(10); // 第2页，每页10条
+var page1 = allItems.Skip(0).Take(10); // Page 1, 10 items per page
+var page2 = allItems.Skip(10).Take(10); // Page 2, 10 items per page
 
-// 随机选择
-var randomItem = numbers.RandomElement(); // 随机选择一个元素
-var randomItems = numbers.RandomElements(3); // 随机选择3个元素
+// Random selection
+var randomItem = numbers.RandomElement(); // Randomly select one element
+var randomItems = numbers.RandomElements(3); // Randomly select 3 elements
 
-// 分组操作
+// Grouping
 var people = new[]
 {
     new { Name = "Alice", Age = 25 },
@@ -105,33 +128,33 @@ var people = new[]
 var groupedByAge = people.GroupBy(p => p.Age);
 ```
 
-### 3. 对象扩展 (ObjectExtensions)
+### Object Extensions (ObjectExtensions)
 
-提供对象操作和转换的扩展方法：
+Provides extension methods for object manipulation and conversion:
 
 ```csharp
 using GameFrameX.Foundation.Extensions;
 
-// 空值检查
+// Null checks
 object obj = null;
 bool isNull = obj.IsNull(); // true
 bool isNotNull = obj.IsNotNull(); // false
 
-// 类型检查和转换
+// Type checking and conversion
 object value = "123";
 bool isString = value.Is<string>(); // true
 string stringValue = value.As<string>(); // "123"
 
-// 安全转换
+// Safe conversion
 object numberObj = 42;
 int? intValue = numberObj.AsOrDefault<int>(); // 42
 string stringFromInt = numberObj.AsOrDefault<string>(); // null
 
-// 深拷贝（如果对象支持序列化）
+// Deep clone (if the object supports serialization)
 var original = new { Name = "Test", Value = 123 };
-var copy = original.DeepClone(); // 深拷贝对象
+var copy = original.DeepClone(); // Deep clone the object
 
-// 属性复制
+// Property copying
 public class Source { public string Name { get; set; } public int Age { get; set; } }
 public class Target { public string Name { get; set; } public int Age { get; set; } }
 
@@ -140,143 +163,143 @@ var target = new Target();
 source.CopyPropertiesTo(target); // target.Name = "Alice", target.Age = 25
 ```
 
-### 4. 类型扩展 (TypeExtensions)
+### Type Extensions (TypeExtensions)
 
-提供类型信息和反射操作的扩展：
+Provides extensions for type information and reflection operations:
 
 ```csharp
 using GameFrameX.Foundation.Extensions;
 
-// 类型检查
+// Type checking
 Type stringType = typeof(string);
 bool isNullable = stringType.IsNullable(); // false
 
 Type nullableIntType = typeof(int?);
 bool isNullableInt = nullableIntType.IsNullable(); // true
 
-// 获取默认值
+// Getting default values
 Type intType = typeof(int);
 object defaultValue = intType.GetDefaultValue(); // 0
 
-// 类型比较
+// Type comparison
 bool isAssignable = typeof(string).IsAssignableFrom(typeof(object)); // false
 bool isAssignableReverse = typeof(object).IsAssignableFrom(typeof(string)); // true
 
-// 获取泛型参数
+// Getting generic arguments
 Type listType = typeof(List<string>);
 Type[] genericArgs = listType.GetGenericArguments(); // [typeof(string)]
 
-// 检查是否为集合类型
+// Check if a type is a collection type
 bool isList = typeof(List<int>).IsCollection(); // true
 bool isArray = typeof(int[]).IsCollection(); // true
-bool isString = typeof(string).IsCollection(); // false (字符串不被视为集合)
+bool isString = typeof(string).IsCollection(); // false (strings are not considered collections)
 ```
 
-### 5. 字节扩展 (ByteExtensions)
+### Byte Extensions (ByteExtensions)
 
-提供字节数组处理的扩展方法：
+Provides extension methods for byte array processing:
 
 ```csharp
 using GameFrameX.Foundation.Extensions;
 
-// 字节数组转换
+// Byte array conversion
 byte[] bytes = { 0x48, 0x65, 0x6C, 0x6C, 0x6F }; // "Hello" in ASCII
 string text = bytes.ToUtf8String(); // "Hello"
 string hex = bytes.ToHexString(); // "48656C6C6F"
 string hexWithSeparator = bytes.ToHexString("-"); // "48-65-6C-6C-6F"
 
-// 字符串转字节数组
+// String to byte array
 string message = "Hello World";
 byte[] utf8Bytes = message.ToUtf8Bytes();
 byte[] asciiBytes = message.ToAsciiBytes();
 
-// 十六进制字符串转字节数组
+// Hex string to byte array
 string hexString = "48656C6C6F";
 byte[] fromHex = hexString.FromHexString(); // [0x48, 0x65, 0x6C, 0x6C, 0x6F]
 
-// Base64 转换
+// Base64 conversion
 byte[] data = { 1, 2, 3, 4, 5 };
 string base64 = data.ToBase64String(); // "AQIDBAU="
 byte[] fromBase64 = base64.FromBase64String(); // [1, 2, 3, 4, 5]
 ```
 
-### 6. 双向字典 (BidirectionalDictionary)
+### Bidirectional Dictionary (BidirectionalDictionary)
 
-提供键值双向映射的高效数据结构：
+Provides an efficient data structure for bidirectional key-value mapping:
 
 ```csharp
 using GameFrameX.Foundation.Extensions;
 
-// 创建双向字典
+// Create a bidirectional dictionary
 var biDict = new BidirectionalDictionary<string, int>();
 
-// 添加键值对
+// Add key-value pairs
 bool added1 = biDict.TryAdd("one", 1); // true
 bool added2 = biDict.TryAdd("two", 2); // true
-bool added3 = biDict.TryAdd("one", 3); // false - 键已存在
-bool added4 = biDict.TryAdd("three", 1); // false - 值已存在
+bool added3 = biDict.TryAdd("one", 3); // false - key already exists
+bool added4 = biDict.TryAdd("three", 1); // false - value already exists
 
-// 双向查找
+// Bidirectional lookup
 if (biDict.TryGetValue("one", out int value))
 {
-    Console.WriteLine($"Key 'one' maps to value {value}"); // 输出: 1
+    Console.WriteLine($"Key 'one' maps to value {value}"); // Output: 1
 }
 
 if (biDict.TryGetKey(2, out string key))
 {
-    Console.WriteLine($"Value 2 maps to key '{key}'"); // 输出: "two"
+    Console.WriteLine($"Value 2 maps to key '{key}'"); // Output: "two"
 }
 
-// 清空字典
+// Clear the dictionary
 biDict.Clear();
 
-// 使用初始容量优化性能
+// Use initial capacity for performance optimization
 var optimizedBiDict = new BidirectionalDictionary<string, int>(100);
 ```
 
-### 7. 并发限制队列 (ConcurrentLimitedQueue)
+### Concurrent Limited Queue (ConcurrentLimitedQueue)
 
-提供线程安全的定长队列实现：
+Provides a thread-safe fixed-length queue implementation:
 
 ```csharp
 using GameFrameX.Foundation.Extensions;
 
-// 创建定长队列
-var queue = new ConcurrentLimitedQueue<string>(3); // 最大容量为3
+// Create a fixed-length queue
+var queue = new ConcurrentLimitedQueue<string>(3); // Maximum capacity of 3
 
-// 添加元素
+// Add elements
 queue.Enqueue("first");
 queue.Enqueue("second");
 queue.Enqueue("third");
 Console.WriteLine(queue.Count); // 3
 
-// 添加第4个元素，会自动移除最旧的元素
+// Adding a 4th element will automatically remove the oldest element
 queue.Enqueue("fourth");
-Console.WriteLine(queue.Count); // 仍然是3
+Console.WriteLine(queue.Count); // Still 3
 
-// 检查队列内容
+// Check queue contents
 if (queue.TryDequeue(out string item))
 {
-    Console.WriteLine(item); // "second" (first被自动移除了)
+    Console.WriteLine(item); // "second" (first was automatically removed)
 }
 
-// 从现有集合创建
+// Create from an existing collection
 var initialData = new List<string> { "a", "b", "c" };
 var queueFromList = new ConcurrentLimitedQueue<string>(initialData);
 
-// 隐式转换
+// Implicit conversion
 List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
-ConcurrentLimitedQueue<int> numberQueue = numbers; // 隐式转换
+ConcurrentLimitedQueue<int> numberQueue = numbers; // Implicit conversion
 
-// 动态调整限制
-queue.Limit = 5; // 调整队列最大容量
+// Dynamically adjust the limit
+queue.Limit = 5; // Adjust the queue maximum capacity
 ```
 
-## 高级用法示例
+## Advanced Usage
 
-### 链式调用
+### Method Chaining
 
-扩展方法支持链式调用，让代码更加简洁：
+Extension methods support chaining for more concise code:
 
 ```csharp
 var result = "  Hello World  "
@@ -292,106 +315,49 @@ var processedList = new[] { 1, 2, 2, 3, 4, 4, 5 }
     .ToList(); // [5, 4, 3]
 ```
 
-### 性能优化建议
+### Performance Optimization Tips
 
 ```csharp
-// 1. 使用合适的初始容量
+// 1. Use appropriate initial capacity
 var biDict = new BidirectionalDictionary<string, int>(expectedSize);
 
-// 2. 批量操作优于单个操作
+// 2. Batch operations over single operations
 var items = new List<string>();
-items.AddRange(newItems); // 优于多次调用 Add
+items.AddRange(newItems); // Better than multiple Add calls
 
-// 3. 使用 TryXxx 方法避免异常
+// 3. Use TryXxx methods to avoid exceptions
 if (biDict.TryGetValue(key, out var value))
 {
-    // 处理找到的值
+    // Process the found value
 }
 else
 {
-    // 处理未找到的情况
+    // Handle the not-found case
 }
 
-// 4. 合理使用并发集合
+// 4. Use concurrent collections judiciously
 var concurrentQueue = new ConcurrentLimitedQueue<Task>(maxConcurrency);
 ```
 
-### 错误处理
+### Error Handling
 
 ```csharp
-// 安全的类型转换
+// Safe type conversion
 object unknownValue = GetValueFromSomewhere();
-int safeInt = unknownValue.AsOrDefault<int>(); // 转换失败返回默认值
+int safeInt = unknownValue.AsOrDefault<int>(); // Returns default value on conversion failure
 
-// 安全的字符串操作
+// Safe string operations
 string input = null;
 string safe = input.IsNullOrEmpty() ? "default" : input.Trim();
 
-// 安全的集合操作
+// Safe collection operations
 List<string> items = null;
 int count = items.IsNullOrEmpty() ? 0 : items.Count;
 ```
 
-## 最佳实践
+### Extension and Customization
 
-### 1. 命名空间使用
-
-```csharp
-// 推荐：明确引用命名空间
-using GameFrameX.Foundation.Extensions;
-
-// 避免：使用全局 using（除非整个项目都需要）
-```
-
-### 2. 性能考虑
-
-```csharp
-// 好的做法：预分配容量
-var biDict = new BidirectionalDictionary<string, int>(1000);
-
-// 好的做法：使用合适的数据结构
-var limitedQueue = new ConcurrentLimitedQueue<LogEntry>(maxLogEntries);
-
-// 避免：在循环中进行昂贵的操作
-foreach (var item in items)
-{
-    // 避免在这里进行复杂的字符串操作或反射
-}
-```
-
-### 3. 线程安全
-
-```csharp
-// ConcurrentLimitedQueue 是线程安全的
-var queue = new ConcurrentLimitedQueue<WorkItem>(100);
-
-// 可以在多线程环境中安全使用
-Parallel.ForEach(workItems, item =>
-{
-    queue.Enqueue(item); // 线程安全
-});
-
-// BidirectionalDictionary 不是线程安全的，需要外部同步
-var biDict = new BidirectionalDictionary<string, int>();
-lock (biDict)
-{
-    biDict.TryAdd(key, value);
-}
-```
-
-### 4. 内存管理
-
-```csharp
-// 及时清理大型集合
-largeBidirectionalDictionary.Clear();
-
-// 合理设置队列限制
-var logQueue = new ConcurrentLimitedQueue<LogEntry>(1000); // 避免无限增长
-```
-
-## 扩展和自定义
-
-如果需要添加自定义扩展方法，建议遵循以下模式：
+If you need to add custom extension methods, it is recommended to follow this pattern:
 
 ```csharp
 public static class CustomExtensions
@@ -409,26 +375,75 @@ public static class CustomExtensions
     }
 }
 
-// 使用示例
+// Usage example
 string result = someObject.SafeExecute(x => x.ToString().ToUpper(), "DEFAULT");
 ```
 
-## 📄 许可证
+## Best Practices
 
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
+### Namespace Usage
 
-## 🤝 贡献
+```csharp
+// Recommended: Explicitly reference the namespace
+using GameFrameX.Foundation.Extensions;
 
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
+// Avoid: Using global using (unless the entire project needs it)
+```
 
-## 📞 支持
+### Performance Considerations
 
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
+```csharp
+// Good practice: Pre-allocate capacity
+var biDict = new BidirectionalDictionary<string, int>(1000);
 
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
+// Good practice: Use appropriate data structures
+var limitedQueue = new ConcurrentLimitedQueue<LogEntry>(maxLogEntries);
 
----
+// Avoid: Performing expensive operations in loops
+foreach (var item in items)
+{
+    // Avoid complex string operations or reflection here
+}
+```
 
-GameFrameX.Foundation.Extensions 致力于提供高质量、高性能的扩展方法库，让 .NET 开发更加高效和愉快。
+### Thread Safety
+
+```csharp
+// ConcurrentLimitedQueue is thread-safe
+var queue = new ConcurrentLimitedQueue<WorkItem>(100);
+
+// Can be safely used in multi-threaded environments
+Parallel.ForEach(workItems, item =>
+{
+    queue.Enqueue(item); // Thread-safe
+});
+
+// BidirectionalDictionary is not thread-safe and requires external synchronization
+var biDict = new BidirectionalDictionary<string, int>();
+lock (biDict)
+{
+    biDict.TryAdd(key, value);
+}
+```
+
+### Memory Management
+
+```csharp
+// Clean up large collections promptly
+largeBidirectionalDictionary.Clear();
+
+// Set reasonable queue limits
+var logQueue = new ConcurrentLimitedQueue<LogEntry>(1000); // Prevent unbounded growth
+```
+
+## API Reference
+
+| Class / Module | Description |
+|----------------|-------------|
+| `StringExtensions` | String validation, conversion, truncation, Base64 encoding/decoding |
+| `CollectionExtensions` / `IEnumerableExtensions` | Collection null checks, safe add, deduplication, pagination, random selection |
+| `ObjectExtensions` | Null checks, type conversion, deep clone, property copying |
+| `TypeExtensions` | Nullable type detection, default value retrieval, collection type detection |
+| `ByteExtensions` | Byte array to/from string, hex, and Base64 conversions |
+| `BidirectionalDictionary<TKey, TValue>` | Bidirectional mapping dictionary |
+| `ConcurrentLimitedQueue<T>` | Thread-safe fixed-length queue |

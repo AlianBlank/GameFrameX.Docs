@@ -1,21 +1,27 @@
-# 启动参数解析器
+# 시작 매개변수 파서 (명령줄 인수 및 환경 변수 자동 매핑)
 
-一个强大的命令行参数和环境变量解析库，支持将命令行参数和环境变量自动映射到强类型配置对象。
+강력한 명령줄 인수 및 환경 변수 파싱 라이브러리로, 명령줄 인수와 환경 변수를 강력한 형식의 설정 객체에 자동으로 매핑하는 기능을 지원합니다.
 
-## 特性
+## 특징
 
-- ✅ **参数优先级处理**: 命令行参数 > 环境变量 > 默认值
-- ✅ **泛型支持**: 支持任意强类型配置类
-- ✅ **多种启动方式兼容**: 支持Docker、exe、shell等启动方式
-- ✅ **自动前缀处理**: 自动为参数添加`--`前缀
-- ✅ **布尔参数支持**: 支持多种布尔参数格式
-- ✅ **环境变量映射**: 自动映射环境变量到配置属性
-- ✅ **类型转换**: 自动转换字符串参数到目标类型
-- ✅ **特性支持**: 支持丰富的配置特性
+- **매개변수 우선순위 처리**: 명령줄 인수 > 환경 변수 > 기본값
+- **제네릭 지원**: 임의의 강력한 형식 설정 클래스 지원
+- **다양한 시작 방식 호환**: Docker, exe, shell 등의 시작 방식 지원
+- **자동 접두사 처리**: 매개변수에 `--` 접두사 자동 추가
+- **불리언 매개변수 지원**: 다양한 불리언 매개변수 형식 지원
+- **환경 변수 매핑**: 환경 변수를 설정 속성에 자동 매핑
+- **형식 변환**: 문자열 매개변수를 대상 형식으로 자동 변환
+- **특성 지원**: 풍부한 설정 특성 제공
 
-## 快速开始
+## 설치
 
-### 1. 定义配置类
+```bash
+dotnet add package GameFrameX.Foundation.Options
+```
+
+## 빠른 시작
+
+### 1. 설정 클래스 정의
 
 ```csharp
 public class AppConfig
@@ -28,7 +34,7 @@ public class AppConfig
 }
 ```
 
-### 2. 使用OptionsBuilder
+### 2. OptionsBuilder 사용
 
 ```csharp
 using GameFrameX.Foundation.Options;
@@ -37,54 +43,54 @@ class Program
 {
     static void Main(string[] args)
     {
-        // 创建选项构建器
+        // 옵션 빌더 생성
         var builder = new OptionsBuilder<AppConfig>(args);
-        
-        // 构建配置对象
+
+        // 설정 객체 빌드
         var config = builder.Build();
-        
-        // 使用配置
-        Console.WriteLine($"服务器: {config.Host}:{config.Port}");
-        Console.WriteLine($"调试模式: {config.Debug}");
-        Console.WriteLine($"日志级别: {config.LogLevel}");
-        Console.WriteLine($"超时时间: {config.Timeout}秒");
+
+        // 설정 사용
+        Console.WriteLine($"서버: {config.Host}:{config.Port}");
+        Console.WriteLine($"디버그 모드: {config.Debug}");
+        Console.WriteLine($"로그 레벨: {config.LogLevel}");
+        Console.WriteLine($"타임아웃: {config.Timeout}초");
     }
 }
 ```
 
-## 使用方式
+## 상세 사용법
 
-### 命令行参数
+### 명령줄 인수
 
-支持多种参数格式：
+다양한 매개변수 형식을 지원합니다:
 
 ```bash
-# 键值对格式
+# 키-값 쌍 형식
 myapp.exe --host=example.com --port=9090 --debug=true
 
-# 分离格式
+# 분리 형식
 myapp.exe --host example.com --port 9090 --debug true
 
-# 布尔标志格式
+# 불리언 플래그 형식
 myapp.exe --host example.com --port 9090 --debug
 
-# 混合格式
+# 혼합 형식
 myapp.exe --host=example.com --port 9090 --debug
 ```
 
-### 环境变量
+### 환경 변수
 
 ```bash
-# 设置环境变量
+# 환경 변수 설정
 export HOST=example.com
 export PORT=9090
 export DEBUG=true
 
-# 运行程序
+# 프로그램 실행
 myapp.exe
 ```
 
-### Docker支持
+### Docker 지원
 
 ```dockerfile
 # Dockerfile
@@ -95,16 +101,16 @@ ENTRYPOINT ["dotnet", "MyApp.dll"]
 ```
 
 ```bash
-# Docker运行
+# Docker 실행
 docker run myapp --host example.com --port 9090 --debug
 
-# 或使用环境变量
+# 또는 환경 변수 사용
 docker run -e HOST=example.com -e PORT=9090 -e DEBUG=true myapp
 ```
 
-## 高级特性
+## 고급 사용법
 
-### 使用特性配置
+### 특성을 사용한 설정
 
 ```csharp
 using GameFrameX.Foundation.Options.Attributes;
@@ -112,20 +118,20 @@ using GameFrameX.Foundation.Options.Attributes;
 public class AdvancedConfig
 {
     [Option("h", "host", Required = false, DefaultValue = "localhost")]
-    [HelpText("服务器主机地址")]
+    [HelpText("서버 호스트 주소")]
     public string Host { get; set; }
 
     [Option("p", "port", Required = true)]
-    [HelpText("服务器端口号")]
+    [HelpText("서버 포트 번호")]
     public int Port { get; set; }
 
     [FlagOption("d", "debug")]
-    [HelpText("启用调试模式")]
+    [HelpText("디버그 모드 활성화")]
     public bool Debug { get; set; }
 
     [RequiredOption("api-key", Required = true)]
     [EnvironmentVariable("API_KEY")]
-    [HelpText("API密钥")]
+    [HelpText("API 키")]
     public string ApiKey { get; set; }
 
     [DefaultValue(30.0)]
@@ -133,85 +139,85 @@ public class AdvancedConfig
 }
 ```
 
-### 构建器选项
+### 빌더 옵션
 
 ```csharp
 var builder = new OptionsBuilder<AppConfig>(
     args: args,
-    boolFormat: BoolArgumentFormat.Flag,        // 布尔参数格式
-    ensurePrefixedKeys: true,                   // 确保参数有前缀
-    useEnvironmentVariables: true              // 使用环境变量
+    boolFormat: BoolArgumentFormat.Flag,        // 불리언 매개변수 형식
+    ensurePrefixedKeys: true,                   // 매개변수에 접두사 보장
+    useEnvironmentVariables: true              // 환경 변수 사용
 );
 
-var config = builder.Build(skipValidation: false); // 是否跳过验证
+var config = builder.Build(skipValidation: false); // 유효성 검사 건너뛰기 여부
 ```
 
-## 参数优先级
+### 매개변수 우선순위
 
-参数按以下优先级应用（高优先级覆盖低优先级）：
+매개변수는 다음 우선순위로 적용됩니다 (높은 우선순위가 낮은 우선순위를 덮어씀):
 
-1. **命令行参数** (最高优先级)
-2. **环境变量**
-3. **默认值** (最低优先级)
+1. **명령줄 인수** (최고 우선순위)
+2. **환경 변수**
+3. **기본값** (최하위 우선순위)
 
-### 示例
+#### 예시
 
 ```csharp
 public class Config
 {
-    public string Host { get; set; } = "localhost";  // 默认值
-    public int Port { get; set; } = 8080;           // 默认值
+    public string Host { get; set; } = "localhost";  // 기본값
+    public int Port { get; set; } = 8080;           // 기본값
 }
 ```
 
 ```bash
-# 设置环境变量
+# 환경 변수 설정
 export HOST=env.example.com
 export PORT=7070
 
-# 运行程序（命令行参数覆盖环境变量）
+# 프로그램 실행 (명령줄 인수가 환경 변수를 덮어씀)
 myapp.exe --host cmd.example.com
 
-# 结果：
-# Host = "cmd.example.com"  (来自命令行参数)
-# Port = 7070               (来自环境变量)
+# 결과:
+# Host = "cmd.example.com"  (명령줄 인수에서)
+# Port = 7070               (환경 변수에서)
 ```
 
-## 布尔参数处理
+### 불리언 매개변수 처리
 
-支持多种布尔参数格式：
+다양한 불리언 매개변수 형식을 지원합니다:
 
 ```bash
-# 标志格式（推荐）
+# 플래그 형식 (권장)
 myapp.exe --debug                    # debug = true
 
-# 键值对格式
+# 키-값 쌍 형식
 myapp.exe --debug=true               # debug = true
 myapp.exe --debug=false              # debug = false
 
-# 分离格式
+# 분리 형식
 myapp.exe --debug true               # debug = true
 myapp.exe --debug false              # debug = false
 
-# 支持的布尔值
+# 지원되는 불리언 값
 true, false, 1, 0, yes, no, on, off
 ```
 
-## 类型转换
+### 형식 변환
 
-自动支持以下类型转换：
+다음 형식 변환을 자동으로 지원합니다:
 
-- `string` - 直接使用
-- `int`, `int?` - 整数转换
-- `bool`, `bool?` - 布尔值转换
-- `double`, `double?` - 双精度浮点数转换
-- `float`, `float?` - 单精度浮点数转换
-- `decimal`, `decimal?` - 十进制数转换
-- `DateTime`, `DateTime?` - 日期时间转换
-- `Guid`, `Guid?` - GUID转换
-- `Enum` - 枚举转换
+- `string` - 직접 사용
+- `int`, `int?` - 정수 변환
+- `bool`, `bool?` - 불리언 변환
+- `double`, `double?` - 배정밀도 부동소수점 변환
+- `float`, `float?` - 단정밀도 부동소수점 변환
+- `decimal`, `decimal?` - 십진수 변환
+- `DateTime`, `DateTime?` - 날짜/시간 변환
+- `Guid`, `Guid?` - GUID 변환
+- `Enum` - 열거형 변환
 
-### 示例
+#### 예시
 
 ```csharp
 public class TypedConfig
@@ -219,7 +225,7 @@ public class TypedConfig
     public int Port { get; set; }
     public bool Debug { get; set; }
     public DateTime StartTime { get; set; }
-    public LogLevel Level { get; set; }  // 枚举
+    public LogLevel Level { get; set; }  // 열거형
 }
 
 public enum LogLevel
@@ -232,9 +238,9 @@ public enum LogLevel
 myapp.exe --port 9090 --debug true --start-time "2024-01-01 10:00:00" --level Info
 ```
 
-## 错误处理
+### 오류 처리
 
-### 必需参数验证
+#### 필수 매개변수 검증
 
 ```csharp
 public class Config
@@ -244,56 +250,60 @@ public class Config
 }
 ```
 
-如果缺少必需参数，会抛出 `ArgumentException`：
+필수 매개변수가 누락되면 `ArgumentException`이 발생합니다:
 
 ```
-缺少必需的选项: api-key
+필수 옵션 누락: api-key
 ```
 
-### 类型转换错误
+#### 형식 변환 오류
 
-当参数值无法转换为目标类型时，会使用默认值并在控制台输出警告信息。
+매개변수 값을 대상 형식으로 변환할 수 없는 경우, 기본값이 사용되고 콘솔에 경고 메시지가 출력됩니다.
 
-## 最佳实践
+### 디버그 모드
 
-### 1. 配置类设计
+개발 중에 디버그 모드를 활성화하면 매개변수 파싱의 상세 과정을 확인할 수 있어 설정 문제 해결에 도움이 됩니다.
+
+## 모범 사례
+
+### 1. 설정 클래스 설계
 
 ```csharp
 public class AppConfig
 {
-    // 使用有意义的默认值
+    // 의미 있는 기본값 사용
     public string Host { get; set; } = "localhost";
     public int Port { get; set; } = 8080;
-    
-    // 布尔属性默认为false
+
+    // 불리언 속성은 기본값을 false로 설정
     public bool Debug { get; set; } = false;
-    
-    // 使用特性提供更多信息
+
+    // 특성을 사용하여 추가 정보 제공
     [RequiredOption("database-url", Required = true)]
     [EnvironmentVariable("DATABASE_URL")]
     public string DatabaseUrl { get; set; }
 }
 ```
 
-### 2. 错误处理
+### 2. 오류 처리
 
 ```csharp
 try
 {
     var builder = new OptionsBuilder<AppConfig>(args);
     var config = builder.Build();
-    
-    // 使用配置启动应用
+
+    // 설정을 사용하여 애플리케이션 시작
     StartApplication(config);
 }
 catch (ArgumentException ex)
 {
-    Console.WriteLine($"配置错误: {ex.Message}");
+    Console.WriteLine($"설정 오류: {ex.Message}");
     Environment.Exit(1);
 }
 ```
 
-### 3. Docker集成
+### 3. Docker 통합
 
 ```csharp
 // Program.cs
@@ -303,10 +313,10 @@ public class Program
     {
         var builder = new OptionsBuilder<AppConfig>(args);
         var config = builder.Build();
-        
-        // 在Docker中，通常使用环境变量
-        // 在开发中，通常使用命令行参数
-        
+
+        // Docker에서는 주로 환경 변수 사용
+        // 개발에서는 주로 명령줄 인수 사용
+
         var app = CreateApplication(config);
         app.Run();
     }
@@ -326,7 +336,32 @@ services:
     command: ["--log-level", "info"]
 ```
 
-## 完整示例
+## API 레퍼런스
+
+### `OptionsBuilder<T>`
+
+| 메서드 | 설명 |
+|------|------|
+| `OptionsBuilder<T>(args)` | 빌더 생성, 명령줄 인수 전달 |
+| `Build()` | 설정 객체 빌드 |
+| `Build(skipValidation)` | 설정 객체 빌드, 유효성 검사 건너뛰기 선택 |
+
+### 특성 (Attributes)
+
+| 특성 | 설명 |
+|------|------|
+| `[Option(shortName, longName)]` | 옵션 매핑 설정 |
+| `[FlagOption(shortName, longName)]` | 불리언 플래그 옵션 |
+| `[RequiredOption(longName)]` | 필수 옵션 |
+| `[EnvironmentVariable(name)]` | 환경 변수 매핑 |
+| `[DefaultValue(value)]` | 기본값 |
+| `[HelpText(text)]` | 도움말 텍스트 설명 |
+
+### CommandLineArgumentConverter
+
+`CommandLineArgumentConverter`는 기본 명령줄 매개변수 변환 기능을 제공하며, 문자열 매개변수를 대상 형식으로 변환합니다. 일반적으로 `OptionsBuilder`를 통해 간접적으로 사용하므로 직접 호출할 필요가 없습니다.
+
+### 전체 예제
 
 ```csharp
 using GameFrameX.Foundation.Options;
@@ -338,27 +373,27 @@ namespace MyApp
     {
         [Option("h", "host", DefaultValue = "localhost")]
         [EnvironmentVariable("SERVER_HOST")]
-        [HelpText("服务器主机地址")]
+        [HelpText("서버 호스트 주소")]
         public string Host { get; set; }
 
         [Option("p", "port", DefaultValue = 8080)]
         [EnvironmentVariable("SERVER_PORT")]
-        [HelpText("服务器端口号")]
+        [HelpText("서버 포트 번호")]
         public int Port { get; set; }
 
         [FlagOption("d", "debug")]
         [EnvironmentVariable("DEBUG")]
-        [HelpText("启用调试模式")]
+        [HelpText("디버그 모드 활성화")]
         public bool Debug { get; set; }
 
         [RequiredOption("database-url", Required = true)]
         [EnvironmentVariable("DATABASE_URL")]
-        [HelpText("数据库连接字符串")]
+        [HelpText("데이터베이스 연결 문자열")]
         public string DatabaseUrl { get; set; }
 
         [Option("timeout", DefaultValue = 30.0)]
         [EnvironmentVariable("REQUEST_TIMEOUT")]
-        [HelpText("请求超时时间（秒）")]
+        [HelpText("요청 타임아웃 시간 (초)")]
         public double Timeout { get; set; }
     }
 
@@ -371,19 +406,19 @@ namespace MyApp
                 var builder = new OptionsBuilder<ServerConfig>(args);
                 var config = builder.Build();
 
-                Console.WriteLine("服务器配置:");
-                Console.WriteLine($"  主机: {config.Host}");
-                Console.WriteLine($"  端口: {config.Port}");
-                Console.WriteLine($"  调试: {config.Debug}");
-                Console.WriteLine($"  数据库: {config.DatabaseUrl}");
-                Console.WriteLine($"  超时: {config.Timeout}秒");
+                Console.WriteLine("서버 설정:");
+                Console.WriteLine($"  호스트: {config.Host}");
+                Console.WriteLine($"  포트: {config.Port}");
+                Console.WriteLine($"  디버그: {config.Debug}");
+                Console.WriteLine($"  데이터베이스: {config.DatabaseUrl}");
+                Console.WriteLine($"  타임아웃: {config.Timeout}초");
 
-                // 启动服务器
+                // 서버 시작
                 StartServer(config);
             }
             catch (ArgumentException ex)
             {
-                Console.WriteLine($"配置错误: {ex.Message}");
+                Console.WriteLine($"설정 오류: {ex.Message}");
                 ShowHelp();
                 Environment.Exit(1);
             }
@@ -391,39 +426,22 @@ namespace MyApp
 
         static void StartServer(ServerConfig config)
         {
-            // 服务器启动逻辑
-            Console.WriteLine($"服务器启动在 {config.Host}:{config.Port}");
+            // 서버 시작 로직
+            Console.WriteLine($"서버가 {config.Host}:{config.Port}에서 시작됩니다");
         }
 
         static void ShowHelp()
         {
-            Console.WriteLine("用法:");
-            Console.WriteLine("  myapp.exe --host <主机> --port <端口> --database-url <数据库URL> [选项]");
+            Console.WriteLine("사용법:");
+            Console.WriteLine("  myapp.exe --host <호스트> --port <포트> --database-url <데이터베이스 URL> [옵션]");
             Console.WriteLine();
-            Console.WriteLine("选项:");
-            Console.WriteLine("  -h, --host <主机>           服务器主机地址 (默认: localhost)");
-            Console.WriteLine("  -p, --port <端口>           服务器端口号 (默认: 8080)");
-            Console.WriteLine("  -d, --debug                 启用调试模式");
-            Console.WriteLine("      --database-url <URL>    数据库连接字符串 (必需)");
-            Console.WriteLine("      --timeout <秒>          请求超时时间 (默认: 30.0)");
+            Console.WriteLine("옵션:");
+            Console.WriteLine("  -h, --host <호스트>           서버 호스트 주소 (기본값: localhost)");
+            Console.WriteLine("  -p, --port <포트>           서버 포트 번호 (기본값: 8080)");
+            Console.WriteLine("  -d, --debug                 디버그 모드 활성화");
+            Console.WriteLine("      --database-url <URL>    데이터베이스 연결 문자열 (필수)");
+            Console.WriteLine("      --timeout <초>          요청 타임아웃 시간 (기본값: 30.0)");
         }
     }
 }
 ```
-
-
-## 📄 许可证
-
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法

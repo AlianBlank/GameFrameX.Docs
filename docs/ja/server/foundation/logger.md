@@ -1,40 +1,46 @@
-# 日志
+# ログ（Serilogベース高性能ログ記録ライブラリ）
 
-一个基于Serilog的高性能日志记录库，为GameFrameX框架提供统一的日志记录接口和丰富的日志输出功能。
+Serilogベースの高性能ログ記録ライブラリで、GameFrameXフレームワークに統一されたログ記録インターフェースと豊富なログ出力機能を提供します。
 
-## 特性
+## 特徴
 
-- ✅ **多级别日志支持**: 支持Verbose、Debug、Info、Warn、Error、Fatal六个日志级别
-- ✅ **多输出目标**: 支持文件、控制台、Grafana Loki等多种输出方式
-- ✅ **灵活配置**: 通过LogOptions类提供丰富的配置选项
-- ✅ **文件滚动**: 支持按时间间隔和文件大小进行日志文件滚动
-- ✅ **标签支持**: 支持为日志添加标签，便于分类和过滤
-- ✅ **异常记录**: 专门的异常记录方法，包含完整的堆栈跟踪信息
-- ✅ **控制台输出**: 支持同时输出到日志文件和控制台
-- ✅ **高性能**: 基于Serilog构建，提供高性能的日志记录能力
+- **複数ログレベル対応** - Verbose、Debug、Info、Warn、Error、Fatalの6つのログレベルをサポート
+- **複数出力先** - ファイル、コンソール、Grafana Lokiなど複数の出力方式をサポート
+- **柔軟な設定** - LogOptionsクラスによる豊富な設定オプションを提供
+- **ファイルローテーション** - 時間間隔とファイルサイズによるログファイルローテーションをサポート
+- **タグサポート** - ログにタグを追加し、分類とフィルタリングに活用
+- **例外記録** - 完全なスタックトレース情報を含む専用の例外記録メソッド
+- **コンソール出力** - ログファイルとコンソールへの同時出力をサポート
+- **高性能** - Serilogベースで構築され、高性能なログ記録機能を提供
 
-## 快速开始
+## インストール
 
-### 1. 基本使用
-
-```csharp
-using GameFrameX.Foundation.Logger;
-
-// 使用默认配置初始化日志系统
-var logger = LogHandler.Create(LogOptions.Default);
-
-// 记录不同级别的日志
-LogHelper.Info("应用程序启动");
-LogHelper.Warn("这是一个警告消息");
-LogHelper.Error("发生了一个错误");
+```bash
+dotnet add package GameFrameX.Foundation.Logger
 ```
 
-### 2. 自定义配置
+## クイックスタート
+
+### 1. 基本的な使用方法
 
 ```csharp
 using GameFrameX.Foundation.Logger;
 
-// 创建自定义日志配置
+// デフォルト設定でログシステムを初期化
+var logger = LogHandler.Create(LogOptions.Default);
+
+// 異なるレベルのログを記録
+LogHelper.Info("アプリケーション起動");
+LogHelper.Warn("これは警告メッセージです");
+LogHelper.Error("エラーが発生しました");
+```
+
+### 2. カスタム設定
+
+```csharp
+using GameFrameX.Foundation.Logger;
+
+// カスタムログ設定の作成
 var logOptions = new LogOptions("mylogs")
 {
     LogType = "WebApi",
@@ -43,161 +49,161 @@ var logOptions = new LogOptions("mylogs")
     IsConsole = true,
     RollingInterval = RollingInterval.Hour,
     FileSizeLimitBytes = 50 * 1024 * 1024, // 50MB
-    RetainedFileCountLimit = 7 // 保留7个文件
+    RetainedFileCountLimit = 7 // 7ファイルを保持
 };
 
-// 初始化日志系统
+// ログシステムの初期化
 var logger = LogHandler.Create(logOptions);
 
-// 使用日志
-LogHelper.Info("服务器", "服务器启动在端口 {Port}", 8080);
-LogHelper.InfoConsole("同时输出到文件和控制台的消息");
+// ログの使用
+LogHelper.Info("サーバー", "ポート {Port} でサーバー起動", 8080);
+LogHelper.InfoConsole("ファイルとコンソールの両方に出力されるメッセージ");
 ```
 
-## 详细使用指南
+## 詳細な使い方
 
-### 日志级别
+### ログレベル
 
-支持六个标准的日志级别：
+6つの標準ログレベルをサポートしています：
 
 ```csharp
-// Verbose - 最详细的日志信息
-LogHelper.Verbose("详细的调试信息");
+// Verbose - 最も詳細なログ情報
+LogHelper.Verbose("詳細なデバッグ情報");
 
-// Debug - 调试信息
-LogHelper.Debug("调试信息: 变量值 = {Value}", someValue);
+// Debug - デバッグ情報
+LogHelper.Debug("デバッグ情報: 変数値 = {Value}", someValue);
 
-// Information - 一般信息
-LogHelper.Info("用户 {UserId} 登录成功", userId);
+// Information - 一般情報
+LogHelper.Info("ユーザー {UserId} がログインに成功", userId);
 
-// Warning - 警告信息
-LogHelper.Warn("磁盘空间不足，剩余: {FreeSpace}MB", freeSpace);
+// Warning - 警告情報
+LogHelper.Warn("ディスク容量不足、残り: {FreeSpace}MB", freeSpace);
 
-// Error - 错误信息
-LogHelper.Error("数据库连接失败: {Error}", errorMessage);
+// Error - エラー情報
+LogHelper.Error("データベース接続失敗: {Error}", errorMessage);
 
-// Fatal - 致命错误
-LogHelper.Fatal("应用程序即将崩溃: {Reason}", reason);
+// Fatal - 致命的エラー
+LogHelper.Fatal("アプリケーションがクラッシュ直前: {Reason}", reason);
 ```
 
-### 异常记录
+### 例外記録
 
-专门的异常记录方法，自动包含堆栈跟踪：
+専用の例外記録メソッドにより、スタックトレースが自動的に含まれます：
 
 ```csharp
 try
 {
-    // 可能抛出异常的代码
+    // 例外をスローする可能性のあるコード
     DoSomething();
 }
 catch (Exception ex)
 {
-    // 记录异常
+    // 例外の記録
     LogHelper.Error(ex);
     
-    // 带标签的异常记录
-    LogHelper.Error("数据库", ex);
+    // タグ付き例外記録
+    LogHelper.Error("データベース", ex);
     
-    // 自定义异常消息
-    LogHelper.Error("处理用户请求时发生错误: {Message}", ex.Message);
+    // カスタム例外メッセージ
+    LogHelper.Error("ユーザーリクエスト処理中にエラーが発生しました: {Message}", ex.Message);
 }
 ```
 
-### 标签支持
+### タグサポート
 
-为日志添加标签，便于分类和过滤：
+ログにタグを追加し、分類とフィルタリングに活用します：
 
 ```csharp
-// 带标签的日志记录
-LogHelper.Info("用户管理", "用户 {UserId} 创建成功", userId);
-LogHelper.Warn("安全", "检测到可疑登录尝试，IP: {IP}", ipAddress);
-LogHelper.Error("支付", "支付处理失败，订单号: {OrderId}", orderId);
+// タグ付きログ記録
+LogHelper.Info("ユーザー管理", "ユーザー {UserId} の作成に成功", userId);
+LogHelper.Warn("セキュリティ", "不審なログイン試行を検出、IP: {IP}", ipAddress);
+LogHelper.Error("決済", "決済処理失敗、注文番号: {OrderId}", orderId);
 
-// 带标签的控制台输出
-LogHelper.InfoConsole("启动", "服务器启动完成，监听端口: {Port}", port);
+// タグ付きコンソール出力
+LogHelper.InfoConsole("起動", "サーバー起動完了、リスニングポート: {Port}", port);
 ```
 
-### 控制台输出
+### コンソール出力
 
-支持同时输出到日志文件和控制台：
+ログファイルとコンソールへの同時出力をサポートします：
 
 ```csharp
-// 仅输出到日志文件
-LogHelper.Info("这条消息只会写入日志文件");
+// ログファイルのみに出力
+LogHelper.Info("このメッセージはログファイルにのみ書き込まれます");
 
-// 同时输出到日志文件和控制台
-LogHelper.InfoConsole("这条消息会同时显示在控制台和日志文件中");
+// ログファイルとコンソールの両方に出力
+LogHelper.InfoConsole("このメッセージはコンソールとログファイルの両方に表示されます");
 
-// 错误消息的控制台输出（红色显示）
-LogHelper.ErrorConsole("这是一个错误消息，控制台中会以红色显示");
+// エラーメッセージのコンソール出力（赤色で表示）
+LogHelper.ErrorConsole("これはエラーメッセージで、コンソールに赤色で表示されます");
 
-// 仅输出到控制台（不写入日志文件）
-LogHelper.Console("这条消息只会显示在控制台");
+// コンソールのみに出力（ログファイルには書き込まない）
+LogHelper.Console("このメッセージはコンソールにのみ表示されます");
 ```
 
-## 配置选项
+## 設定
 
-### LogOptions 配置类
+### LogOptions 設定クラス
 
 ```csharp
-var logOptions = new LogOptions("logs") // 日志目录名
+var logOptions = new LogOptions("logs") // ログディレクトリ名
 {
-    // 基本配置
-    LogType = "WebServer",              // 服务器类型标识
-    LogTagName = "Production",          // 日志标签名
-    LogEventLevel = LogEventLevel.Info, // 最低日志级别
+    // 基本設定
+    LogType = "WebServer",              // サーバー種別識別子
+    LogTagName = "Production",          // ログタグ名
+    LogEventLevel = LogEventLevel.Info, // 最低ログレベル
     
-    // 输出配置
-    IsConsole = true,                   // 是否输出到控制台
+    // 出力設定
+    IsConsole = true,                   // コンソール出力の有無
     
-    // 文件配置
-    RollingInterval = RollingInterval.Day,    // 滚动间隔（天）
-    IsFileSizeLimit = true,                   // 是否限制文件大小
-    FileSizeLimitBytes = 100 * 1024 * 1024,   // 文件大小限制（100MB）
-    RetainedFileCountLimit = 31,              // 保留文件数量（31个）
+    // ファイル設定
+    RollingInterval = RollingInterval.Day,    // ローテーション間隔（日）
+    IsFileSizeLimit = true,                   // ファイルサイズ制限の有無
+    FileSizeLimitBytes = 100 * 1024 * 1024,   // ファイルサイズ制限（100MB）
+    RetainedFileCountLimit = 31,              // 保持ファイル数（31ファイル）
     
-    // Grafana Loki 配置
-    IsGrafanaLoki = false,                    // 是否启用Loki
-    GrafanaLokiUrl = "http://localhost:3100", // Loki服务地址
+    // Grafana Loki 設定
+    IsGrafanaLoki = false,                    // Loki有効フラグ
+    GrafanaLokiUrl = "http://localhost:3100", // Lokiサービスアドレス
     GrafanaLokiLabels = new Dictionary<string, string>
     {
         ["app"] = "myapp",
         ["env"] = "production"
     },
-    GrafanaLokiUsername = "admin",            // Loki用户名
-    GrafanaLokiPassword = "password"          // Loki密码
+    GrafanaLokiUsername = "admin",            // Lokiユーザー名
+    GrafanaLokiPassword = "password"          // Lokiパスワード
 };
 ```
 
-### 滚动间隔选项
+### ローテーション間隔オプション
 
 ```csharp
-// 支持的滚动间隔
-RollingInterval.Infinite    // 不滚动
-RollingInterval.Year        // 按年滚动
-RollingInterval.Month       // 按月滚动
-RollingInterval.Day         // 按天滚动（默认）
-RollingInterval.Hour        // 按小时滚动
-RollingInterval.Minute      // 按分钟滚动
+// サポートされるローテーション間隔
+RollingInterval.Infinite    // ローテーションなし
+RollingInterval.Year        // 年単位でローテーション
+RollingInterval.Month       // 月単位でローテーション
+RollingInterval.Day         // 日単位でローテーション（デフォルト）
+RollingInterval.Hour        // 時間単位でローテーション
+RollingInterval.Minute      // 分単位でローテーション
 ```
 
-### 日志级别配置
+### ログレベル設定
 
 ```csharp
-// 支持的日志级别
-LogEventLevel.Verbose       // 最详细
-LogEventLevel.Debug         // 调试（默认）
-LogEventLevel.Information   // 信息
+// サポートされるログレベル
+LogEventLevel.Verbose       // 最も詳細
+LogEventLevel.Debug         // デバッグ（デフォルト）
+LogEventLevel.Information   // 情報
 LogEventLevel.Warning       // 警告
-LogEventLevel.Error         // 错误
-LogEventLevel.Fatal         // 致命错误
+LogEventLevel.Error         // エラー
+LogEventLevel.Fatal         // 致命的エラー
 ```
 
-## 高级功能
+## 高度な使い方
 
-### Grafana Loki 集成
+### Grafana Loki 統合
 
-支持将日志发送到Grafana Loki进行集中化日志管理：
+ログを Grafana Loki に送信して、集中化されたログ管理が可能です：
 
 ```csharp
 var logOptions = new LogOptions()
@@ -217,14 +223,14 @@ var logOptions = new LogOptions()
 var logger = LogHandler.Create(logOptions);
 ```
 
-### 自定义日志配置
+### カスタムログ設定
 
-支持通过回调函数进行更高级的自定义配置：
+コールバック関数を使用したより高度なカスタム設定をサポートします：
 
 ```csharp
 var logger = LogHandler.Create(logOptions, true, config =>
 {
-    // 添加自定义的Sink
+    // カスタムSinkの追加
     config.WriteTo.Email(
         fromEmail: "noreply@example.com",
         toEmail: "admin@example.com",
@@ -232,119 +238,119 @@ var logger = LogHandler.Create(logOptions, true, config =>
         restrictedToMinimumLevel: LogEventLevel.Error
     );
     
-    // 添加自定义的Enricher
+    // カスタムEnricherの追加
     config.Enrich.WithProperty("MachineName", Environment.MachineName);
     config.Enrich.WithProperty("ProcessId", Environment.ProcessId);
 });
 ```
 
-### 使用自定义Logger实例
+### カスタムLoggerインスタンスの使用
 
 ```csharp
-// 创建多个Logger实例
+// 複数のLoggerインスタンスの作成
 var webLogger = LogHandler.Create(webLogOptions, false);
 var dbLogger = LogHandler.Create(dbLogOptions, false);
 
-// 使用特定的Logger实例
-LogHelper.Info(webLogger, "Web请求处理完成");
-LogHelper.Error(dbLogger, "数据库连接异常", exception);
+// 特定のLoggerインスタンスを使用
+LogHelper.Info(webLogger, "Webリクエスト処理完了");
+LogHelper.Error(dbLogger, "データベース接続例外", exception);
 ```
 
-## 性能优化
+### パフォーマンス最適化
 
-### 异步日志刷新
+#### 非同期ログフラッシュ
 
 ```csharp
-// 同步刷新（阻塞）
+// 同期フラッシュ（ブロックあり）
 LogHelper.FlushAndSave();
 
-// 异步刷新（非阻塞）
+// 非同期フラッシュ（ノンブロッキング）
 LogHelper.CloseAndFlushAsync();
 ```
 
-### 条件日志记录
+#### 条件付きログ記録
 
 ```csharp
-// 避免不必要的字符串格式化
+// 不要な文字列フォーマットを回避
 if (logger.IsEnabled(LogEventLevel.Debug))
 {
-    LogHelper.Debug("复杂的调试信息: {Data}", ExpensiveOperation());
+    LogHelper.Debug("複雑なデバッグ情報: {Data}", ExpensiveOperation());
 }
 ```
 
-## 最佳实践
+## ベストプラクティス
 
-### 1. 结构化日志
+### 構造化ログ
 
-使用结构化的日志消息，便于后续分析：
+構造化されたログメッセージを使用し、後続の分析に役立てます：
 
 ```csharp
-// 好的做法 - 结构化日志
-LogHelper.Info("用户登录成功，用户ID: {UserId}, IP: {IP}, 耗时: {Duration}ms", 
+// 良い実践 - 構造化ログ
+LogHelper.Info("ユーザーログイン成功、ユーザーID: {UserId}, IP: {IP}, 所要時間: {Duration}ms", 
     userId, ipAddress, duration);
 
-// 避免的做法 - 字符串拼接
-LogHelper.Info($"用户登录成功，用户ID: {userId}, IP: {ipAddress}, 耗时: {duration}ms");
+// 避けるべき - 文字列連結
+LogHelper.Info($"ユーザーログイン成功、ユーザーID: {userId}, IP: {ipAddress}, 所要時間: {duration}ms");
 ```
 
-### 2. 合理使用日志级别
+### ログレベルの適切な使用
 
 ```csharp
-// Debug - 开发调试信息
-LogHelper.Debug("进入方法 ProcessOrder，参数: {OrderId}", orderId);
+// Debug - 開発時のデバッグ情報
+LogHelper.Debug("ProcessOrder メソッドに入りました。パラメータ: {OrderId}", orderId);
 
-// Info - 重要的业务事件
-LogHelper.Info("订单创建成功，订单号: {OrderId}, 用户: {UserId}", orderId, userId);
+// Info - 重要なビジネスイベント
+LogHelper.Info("注文作成成功、注文番号: {OrderId}, ユーザー: {UserId}", orderId, userId);
 
-// Warn - 可恢复的问题
-LogHelper.Warn("重试连接数据库，第 {Attempt} 次尝试", attemptCount);
+// Warn - 復旧可能な問題
+LogHelper.Warn("データベース接続をリトライ中、{Attempt} 回目の試行", attemptCount);
 
-// Error - 需要关注的错误
-LogHelper.Error("处理支付失败，订单: {OrderId}, 错误: {Error}", orderId, error);
+// Error - 注意が必要なエラー
+LogHelper.Error("決済処理失敗、注文: {OrderId}, エラー: {Error}", orderId, error);
 
-// Fatal - 导致应用程序终止的严重错误
-LogHelper.Fatal("数据库连接池耗尽，应用程序即将关闭");
+// Fatal - アプリケーション終了を引き起こす深刻なエラー
+LogHelper.Fatal("データベース接続プール枯渇、アプリケーションを終了します");
 ```
 
-### 3. 使用标签分类
+### タグによる分類
 
 ```csharp
-// 按功能模块分类
-LogHelper.Info("用户管理", "用户注册成功: {Email}", email);
-LogHelper.Info("订单处理", "订单状态更新: {OrderId} -> {Status}", orderId, status);
-LogHelper.Info("支付系统", "支付完成: {Amount} 元", amount);
+// 機能モジュール別に分類
+LogHelper.Info("ユーザー管理", "ユーザー登録成功: {Email}", email);
+LogHelper.Info("注文処理", "注文ステータス更新: {OrderId} -> {Status}", orderId, status);
+LogHelper.Info("決済システム", "決済完了: {Amount} 元", amount);
 
-// 按环境分类
-LogHelper.Info("生产环境", "服务器启动完成");
-LogHelper.Debug("开发环境", "调试信息: {Data}", debugData);
+// 環境別に分類
+LogHelper.Info("本番環境", "サーバー起動完了");
+LogHelper.Debug("開発環境", "デバッグ情報: {Data}", debugData);
 ```
 
-### 4. 异常处理
+### 例外処理
 
 ```csharp
 try
 {
     await ProcessOrderAsync(orderId);
-    LogHelper.Info("订单处理", "订单 {OrderId} 处理完成", orderId);
+    LogHelper.Info("注文処理", "注文 {OrderId} の処理完了", orderId);
 }
 catch (BusinessException ex)
 {
-    // 业务异常，记录为警告
-    LogHelper.Warn("订单处理", "业务规则验证失败: {Message}", ex.Message);
+    // ビジネス例外は警告として記録
+    LogHelper.Warn("注文処理", "ビジネスルール検証失敗: {Message}", ex.Message);
     throw;
 }
 catch (Exception ex)
 {
-    // 系统异常，记录为错误
-    LogHelper.Error("订单处理", ex);
+    // システム例外はエラーとして記録
+    LogHelper.Error("注文処理", ex);
     throw;
 }
 ```
 
-### 5. 配置管理
+### 設定管理
 
 ```csharp
-// 开发环境配置
+// 開発環境の設定
 var devLogOptions = new LogOptions("logs")
 {
     LogEventLevel = LogEventLevel.Debug,
@@ -352,7 +358,7 @@ var devLogOptions = new LogOptions("logs")
     RollingInterval = RollingInterval.Hour
 };
 
-// 生产环境配置
+// 本番環境の設定
 var prodLogOptions = new LogOptions("logs")
 {
     LogEventLevel = LogEventLevel.Information,
@@ -362,59 +368,65 @@ var prodLogOptions = new LogOptions("logs")
     GrafanaLokiUrl = "http://loki.prod.com:3100"
 };
 
-// 根据环境选择配置
+// 環境に応じて設定を選択
 var logOptions = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development" 
     ? devLogOptions 
     : prodLogOptions;
 ```
 
-## 故障排除
+## API リファレンス
 
-### 常见问题
+### LogHandler
 
-1. **日志文件未创建**
-    - 检查日志目录权限
-    - 确认LogSavePath路径正确
-    - 查看控制台是否有Serilog自诊断信息
+| メソッド | 説明 |
+|------|------|
+| `LogHandler.Create(LogOptions)` | 指定した設定で Logger インスタンスを作成 |
+| `LogHandler.Create(LogOptions, bool)` | Logger インスタンスを作成。第2パラメータはグローバルデフォルトに設定するかどうか |
+| `LogHandler.Create(LogOptions, bool, ``Action<LoggerConfiguration>``)` | Logger インスタンスを作成し、コールバックで Serilog 設定をカスタマイズ |
 
-2. **日志级别过滤不生效**
-    - 确认LogEventLevel设置正确
-    - 检查是否有多个Logger实例冲突
+### LogHelper ログ記録メソッド
 
-3. **Grafana Loki连接失败**
-    - 验证GrafanaLokiUrl地址和端口
-    - 检查网络连接和防火墙设置
-    - 确认用户名密码正确
+| メソッド | 説明 |
+|------|------|
+| `LogHelper.Verbose(message)` | Verbose レベルのログを記録 |
+| `LogHelper.Debug(message)` | Debug レベルのログを記録 |
+| `LogHelper.Info(message)` | Information レベルのログを記録 |
+| `LogHelper.Warn(message)` | Warning レベルのログを記録 |
+| `LogHelper.Error(message)` | Error レベルのログを記録 |
+| `LogHelper.Fatal(message)` | Fatal レベルのログを記録 |
+| `LogHelper.Info(tag, message, args)` | タグ付き Info ログ |
+| `LogHelper.Warn(tag, message, args)` | タグ付き Warn ログ |
+| `LogHelper.Error(tag, message, args)` | タグ付き Error ログ |
+| `LogHelper.Error(Exception)` | 例外を記録（スタックトレース付き） |
+| `LogHelper.Error(tag, Exception)` | タグ付き例外記録 |
+| `LogHelper.InfoConsole(message)` | コンソールにも出力する Info ログ |
+| `LogHelper.ErrorConsole(message)` | コンソールにも出力する Error ログ（赤色） |
+| `LogHelper.Console(message)` | コンソールのみに出力 |
+| `LogHelper.FlushAndSave()` | 同期フラッシュしてログを保存 |
+| `LogHelper.CloseAndFlushAsync()` | 非同期でクローズしてフラッシュ |
 
-### 调试信息
+### LogOptions 主なプロパティ
 
-启用Serilog自诊断功能：
+| プロパティ | 型 | 説明 |
+|------|------|------|
+| `LogSavePath` | `string` | ログディレクトリパス |
+| `LogType` | `string` | サーバー種別識別子 |
+| `LogTagName` | `string` | ログタグ名 |
+| `LogEventLevel` | `LogEventLevel` | 最低ログレベル |
+| `IsConsole` | `bool` | コンソール出力の有無 |
+| `RollingInterval` | `RollingInterval` | ファイルローテーション間隔 |
+| `FileSizeLimitBytes` | `long` | 単一ログファイルのサイズ制限 |
+| `RetainedFileCountLimit` | `int` | 保持するログファイル数 |
+| `IsGrafanaLoki` | `bool` | Grafana Loki の有効フラグ |
+| `GrafanaLokiUrl` | `string` | Loki サービスアドレス |
+| `GrafanaLokiLabels` | ``Dictionary<string, string>`` | Loki ラベル |
+| `GrafanaLokiUsername` | `string` | Loki 認証ユーザー名 |
+| `GrafanaLokiPassword` | `string` | Loki 認証パスワード |
 
-```csharp
-// LogHandler会自动启用自诊断
-// 诊断信息会输出到控制台，格式为: Serilog:SelfLog:{message}
-```
+### 依存関係
 
-## 依赖项
-
-- **Serilog.AspNetCore** (9.0.0) - 核心日志框架
-- **Serilog.Sinks.Console** (6.0.0) - 控制台输出
-- **Serilog.Sinks.File** (7.0.0) - 文件输出
-- **Serilog.Sinks.Grafana.Loki** (8.3.1) - Grafana Loki集成
-- **GameFrameX.Foundation.Json** - JSON序列化支持
-
-## 📄 许可证
-
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
+- **Serilog.AspNetCore** (9.0.0) - コアログフレームワーク
+- **Serilog.Sinks.Console** (6.0.0) - コンソール出力
+- **Serilog.Sinks.File** (7.0.0) - ファイル出力
+- **Serilog.Sinks.Grafana.Loki** (8.3.1) - Grafana Loki 統合
+- **GameFrameX.Foundation.Json** - JSON シリアライズサポート

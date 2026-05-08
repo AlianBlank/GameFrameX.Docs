@@ -1,40 +1,46 @@
-# 日志
+# 로그 (Serilog 기반 고성능 로깅 라이브러리)
 
-一个基于Serilog的高性能日志记录库，为GameFrameX框架提供统一的日志记录接口和丰富的日志输出功能。
+Serilog 기반의 고성능 로깅 라이브러리로, GameFrameX 프레임워크에 통합된 로깅 인터페이스와 풍부한 로그 출력 기능을 제공합니다.
 
-## 特性
+## 특징
 
-- ✅ **多级别日志支持**: 支持Verbose、Debug、Info、Warn、Error、Fatal六个日志级别
-- ✅ **多输出目标**: 支持文件、控制台、Grafana Loki等多种输出方式
-- ✅ **灵活配置**: 通过LogOptions类提供丰富的配置选项
-- ✅ **文件滚动**: 支持按时间间隔和文件大小进行日志文件滚动
-- ✅ **标签支持**: 支持为日志添加标签，便于分类和过滤
-- ✅ **异常记录**: 专门的异常记录方法，包含完整的堆栈跟踪信息
-- ✅ **控制台输出**: 支持同时输出到日志文件和控制台
-- ✅ **高性能**: 基于Serilog构建，提供高性能的日志记录能力
+- **다중 레벨 로그 지원** - Verbose, Debug, Info, Warn, Error, Fatal 6가지 로그 레벨 지원
+- **다중 출력 대상** - 파일, 콘솔, Grafana Loki 등 다양한 출력 방식 지원
+- **유연한 설정** - LogOptions 클래스를 통한 풍부한 설정 옵션 제공
+- **파일 롤링** - 시간 간격 및 파일 크기 기반 로그 파일 롤링 지원
+- **태그 지원** - 로그에 태그를 추가하여 분류 및 필터링 가능
+- **예외 기록** - 전체 스택 추적 정보가 포함된 전용 예외 기록 메서드
+- **콘솔 출력** - 로그 파일과 콘솔에 동시 출력 지원
+- **고성능** - Serilog 기반으로 고성능 로깅 기능 제공
 
-## 快速开始
+## 설치
 
-### 1. 基本使用
-
-```csharp
-using GameFrameX.Foundation.Logger;
-
-// 使用默认配置初始化日志系统
-var logger = LogHandler.Create(LogOptions.Default);
-
-// 记录不同级别的日志
-LogHelper.Info("应用程序启动");
-LogHelper.Warn("这是一个警告消息");
-LogHelper.Error("发生了一个错误");
+```bash
+dotnet add package GameFrameX.Foundation.Logger
 ```
 
-### 2. 自定义配置
+## 빠른 시작
+
+### 1. 기본 사용
 
 ```csharp
 using GameFrameX.Foundation.Logger;
 
-// 创建自定义日志配置
+// 기본 설정으로 로그 시스템 초기화
+var logger = LogHandler.Create(LogOptions.Default);
+
+// 다양한 레벨의 로그 기록
+LogHelper.Info("애플리케이션 시작");
+LogHelper.Warn("경고 메시지입니다");
+LogHelper.Error("오류가 발생했습니다");
+```
+
+### 2. 사용자 정의 설정
+
+```csharp
+using GameFrameX.Foundation.Logger;
+
+// 사용자 정의 로그 설정 생성
 var logOptions = new LogOptions("mylogs")
 {
     LogType = "WebApi",
@@ -43,161 +49,161 @@ var logOptions = new LogOptions("mylogs")
     IsConsole = true,
     RollingInterval = RollingInterval.Hour,
     FileSizeLimitBytes = 50 * 1024 * 1024, // 50MB
-    RetainedFileCountLimit = 7 // 保留7个文件
+    RetainedFileCountLimit = 7 // 7개 파일 보관
 };
 
-// 初始化日志系统
+// 로그 시스템 초기화
 var logger = LogHandler.Create(logOptions);
 
-// 使用日志
-LogHelper.Info("服务器", "服务器启动在端口 {Port}", 8080);
-LogHelper.InfoConsole("同时输出到文件和控制台的消息");
+// 로그 사용
+LogHelper.Info("서버", "서버가 포트 {Port}에서 시작됨", 8080);
+LogHelper.InfoConsole("파일과 콘솔에 동시에 출력되는 메시지");
 ```
 
-## 详细使用指南
+## 상세 사용법
 
-### 日志级别
+### 로그 레벨
 
-支持六个标准的日志级别：
+6가지 표준 로그 레벨을 지원합니다:
 
 ```csharp
-// Verbose - 最详细的日志信息
-LogHelper.Verbose("详细的调试信息");
+// Verbose - 가장 상세한 로그 정보
+LogHelper.Verbose("상세 디버그 정보");
 
-// Debug - 调试信息
-LogHelper.Debug("调试信息: 变量值 = {Value}", someValue);
+// Debug - 디버그 정보
+LogHelper.Debug("디버그 정보: 변수 값 = {Value}", someValue);
 
-// Information - 一般信息
-LogHelper.Info("用户 {UserId} 登录成功", userId);
+// Information - 일반 정보
+LogHelper.Info("사용자 {UserId} 로그인 성공", userId);
 
-// Warning - 警告信息
-LogHelper.Warn("磁盘空间不足，剩余: {FreeSpace}MB", freeSpace);
+// Warning - 경고 정보
+LogHelper.Warn("디스크 공간 부족, 남은 공간: {FreeSpace}MB", freeSpace);
 
-// Error - 错误信息
-LogHelper.Error("数据库连接失败: {Error}", errorMessage);
+// Error - 오류 정보
+LogHelper.Error("데이터베이스 연결 실패: {Error}", errorMessage);
 
-// Fatal - 致命错误
-LogHelper.Fatal("应用程序即将崩溃: {Reason}", reason);
+// Fatal - 치명적 오류
+LogHelper.Fatal("애플리케이션이 곧 충돌함: {Reason}", reason);
 ```
 
-### 异常记录
+### 예외 기록
 
-专门的异常记录方法，自动包含堆栈跟踪：
+전용 예외 기록 메서드로 스택 추적이 자동으로 포함됩니다:
 
 ```csharp
 try
 {
-    // 可能抛出异常的代码
+    // 예외가 발생할 수 있는 코드
     DoSomething();
 }
 catch (Exception ex)
 {
-    // 记录异常
+    // 예외 기록
     LogHelper.Error(ex);
-    
-    // 带标签的异常记录
-    LogHelper.Error("数据库", ex);
-    
-    // 自定义异常消息
-    LogHelper.Error("处理用户请求时发生错误: {Message}", ex.Message);
+
+    // 태그가 포함된 예외 기록
+    LogHelper.Error("데이터베이스", ex);
+
+    // 사용자 정의 예외 메시지
+    LogHelper.Error("사용자 요청 처리 중 오류 발생: {Message}", ex.Message);
 }
 ```
 
-### 标签支持
+### 태그 지원
 
-为日志添加标签，便于分类和过滤：
+로그에 태그를 추가하여 분류 및 필터링을 용이하게 합니다:
 
 ```csharp
-// 带标签的日志记录
-LogHelper.Info("用户管理", "用户 {UserId} 创建成功", userId);
-LogHelper.Warn("安全", "检测到可疑登录尝试，IP: {IP}", ipAddress);
-LogHelper.Error("支付", "支付处理失败，订单号: {OrderId}", orderId);
+// 태그가 포함된 로그 기록
+LogHelper.Info("사용자 관리", "사용자 {UserId} 생성 성공", userId);
+LogHelper.Warn("보안", "의심스러운 로그인 시도 감지, IP: {IP}", ipAddress);
+LogHelper.Error("결제", "결제 처리 실패, 주문 번호: {OrderId}", orderId);
 
-// 带标签的控制台输出
-LogHelper.InfoConsole("启动", "服务器启动完成，监听端口: {Port}", port);
+// 태그가 포함된 콘솔 출력
+LogHelper.InfoConsole("시작", "서버 시작 완료, 수신 포트: {Port}", port);
 ```
 
-### 控制台输出
+### 콘솔 출력
 
-支持同时输出到日志文件和控制台：
+로그 파일과 콘솔에 동시 출력을 지원합니다:
 
 ```csharp
-// 仅输出到日志文件
-LogHelper.Info("这条消息只会写入日志文件");
+// 로그 파일에만 출력
+LogHelper.Info("이 메시지는 로그 파일에만 기록됩니다");
 
-// 同时输出到日志文件和控制台
-LogHelper.InfoConsole("这条消息会同时显示在控制台和日志文件中");
+// 로그 파일과 콘솔에 동시 출력
+LogHelper.InfoConsole("이 메시지는 콘솔과 로그 파일에 모두 표시됩니다");
 
-// 错误消息的控制台输出（红色显示）
-LogHelper.ErrorConsole("这是一个错误消息，控制台中会以红色显示");
+// 오류 메시지의 콘솔 출력 (빨간색으로 표시)
+LogHelper.ErrorConsole("이것은 오류 메시지이며 콘솔에 빨간색으로 표시됩니다");
 
-// 仅输出到控制台（不写入日志文件）
-LogHelper.Console("这条消息只会显示在控制台");
+// 콘솔에만 출력 (로그 파일에 기록하지 않음)
+LogHelper.Console("이 메시지는 콘솔에만 표시됩니다");
 ```
 
-## 配置选项
+## 설정
 
-### LogOptions 配置类
+### LogOptions 설정 클래스
 
 ```csharp
-var logOptions = new LogOptions("logs") // 日志目录名
+var logOptions = new LogOptions("logs") // 로그 디렉토리 이름
 {
-    // 基本配置
-    LogType = "WebServer",              // 服务器类型标识
-    LogTagName = "Production",          // 日志标签名
-    LogEventLevel = LogEventLevel.Info, // 最低日志级别
-    
-    // 输出配置
-    IsConsole = true,                   // 是否输出到控制台
-    
-    // 文件配置
-    RollingInterval = RollingInterval.Day,    // 滚动间隔（天）
-    IsFileSizeLimit = true,                   // 是否限制文件大小
-    FileSizeLimitBytes = 100 * 1024 * 1024,   // 文件大小限制（100MB）
-    RetainedFileCountLimit = 31,              // 保留文件数量（31个）
-    
-    // Grafana Loki 配置
-    IsGrafanaLoki = false,                    // 是否启用Loki
-    GrafanaLokiUrl = "http://localhost:3100", // Loki服务地址
+    // 기본 설정
+    LogType = "WebServer",              // 서버 유형 식별자
+    LogTagName = "Production",          // 로그 태그 이름
+    LogEventLevel = LogEventLevel.Info, // 최소 로그 레벨
+
+    // 출력 설정
+    IsConsole = true,                   // 콘솔 출력 여부
+
+    // 파일 설정
+    RollingInterval = RollingInterval.Day,    // 롤링 간격 (일)
+    IsFileSizeLimit = true,                   // 파일 크기 제한 여부
+    FileSizeLimitBytes = 100 * 1024 * 1024,   // 파일 크기 제한 (100MB)
+    RetainedFileCountLimit = 31,              // 보관 파일 수 (31개)
+
+    // Grafana Loki 설정
+    IsGrafanaLoki = false,                    // Loki 활성화 여부
+    GrafanaLokiUrl = "http://localhost:3100", // Loki 서비스 주소
     GrafanaLokiLabels = new Dictionary<string, string>
     {
         ["app"] = "myapp",
         ["env"] = "production"
     },
-    GrafanaLokiUsername = "admin",            // Loki用户名
-    GrafanaLokiPassword = "password"          // Loki密码
+    GrafanaLokiUsername = "admin",            // Loki 사용자 이름
+    GrafanaLokiPassword = "password"          // Loki 비밀번호
 };
 ```
 
-### 滚动间隔选项
+### 롤링 간격 옵션
 
 ```csharp
-// 支持的滚动间隔
-RollingInterval.Infinite    // 不滚动
-RollingInterval.Year        // 按年滚动
-RollingInterval.Month       // 按月滚动
-RollingInterval.Day         // 按天滚动（默认）
-RollingInterval.Hour        // 按小时滚动
-RollingInterval.Minute      // 按分钟滚动
+// 지원되는 롤링 간격
+RollingInterval.Infinite    // 롤링하지 않음
+RollingInterval.Year        // 연 단위 롤링
+RollingInterval.Month       // 월 단위 롤링
+RollingInterval.Day         // 일 단위 롤링 (기본값)
+RollingInterval.Hour        // 시간 단위 롤링
+RollingInterval.Minute      // 분 단위 롤링
 ```
 
-### 日志级别配置
+### 로그 레벨 설정
 
 ```csharp
-// 支持的日志级别
-LogEventLevel.Verbose       // 最详细
-LogEventLevel.Debug         // 调试（默认）
-LogEventLevel.Information   // 信息
-LogEventLevel.Warning       // 警告
-LogEventLevel.Error         // 错误
-LogEventLevel.Fatal         // 致命错误
+// 지원되는 로그 레벨
+LogEventLevel.Verbose       // 가장 상세함
+LogEventLevel.Debug         // 디버그 (기본값)
+LogEventLevel.Information   // 정보
+LogEventLevel.Warning       // 경고
+LogEventLevel.Error         // 오류
+LogEventLevel.Fatal         // 치명적 오류
 ```
 
-## 高级功能
+## 고급 사용법
 
-### Grafana Loki 集成
+### Grafana Loki 통합
 
-支持将日志发送到Grafana Loki进行集中化日志管理：
+Grafana Loki에 로그를 전송하여 중앙 집중식 로그 관리를 지원합니다:
 
 ```csharp
 var logOptions = new LogOptions()
@@ -217,134 +223,134 @@ var logOptions = new LogOptions()
 var logger = LogHandler.Create(logOptions);
 ```
 
-### 自定义日志配置
+### 사용자 정의 로그 설정
 
-支持通过回调函数进行更高级的自定义配置：
+콜백 함수를 통한 더 고급 사용자 정의 설정을 지원합니다:
 
 ```csharp
 var logger = LogHandler.Create(logOptions, true, config =>
 {
-    // 添加自定义的Sink
+    // 사용자 정의 Sink 추가
     config.WriteTo.Email(
         fromEmail: "noreply@example.com",
         toEmail: "admin@example.com",
         outputTemplate: "{Timestamp} [{Level}] {Message}{NewLine}{Exception}",
         restrictedToMinimumLevel: LogEventLevel.Error
     );
-    
-    // 添加自定义的Enricher
+
+    // 사용자 정의 Enricher 추가
     config.Enrich.WithProperty("MachineName", Environment.MachineName);
     config.Enrich.WithProperty("ProcessId", Environment.ProcessId);
 });
 ```
 
-### 使用自定义Logger实例
+### 사용자 정의 Logger 인스턴스 사용
 
 ```csharp
-// 创建多个Logger实例
+// 여러 Logger 인스턴스 생성
 var webLogger = LogHandler.Create(webLogOptions, false);
 var dbLogger = LogHandler.Create(dbLogOptions, false);
 
-// 使用特定的Logger实例
-LogHelper.Info(webLogger, "Web请求处理完成");
-LogHelper.Error(dbLogger, "数据库连接异常", exception);
+// 특정 Logger 인스턴스 사용
+LogHelper.Info(webLogger, "웹 요청 처리 완료");
+LogHelper.Error(dbLogger, "데이터베이스 연결 예외", exception);
 ```
 
-## 性能优化
+### 성능 최적화
 
-### 异步日志刷新
+#### 비동기 로그 플러시
 
 ```csharp
-// 同步刷新（阻塞）
+// 동기 플러시 (블로킹)
 LogHelper.FlushAndSave();
 
-// 异步刷新（非阻塞）
+// 비동기 플러시 (논블로킹)
 LogHelper.CloseAndFlushAsync();
 ```
 
-### 条件日志记录
+#### 조건부 로그 기록
 
 ```csharp
-// 避免不必要的字符串格式化
+// 불필요한 문자열 포맷팅 방지
 if (logger.IsEnabled(LogEventLevel.Debug))
 {
-    LogHelper.Debug("复杂的调试信息: {Data}", ExpensiveOperation());
+    LogHelper.Debug("복잡한 디버그 정보: {Data}", ExpensiveOperation());
 }
 ```
 
-## 最佳实践
+## 모범 사례
 
-### 1. 结构化日志
+### 구조화된 로그
 
-使用结构化的日志消息，便于后续分析：
+후속 분석을 용이하게 하기 위해 구조화된 로그 메시지를 사용합니다:
 
 ```csharp
-// 好的做法 - 结构化日志
-LogHelper.Info("用户登录成功，用户ID: {UserId}, IP: {IP}, 耗时: {Duration}ms", 
+// 좋은 방법 - 구조화된 로그
+LogHelper.Info("사용자 로그인 성공, 사용자 ID: {UserId}, IP: {IP}, 소요 시간: {Duration}ms",
     userId, ipAddress, duration);
 
-// 避免的做法 - 字符串拼接
-LogHelper.Info($"用户登录成功，用户ID: {userId}, IP: {ipAddress}, 耗时: {duration}ms");
+// 피해야 할 방법 - 문자열 연결
+LogHelper.Info($"사용자 로그인 성공, 사용자 ID: {userId}, IP: {ipAddress}, 소요 시간: {duration}ms");
 ```
 
-### 2. 合理使用日志级别
+### 로그 레벨의 합리적 사용
 
 ```csharp
-// Debug - 开发调试信息
-LogHelper.Debug("进入方法 ProcessOrder，参数: {OrderId}", orderId);
+// Debug - 개발 디버그 정보
+LogHelper.Debug("ProcessOrder 메서드 진입, 매개변수: {OrderId}", orderId);
 
-// Info - 重要的业务事件
-LogHelper.Info("订单创建成功，订单号: {OrderId}, 用户: {UserId}", orderId, userId);
+// Info - 중요한 비즈니스 이벤트
+LogHelper.Info("주문 생성 성공, 주문 번호: {OrderId}, 사용자: {UserId}", orderId, userId);
 
-// Warn - 可恢复的问题
-LogHelper.Warn("重试连接数据库，第 {Attempt} 次尝试", attemptCount);
+// Warn - 복구 가능한 문제
+LogHelper.Warn("데이터베이스 재연결, {Attempt}번째 시도", attemptCount);
 
-// Error - 需要关注的错误
-LogHelper.Error("处理支付失败，订单: {OrderId}, 错误: {Error}", orderId, error);
+// Error - 주의가 필요한 오류
+LogHelper.Error("결제 처리 실패, 주문: {OrderId}, 오류: {Error}", orderId, error);
 
-// Fatal - 导致应用程序终止的严重错误
-LogHelper.Fatal("数据库连接池耗尽，应用程序即将关闭");
+// Fatal - 애플리케이션 종료를 초래하는 심각한 오류
+LogHelper.Fatal("데이터베이스 연결 풀 고갈, 애플리케이션이 곧 종료됩니다");
 ```
 
-### 3. 使用标签分类
+### 태그 분류 사용
 
 ```csharp
-// 按功能模块分类
-LogHelper.Info("用户管理", "用户注册成功: {Email}", email);
-LogHelper.Info("订单处理", "订单状态更新: {OrderId} -> {Status}", orderId, status);
-LogHelper.Info("支付系统", "支付完成: {Amount} 元", amount);
+// 기능 모듈별 분류
+LogHelper.Info("사용자 관리", "사용자 가입 성공: {Email}", email);
+LogHelper.Info("주문 처리", "주문 상태 업데이트: {OrderId} -> {Status}", orderId, status);
+LogHelper.Info("결제 시스템", "결제 완료: {Amount}원", amount);
 
-// 按环境分类
-LogHelper.Info("生产环境", "服务器启动完成");
-LogHelper.Debug("开发环境", "调试信息: {Data}", debugData);
+// 환경별 분류
+LogHelper.Info("프로덕션 환경", "서버 시작 완료");
+LogHelper.Debug("개발 환경", "디버그 정보: {Data}", debugData);
 ```
 
-### 4. 异常处理
+### 예외 처리
 
 ```csharp
 try
 {
     await ProcessOrderAsync(orderId);
-    LogHelper.Info("订单处理", "订单 {OrderId} 处理完成", orderId);
+    LogHelper.Info("주문 처리", "주문 {OrderId} 처리 완료", orderId);
 }
 catch (BusinessException ex)
 {
-    // 业务异常，记录为警告
-    LogHelper.Warn("订单处理", "业务规则验证失败: {Message}", ex.Message);
+    // 비즈니스 예외, 경고로 기록
+    LogHelper.Warn("주문 처리", "비즈니스 규칙 검증 실패: {Message}", ex.Message);
     throw;
 }
 catch (Exception ex)
 {
-    // 系统异常，记录为错误
-    LogHelper.Error("订单处理", ex);
+    // 시스템 예외, 오류로 기록
+    LogHelper.Error("주문 처리", ex);
     throw;
 }
 ```
 
-### 5. 配置管理
+### 설정 관리
 
 ```csharp
-// 开发环境配置
+// 개발 환경 설정
 var devLogOptions = new LogOptions("logs")
 {
     LogEventLevel = LogEventLevel.Debug,
@@ -352,7 +358,7 @@ var devLogOptions = new LogOptions("logs")
     RollingInterval = RollingInterval.Hour
 };
 
-// 生产环境配置
+// 프로덕션 환경 설정
 var prodLogOptions = new LogOptions("logs")
 {
     LogEventLevel = LogEventLevel.Information,
@@ -362,59 +368,65 @@ var prodLogOptions = new LogOptions("logs")
     GrafanaLokiUrl = "http://loki.prod.com:3100"
 };
 
-// 根据环境选择配置
-var logOptions = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development" 
-    ? devLogOptions 
+// 환경에 따른 설정 선택
+var logOptions = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development"
+    ? devLogOptions
     : prodLogOptions;
 ```
 
-## 故障排除
+## API 레퍼런스
 
-### 常见问题
+### LogHandler
 
-1. **日志文件未创建**
-    - 检查日志目录权限
-    - 确认LogSavePath路径正确
-    - 查看控制台是否有Serilog自诊断信息
+| 메서드 | 설명 |
+|------|------|
+| `LogHandler.Create(LogOptions)` | 지정된 설정으로 Logger 인스턴스 생성 |
+| `LogHandler.Create(LogOptions, bool)` | Logger 인스턴스 생성, 두 번째 매개변수는 전역 기본값으로 설정할지 여부 |
+| `LogHandler.Create(LogOptions, bool, Action<LoggerConfiguration>)` | Logger 인스턴스 생성 후 콜백으로 Serilog 설정 사용자 정의 |
 
-2. **日志级别过滤不生效**
-    - 确认LogEventLevel设置正确
-    - 检查是否有多个Logger实例冲突
+### LogHelper 로그 기록 메서드
 
-3. **Grafana Loki连接失败**
-    - 验证GrafanaLokiUrl地址和端口
-    - 检查网络连接和防火墙设置
-    - 确认用户名密码正确
+| 메서드 | 설명 |
+|------|------|
+| `LogHelper.Verbose(message)` | Verbose 레벨 로그 기록 |
+| `LogHelper.Debug(message)` | Debug 레벨 로그 기록 |
+| `LogHelper.Info(message)` | Information 레벨 로그 기록 |
+| `LogHelper.Warn(message)` | Warning 레벨 로그 기록 |
+| `LogHelper.Error(message)` | Error 레벨 로그 기록 |
+| `LogHelper.Fatal(message)` | Fatal 레벨 로그 기록 |
+| `LogHelper.Info(tag, message, args)` | 태그가 포함된 Info 로그 |
+| `LogHelper.Warn(tag, message, args)` | 태그가 포함된 Warn 로그 |
+| `LogHelper.Error(tag, message, args)` | 태그가 포함된 Error 로그 |
+| `LogHelper.Error(Exception)` | 예외 기록 (스택 추적 포함) |
+| `LogHelper.Error(tag, Exception)` | 태그가 포함된 예외 기록 |
+| `LogHelper.InfoConsole(message)` | 콘솔에도 출력되는 Info 로그 |
+| `LogHelper.ErrorConsole(message)` | 콘솔에도 출력되는 Error 로그 (빨간색) |
+| `LogHelper.Console(message)` | 콘솔에만 출력 |
+| `LogHelper.FlushAndSave()` | 동기 플러시 및 로그 저장 |
+| `LogHelper.CloseAndFlushAsync()` | 비동기 종료 및 로그 플러시 |
 
-### 调试信息
+### LogOptions 주요 속성
 
-启用Serilog自诊断功能：
+| 속성 | 형식 | 설명 |
+|------|------|------|
+| `LogSavePath` | `string` | 로그 디렉토리 경로 |
+| `LogType` | `string` | 서버 유형 식별자 |
+| `LogTagName` | `string` | 로그 태그 이름 |
+| `LogEventLevel` | `LogEventLevel` | 최소 로그 레벨 |
+| `IsConsole` | `bool` | 콘솔 출력 여부 |
+| `RollingInterval` | `RollingInterval` | 파일 롤링 간격 |
+| `FileSizeLimitBytes` | `long` | 단일 로그 파일 크기 제한 |
+| `RetainedFileCountLimit` | `int` | 보관할 로그 파일 수 |
+| `IsGrafanaLoki` | `bool` | Grafana Loki 활성화 여부 |
+| `GrafanaLokiUrl` | `string` | Loki 서비스 주소 |
+| `GrafanaLokiLabels` | `Dictionary<string, string>` | Loki 라벨 |
+| `GrafanaLokiUsername` | `string` | Loki 인증 사용자 이름 |
+| `GrafanaLokiPassword` | `string` | Loki 인증 비밀번호 |
 
-```csharp
-// LogHandler会自动启用自诊断
-// 诊断信息会输出到控制台，格式为: Serilog:SelfLog:{message}
-```
+### 종속성
 
-## 依赖项
-
-- **Serilog.AspNetCore** (9.0.0) - 核心日志框架
-- **Serilog.Sinks.Console** (6.0.0) - 控制台输出
-- **Serilog.Sinks.File** (7.0.0) - 文件输出
-- **Serilog.Sinks.Grafana.Loki** (8.3.1) - Grafana Loki集成
-- **GameFrameX.Foundation.Json** - JSON序列化支持
-
-## 📄 许可证
-
-本项目采用 Apache 许可证（版本 2.0）进行分发和使用。详细信息请参阅项目根目录中的 LICENSE 文件。
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
-
-## 📞 支持
-
-如果您在使用过程中遇到问题，请通过以下方式获取帮助：
-
-- 提交 [GitHub Issue](https://github.com/GameFrameX/GameFrameX.Foundation/issues)
-- 查看项目文档: https://gameframex.doc.alianblank.com
-- 参考单元测试了解更多用法
+- **Serilog.AspNetCore** (9.0.0) - 핵심 로깅 프레임워크
+- **Serilog.Sinks.Console** (6.0.0) - 콘솔 출력
+- **Serilog.Sinks.File** (7.0.0) - 파일 출력
+- **Serilog.Sinks.Grafana.Loki** (8.3.1) - Grafana Loki 통합
+- **GameFrameX.Foundation.Json** - JSON 직렬화 지원
