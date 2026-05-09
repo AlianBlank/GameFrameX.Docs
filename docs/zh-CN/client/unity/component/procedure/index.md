@@ -8,3 +8,7 @@
 
 - [插件简介](introduction.md)
 - [功能特性](features.md)
+- [ProcedureComponent](procedure-component.md)
+- [ProcedureBase](procedure-base.md)
+- [IProcedureManager](iprocedure-manager.md)
+- [ProcedureManager](procedure-manager.md)
