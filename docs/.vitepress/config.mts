@@ -16,8 +16,8 @@ const sidebarOptions = {
     prefixSeparator: '.',
     hyphenToSpace: true,
     capitalizeEachWords: true,
-    sortFolderTo: 'first',
     sortMenusByName: true,
+    useFolderLinkFromIndexFile: true,
     includeRootIndexFile: false,
     excludeByGlobPattern: ['**/README.md', '**/TODO.md'],
     excludeFilesByFrontmatterFieldName: 'exclude',
@@ -31,6 +31,7 @@ export default withMermaid(defineConfig({
     titleTemplate: ':title',
     cleanUrls: false,
     lastUpdated: true,
+    ignoreDeadLinks: true,
     srcExclude: [
         '**/README.md',
         '**/TODO.md'
