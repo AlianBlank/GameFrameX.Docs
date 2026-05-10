@@ -6,12 +6,12 @@
 
 ### 目录
 
-- [EventComponent](event-component.md)
-- [快速入门](index.md)
-- [事件系统架构](core-concepts.md)
-- [安装方式](installation.md)
-- [插件介绍](overview.md)
-- [常见问题解答](troubleshooting.md)
-- [EventManager](event-manager.md)
-- [GameEventArgs](game-event-args.md)
+- [插件介绍](01.overview.md)
+- [安装方式](02.installation.md)
+- [快速入门](03.getting-started.md)
+- [事件系统架构](04.features.md)
+- [EventComponent](05.event-component.md)
+- [EventManager](06.event-manager.md)
+- [GameEventArgs](07.game-event-args.md)
+- [常见问题解答](08.troubleshooting.md)
 
