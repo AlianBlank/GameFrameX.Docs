@@ -6,9 +6,9 @@
 
 ### 目录
 
-- [常见问题](faq.md)
-- [安装方式](install-methods.md)
-- [GlobalConfig 组件简介](introduction.md)
+- [GlobalConfig 组件简介](overview.md)
+- [安装方式](installation.md)
+- [快速开始](getting-started.md)
 - [请求类](request-classes.md)
 - [响应类](response-classes.md)
-
+- [常见问题](troubleshooting.md)
