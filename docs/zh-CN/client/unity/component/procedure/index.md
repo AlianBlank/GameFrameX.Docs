@@ -6,9 +6,14 @@
 
 ### 目录
 
-- [插件简介](introduction.md)
+- [插件简介](overview.md)
+- [安装指南](installation.md)
+- [快速开始](getting-started.md)
 - [功能特性](features.md)
-- [ProcedureComponent](procedure-component.md)
-- [ProcedureBase](procedure-base.md)
 - [IProcedureManager](iprocedure-manager.md)
+- [ProcedureBase](procedure-base.md)
 - [ProcedureManager](procedure-manager.md)
+- [ProcedureComponent](procedure-component.md)
+- [自定义流程](custom-procedures.md)
+- [编辑器使用](editor-usage.md)
+- [常见问题](troubleshooting.md)
