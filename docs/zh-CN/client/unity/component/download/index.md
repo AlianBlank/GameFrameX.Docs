@@ -6,19 +6,18 @@
 
 ### 目录
 
+- [插件介绍](overview.md)
+- [安装](installation.md)
+- [快速开始](getting-started.md)
+- [功能特性](features.md)
 - [架构概述](architecture.md)
 - [基础配置](basic-setup.md)
-- [下载事件](download-events.md)
 - [编辑器配置](editor-configuration.md)
-- [插件介绍](introduction.md)
-- [属性](properties.md)
-- [下载代理配置](agent-configuration.md)
-- [代理事件](agent-events.md)
 - [DownloadComponent](download-component.md)
-- [功能特性](features.md)
-- [首个示例](first-example.md)
-- [安装](installation.md)
+- [属性](properties.md)
 - [方法](methods.md)
+- [下载事件](download-events.md)
+- [下载代理配置](agent-configuration.md)
 - [下载代理](download-agent.md)
+- [代理事件](agent-events.md)
 - [常见问题](troubleshooting.md)
-
