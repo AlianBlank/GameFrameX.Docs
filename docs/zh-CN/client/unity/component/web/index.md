@@ -6,16 +6,14 @@
 
 ### 目录
 
-- [基础用法](basic-usage.md)
-- [常见问题](faq.md)
-- [安装方式](install-methods.md)
-- [插件介绍](introduction.md)
+- [插件介绍](overview.md)
+- [安装方式](installation.md)
+- [基础用法](getting-started.md)
 - [IWebManager 接口](iwebmanager-interface.md)
+- [WebManager 架构](web-manager.md)
+- [请求结果类型](result-types.md)
+- [基础数据配置](base-data.md)
+- [WebComponent 组件](web-component.md)
 - [平台差异说明](platform-differences.md)
 - [超时配置](timeout-settings.md)
-- [WebManager 架构](web-manager.md)
-- [基础数据配置](base-data.md)
-- [请求结果类型](result-types.md)
-- [使用 WebComponent](web-component.md)
-- [WebComponent 组件](webcomponent.md)
-
+- [常见问题](troubleshooting.md)
