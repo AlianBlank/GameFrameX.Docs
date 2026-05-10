@@ -6,11 +6,11 @@
 
 ### 目录
 
-- [概述](overview.md)
-- [安装](installation.md)
-- [快速开始](quick-start.md)
-- [API 参考](api-reference.md)
-- [平台配置](platform-configuration.md)
-- [示例](samples.md)
-- [常见问题](troubleshooting.md)
+- [概述](01.overview.md)
+- [安装](02.installation.md)
+- [快速开始](03.getting-started.md)
+- [平台配置](04.platform-configuration.md)
+- [示例](05.samples.md)
+- [API 参考](06.api-reference.md)
+- [常见问题](07.troubleshooting.md)
 
