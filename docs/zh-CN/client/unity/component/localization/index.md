@@ -6,19 +6,13 @@
 
 ### 目录
 
+- [概述](overview.md)
+- [安装](installation.md)
+- [快速开始](getting-started.md)
 - [获取本地化字符串](get-string.md)
-- [概述](overview.md)
 - [字典管理](dictionary-management.md)
-- [安装](installation.md)
-- [概述](overview.md)
-- [快速开始](getting-started.md)
-- [安装](installation.md)
 - [语言切换与事件](language-switching.md)
-- [快速开始](getting-started.md)
-- [API 参考](api-reference.md)
-- [API 参考](api-reference.md)
 - [配置](configuration.md)
 - [最佳实践](best-practices.md)
-- [配置](configuration.md)
-- [最佳实践](best-practices.md)
-
+- [API 参考](api-reference.md)
+- [常见问题](troubleshooting.md)
