@@ -10,7 +10,7 @@ const sidebarOptions = {
     useTitleFromFileHeading: true,
     useTitleFromFrontmatter: true,
     useFolderTitleFromIndexFile: true,
-    collapseDepth: 3,
+    collapseDepth: 2,
     collapsed: false,
     removePrefixAfterOrdering: true,
     prefixSeparator: '.',
