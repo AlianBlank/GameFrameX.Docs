@@ -5,11 +5,11 @@
 
 ### 目录
 
-- [概述](overview/index.md)
-- [安装](installation/index.md)
-- [快速开始](quick-start/index.md)
-- [核心概念](core-concepts/index.md)
-- [API 参考](api-reference/index.md)
-- [设置辅助器](helper-implementation/index.md)
-- [平台配置](platforms/index.md)
-- [常见问题](troubleshooting/index.md)
+- [概述](01.overview.md)
+- [安装](02.installation.md)
+- [快速开始](03.getting-started.md)
+- [功能特性](04.features.md)
+- [设置辅助器](05.helper-implementation.md)
+- [平台配置](06.platforms.md)
+- [API 参考](07.api-reference.md)
+- [常见问题](08.troubleshooting.md)
