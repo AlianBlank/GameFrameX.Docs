@@ -4,10 +4,10 @@
 
 ### 目录
 
-- [概述](overview/index.md)
-- [安装](installation/index.md)
-- [快速入门](getting-started/index.md)
-- [核心功能](core-features/index.md)
-- [API 参考](api-reference/index.md)
-- [事件系统](events/index.md)
-- [常见问题](troubleshooting/index.md)
+- [概述](overview.md)
+- [安装](installation.md)
+- [快速入门](getting-started.md)
+- [核心功能](features.md)
+- [事件系统](events.md)
+- [API 参考](api-reference.md)
+- [常见问题](troubleshooting.md)
