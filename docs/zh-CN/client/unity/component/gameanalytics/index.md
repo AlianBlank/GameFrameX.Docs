@@ -6,12 +6,10 @@
 
 ### 目录
 
-- [安装指南](index.md)
-- [API 接口](api-reference.md)
-- [编辑器配置](configuration.md)
-- [核心架构](core-concepts.md)
-- [快速开始](getting-started.md)
-- [安装指南](installation.md)
-- [插件介绍](overview.md)
-- [故障排除](troubleshooting.md)
-
+- [插件介绍](01.overview.md)
+- [安装指南](02.installation.md)
+- [快速开始](03.getting-started.md)
+- [核心架构](04.features.md)
+- [编辑器配置](05.configuration.md)
+- [API 接口](06.api-reference.md)
+- [故障排除](07.troubleshooting.md)
