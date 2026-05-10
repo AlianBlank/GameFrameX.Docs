@@ -6,16 +6,16 @@
 
 ### 目录
 
-- [接口定义](interfaces.md)
 - [概述](overview.md)
-- [声音管理器](sound-manager.md)
 - [安装指南](installation.md)
-- [播放参数](play-sound-params.md)
-- [声音组](sound-group.md)
-- [事件参数](event-args.md)
 - [快速开始](getting-started.md)
+- [接口定义](interfaces.md)
+- [声音管理器](sound-manager.md)
+- [声音组](sound-group.md)
 - [声音代理](sound-agent.md)
+- [播放参数](play-sound-params.md)
+- [事件参数](event-args.md)
 - [配置说明](configuration.md)
 - [扩展指南](extending.md)
-- [常见问题](faq.md)
+- [常见问题](troubleshooting.md)
 
