@@ -8,6 +8,7 @@
 
 - [概述](overview.md)
 - [安装](installation.md)
+- [快速开始](getting-started.md)
 - [使用方法](usage.md)
 - [平台配置](platforms.md)
 - [示例](samples.md)
