@@ -6,12 +6,12 @@
 
 ### ディレクトリ
 
-- [插件介绍](01.overview.md)
-- [安装方法](02.installation.md)
-- [快速入门](03.getting-started.md)
-- [イベント系统架构](04.features.md)
+- [プラグイン紹介](01.overview.md)
+- [インストール方法](02.installation.md)
+- [クイックスタート](03.getting-started.md)
+- [イベントシステムアーキテクチャ](04.features.md)
 - [EventComponent](05.event-component.md)
 - [EventManager](06.event-manager.md)
 - [GameEventArgs](07.game-event-args.md)
-- [常见问题解答](08.troubleshooting.md)
+- [よくある質問](08.troubleshooting.md)
 

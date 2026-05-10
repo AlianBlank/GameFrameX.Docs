@@ -6,9 +6,9 @@
 
 ### ディレクトリ
 
-- [插件介绍](01.overview.md)
-- [安装方法](02.installation.md)
-- [快速开始](03.getting-started.md)
+- [プラグイン紹介](01.overview.md)
+- [インストール方法](02.installation.md)
+- [クイックスタート](03.getting-started.md)
 - [CoroutineComponent](04.coroutine-component.md)
-- [使用指南](05.usage.md)
-- [常见问题](06.troubleshooting.md)
+- [使用ガイド](05.usage.md)
+- [トラブルシューティング](06.troubleshooting.md)

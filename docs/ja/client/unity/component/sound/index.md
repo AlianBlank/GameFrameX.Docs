@@ -6,16 +6,16 @@
 
 ### ディレクトリ
 
-- [概述](overview.md)
-- [安装指南](installation.md)
-- [快速开始](getting-started.md)
-- [インターフェース定义](interfaces.md)
-- [サウンド管理器](sound-manager.md)
-- [サウンド组](sound-group.md)
-- [サウンド代理](sound-agent.md)
-- [播放参数](play-sound-params.md)
-- [イベント参数](event-args.md)
-- [配置説明](configuration.md)
-- [扩展指南](extending.md)
-- [常见问题](troubleshooting.md)
+- [概要](01.overview.md)
+- [インストールガイド](02.installation.md)
+- [クイックスタート](03.getting-started.md)
+- [インターフェース](04.interfaces.md)
+- [サウンドマネージャー](05.sound-manager.md)
+- [サウンドグループ](06.sound-group.md)
+- [サウンドエージェント](07.sound-agent.md)
+- [再生パラメータ](08.play-sound-params.md)
+- [イベントパラメータ](09.event-args.md)
+- [設定説明](10.configuration.md)
+- [拡張ガイド](11.extending.md)
+- [よくある問題](12.troubleshooting.md)
 
