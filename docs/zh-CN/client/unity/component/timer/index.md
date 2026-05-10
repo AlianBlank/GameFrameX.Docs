@@ -6,17 +6,16 @@
 
 ### 目录
 
-- [添加定时任务](add-timer.md)
-- [Timer 组件介绍](introduction.md)
-- [TimerComponent](timer-component.md)
-- [添加单次任务](add-once.md)
-- [功能特性](features.md)
+- [Timer 组件介绍](overview.md)
 - [安装指南](installation.md)
-- [ITimerManager](itimer-manager.md)
-- [添加帧更新任务](add-update.md)
 - [快速开始](getting-started.md)
+- [功能特性](features.md)
+- [TimerComponent](timer-component.md)
+- [ITimerManager](itimer-manager.md)
 - [TimerManager](timer-manager.md)
+- [添加定时任务](add-timer.md)
+- [添加单次任务](add-once.md)
+- [添加帧更新任务](add-update.md)
 - [检查和移除任务](exists-remove.md)
 - [使用示例](samples.md)
 - [常见问题](troubleshooting.md)
-
