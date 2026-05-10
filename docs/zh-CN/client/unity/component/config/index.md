@@ -6,11 +6,11 @@
 
 ### 目录
 
-- [Config 组件简介](00.overview/00.introduction.md)
-- [功能特性](02.features.md)
-- [安装方式](03.install-methods.md)
-- [依赖要求](04.dependencies.md)
-- [基础使用](05.basic-usage.md)
+- [Config 组件简介](01.overview.md)
+- [安装方式](02.installation.md)
+- [基础使用](03.getting-started.md)
+- [功能特性](04.features.md)
+- [依赖要求](05.dependencies.md)
 - [接口定义](06.interfaces.md)
 - [IDataTable 数据表接口](07.idata-table.md)
 - [数据表定义](08.data-table-definition.md)
