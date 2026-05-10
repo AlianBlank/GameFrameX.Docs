@@ -1,15 +1,15 @@
-# HybridCLR热更新
+# HybridCLRホットアップデート
 
-该组件库来源于HybridCLR官方库.
+该コンポーネント库来源于HybridCLR官方库.
 
 ---
 
 [[toc]]
 
-## 修改列表
+## 変更列表
 
-- [增加] 增加 生成AOT程序集列表结束的回调接口。主要用于自动化复制AOT程序集
+- [增加] 增加 生成AOTアセンブリ列表结束的コールバックインターフェース。主な用于自动化复制AOTアセンブリ
 
 ## 如何使用
 
-参考[`官方文档`](https://www.hybridclr.cn/docs/intro)。
+リファレンス[`官方文档`](https://www.hybridclr.cn/docs/intro)。

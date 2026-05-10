@@ -1,116 +1,116 @@
 # 对象存储
 
-GameFrameX 的 Object Storage 组件
+GameFrameX 的 Object Storage コンポーネント
 
-**Object Storage 组件 (Object Storage Component)** - 提供Object Storage组件相关的接口。
+**Object Storage コンポーネント (Object Storage Component)** - 提供Object Storageコンポーネント相关的インターフェース。
 
 ---
 [[toc]]
 
-## 接口和类概览
+## インターフェース和类概览
 
-本文档涵盖了以下接口和类的功能说明：
+このドキュメント涵盖了以下インターフェース和类的機能説明：
 
-1. `IObjectStorageManager` - 定义了对象存储管理器的初始化方法。
-2. `IObjectStorageUploadManager` - 扩展了 `IObjectStorageManager`，添加了上传相关的功能。
-3. `BaseObjectStorageUploadManager` - 抽象基类，提供了上传管理器的基本框架。
-4. `ObjectStorageUploadFactory` - 静态工厂类，用于创建和初始化上传管理器实例。
+1. `IObjectStorageManager` - 定義了对象存储マネージャー的初期化メソッド。
+2. `IObjectStorageUploadManager` - 拡張了 `IObjectStorageManager`，追加了上传相关的機能。
+3. `BaseObjectStorageUploadManager` - 抽象基底クラス，提供します上传マネージャー的基本フレームワーク。
+4. `ObjectStorageUploadFactory` - 静态工厂类，用于作成和初期化上传マネージャーインスタンス。
 
-## 接口和类详细说明
+## インターフェース和类詳細説明
 
 ### IObjectStorageManager
 
-#### 功能描述
+#### 機能説明
 
-`IObjectStorageManager` 接口定义了对象存储管理器的初始化方法，为后续的对象存储操作提供必要的环境配置。
+`IObjectStorageManager` インターフェース定義了对象存储マネージャー的初期化メソッド，为后续的对象存储操作提供必要的環境設定。
 
-#### 方法说明
+#### メソッド説明
 
 - `Init(string accessKey, string secretKey, string bucketName)`
-    - 初始化对象存储管理器，设置访问密钥、秘密密钥和存储桶名称。
+    - 初期化对象存储マネージャー，設定访问密钥、秘密密钥和存储桶名称。
 
 ### IObjectStorageUploadManager
 
-#### 功能描述
+#### 機能説明
 
-`IObjectStorageUploadManager` 接口继承自 `IObjectStorageManager`，并在此基础上增加了上传文件和目录的功能。
+`IObjectStorageUploadManager` インターフェース継承自 `IObjectStorageManager`，并在此基本上增加了上传ファイル和ディレクトリ的機能。
 
-#### 方法说明
+#### メソッド説明
 
 - `SetSavePath(string savePath)`
-    - 设置上传文件的目标存储路径。
+    - 設定上传ファイル的目标存储路径。
 - `UploadDirectory(string localDirectory)`
-    - 将指定本地目录下的所有文件上传到对象存储服务。
+    - 将指定本地ディレクトリ下的所有ファイル上传到对象存储服务。
 
 ### BaseObjectStorageUploadManager
 
-#### 功能描述
+#### 機能説明
 
-`BaseObjectStorageUploadManager` 是一个抽象类，它实现了 `IObjectStorageUploadManager` 接口的部分功能，并提供了一个抽象方法供子类实现具体的上传逻辑。
+`BaseObjectStorageUploadManager` は抽象类，它実装了 `IObjectStorageUploadManager` インターフェース的部分機能，并提供します一个抽象メソッド供サブクラス実装具体的上传逻辑。
 
-#### 属性说明
+#### プロパティ説明
 
 - `BucketSavePath`
-    - 存储上传文件的目标路径。
+    - 存储上传ファイル的目标路径。
 - `UploadRootPath`
-    - 存储待上传的本地目录路径。
+    - 存储待上传的本地ディレクトリ路径。
 
-#### 方法说明
+#### メソッド説明
 
 - `Init(string accessKey, string secretKey, string bucketName)`
-    - 抽象方法，由子类实现具体的初始化逻辑。
+    - 抽象メソッド，由サブクラス実装具体的初期化逻辑。
 - `SetSavePath(string savePath)`
-    - 设置目标存储路径，确保路径末尾没有多余的目录分隔符。
+    - 設定目标存储路径，確認してください路径末尾没有多余的ディレクトリ分隔符。
 - `UploadDirectory(string localDirectory)`
-    - 设置待上传的本地目录，并调用内部方法执行上传。
+    - 設定待上传的本地ディレクトリ，并呼び出し内部メソッド执行上传。
 - `UploadDirectoryInternal(string localDirectory)`
-    - 抽象方法，由子类实现具体的上传逻辑。
+    - 抽象メソッド，由サブクラス実装具体的上传逻辑。
 
 ### ObjectStorageUploadFactory
 
-#### 功能描述
+#### 機能説明
 
-`ObjectStorageUploadFactory` 是一个静态工厂类，用于创建和初始化上传管理器实例。
+`ObjectStorageUploadFactory` は静态工厂类，用于作成和初期化上传マネージャーインスタンス。
 
-#### 方法说明
+#### メソッド説明
 
 - `Create<T>(string accessKey, string secretKey, string bucketName)`
-    - 创建指定类型的上传管理器实例，并自动调用初始化方法。
+    - 作成指定タイプ的上传マネージャーインスタンス，并自动呼び出し初期化メソッド。
 
-## 使用指南
+## 使用ガイド
 
-### 引入命名空间
+### 引入名前空間
 
-在使用上述接口和类之前，请确保已引入正确的命名空间：
+在使用上述インターフェース和类之前，请確認してください已引入正确的名前空間：
 
 ```csharp
 using GameFrameX.ObjectStorage.Runtime;
 ```
 
-### 初始化和使用上传管理器
+### 初期化和使用上传マネージャー
 
-1. 使用工厂类创建并初始化上传管理器实例：
+1. 使用工厂类作成并初期化上传マネージャーインスタンス：
    ```csharp
    IObjectStorageUploadManager uploadManager = ObjectStorageUploadFactory.Create<YourCustomUploadManager>("your_access_key", "your_secret_key", "your_bucket_name");
    ```
-2. 设置上传文件的目标存储路径：
+2. 設定上传ファイル的目标存储路径：
    ```csharp
    uploadManager.SetSavePath("desired/upload/path");
    ```
-3. 上传本地目录：
+3. 上传本地ディレクトリ：
    ```csharp
    uploadManager.UploadDirectory("local/directory/to/upload");
    ```
 
-请根据实际的业务需求和对象存储服务的特性，实现 `BaseObjectStorageUploadManager` 的抽象方法，以提供具体的上传逻辑。
+请根据实际的业务需求和对象存储服务的特性，実装 `BaseObjectStorageUploadManager` 的抽象メソッド，以提供具体的上传逻辑。
 
-## 使用方式(任选其一)
+## 使用方法(任选其一)
 
-1. 直接在 `manifest.json` 的文件中的 `dependencies` 节点下添加以下内容
+1. 直接在 `manifest.json` 的ファイル中的 `dependencies` 节点下追加以下内容
    ```json
       {"com.gameframex.unity.objectstorage": "https://github.com/GameFrameX/com.gameframex.unity.objectstorage.git"}
     ```
 2. 在Unity 的`Packages Manager` 中使用`Git URL`
-   的方式添加库,地址为：https://github.com/GameFrameX/com.gameframex.unity.objectstorage.git
+   的方法追加库,地址为：https://github.com/GameFrameX/com.gameframex.unity.objectstorage.git
 
-3. 直接下载仓库放置到Unity 项目的`Packages` 目录下。会自动加载识别
+3. 直接下载リポジトリ放置到Unity プロジェクト的`Packages` ディレクトリ下。会自动ロード识别
