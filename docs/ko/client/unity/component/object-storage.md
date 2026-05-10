@@ -1,116 +1,116 @@
-# 对象存储
+# 객체 스토리지
 
-GameFrameX 的 Object Storage 组件
+GameFrameX의 Object Storage 컴포넌트
 
-**Object Storage 组件 (Object Storage Component)** - 提供Object Storage组件相关的接口。
+**Object Storage 컴포넌트 (Object Storage Component)** - Object Storage 컴포넌트 관련 인터페이스를 제공합니다.
 
 ---
 [[toc]]
 
-## 接口和类概览
+## 인터페이스 및 클래스 개요
 
-本文档涵盖了以下接口和类的功能说明：
+이 문서에서는 다음 인터페이스와 클래스의 기능 설명을 다룹니다:
 
-1. `IObjectStorageManager` - 定义了对象存储管理器的初始化方法。
-2. `IObjectStorageUploadManager` - 扩展了 `IObjectStorageManager`，添加了上传相关的功能。
-3. `BaseObjectStorageUploadManager` - 抽象基类，提供了上传管理器的基本框架。
-4. `ObjectStorageUploadFactory` - 静态工厂类，用于创建和初始化上传管理器实例。
+1. `IObjectStorageManager` - 객체 스토리지 관리자의 초기화 메서드를 정의합니다.
+2. `IObjectStorageUploadManager` - `IObjectStorageManager`를 확장하여 업로드 관련 기능을 추가합니다.
+3. `BaseObjectStorageUploadManager` - 업로드 관리자의 기본 프레임워크를 제공하는 추상 基类입니다.
+4. `ObjectStorageUploadFactory` - 업로드 관리자 인스턴스를 생성하고 초기화하는 정적 팩토리 클래스입니다.
 
-## 接口和类详细说明
+## 인터페이스 및 클래스 상세 설명
 
 ### IObjectStorageManager
 
-#### 功能描述
+#### 기능 설명
 
-`IObjectStorageManager` 接口定义了对象存储管理器的初始化方法，为后续的对象存储操作提供必要的环境配置。
+`IObjectStorageManager` 인터페이스는 객체 스토리지 관리자의 초기화 메서드를 정의하며, 이후 객체 스토리지 操作를 위한 필수 환경 설정을 제공합니다.
 
-#### 方法说明
+#### 메서드 설명
 
 - `Init(string accessKey, string secretKey, string bucketName)`
-    - 初始化对象存储管理器，设置访问密钥、秘密密钥和存储桶名称。
+    - 객체 스토리지 관리자를 초기화하고, 액세스 키, 시크릿 키 및 스토리지 버킷 이름을 설정합니다.
 
 ### IObjectStorageUploadManager
 
-#### 功能描述
+#### 기능 설명
 
-`IObjectStorageUploadManager` 接口继承自 `IObjectStorageManager`，并在此基础上增加了上传文件和目录的功能。
+`IObjectStorageUploadManager` 인터페이스는 `IObjectStorageManager`를 상속하고, 파일 및 디렉토리 업로드 기능을 추가합니다.
 
-#### 方法说明
+#### 메서드 설명
 
 - `SetSavePath(string savePath)`
-    - 设置上传文件的目标存储路径。
+    - 업로드 파일의 대상 스토리지 경로를 설정합니다.
 - `UploadDirectory(string localDirectory)`
-    - 将指定本地目录下的所有文件上传到对象存储服务。
+    - 지정된 로컬 디렉토리 아래의 모든 파일을 객체 스토리지 서비스에 업로드합니다.
 
 ### BaseObjectStorageUploadManager
 
-#### 功能描述
+#### 기능 설명
 
-`BaseObjectStorageUploadManager` 是一个抽象类，它实现了 `IObjectStorageUploadManager` 接口的部分功能，并提供了一个抽象方法供子类实现具体的上传逻辑。
+`BaseObjectStorageUploadManager`는 추상 类으로, `IObjectStorageUploadManager` 인터페이스의 일부 기능을 구현하고, 하위 클래스가 구체적인 업로드 로직을 구현할 수 있는 추상 메서드를 제공합니다.
 
-#### 属性说明
+#### 속성 설명
 
 - `BucketSavePath`
-    - 存储上传文件的目标路径。
+    - 업로드 파일의 대상 경로를 저장합니다.
 - `UploadRootPath`
-    - 存储待上传的本地目录路径。
+    - 업로드할 로컬 디렉토리 경로를 저장합니다.
 
-#### 方法说明
+#### 메서드 설명
 
 - `Init(string accessKey, string secretKey, string bucketName)`
-    - 抽象方法，由子类实现具体的初始化逻辑。
+    - 하위 클래스에서 구체적인 초기화 로직을 구현하는 추상 메서드입니다.
 - `SetSavePath(string savePath)`
-    - 设置目标存储路径，确保路径末尾没有多余的目录分隔符。
+    - 대상 스토리지 경로를 설정하며, 경로 끝에 불필요한 디렉토리 구분자가 없는지 확인합니다.
 - `UploadDirectory(string localDirectory)`
-    - 设置待上传的本地目录，并调用内部方法执行上传。
+    - 업로드할 로컬 디렉토리를 설정하고 내부 메서드를 호출하여 업로드를 실행합니다.
 - `UploadDirectoryInternal(string localDirectory)`
-    - 抽象方法，由子类实现具体的上传逻辑。
+    - 하위 클래스에서 구체적인 업로드 로직을 구현하는 추상 메서드입니다.
 
 ### ObjectStorageUploadFactory
 
-#### 功能描述
+#### 기능 설명
 
-`ObjectStorageUploadFactory` 是一个静态工厂类，用于创建和初始化上传管理器实例。
+`ObjectStorageUploadFactory`는 업로드 관리자 인스턴스를 생성하고 초기화하는 정적 팩토리 클래스입니다.
 
-#### 方法说明
+#### 메서드 설명
 
 - `Create<T>(string accessKey, string secretKey, string bucketName)`
-    - 创建指定类型的上传管理器实例，并自动调用初始化方法。
+    - 지정된 타입의 업로드 관리자 인스턴스를 생성하고 자동으로 초기화 메서드를 호출합니다.
 
-## 使用指南
+## 사용 가이드
 
-### 引入命名空间
+### 네임스페이스 참조
 
-在使用上述接口和类之前，请确保已引入正确的命名空间：
+위의 인터페이스와 클래스를 사용하기 전에 올바른 네임스페이스를 참조했는지 확인하세요:
 
 ```csharp
 using GameFrameX.ObjectStorage.Runtime;
 ```
 
-### 初始化和使用上传管理器
+### 업로드 관리자 초기화 및 사용
 
-1. 使用工厂类创建并初始化上传管理器实例：
+1. 팩토리 클래스를 사용하여 업로드 관리자 인스턴스를 생성하고 초기화합니다:
    ```csharp
    IObjectStorageUploadManager uploadManager = ObjectStorageUploadFactory.Create<YourCustomUploadManager>("your_access_key", "your_secret_key", "your_bucket_name");
    ```
-2. 设置上传文件的目标存储路径：
+2. 업로드 파일의 대상 스토리지 경로를 설정합니다:
    ```csharp
    uploadManager.SetSavePath("desired/upload/path");
    ```
-3. 上传本地目录：
+3. 로컬 디렉토리를 업로드합니다:
    ```csharp
    uploadManager.UploadDirectory("local/directory/to/upload");
    ```
 
-请根据实际的业务需求和对象存储服务的特性，实现 `BaseObjectStorageUploadManager` 的抽象方法，以提供具体的上传逻辑。
+실제 업무 요구사항과 객체 스토리지 서비스의 특성에 따라 `BaseObjectStorageUploadManager`의 추상 메서드를 구현하여 구체적인 업로드 로직을 제공하세요.
 
-## 使用方式(任选其一)
+## 사용 방법 (하나 선택)
 
-1. 直接在 `manifest.json` 的文件中的 `dependencies` 节点下添加以下内容
+1. `manifest.json` 파일의 `dependencies` 노드에 다음 내용을 추가합니다.
    ```json
       {"com.gameframex.unity.objectstorage": "https://github.com/GameFrameX/com.gameframex.unity.objectstorage.git"}
     ```
-2. 在Unity 的`Packages Manager` 中使用`Git URL`
-   的方式添加库,地址为：https://github.com/GameFrameX/com.gameframex.unity.objectstorage.git
+2. Unity의 `Packages Manager`에서 `Git URL` 방식으로 라이브러리를 추가합니다.
+   주소: https://github.com/GameFrameX/com.gameframex.unity.objectstorage.git
 
-3. 直接下载仓库放置到Unity 项目的`Packages` 目录下。会自动加载识别
+3. 저장소를 직접 다운로드하여 Unity 프로젝트의 `Packages` 디렉토리에 배치하면 자동으로 로드 및 인식됩니다.

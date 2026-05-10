@@ -4,23 +4,23 @@
 
 ## UI 界面
 
-### 目次
+### ディレクトリ
 
-- [概要](overview.md)
-- [インストール](installation.md)
+- [概述](overview.md)
+- [安装](installation.md)
 - [快速开始](getting-started.md)
 - [UI コンポーネント](ui-component.md)
 - [UI プロパティ](ui-attributes.md)
 - [UI 窗体](ui-form.md)
 - [UI 组系统](ui-group.md)
 - [イベント系统](event-system.md)
-- [对象池管理](object-pool.md)
+- [オブジェクトプール管理](object-pool.md)
 - [UI 组层级](ui-group-hierarchy.md)
 - [UIComponent](ui-component-api.md)
 - [UIForm](ui-form-api.md)
 - [IUIManager](iuimanager-api.md)
 - [IUIGroup](iuigroup-api.md)
-- [エディタ設定](editor-config.md)
-- [プラットフォームサポート](platforms.md)
-- [常见問題](troubleshooting.md)
+- [编辑器配置](editor-config.md)
+- [平台サポート](platforms.md)
+- [常见问题](troubleshooting.md)
 

@@ -1,13 +1,13 @@
-# 広告（リワード）
+# 广告(激励)
 
 ## com.gameframex.unity.advertisement
 
-### 目次
+### ディレクトリ
 
-- [概要](01.overview.md)
-- [インストールガイド](02.installation.md)
-- [クイックスタート](03.getting-started.md)
-- [コアコンセプト](04.core-concepts.md)
-- [プラットフォーム設定](05.platforms.md)
-- [API リファレンス](06.api-reference.md)
-- [よくある問題](07.troubleshooting.md)
+- [概述](01.overview.md)
+- [安装指南](02.installation.md)
+- [快速开始](03.getting-started.md)
+- [コア概念](04.core-concepts.md)
+- [平台配置](05.platforms.md)
+- [API 参考](06.api-reference.md)
+- [常见问题](07.troubleshooting.md)

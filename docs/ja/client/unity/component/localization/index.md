@@ -4,15 +4,15 @@
 
 ## Localization 本地化
 
-### 目次
+### ディレクトリ
 
-- [概要](overview.md)
-- [インストール](installation.md)
+- [概述](overview.md)
+- [安装](installation.md)
 - [快速开始](getting-started.md)
 - [取得本地化字符串](get-string.md)
 - [字典管理](dictionary-management.md)
 - [语言切换与イベント](language-switching.md)
-- [設定](configuration.md)
+- [配置](configuration.md)
 - [最佳实践](best-practices.md)
-- [API リファレンス](api-reference.md)
-- [常见問題](troubleshooting.md)
+- [API 参考](api-reference.md)
+- [常见问题](troubleshooting.md)

@@ -4,21 +4,21 @@
 
 ## FairyGUI 界面
 
-### 目次
+### ディレクトリ
 
-- [プラグイン介绍](overview.md)
-- [インストール方法](installation.md)
-- [作成第1个界面](getting-started.md)
+- [插件介绍](overview.md)
+- [安装方法](installation.md)
+- [作成第一个界面](getting-started.md)
 - [機能特性](features.md)
-- [依赖設定](dependencies.md)
-- [FUI 界面基底クラス](fui-base-class.md)
-- [打开和閉じる界面](open-close-ui.md)
-- [界面マネージャー](ui-manager.md)
-- [パッケージマネージャー](package-manager.md)
+- [依赖配置](dependencies.md)
+- [FUI 界面基クラス](fui-base-class.md)
+- [打开和关闭界面](open-close-ui.md)
+- [界面管理器](ui-manager.md)
+- [パッケージ管理器](package-manager.md)
 - [界面辅助器](form-helper.md)
 - [界面组辅助器](ui-group-helper.md)
-- [GObjectHelper 工具类](gobject-helper.md)
-- [界面组設定](ui-group-config.md)
-- [エディタ設定](editor-config.md)
-- [常见問題解答](troubleshooting.md)
+- [GObjectHelper 工具クラス](gobject-helper.md)
+- [界面组配置](ui-group-config.md)
+- [编辑器配置](editor-config.md)
+- [常见问题解答](troubleshooting.md)
 

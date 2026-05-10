@@ -4,14 +4,14 @@
 
 ## Event イベント
 
-### 目次
+### ディレクトリ
 
-- [プラグイン介绍](01.overview.md)
-- [インストール方法](02.installation.md)
+- [插件介绍](01.overview.md)
+- [安装方法](02.installation.md)
 - [快速入门](03.getting-started.md)
-- [イベント系统アーキテクチャ](04.features.md)
+- [イベント系统架构](04.features.md)
 - [EventComponent](05.event-component.md)
 - [EventManager](06.event-manager.md)
 - [GameEventArgs](07.game-event-args.md)
-- [常见問題解答](08.troubleshooting.md)
+- [常见问题解答](08.troubleshooting.md)
 

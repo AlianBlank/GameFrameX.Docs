@@ -4,12 +4,12 @@
 
 ## FSM ステータス机
 
-### 目次
+### ディレクトリ
 
-- [概要](01.overview.md)
-- [インストール](02.installation.md)
+- [概述](01.overview.md)
+- [安装](02.installation.md)
 - [快速开始](03.getting-started.md)
-- [コアコンセプト](04.features.md)
-- [API リファレンス](05.api-reference.md)
-- [常见問題](06.troubleshooting.md)
+- [コア概念](04.features.md)
+- [API 参考](05.api-reference.md)
+- [常见问题](06.troubleshooting.md)
 

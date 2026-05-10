@@ -1,14 +1,14 @@
 # LitJSON
 
-该库来源于 `马三小伙儿` 的LitJSON 修改后的版本。上做了些许微小改动。优化了一小部分代码。
+이 라이브러리는 `마삼小伙儿`의 LitJSON을 수정한 버전입니다. 일부 소소한 수정을 했고, 일부 코드를 최적화했습니다.
 
-该库的功能为 增加了原版LitJSON 不支持的类型扩展
+이 라이브러리의 기능은 원본 LitJSON이 지원하지 않는 타입 확장을 추가한 것입니다.
 
---- 
+---
 
 [[toc]]
 
-## 修改列表
+## 수정 목록
 
-- [增加] 增加`JsonIgnore` 标签属性的序列化和反序列化的字段属性忽略
-- [增加] 增加 `Vector2` 、`Vector3`、`Vector4`、`Quaternion`、`Color`、`Color32`、`Bounds`、`Rect`、`RectOffset` 类型的支持
+- [추가] `JsonIgnore` 태그 속성의 직렬화 및 역직렬화 필드 속성 무시 추가
+- [추가] `Vector2`, `Vector3`, `Vector4`, `Quaternion`, `Color`, `Color32`, `Bounds`, `Rect`, `RectOffset` 타입 지원 추가

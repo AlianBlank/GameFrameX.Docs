@@ -7,7 +7,7 @@
 ### 목차
 
 - [플러그인 소개](01.overview.md)
-- [설치 방법](02.installation.md)
+- [설치 방식](02.installation.md)
 - [기본 사용법](03.getting-started.md)
 - [IWebManager 인터페이스](04.iwebmanager-interface.md)
 - [WebManager 아키텍처](05.web-manager.md)
@@ -15,5 +15,5 @@
 - [기본 데이터 구성](07.base-data.md)
 - [WebComponent 컴포넌트](08.web-component.md)
 - [플랫폼 차이 설명](09.platform-differences.md)
-- [타임아웃 설정](10.timeout-settings.md)
+- [타임아웃 구성](10.timeout-settings.md)
 - [자주 묻는 질문](11.troubleshooting.md)

@@ -4,12 +4,12 @@
 
 ## GameAnalytics 数据分析
 
-### 目次
+### ディレクトリ
 
-- [プラグイン介绍](01.overview.md)
-- [インストールガイド](02.installation.md)
+- [插件介绍](01.overview.md)
+- [安装指南](02.installation.md)
 - [快速开始](03.getting-started.md)
-- [コアアーキテクチャ](04.features.md)
-- [エディタ設定](05.configuration.md)
+- [コア架构](04.features.md)
+- [编辑器配置](05.configuration.md)
 - [API インターフェース](06.api-reference.md)
 - [故障排除](07.troubleshooting.md)

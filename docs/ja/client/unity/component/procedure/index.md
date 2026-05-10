@@ -4,16 +4,16 @@
 
 ## 概要
 
-### 目次
+### ディレクトリ
 
-- [プラグイン紹介](overview.md)
-- [インストールガイド](installation.md)
+- [插件简介](overview.md)
+- [安装指南](installation.md)
 - [快速开始](getting-started.md)
 - [機能特性](features.md)
 - [IProcedureManager](iprocedure-manager.md)
 - [ProcedureBase](procedure-base.md)
 - [ProcedureManager](procedure-manager.md)
 - [ProcedureComponent](procedure-component.md)
-- [自定義フロー](custom-procedures.md)
-- [エディタ使用](editor-usage.md)
-- [常见問題](troubleshooting.md)
+- [自定义フロー](custom-procedures.md)
+- [编辑器使用](editor-usage.md)
+- [常见问题](troubleshooting.md)

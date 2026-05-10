@@ -4,13 +4,13 @@
 
 ## GetChannel 渠道取得
 
-### 目次
+### ディレクトリ
 
-- [概要](01.overview.md)
-- [インストール](02.installation.md)
+- [概述](01.overview.md)
+- [安装](02.installation.md)
 - [快速开始](03.getting-started.md)
-- [プラットフォーム設定](04.platform-configuration.md)
-- [例](05.samples.md)
-- [API リファレンス](06.api-reference.md)
-- [常见問題](07.troubleshooting.md)
+- [平台配置](04.platform-configuration.md)
+- [示例](05.samples.md)
+- [API 参考](06.api-reference.md)
+- [常见问题](07.troubleshooting.md)
 

@@ -4,13 +4,13 @@
 
 ## Clipboard 剪贴板
 
-### 目次
+### ディレクトリ
 
-- [概要](overview.md)
-- [インストール](installation.md)
+- [概述](overview.md)
+- [安装](installation.md)
 - [快速开始](getting-started.md)
 - [使用メソッド](usage.md)
-- [プラットフォーム設定](platforms.md)
-- [例](samples.md)
-- [常见問題](troubleshooting.md)
+- [平台配置](platforms.md)
+- [示例](samples.md)
+- [常见问题](troubleshooting.md)
 

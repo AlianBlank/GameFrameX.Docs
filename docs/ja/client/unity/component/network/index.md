@@ -4,19 +4,19 @@
 
 ## Network 网络
 
-### 目次
+### ディレクトリ
 
-- [概要](01.overview.md)
-- [インストール](02.installation.md)
+- [概述](01.overview.md)
+- [安装](02.installation.md)
 - [快速开始](03.getting-started.md)
-- [网络マネージャー](04.network-manager.md)
+- [网络管理器](04.network-manager.md)
 - [网络频道](05.network-channel.md)
-- [メッセージタイプ](06.message-types.md)
-- [数据パッケージ処理器](07.packet-handlers.md)
+- [消息クラス型](06.message-types.md)
+- [数据包处理器](07.packet-handlers.md)
 - [イベント系统](08.events.md)
 - [心跳机制](09.heartbeat.md)
-- [メッセージ压缩](10.message-compression.md)
+- [消息压缩](10.message-compression.md)
 - [RPC 远程呼び出し](11.rpc.md)
-- [エディタ設定](12.editor-configuration.md)
-- [常见問題](13.troubleshooting.md)
+- [编辑器配置](12.editor-configuration.md)
+- [常见问题](13.troubleshooting.md)
 

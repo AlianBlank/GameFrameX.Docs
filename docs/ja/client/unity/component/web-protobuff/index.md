@@ -4,20 +4,20 @@
 
 ## ProtoBuf 协议
 
-### 目次
+### ディレクトリ
 
-- [プラグイン介绍](overview.md)
-- [インストール方法](installation.md)
+- [插件介绍](overview.md)
+- [安装方法](installation.md)
 - [快速入门](getting-started.md)
 - [機能特性](features.md)
 - [依赖项](dependencies.md)
-- [コンポーネントアーキテクチャ](architecture.md)
-- [コンポーネント設定](component-config.md)
+- [コンポーネント架构](architecture.md)
+- [コンポーネント配置](component-config.md)
 - [IWebProtoBuffManager](iwebprotobuffmanager.md)
 - [WebProtoBuffComponent](webprotobuffcomponent.md)
-- [メッセージ定義](message-definition.md)
-- [基本例](basic-example.md)
-- [プラットフォーム説明](platform-info.md)
-- [コンパイル宏定義](compile-defines.md)
-- [常见問題](troubleshooting.md)
+- [消息定义](message-definition.md)
+- [基础示例](basic-example.md)
+- [平台説明](platform-info.md)
+- [编译宏定义](compile-defines.md)
+- [常见问题](troubleshooting.md)
 

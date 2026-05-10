@@ -7,10 +7,10 @@
 ### 목차
 
 - [플러그인 소개](overview.md)
-- [설치 방법](installation.md)
+- [설치 방식](installation.md)
 - [빠른 시작](getting-started.md)
 - [기능 특성](features.md)
-- [종속 요구 사항](dependencies.md)
+- [의존성 요구사항](dependencies.md)
 - [UGUI 기본 클래스](ugui-base.md)
 - [UI 관리자](ui-manager.md)
 - [폼 헬퍼](form-helper.md)
@@ -18,7 +18,7 @@
 - [코드 생성기](code-generator.md)
 - [컴포넌트 인스펙터](inspector.md)
 - [확장 메서드](extensions.md)
-- [UI 인터페이스 만들기](create-ui.md)
+- [UI 인터페이스 생성](create-ui.md)
 - [구성](configuration.md)
-- [이미지 교체 처리기](image-replace.md)
-- [자주 묻는 질문](troubleshooting.md)
+- [이미지 교체 핸들러](image-replace.md)
+- [일반 문제](troubleshooting.md)

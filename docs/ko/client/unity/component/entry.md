@@ -1,55 +1,56 @@
-# 入口
+# 엔트리
 
-GameFrameX 的 组件入口 组件,提供快捷获取其他组件的方式
+GameFrameX의 컴포넌트 엔트리 컴포넌트로, 다른 컴포넌트를 빠르게 가져오는 방법을 제공합니다.
 
 ---
 
 [[toc]]
 
-## 入口列表
-目前只编写了基础的入口列表.
+## 엔트리 목록
 
-### 资源
+현재 기본 엔트리 목록만 작성되어 있습니다.
 
-### 配置
+### 리소스
 
-### 协程
+### 설정
 
-### 下载
+### 코루틴
 
-### 有限状态机
+### 다운로드
 
-### 流程
+### 유한 상태 머신
 
-### 存档
+### 프로시저
 
-### 声音
+### 저장
 
-### 事件
+### 사운드
+
+### 이벤트
 
 ### Mono
 
-### 全局配置
+### 글로벌 설정
 
-### 场景
+### 씬
 
-### 长连接 Socket
+### 장기 연결 Socket
 
-### 短连接 HTTP
+### 단기 연결 HTTP
 
 ### FUI
 
-### 计时器
+### 타이머
 
-### 实体对象
+### 엔티티 오브젝트
 
-## 使用方式(任选其一)
+## 사용 방법 (하나 선택)
 
-1. 直接在 `manifest.json` 的文件中的 `dependencies` 节点下添加以下内容
+1. `manifest.json` 파일의 `dependencies` 노드에 다음 내용을 추가합니다.
    ```json
       {"com.gameframex.unity.entry": "https://github.com/GameFrameX/com.gameframex.unity.entry.git"}
     ```
-2. 在Unity 的`Packages Manager` 中使用`Git URL`
-   的方式添加库,地址为：https://github.com/GameFrameX/com.gameframex.unity.entry.git
+2. Unity의 `Packages Manager`에서 `Git URL` 방식으로 라이브러리를 추가합니다.
+   주소: https://github.com/GameFrameX/com.gameframex.unity.entry.git
 
-3. 直接下载仓库放置到Unity 项目的`Packages` 目录下。会自动加载识别
+3. 저장소를 직접 다운로드하여 Unity 프로젝트의 `Packages` 디렉토리에 배치하면 자동으로 로드 및 인식됩니다.

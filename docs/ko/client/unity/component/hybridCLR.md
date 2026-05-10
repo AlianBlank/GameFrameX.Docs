@@ -1,15 +1,15 @@
-# HybridCLR热更新
+# HybridCLR 핫업데이트
 
-该组件库来源于HybridCLR官方库.
+이 컴포넌트 라이브러리는 HybridCLR 공식 라이브러리에서 가져왔습니다.
 
 ---
 
 [[toc]]
 
-## 修改列表
+## 수정 목록
 
-- [增加] 增加 生成AOT程序集列表结束的回调接口。主要用于自动化复制AOT程序集
+- [추가] AOT 어셈블리 목록 생성 완료 콜백 인터페이스 추가. 주로 AOT 어셈블리의 자동 복사에 사용됩니다.
 
-## 如何使用
+## 사용 방법
 
-参考[`官方文档`](https://www.hybridclr.cn/docs/intro)。
+[`공식 문서`](https://www.hybridclr.cn/docs/intro)를 참고하세요.

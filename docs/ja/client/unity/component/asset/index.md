@@ -4,23 +4,23 @@
 
 ## Asset リソース
 
-### 目次
+### ディレクトリ
 
 - [Asset リソースコンポーネント介绍](01.overview.md)
-- [インストール方法](02.installation.md)
-- [快速入门ガイド](03.getting-started.md)
+- [安装方法](02.installation.md)
+- [快速入门指南](03.getting-started.md)
 - [機能特性](04.features.md)
 - [依赖要求](05.dependencies.md)
-- [サポート的 Unity バージョン](06.supported-versions.md)
-- [首个例](07.first-steps.md)
+- [サポート的 Unity 版本](06.supported-versions.md)
+- [首个示例](07.first-steps.md)
 - [アーキテクチャ設計](08.architecture.md)
 - [リソースコンポーネント](09.asset-component.md)
-- [リソースマネージャー](10.asset-manager.md)
-- [リソースロードインターフェース](11.loading-api.md)
+- [リソース管理器](10.asset-manager.md)
+- [リソース加载インターフェース](11.loading-api.md)
 - [リソースパッケージ管理](12.package-management.md)
-- [アップデートイベント](13.update-events.md)
-- [运行モード](14.play-modes.md)
-- [コンポーネント設定](15.component-settings.md)
-- [プラットフォームサポート概览](16.platforms.md)
-- [WebGL プラットフォーム](17.webgl.md)
-- [常见問題解答](18.troubleshooting.md)
+- [更新イベント](13.update-events.md)
+- [运行模式](14.play-modes.md)
+- [コンポーネント配置](15.component-settings.md)
+- [平台サポート概要](16.platforms.md)
+- [WebGL 平台](17.webgl.md)
+- [常见问题解答](18.troubleshooting.md)

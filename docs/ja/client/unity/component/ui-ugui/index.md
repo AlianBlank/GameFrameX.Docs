@@ -4,21 +4,21 @@
 
 ## UGUI 界面
 
-### 目次
+### ディレクトリ
 
-- [プラグイン介绍](overview.md)
-- [インストール方法](installation.md)
+- [插件介绍](overview.md)
+- [安装方法](installation.md)
 - [快速开始](getting-started.md)
 - [機能特性](features.md)
 - [依赖要求](dependencies.md)
-- [UGUI基底クラス](ugui-base.md)
-- [UIマネージャー](ui-manager.md)
+- [UGUI基クラス](ugui-base.md)
+- [UI管理器](ui-manager.md)
 - [表单辅助器](form-helper.md)
 - [UIImageコンポーネント](uiimage.md)
-- [コード生成器](code-generator.md)
-- [コンポーネント確認器](inspector.md)
-- [拡張メソッド](extensions.md)
+- [代码生成器](code-generator.md)
+- [コンポーネント检查器](inspector.md)
+- [扩展メソッド](extensions.md)
 - [作成UI界面](create-ui.md)
-- [設定](configuration.md)
-- [图片置換処理器](image-replace.md)
-- [常见問題](troubleshooting.md)
+- [配置](configuration.md)
+- [图片替换处理器](image-replace.md)
+- [常见问题](troubleshooting.md)
