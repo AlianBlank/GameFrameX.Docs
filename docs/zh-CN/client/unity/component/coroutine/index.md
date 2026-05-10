@@ -6,9 +6,9 @@
 
 ### 目录
 
-- [CoroutineComponent](coroutine-component.md)
-- [使用指南](index.md)
-- [安装方式](installation.md)
-- [插件介绍](overview.md)
-- [常见问题](troubleshooting.md)
-
+- [插件介绍](01.overview.md)
+- [安装方式](02.installation.md)
+- [快速开始](03.getting-started.md)
+- [CoroutineComponent](04.coroutine-component.md)
+- [使用指南](05.usage.md)
+- [常见问题](06.troubleshooting.md)
