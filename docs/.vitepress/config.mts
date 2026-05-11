@@ -1,9 +1,27 @@
 import {defineConfig} from 'vitepress'
 import timeline from "vitepress-markdown-timeline";
 import {generateSidebar} from 'vitepress-sidebar';
-import {withMermaid} from "vitepress-plugin-mermaid";
 import {en, zhCN, zhTW, ko, ja} from './locales'
-import {mermaidThemes} from './mermaid-themes'
+
+// 拆分构建：当 BUILD_LOCALE 环境变量存在时，只构建指定语言
+const buildLocale = process.env.BUILD_LOCALE || ''
+const allLocales: Record<string, string> = {
+    'en': 'en',
+    'zh-CN': 'zh-CN',
+    'zh-TW': 'zh-TW',
+    'ko': 'ko',
+    'ja': 'ja',
+}
+
+const allLocaleModules: Record<string, any> = {en, 'zh-CN': zhCN, 'zh-TW': zhTW, ko, ja}
+
+const excludeLocales = buildLocale
+    ? Object.keys(allLocales).filter(l => l !== buildLocale)
+    : []
+
+const buildOutDir = buildLocale
+    ? `.vitepress/dist-${buildLocale}`
+    : undefined
 
 // 通用侧边栏配置
 const sidebarOptions = {
@@ -23,31 +41,56 @@ const sidebarOptions = {
     excludeFilesByFrontmatterFieldName: 'exclude',
 };
 
+function buildSidebar() {
+    const entries: Record<string, string> = buildLocale
+        ? {[buildLocale]: buildLocale}
+        : allLocales
+
+    const sidebar: Record<string, any> = {}
+    for (const [key, dir] of Object.entries(entries)) {
+        sidebar[`/${dir}/`] = generateSidebar([{
+            ...sidebarOptions,
+            documentRootPath: `docs/${dir}`,
+            scanStartPath: '/',
+            resolvePath: '/',
+            ...(key === 'zh-CN' ? {
+                manualSortFileNameByPriority: ['guide', 'client', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
+            } : {}),
+        }])
+    }
+    return sidebar
+}
+
+function buildLocales() {
+    if (!buildLocale) {
+        return {en, 'zh-CN': zhCN, 'zh-TW': zhTW, ko, ja}
+    }
+    const result: Record<string, any> = {}
+    result[buildLocale] = allLocaleModules[buildLocale]
+    return result
+}
+
 // https://vitepress.dev/reference/site-config
 // @ts-ignore
-export default withMermaid(defineConfig({
+export default defineConfig({
     title: "Game Frame X",
     description: "Game Frame X Documentation",
     titleTemplate: ':title',
     cleanUrls: false,
     lastUpdated: true,
     ignoreDeadLinks: true,
+    ...(buildOutDir ? { outDir: buildOutDir } : {}),
     srcExclude: [
         '**/README.md',
-        '**/TODO.md'
+        '**/TODO.md',
+        ...excludeLocales.map(l => `${l}/**`),
     ],
 
     // 默认语言为英文
     lang: 'en',
 
     // 多语言配置
-    locales: {
-        en,
-        'zh-CN': zhCN,
-        'zh-TW': zhTW,
-        ko,
-        ja,
-    },
+    locales: buildLocales(),
 
     // 根级别 themeConfig 作为默认
     themeConfig: {
@@ -72,49 +115,7 @@ export default withMermaid(defineConfig({
             },
             {text: 'API', link: 'https://gameframex.github.io/GameFrameX.Server/index.html'},
         ],
-        sidebar: {
-            '/zh-CN/': generateSidebar([
-                {
-                    ...sidebarOptions,
-                    documentRootPath: 'docs/zh-CN',
-                    scanStartPath: '/',
-                    resolvePath: '/',
-                    manualSortFileNameByPriority: ['guide', 'client', 'server', 'tools', 'protobuf', 'fqa', 'docker', 'config', 'development-history'],
-                },
-            ]),
-            '/en/': generateSidebar([
-                {
-                    ...sidebarOptions,
-                    documentRootPath: 'docs/en',
-                    scanStartPath: '/',
-                    resolvePath: '/',
-                },
-            ]),
-            '/zh-TW/': generateSidebar([
-                {
-                    ...sidebarOptions,
-                    documentRootPath: 'docs/zh-TW',
-                    scanStartPath: '/',
-                    resolvePath: '/',
-                },
-            ]),
-            '/ko/': generateSidebar([
-                {
-                    ...sidebarOptions,
-                    documentRootPath: 'docs/ko',
-                    scanStartPath: '/',
-                    resolvePath: '/',
-                },
-            ]),
-            '/ja/': generateSidebar([
-                {
-                    ...sidebarOptions,
-                    documentRootPath: 'docs/ja',
-                    scanStartPath: '/',
-                    resolvePath: '/',
-                },
-            ]),
-        },
+        sidebar: buildSidebar(),
         socialLinks: [
             {icon: 'github', link: 'https://github.com/GameFrameX/gameframex'},
             {
@@ -142,108 +143,54 @@ export default withMermaid(defineConfig({
         search: {
             provider: 'algolia',
             options: {
-                appId: process.env.ALGOLIA_APP_ID || '',          
-                apiKey: process.env.ALGOLIA_API_KEY || '',               
-                indexName: process.env.ALGOLIA_INDEX_NAME || '', 
+                appId: process.env.ALGOLIA_APP_ID || '',
+                apiKey: process.env.ALGOLIA_API_KEY || '',
+                indexName: process.env.ALGOLIA_INDEX_NAME || '',
                 locales: {
                     '/zh-CN/': {
                         placeholder: '搜索文档',
                         translations: {
-                            button: {
-                                buttonText: '搜索文档',
-                            },
+                            button: {buttonText: '搜索文档'},
                             modal: {
-                                searchBox: {
-                                    resetButtonTitle: '清除查询条件',
-                                    cancelButtonText: '取消',
-                                },
-                                startScreen: {
-                                    recentSearchesTitle: '搜索历史',
-                                    noRecentSearchesText: '没有搜索历史',
-                                    saveRecentSearchButtonTitle: '保存至搜索历史',
-                                    removeRecentSearchButtonTitle: '从搜索历史中移除',
-                                },
-                                errorScreen: {
-                                    titleText: '无法获取结果',
-                                    helpText: '你可能需要检查你的网络连接',
-                                },
-                                footer: {
-                                    selectText: '选择',
-                                    navigateText: '切换',
-                                    closeText: '关闭',
-                                    searchByText: '搜索提供者',
-                                },
-                                noResultsScreen: {
-                                    noResultsText: '无法找到相关结果',
-                                    suggestedQueryText: '你可以尝试查询',
-                                },
+                                searchBox: {resetButtonTitle: '清除查询条件', cancelButtonText: '取消'},
+                                startScreen: {recentSearchesTitle: '搜索历史', noRecentSearchesText: '没有搜索历史'},
+                                errorScreen: {titleText: '无法获取结果', helpText: '你可能需要检查你的网络连接'},
+                                footer: {selectText: '选择', navigateText: '切换', closeText: '关闭', searchByText: '搜索提供者'},
+                                noResultsScreen: {noResultsText: '无法找到相关结果', suggestedQueryText: '你可以尝试查询'},
                             },
                         },
                     },
                     '/zh-TW/': {
                         placeholder: '搜尋文件',
                         translations: {
-                            button: {
-                                buttonText: '搜尋文件',
-                            },
+                            button: {buttonText: '搜尋文件'},
                             modal: {
-                                searchBox: {
-                                    resetButtonTitle: '清除查詢條件',
-                                    cancelButtonText: '取消',
-                                },
-                                startScreen: {
-                                    recentSearchesTitle: '搜尋歷史',
-                                    noRecentSearchesText: '沒有搜尋歷史',
-                                },
-                                errorScreen: {
-                                    titleText: '無法獲取結果',
-                                    helpText: '你可能需要檢查你的網路連線',
-                                },
-                                noResultsScreen: {
-                                    noResultsText: '無法找到相關結果',
-                                },
+                                searchBox: {resetButtonTitle: '清除查詢條件', cancelButtonText: '取消'},
+                                startScreen: {recentSearchesTitle: '搜尋歷史', noRecentSearchesText: '沒有搜尋歷史'},
+                                errorScreen: {titleText: '無法獲取結果', helpText: '你可能需要檢查你的網路連線'},
+                                noResultsScreen: {noResultsText: '無法找到相關結果'},
                             },
                         },
                     },
                     '/ja/': {
                         placeholder: 'ドキュメントを検索',
                         translations: {
-                            button: {
-                                buttonText: 'ドキュメントを検索',
-                            },
+                            button: {buttonText: 'ドキュメントを検索'},
                             modal: {
-                                searchBox: {
-                                    resetButtonTitle: 'クリア',
-                                    cancelButtonText: 'キャンセル',
-                                },
-                                startScreen: {
-                                    recentSearchesTitle: '検索履歴',
-                                    noRecentSearchesText: '検索履歴なし',
-                                },
-                                noResultsScreen: {
-                                    noResultsText: '結果が見つかりません',
-                                },
+                                searchBox: {resetButtonTitle: 'クリア', cancelButtonText: 'キャンセル'},
+                                startScreen: {recentSearchesTitle: '検索履歴', noRecentSearchesText: '検索履歴なし'},
+                                noResultsScreen: {noResultsText: '結果が見つかりません'},
                             },
                         },
                     },
                     '/ko/': {
                         placeholder: '문서 검색',
                         translations: {
-                            button: {
-                                buttonText: '문서 검색',
-                            },
+                            button: {buttonText: '문서 검색'},
                             modal: {
-                                searchBox: {
-                                    resetButtonTitle: '지우기',
-                                    cancelButtonText: '취소',
-                                },
-                                startScreen: {
-                                    recentSearchesTitle: '검색 기록',
-                                    noRecentSearchesText: '검색 기록 없음',
-                                },
-                                noResultsScreen: {
-                                    noResultsText: '결과를 찾을 수 없습니다',
-                                },
+                                searchBox: {resetButtonTitle: '지우기', cancelButtonText: '취소'},
+                                startScreen: {recentSearchesTitle: '검색 기록', noRecentSearchesText: '검색 기록 없음'},
+                                noResultsScreen: {noResultsText: '결과를 찾을 수 없습니다'},
                             },
                         },
                     },
@@ -286,4 +233,4 @@ export default withMermaid(defineConfig({
             md.use(timeline);
         },
     }
-}), mermaidThemes.darkHacker)
+})

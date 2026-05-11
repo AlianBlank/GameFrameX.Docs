@@ -98,12 +98,49 @@ export default {
                 // mediumZoom('[data-zoomable]', { background: 'var(--vp-c-bg)' }); // 默认
                 mediumZoom('.main img', {background: 'var(--vp-c-bg)'}); // 不显式添加{data-zoomable}的情况下为所有图像启用此功能
             };
-            onMounted(() => {
+            // Mermaid 客户端渲染
+            const renderMermaid = () => {
+                const blocks = document.querySelectorAll<HTMLPreElement>('pre code.language-mermaid');
+                if (blocks.length === 0) return;
+
+                blocks.forEach((block) => {
+                    const pre = block.parentElement;
+                    if (!pre || pre.dataset.mermaidRendered) return;
+                    pre.dataset.mermaidRendered = 'true';
+
+                    const container = document.createElement('div');
+                    container.classList.add('mermaid');
+                    container.textContent = block.textContent || '';
+                    pre.replaceWith(container);
+                });
+            };
+
+            onMounted(async () => {
                 initZoom();
+
+                const mermaidBlocks = document.querySelectorAll('pre code.language-mermaid');
+                if (mermaidBlocks.length > 0) {
+                    const mermaid = (await import('mermaid')).default;
+                    mermaid.initialize({
+                        startOnLoad: false,
+                        theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
+                    });
+                    renderMermaid();
+                    await mermaid.run({querySelector: '.mermaid'});
+                }
             });
             watch(
                 () => route.path,
-                () => nextTick(() => initZoom())
+                async () => {
+                    await nextTick(() => initZoom());
+                    await nextTick();
+                    const mermaidBlocks = document.querySelectorAll('pre code.language-mermaid');
+                    if (mermaidBlocks.length > 0) {
+                        const mermaid = (await import('mermaid')).default;
+                        renderMermaid();
+                        await mermaid.run({querySelector: '.mermaid'});
+                    }
+                }
             );
 
             // 代码块折叠
