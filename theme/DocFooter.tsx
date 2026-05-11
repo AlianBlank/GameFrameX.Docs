@@ -97,7 +97,7 @@ function PageFeedback() {
 function Sponsor() {
   const lang = useLang();
   const t = i18n[lang] || i18n.en;
-  const [showQr, setShowQr] = useState(false);
+  const [showQr, setShowQr] = useState(true);
 
   return (
     <div className="rp-sponsor">
