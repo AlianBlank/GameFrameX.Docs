@@ -1,3 +1,3 @@
-# 协议工具
+# 도구
 
-[协议工具](proto/index.md)
+[프로토콜 내보내기 도구](proto/index.md)

@@ -1,3 +1,3 @@
-# 协议工具
+# Tools
 
-[协议工具](proto/index.md)
+[Proto Export Tool](proto/index.md)
