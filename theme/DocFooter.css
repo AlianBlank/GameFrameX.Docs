@@ -1,0 +1,131 @@
+.rp-feedback__divider {
+  border: none;
+  border-top: 1px solid var(--rp-c-divider);
+  margin: 0 0 20px;
+}
+
+.rp-feedback__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background-color: var(--rp-c-bg-soft);
+  margin-bottom: 24px;
+}
+
+.rp-feedback__question {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--rp-c-text-1);
+}
+
+.rp-feedback__buttons {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.rp-feedback__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  border: 1px solid var(--rp-c-divider);
+  border-radius: 6px;
+  background: var(--rp-c-bg);
+  color: var(--rp-c-text-2);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.rp-feedback__btn:hover {
+  border-color: var(--rp-c-brand);
+  color: var(--rp-c-brand);
+  background: var(--rp-c-brand-dimm);
+}
+
+.rp-feedback--voted {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-radius: 8px;
+  background-color: var(--rp-c-bg-soft);
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: var(--rp-c-text-2);
+}
+
+.rp-feedback__thanks {
+  font-weight: 500;
+}
+
+/* Sponsor */
+.rp-sponsor {
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background-color: var(--rp-c-bg-soft);
+}
+
+.rp-sponsor__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rp-sponsor__label {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--rp-c-text-1);
+}
+
+.rp-sponsor__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--rp-c-divider);
+  border-radius: 6px;
+  background: var(--rp-c-bg);
+  color: var(--rp-c-text-2);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.rp-sponsor__toggle:hover {
+  border-color: var(--rp-c-brand);
+  color: var(--rp-c-brand);
+}
+
+.rp-sponsor__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  animation: rp-sponsor-fade-in 0.2s ease;
+}
+
+@keyframes rp-sponsor-fade-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.rp-sponsor__qr {
+  width: 180px;
+  height: 180px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.rp-sponsor__hint {
+  font-size: 13px;
+  color: var(--rp-c-text-3);
+}

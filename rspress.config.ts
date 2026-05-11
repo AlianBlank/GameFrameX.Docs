@@ -7,6 +7,7 @@ import path from 'path';
 
 export default defineConfig({
   root: 'docs',
+  themeDir: path.join(__dirname, 'theme'),
   title: 'Game Frame X',
   description: 'Game Frame X Documentation',
   icon: '/favicon.ico',
