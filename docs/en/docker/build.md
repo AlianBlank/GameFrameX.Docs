@@ -1,6 +1,5 @@
 # 构建Docker镜像
 
-[[toc]]
 
 ---
 构建到 Docker 镜像

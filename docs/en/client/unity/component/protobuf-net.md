@@ -4,7 +4,6 @@ This library is a Protobuf-Net implementation.
 
 ---
 
-[[toc]]
 
 
 ## Changelog

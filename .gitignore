@@ -1,11 +1,9 @@
-﻿node_modules
+node_modules
 package-lock.json
-docs/.vitepress/cache
-docs/.vitepress/dist
-docs/.vitepress/dist-*
+doc_build
+.rspack
+.rspress
 .idea
 *.bkp
 .DS_Store
-i18n-migration-plan.md
 .claude/
-.vitepress/

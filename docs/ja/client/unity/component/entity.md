@@ -6,7 +6,6 @@ GameFrameX  Entity
 
 ---
 
-[[toc]]
 
 ## ()
 

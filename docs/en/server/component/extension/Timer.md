@@ -1,6 +1,5 @@
 # 系统计时器
 
-[[toc]]
 ---
 
 ## 系统计时器(TimerExtension)
@@ -14,7 +13,7 @@
 - **应用场景**: 当需要重新开始计时，或者在特定条件下重置计时器时使用。
 - **示例代码**:
 
-```C#
+```csharp
 using GameFrameX.Extension;
 using System.Timers;
 

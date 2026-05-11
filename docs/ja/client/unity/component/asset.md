@@ -6,7 +6,6 @@ GameFrameX 的 Asset 资源组件
 
 ---
 
-[[toc]]
 
 ## 使用方式(任选其一)
 

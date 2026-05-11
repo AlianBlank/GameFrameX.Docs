@@ -4,7 +4,6 @@ Protobuf-Net .
 
 ---
 
-[[toc]]
 
 
 ## 

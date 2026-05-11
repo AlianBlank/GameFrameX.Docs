@@ -1,6 +1,5 @@
 # 迭代器
 
-[[toc]]
 ---
 
 ## 迭代器(IEnumerableExtensions)

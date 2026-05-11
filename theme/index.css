@@ -1,0 +1,91 @@
+/* Brand colors - green tones from VitePress */
+:root {
+  --rp-c-brand: #18794e;
+  --rp-c-brand-light: #30a46c;
+  --rp-c-brand-dark: #299764;
+  --rp-c-brand-dimm: rgba(24, 121, 78, 0.08);
+}
+
+[data-theme='dark'] {
+  --rp-c-brand: #3dd68c;
+  --rp-c-brand-light: #30a46c;
+  --rp-c-brand-dark: #298459;
+  --rp-c-brand-dimm: rgba(61, 214, 140, 0.08);
+}
+
+/* Hero gradient */
+:root {
+  --rp-home-hero-name-color: transparent;
+  --rp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe 60%, #41d1ff);
+}
+
+/* H1 gradient */
+h1 {
+  background: -webkit-linear-gradient(-45deg, #e43498 5%, #5ad7dd 15%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Links */
+.rspress-doc a {
+  text-decoration: none;
+}
+
+/* Blockquote */
+.rspress-doc blockquote {
+  border-radius: 5px;
+  padding: 10px 16px;
+  position: relative;
+  border-left: 4px solid #e95f59;
+}
+
+/* Link card */
+.linkcard {
+  background-color: var(--rp-c-bg-soft);
+  border-radius: 8px;
+  padding: 8px 16px 8px 8px;
+  transition: color 0.5s, background-color 0.5s;
+}
+
+.linkcard:hover {
+  background-color: var(--rp-c-yellow-soft);
+}
+
+.linkcard a {
+  display: flex;
+  align-items: center;
+}
+
+.linkcard .description {
+  flex: 1;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 25px;
+  margin: 0 0 0 16px;
+  transition: color 0.5s;
+}
+
+.linkcard .description span {
+  font-size: 14px;
+}
+
+.linkcard .logo img {
+  width: 80px;
+  object-fit: contain;
+}
+
+/* Code group - macOS traffic light dots */
+.rp-code-group {
+  border-radius: 8px;
+  box-shadow: 0 10px 30px 0 rgb(0 0 0 / 40%);
+}
+
+/* medium-zoom overlay */
+.medium-zoom-overlay {
+  z-index: 20;
+}
+
+.medium-zoom-image {
+  z-index: 9999 !important;
+}

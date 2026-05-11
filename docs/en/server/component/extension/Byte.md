@@ -1,6 +1,5 @@
 # 字节处理
 
-[[toc]]
 ---
 
 ## 字节处理(ByteExtension)

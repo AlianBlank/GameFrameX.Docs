@@ -5,7 +5,6 @@ GameFrameX 的 FairyGUI 组件
 **FairyGUI 组件 (FairyGUI Component)** - 提供FairyGUI组件相关的接口。
 
 ---
-[[toc]]
 
 ## 使用方式(任选其一)
 

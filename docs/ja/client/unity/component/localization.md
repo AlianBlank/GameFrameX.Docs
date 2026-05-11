@@ -1,6 +1,5 @@
 # 本地化
 
-[[toc]]
 ---
 
 # GameFrameX Localization 本地化组件

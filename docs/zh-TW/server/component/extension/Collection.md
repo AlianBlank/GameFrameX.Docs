@@ -1,6 +1,5 @@
 # 集合处理
 
-[[toc]]
 ---
 
 ## 集合处理(CollectionExtensions)

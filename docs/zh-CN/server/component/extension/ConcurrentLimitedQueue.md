@@ -1,6 +1,5 @@
 # 定长队列
 
-[[toc]]
 ---
 
 ## 定长队列(ConcurrentLimitedQueue)

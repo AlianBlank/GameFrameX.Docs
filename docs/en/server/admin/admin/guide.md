@@ -5,7 +5,6 @@
 由于是私有项目.所以开放示例页面 [https://game.admin.web.vue.alianblank.com/](https://game.admin.web.vue.alianblank.com/)
 
 ---
-[[toc]]
 
 ## 运行条件
 

@@ -5,7 +5,6 @@ GameFrameX 的 Setting 配置信息组件
 **Setting 配置信息组件 (Setting Component)** - 负责管理游戏的配置信息，允许您保存和获取各种类型的配置数据。
 
 ---
-[[toc]]
 
 ## 功能概述
 

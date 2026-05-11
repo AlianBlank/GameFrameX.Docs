@@ -5,7 +5,6 @@ The Object Storage component of GameFrameX.
 **Object Storage Component** - Provides interfaces related to the Object Storage component.
 
 ---
-[[toc]]
 
 ## Interface and Class Overview
 

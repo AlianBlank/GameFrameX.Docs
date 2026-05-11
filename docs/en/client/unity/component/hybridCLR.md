@@ -4,7 +4,6 @@ This component library is sourced from the official HybridCLR repository.
 
 ---
 
-[[toc]]
 
 ## Changelog
 

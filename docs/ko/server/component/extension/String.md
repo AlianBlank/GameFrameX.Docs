@@ -1,6 +1,5 @@
 # 字符串
 
-[[toc]]
 ---
 
 ## 字符串(StringExtension)

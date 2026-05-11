@@ -1,6 +1,5 @@
 # 基础对象
 
-[[toc]]
 ---
 
 ## 基础对象(ObjectExtension)

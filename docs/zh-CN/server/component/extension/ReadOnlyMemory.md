@@ -1,6 +1,5 @@
 # 只读内存
 
-[[toc]]
 ---
 
 ## 只读内存(ReadOnlyMemoryExtension)

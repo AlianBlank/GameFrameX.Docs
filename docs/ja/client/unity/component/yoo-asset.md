@@ -1,6 +1,5 @@
 # YooAsset
 
-[[toc]]
 ---
 
 ## 

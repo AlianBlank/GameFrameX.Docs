@@ -6,7 +6,6 @@ GameFrameX 的 GlobalConfig 全局配置组件
 
 ---
 
-[[toc]]
 
 ## 组件说明
 

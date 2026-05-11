@@ -1,6 +1,5 @@
 # 只读切片
 
-[[toc]]
 ---
 
 ## 只读切片(ReadOnlySpanExtension)

@@ -5,7 +5,6 @@ GameFrameX 的 Object Storage 組件
 **Object Storage 組件 (Object Storage Component)** - 提供Object Storage組件相關的介面。
 
 ---
-[[toc]]
 
 ## 介面和類概覽
 

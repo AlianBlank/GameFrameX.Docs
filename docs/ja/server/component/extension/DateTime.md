@@ -1,6 +1,5 @@
 # 时间
 
-[[toc]]
 ---
 
 ## 时间(DateTimeExtensions)

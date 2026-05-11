@@ -6,7 +6,6 @@ This library adds type extensions that the original LitJSON does not support.
 
 ---
 
-[[toc]]
 
 ## Changelog
 

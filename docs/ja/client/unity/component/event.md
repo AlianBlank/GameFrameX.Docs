@@ -6,7 +6,6 @@ GameFrameX 的 Event 游戏事件系统的组件
 
 ---
 
-[[toc]]
 
 ## 功能
 

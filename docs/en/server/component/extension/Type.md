@@ -1,6 +1,5 @@
 # 类型
 
-[[toc]]
 ---
 
 ## 类型(TypeExtensions)

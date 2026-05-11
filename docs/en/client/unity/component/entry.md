@@ -4,7 +4,6 @@ The Entry component of GameFrameX provides a convenient way to access other comp
 
 ---
 
-[[toc]]
 
 ## Entry List
 Currently, only a basic entry list has been implemented.

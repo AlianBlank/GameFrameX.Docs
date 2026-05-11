@@ -1,0 +1,15 @@
+/* Global styles for Rspress - migrated from VitePress */
+
+:root {
+  --rp-c-brand: #18794e;
+  --rp-c-brand-light: #30a46c;
+  --rp-c-brand-dark: #299764;
+  --rp-c-brand-dimm: rgba(24, 121, 78, 0.08);
+}
+
+[data-theme='dark'] {
+  --rp-c-brand: #3dd68c;
+  --rp-c-brand-light: #30a46c;
+  --rp-c-brand-dark: #298459;
+  --rp-c-brand-dimm: rgba(61, 214, 140, 0.08);
+}

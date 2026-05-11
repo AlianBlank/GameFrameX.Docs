@@ -1,0 +1,86 @@
+{
+  "client": {
+    "en": "Client",
+    "zh-CN": "客户端",
+    "zh-TW": "客戶端",
+    "ja": "クライアント",
+    "ko": "클라이언트"
+  },
+  "server": {
+    "en": "Server",
+    "zh-CN": "服务器",
+    "zh-TW": "伺服器",
+    "ja": "サーバー",
+    "ko": "서버"
+  },
+  "tools": {
+    "en": "Tools",
+    "zh-CN": "工具",
+    "zh-TW": "工具",
+    "ja": "ツール",
+    "ko": "도구"
+  },
+  "guide": {
+    "en": "Guide",
+    "zh-CN": "指南",
+    "zh-TW": "指南",
+    "ja": "ガイド",
+    "ko": "가이드"
+  },
+  "protobuf": {
+    "en": "Protobuf",
+    "zh-CN": "Protobuf",
+    "zh-TW": "Protobuf",
+    "ja": "Protobuf",
+    "ko": "Protobuf"
+  },
+  "docker": {
+    "en": "Docker",
+    "zh-CN": "Docker",
+    "zh-TW": "Docker",
+    "ja": "Docker",
+    "ko": "Docker"
+  },
+  "config": {
+    "en": "Config",
+    "zh-CN": "配置表",
+    "zh-TW": "設定表",
+    "ja": "設定",
+    "ko": "설정"
+  },
+  "faq": {
+    "en": "FAQ",
+    "zh-CN": "常见问题",
+    "zh-TW": "常見問題",
+    "ja": "よくある質問",
+    "ko": "자주 묻는 질문"
+  },
+  "community": {
+    "en": "Community",
+    "zh-CN": "社区",
+    "zh-TW": "社群",
+    "ja": "コミュニティ",
+    "ko": "커뮤니티"
+  },
+  "developmentHistory": {
+    "en": "Development History",
+    "zh-CN": "开发日志",
+    "zh-TW": "開發日誌",
+    "ja": "開発履歴",
+    "ko": "개발 기록"
+  },
+  "unity": {
+    "en": "Unity",
+    "zh-CN": "Unity",
+    "zh-TW": "Unity",
+    "ja": "Unity",
+    "ko": "Unity"
+  },
+  "godot": {
+    "en": "Godot",
+    "zh-CN": "Godot",
+    "zh-TW": "Godot",
+    "ja": "Godot",
+    "ko": "Godot"
+  }
+}
