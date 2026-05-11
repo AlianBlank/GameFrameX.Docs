@@ -9,7 +9,8 @@ const i18n: Record<string, {
   no: string;
   thanks: string;
   sponsor: string;
-  sponsorHint: string;
+  wechat: string;
+  alipay: string;
 }> = {
   en: {
     question: 'Was this page helpful?',
@@ -17,7 +18,8 @@ const i18n: Record<string, {
     no: 'No',
     thanks: 'Thanks for your feedback!',
     sponsor: 'Sponsor',
-    sponsorHint: 'Buy me a coffee via WeChat',
+    wechat: 'WeChat',
+    alipay: 'Alipay',
   },
   'zh-CN': {
     question: '此页面对你有帮助吗？',
@@ -25,7 +27,8 @@ const i18n: Record<string, {
     no: '没帮助',
     thanks: '感谢你的反馈！',
     sponsor: '赞赏支持',
-    sponsorHint: '微信扫一扫，请作者喝杯咖啡',
+    wechat: '微信',
+    alipay: '支付宝',
   },
   'zh-TW': {
     question: '此頁面對你有幫助嗎？',
@@ -33,7 +36,8 @@ const i18n: Record<string, {
     no: '沒幫助',
     thanks: '感謝你的回饋！',
     sponsor: '讚賞支持',
-    sponsorHint: '微信掃一掃，請作者喝杯咖啡',
+    wechat: '微信',
+    alipay: '支付寶',
   },
   ja: {
     question: 'このページは役に立ちましたか？',
@@ -41,7 +45,8 @@ const i18n: Record<string, {
     no: 'いいえ',
     thanks: 'フィードバックありがとうございます！',
     sponsor: '寄付する',
-    sponsorHint: 'WeChatでコーヒーを奢ってください',
+    wechat: 'WeChat',
+    alipay: 'Alipay',
   },
   ko: {
     question: '이 페이지가 도움이 되었나요?',
@@ -49,7 +54,8 @@ const i18n: Record<string, {
     no: '아니요',
     thanks: '피드백 감사합니다!',
     sponsor: '후원하기',
-    sponsorHint: 'WeChat으로 커피 한 잔을 보내주세요',
+    wechat: 'WeChat',
+    alipay: 'Alipay',
   },
 };
 
@@ -112,12 +118,16 @@ function Sponsor() {
       </div>
       {showQr && (
         <div className="rp-sponsor__body">
-          <img
-            className="rp-sponsor__qr"
-            src="/images/wechat.jpg"
-            alt={t.sponsor}
-          />
-          <span className="rp-sponsor__hint">{t.sponsorHint}</span>
+          <div className="rp-sponsor__qr-group">
+            <div className="rp-sponsor__qr-item">
+              <img className="rp-sponsor__qr" src="/images/wechat.jpg" alt={t.wechat} />
+              <span className="rp-sponsor__hint">{t.wechat}</span>
+            </div>
+            <div className="rp-sponsor__qr-item">
+              <img className="rp-sponsor__qr" src="/images/alipay.jpg" alt={t.alipay} />
+              <span className="rp-sponsor__hint">{t.alipay}</span>
+            </div>
+          </div>
         </div>
       )}
     </div>
