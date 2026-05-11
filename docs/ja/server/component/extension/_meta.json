@@ -1,0 +1,17 @@
+[
+  "index",
+  "BidirectionalDictionary",
+  "Byte",
+  "Collection",
+  "ConcurrentLimitedQueue",
+  "DateTime",
+  "Enumerable",
+  "Expression",
+  "ReadOnlyMemory",
+  "ReadOnlySpan",
+  "Span",
+  "String",
+  "Timer",
+  "Type",
+  "object"
+]

@@ -1,0 +1,9 @@
+[
+  "index",
+  "ready",
+  "build",
+  "launcher-procedure",
+  "sync-image",
+  "component-list",
+  { "type": "dir", "name": "component", "label": "Component" }
+]

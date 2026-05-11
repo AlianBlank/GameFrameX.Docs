@@ -1,0 +1,21 @@
+[
+  "index",
+  "core",
+  "core-abstractions",
+  "core-config",
+  "database",
+  "database-mongo",
+  "database-nosql",
+  "database-nosql-redis",
+  "log",
+  "monitor",
+  "network",
+  "network-abstractions",
+  "network-http",
+  "network-message",
+  "server-manager",
+  "setting",
+  "startUp",
+  "utility",
+  { "type": "dir", "name": "extension", "label": "Extension" }
+]

@@ -1,0 +1,12 @@
+[
+  "index",
+  "start",
+  { "type": "dir", "name": "component", "label": "Component" },
+  { "type": "dir", "name": "admin", "label": "Admin" },
+  { "type": "dir", "name": "foundation", "label": "Foundation" },
+  "launcher-params",
+  "launcher-procedure",
+  "message-id-design",
+  "network-proto",
+  "http-handler"
+]

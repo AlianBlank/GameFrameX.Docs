@@ -1,0 +1,6 @@
+[
+  "index",
+  { "type": "dir", "name": "admin", "label": "Admin Panel" },
+  { "type": "dir", "name": "client", "label": "Client SDK" },
+  { "type": "dir", "name": "web", "label": "Web Panel" }
+]

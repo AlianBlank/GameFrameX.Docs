@@ -1,0 +1,7 @@
+[
+  "index",
+  "build",
+  "publish",
+  "deployment",
+  { "type": "dir", "name": "environment", "label": "Environment" }
+]
