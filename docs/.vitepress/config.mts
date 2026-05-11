@@ -140,10 +140,115 @@ export default withMermaid(defineConfig({
         },
         logo: '/logo.png',
         search: {
-            provider: 'local',
+            provider: 'algolia',
             options: {
-                detailedCompilation: true
-            }
+                appId: process.env.ALGOLIA_APP_ID || '',          
+                apiKey: process.env.ALGOLIA_API_KEY || '',               
+                indexName: process.env.ALGOLIA_INDEX_NAME || '', 
+                locales: {
+                    '/zh-CN/': {
+                        placeholder: '搜索文档',
+                        translations: {
+                            button: {
+                                buttonText: '搜索文档',
+                            },
+                            modal: {
+                                searchBox: {
+                                    resetButtonTitle: '清除查询条件',
+                                    cancelButtonText: '取消',
+                                },
+                                startScreen: {
+                                    recentSearchesTitle: '搜索历史',
+                                    noRecentSearchesText: '没有搜索历史',
+                                    saveRecentSearchButtonTitle: '保存至搜索历史',
+                                    removeRecentSearchButtonTitle: '从搜索历史中移除',
+                                },
+                                errorScreen: {
+                                    titleText: '无法获取结果',
+                                    helpText: '你可能需要检查你的网络连接',
+                                },
+                                footer: {
+                                    selectText: '选择',
+                                    navigateText: '切换',
+                                    closeText: '关闭',
+                                    searchByText: '搜索提供者',
+                                },
+                                noResultsScreen: {
+                                    noResultsText: '无法找到相关结果',
+                                    suggestedQueryText: '你可以尝试查询',
+                                },
+                            },
+                        },
+                    },
+                    '/zh-TW/': {
+                        placeholder: '搜尋文件',
+                        translations: {
+                            button: {
+                                buttonText: '搜尋文件',
+                            },
+                            modal: {
+                                searchBox: {
+                                    resetButtonTitle: '清除查詢條件',
+                                    cancelButtonText: '取消',
+                                },
+                                startScreen: {
+                                    recentSearchesTitle: '搜尋歷史',
+                                    noRecentSearchesText: '沒有搜尋歷史',
+                                },
+                                errorScreen: {
+                                    titleText: '無法獲取結果',
+                                    helpText: '你可能需要檢查你的網路連線',
+                                },
+                                noResultsScreen: {
+                                    noResultsText: '無法找到相關結果',
+                                },
+                            },
+                        },
+                    },
+                    '/ja/': {
+                        placeholder: 'ドキュメントを検索',
+                        translations: {
+                            button: {
+                                buttonText: 'ドキュメントを検索',
+                            },
+                            modal: {
+                                searchBox: {
+                                    resetButtonTitle: 'クリア',
+                                    cancelButtonText: 'キャンセル',
+                                },
+                                startScreen: {
+                                    recentSearchesTitle: '検索履歴',
+                                    noRecentSearchesText: '検索履歴なし',
+                                },
+                                noResultsScreen: {
+                                    noResultsText: '結果が見つかりません',
+                                },
+                            },
+                        },
+                    },
+                    '/ko/': {
+                        placeholder: '문서 검색',
+                        translations: {
+                            button: {
+                                buttonText: '문서 검색',
+                            },
+                            modal: {
+                                searchBox: {
+                                    resetButtonTitle: '지우기',
+                                    cancelButtonText: '취소',
+                                },
+                                startScreen: {
+                                    recentSearchesTitle: '검색 기록',
+                                    noRecentSearchesText: '검색 기록 없음',
+                                },
+                                noResultsScreen: {
+                                    noResultsText: '결과를 찾을 수 없습니다',
+                                },
+                            },
+                        },
+                    },
+                },
+            },
         },
         i18nRouting: false,
     },
