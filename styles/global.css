@@ -13,3 +13,7 @@
   --rp-c-brand-dark: #298459;
   --rp-c-brand-dimm: rgba(61, 214, 140, 0.08);
 }
+
+.rspress-logo {
+  height: 32px;
+}

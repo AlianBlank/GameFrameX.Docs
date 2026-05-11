@@ -11,6 +11,7 @@ export default defineConfig({
   description: 'Game Frame X Documentation',
   icon: '/favicon.ico',
   logo: '/logo.png',
+  logoText: 'Game Frame X',
   lang: 'en',
   outDir: 'doc_build',
   mediumZoom: { selector: '.rspress-doc img' },
