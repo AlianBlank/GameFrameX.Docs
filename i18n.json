@@ -29,8 +29,8 @@
   },
   "protobuf": {
     "en": "Protobuf",
-    "zh-CN": "Protobuf",
-    "zh-TW": "Protobuf",
+    "zh-CN": "协议",
+    "zh-TW": "協議",
     "ja": "Protobuf",
     "ko": "Protobuf"
   },
@@ -43,12 +43,12 @@
   },
   "config": {
     "en": "Config",
-    "zh-CN": "配置表",
-    "zh-TW": "設定表",
+    "zh-CN": "配置文件",
+    "zh-TW": "配置文件",
     "ja": "設定",
     "ko": "설정"
   },
-  "faq": {
+  "fqa": {
     "en": "FAQ",
     "zh-CN": "常见问题",
     "zh-TW": "常見問題",
@@ -57,12 +57,12 @@
   },
   "community": {
     "en": "Community",
-    "zh-CN": "社区",
-    "zh-TW": "社群",
+    "zh-CN": "加入讨论",
+    "zh-TW": "加入討論",
     "ja": "コミュニティ",
     "ko": "커뮤니티"
   },
-  "developmentHistory": {
+  "development-history": {
     "en": "Development History",
     "zh-CN": "开发日志",
     "zh-TW": "開發日誌",
@@ -82,5 +82,243 @@
     "zh-TW": "Godot",
     "ja": "Godot",
     "ko": "Godot"
+  },
+  "component": {
+    "en": "Component",
+    "zh-CN": "组件",
+    "zh-TW": "組件",
+    "ja": "コンポーネント",
+    "ko": "컴포넌트"
+  },
+  "extension": {
+    "en": "Extension",
+    "zh-CN": "扩展",
+    "zh-TW": "擴展",
+    "ja": "拡張",
+    "ko": "확장"
+  },
+  "admin": {
+    "en": "Admin",
+    "zh-CN": "管理端",
+    "zh-TW": "管理端",
+    "ja": "管理画面",
+    "ko": "관리"
+  },
+  "foundation": {
+    "en": "Foundation",
+    "zh-CN": "基础库",
+    "zh-TW": "基礎庫",
+    "ja": "基盤ライブラリ",
+    "ko": "기반 라이브러리"
+  },
+  "proto": {
+    "en": "Proto Export Tool",
+    "zh-CN": "协议导出工具",
+    "zh-TW": "協議導出工具",
+    "ja": "プロトコルエクスポートツール",
+    "ko": "프로토콜 내보내기 도구"
+  },
+  "environment": {
+    "en": "Environment",
+    "zh-CN": "环境",
+    "zh-TW": "環境",
+    "ja": "環境",
+    "ko": "환경"
+  },
+  "languagesText": {
+    "en": "Languages",
+    "zh-CN": "语言",
+    "zh-TW": "語言",
+    "ja": "言語",
+    "ko": "언어"
+  },
+  "themeText": {
+    "en": "Theme",
+    "zh-CN": "主题",
+    "zh-TW": "主題",
+    "ja": "テーマ",
+    "ko": "테마"
+  },
+  "outlineTitle": {
+    "en": "ON THIS PAGE",
+    "zh-CN": "页面导航",
+    "zh-TW": "頁面導航",
+    "ja": "このページの内容",
+    "ko": "이 페이지 목차"
+  },
+  "scrollToTopText": {
+    "en": "Back to top",
+    "zh-CN": "回到顶部",
+    "zh-TW": "回到頂部",
+    "ja": "トップに戻る",
+    "ko": "맨 위로"
+  },
+  "lastUpdatedText": {
+    "en": "Last Updated",
+    "zh-CN": "最后更新于",
+    "zh-TW": "最後更新於",
+    "ja": "最終更新",
+    "ko": "업데이트 날짜"
+  },
+  "prevPageText": {
+    "en": "Previous page",
+    "zh-CN": "上一页",
+    "zh-TW": "上一頁",
+    "ja": "前のページ",
+    "ko": "이전 페이지"
+  },
+  "nextPageText": {
+    "en": "Next page",
+    "zh-CN": "下一页",
+    "zh-TW": "下一頁",
+    "ja": "次のページ",
+    "ko": "다음 페이지"
+  },
+  "searchPlaceholderText": {
+    "en": "Search",
+    "zh-CN": "搜索",
+    "zh-TW": "搜尋",
+    "ja": "検索",
+    "ko": "검색"
+  },
+  "editLinkText": {
+    "en": "Edit this page",
+    "zh-CN": "编辑此页面",
+    "zh-TW": "編輯此頁",
+    "ja": "このページを編集",
+    "ko": "이 페이지 편집"
+  },
+  "notFoundText": {
+    "en": "PAGE NOT FOUND",
+    "zh-CN": "页面未找到",
+    "zh-TW": "頁面未找到",
+    "ja": "ページが見つかりません",
+    "ko": "페이지를 찾을 수 없음"
+  },
+  "takeMeHomeText": {
+    "en": "Take me home",
+    "zh-CN": "返回首页",
+    "zh-TW": "返回首頁",
+    "ja": "ホームに戻る",
+    "ko": "홈으로 이동"
+  },
+  "copyMarkdownText": {
+    "en": "Copy Markdown",
+    "zh-CN": "复制 Markdown",
+    "zh-TW": "複製 Markdown",
+    "ja": "Markdown をコピー",
+    "ko": "마크다운 복사"
+  },
+  "copyMarkdownLinkText": {
+    "en": "Copy Markdown link",
+    "zh-CN": "复制 Markdown 链接",
+    "zh-TW": "複製 Markdown 連結",
+    "ja": "Markdown リンクをコピー",
+    "ko": "마크다운 링크 복사"
+  },
+  "sourceCodeText": {
+    "en": "Source Code",
+    "zh-CN": "源码",
+    "zh-TW": "源碼",
+    "ja": "ソースコード",
+    "ko": "소스 코드"
+  },
+  "versionsText": {
+    "en": "Versions",
+    "zh-CN": "版本",
+    "zh-TW": "版本",
+    "ja": "バージョン",
+    "ko": "버전"
+  },
+  "menuTitle": {
+    "en": "Menu",
+    "zh-CN": "菜单",
+    "zh-TW": "選單",
+    "ja": "メニュー",
+    "ko": "사이드바 메뉴"
+  },
+  "searchPanelCancelText": {
+    "en": "Cancel",
+    "zh-CN": "取消",
+    "zh-TW": "取消",
+    "ja": "キャンセル",
+    "ko": "취소"
+  },
+  "searchNoResultsText": {
+    "en": "No matching results",
+    "zh-CN": "未找到与之匹配的结果",
+    "zh-TW": "未找到與之匹配的結果",
+    "ja": "一致する結果が見つかりません",
+    "ko": "일치하는 결과가 없습니다"
+  },
+  "searchSuggestedQueryText": {
+    "en": "Try searching for different keywords",
+    "zh-CN": "试试搜索不同关键词",
+    "zh-TW": "試試搜尋不同關鍵詞",
+    "ja": "別のキーワードで検索してみてください",
+    "ko": "다른 키워드로 검색해 보세요"
+  },
+  "overview.filterNameText": {
+    "en": "Filter",
+    "zh-CN": "筛选",
+    "zh-TW": "篩選",
+    "ja": "フィルター",
+    "ko": "필터"
+  },
+  "overview.filterPlaceholderText": {
+    "en": "Search API",
+    "zh-CN": "搜索 API",
+    "zh-TW": "搜尋 API",
+    "ja": "API を検索",
+    "ko": "API 검색"
+  },
+  "overview.filterNoResultText": {
+    "en": "No matching API found",
+    "zh-CN": "未找到匹配的 API",
+    "zh-TW": "未找到匹配的 API",
+    "ja": "一致する API が見つかりません",
+    "ko": "일치하는 API가 없습니다"
+  },
+  "openInText": {
+    "en": "Open in {{name}}",
+    "zh-CN": "在 {{name}} 中打开",
+    "zh-TW": "在 {{name}} 中開啟",
+    "ja": "{{name}} で開く",
+    "ko": "{{name}}에서 열기"
+  },
+  "codeButtonGroupCopyButtonText": {
+    "en": "Copy code",
+    "zh-CN": "复制代码",
+    "zh-TW": "複製程式碼",
+    "ja": "コードをコピー",
+    "ko": "코드 복사"
+  },
+  "promptCopyText": {
+    "en": "Copy Prompt",
+    "zh-CN": "复制 Prompt",
+    "zh-TW": "複製 Prompt",
+    "ja": "Prompt をコピー",
+    "ko": "프롬프트 복사"
+  },
+  "promptCopiedText": {
+    "en": "Copied",
+    "zh-CN": "已复制",
+    "zh-TW": "已複製",
+    "ja": "コピーしました",
+    "ko": "복사됨"
+  },
+  "promptExpandText": {
+    "en": "Expand",
+    "zh-CN": "展开",
+    "zh-TW": "展開",
+    "ja": "展開",
+    "ko": "펼치기"
+  },
+  "promptCollapseText": {
+    "en": "Collapse",
+    "zh-CN": "折叠",
+    "zh-TW": "折疊",
+    "ja": "折りたたむ",
+    "ko": "접기"
   }
 }
