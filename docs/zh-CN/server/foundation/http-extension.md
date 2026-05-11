@@ -647,17 +647,17 @@ public class LoggingHttpClient
 
 | 方法 | 返回类型 | 说明 |
 |------|----------|------|
-| `GetToStringAsync<T>(url)` | ``Task<string>`` | GET 请求，返回字符串响应 |
-| `GetToStringAsync<T>(url, headers, timeout)` | ``Task<string>`` | GET 请求，支持自定义请求头和超时 |
+| `GetToStringAsync<T>(url)` | ```Task<string>``` | GET 请求，返回字符串响应 |
+| `GetToStringAsync<T>(url, headers, timeout)` | ```Task<string>``` | GET 请求，支持自定义请求头和超时 |
 | `GetToByteArrayAsync<T>(url)` | ``Task<byte[]>`` | GET 请求，返回字节数组响应 |
-| `GetToStreamAsync<T>(url)` | ``Task<Stream>`` | GET 请求，返回流响应 |
-| `PostJsonToStringAsync(url, data)` | ``Task<string>`` | POST JSON 数据，返回字符串 |
-| `PostJsonToStringAsync(url, data, options)` | ``Task<string>`` | POST JSON 数据，自定义序列化选项 |
-| `PostJsonToStringAsync(url, data, headers, timeout)` | ``Task<string>`` | POST JSON 数据，支持请求头和超时 |
+| `GetToStreamAsync<T>(url)` | ```Task<Stream>``` | GET 请求，返回流响应 |
+| `PostJsonToStringAsync(url, data)` | ```Task<string>``` | POST JSON 数据，返回字符串 |
+| `PostJsonToStringAsync(url, data, options)` | ```Task<string>``` | POST JSON 数据，自定义序列化选项 |
+| `PostJsonToStringAsync(url, data, headers, timeout)` | ```Task<string>``` | POST JSON 数据，支持请求头和超时 |
 | `PostJsonToByteArrayAsync(url, data)` | ``Task<byte[]>`` | POST JSON 数据，返回字节数组 |
-| `PostJsonToStreamAsync(url, data)` | ``Task<Stream>`` | POST JSON 数据，返回流 |
-| `PostFormToStringAsync(url, formData)` | ``Task<string>`` | POST 表单数据 |
-| `PostFormToStringAsync(url, formData, headers, timeout)` | ``Task<string>`` | POST 表单数据，支持请求头和超时 |
-| `PostFileToStringAsync(url, filePath)` | ``Task<string>`` | 上传单个文件 |
-| `PostFileToStringAsync(url, filePath, headers, timeout)` | ``Task<string>`` | 上传单个文件，支持请求头和超时 |
-| `PostMultipartFileToStringAsync(url, fieldName, filePath, formData)` | ``Task<string>`` | Multipart 表单文件上传 |
+| `PostJsonToStreamAsync(url, data)` | ```Task<Stream>``` | POST JSON 数据，返回流 |
+| `PostFormToStringAsync(url, formData)` | ```Task<string>``` | POST 表单数据 |
+| `PostFormToStringAsync(url, formData, headers, timeout)` | ```Task<string>``` | POST 表单数据，支持请求头和超时 |
+| `PostFileToStringAsync(url, filePath)` | ```Task<string>``` | 上传单个文件 |
+| `PostFileToStringAsync(url, filePath, headers, timeout)` | ```Task<string>``` | 上传单个文件，支持请求头和超时 |
+| `PostMultipartFileToStringAsync(url, fieldName, filePath, formData)` | ```Task<string>``` | Multipart 表单文件上传 |

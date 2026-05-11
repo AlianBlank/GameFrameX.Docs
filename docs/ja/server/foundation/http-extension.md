@@ -647,17 +647,17 @@ public class LoggingHttpClient
 
 | メソッド | 戻り値の型 | 説明 |
 |------|----------|------|
-| `GetToStringAsync<T>(url)` | ``Task<string>`` | GET リクエスト、文字列レスポンスを返す |
-| `GetToStringAsync<T>(url, headers, timeout)` | ``Task<string>`` | GET リクエスト、カスタムヘッダーとタイムアウトをサポート |
+| `GetToStringAsync<T>(url)` | ```Task<string>``` | GET リクエスト、文字列レスポンスを返す |
+| `GetToStringAsync<T>(url, headers, timeout)` | ```Task<string>``` | GET リクエスト、カスタムヘッダーとタイムアウトをサポート |
 | `GetToByteArrayAsync<T>(url)` | ``Task<byte[]>`` | GET リクエスト、バイト配列レスポンスを返す |
-| `GetToStreamAsync<T>(url)` | ``Task<Stream>`` | GET リクエスト、ストリームレスポンスを返す |
-| `PostJsonToStringAsync(url, data)` | ``Task<string>`` | POST JSON データ、文字列を返す |
-| `PostJsonToStringAsync(url, data, options)` | ``Task<string>`` | POST JSON データ、カスタムシリアライズオプション |
-| `PostJsonToStringAsync(url, data, headers, timeout)` | ``Task<string>`` | POST JSON データ、ヘッダーとタイムアウトをサポート |
+| `GetToStreamAsync<T>(url)` | ```Task<Stream>``` | GET リクエスト、ストリームレスポンスを返す |
+| `PostJsonToStringAsync(url, data)` | ```Task<string>``` | POST JSON データ、文字列を返す |
+| `PostJsonToStringAsync(url, data, options)` | ```Task<string>``` | POST JSON データ、カスタムシリアライズオプション |
+| `PostJsonToStringAsync(url, data, headers, timeout)` | ```Task<string>``` | POST JSON データ、ヘッダーとタイムアウトをサポート |
 | `PostJsonToByteArrayAsync(url, data)` | ``Task<byte[]>`` | POST JSON データ、バイト配列を返す |
-| `PostJsonToStreamAsync(url, data)` | ``Task<Stream>`` | POST JSON データ、ストリームを返す |
-| `PostFormToStringAsync(url, formData)` | ``Task<string>`` | POST フォームデータ |
-| `PostFormToStringAsync(url, formData, headers, timeout)` | ``Task<string>`` | POST フォームデータ、ヘッダーとタイムアウトをサポート |
-| `PostFileToStringAsync(url, filePath)` | ``Task<string>`` | 単一ファイルのアップロード |
-| `PostFileToStringAsync(url, filePath, headers, timeout)` | ``Task<string>`` | 単一ファイルのアップロード、ヘッダーとタイムアウトをサポート |
-| `PostMultipartFileToStringAsync(url, fieldName, filePath, formData)` | ``Task<string>`` | Multipart フォームファイルアップロード |
+| `PostJsonToStreamAsync(url, data)` | ```Task<Stream>``` | POST JSON データ、ストリームを返す |
+| `PostFormToStringAsync(url, formData)` | ```Task<string>``` | POST フォームデータ |
+| `PostFormToStringAsync(url, formData, headers, timeout)` | ```Task<string>``` | POST フォームデータ、ヘッダーとタイムアウトをサポート |
+| `PostFileToStringAsync(url, filePath)` | ```Task<string>``` | 単一ファイルのアップロード |
+| `PostFileToStringAsync(url, filePath, headers, timeout)` | ```Task<string>``` | 単一ファイルのアップロード、ヘッダーとタイムアウトをサポート |
+| `PostMultipartFileToStringAsync(url, fieldName, filePath, formData)` | ```Task<string>``` | Multipart フォームファイルアップロード |

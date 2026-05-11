@@ -647,17 +647,17 @@ public class LoggingHttpClient
 
 | 方法 | 回傳型別 | 說明 |
 |------|----------|------|
-| `GetToStringAsync<T>(url)` | ``Task<string>`` | GET 請求，回傳字串回應 |
-| `GetToStringAsync<T>(url, headers, timeout)` | ``Task<string>`` | GET 請求，支援自訂請求標頭和逾時 |
+| `GetToStringAsync<T>(url)` | ```Task<string>``` | GET 請求，回傳字串回應 |
+| `GetToStringAsync<T>(url, headers, timeout)` | ```Task<string>``` | GET 請求，支援自訂請求標頭和逾時 |
 | `GetToByteArrayAsync<T>(url)` | ``Task<byte[]>`` | GET 請求，回傳位元組陣列回應 |
-| `GetToStreamAsync<T>(url)` | ``Task<Stream>`` | GET 請求，回傳串流回應 |
-| `PostJsonToStringAsync(url, data)` | ``Task<string>`` | POST JSON 資料，回傳字串 |
-| `PostJsonToStringAsync(url, data, options)` | ``Task<string>`` | POST JSON 資料，自訂序列化選項 |
-| `PostJsonToStringAsync(url, data, headers, timeout)` | ``Task<string>`` | POST JSON 資料，支援請求標頭和逾時 |
+| `GetToStreamAsync<T>(url)` | ```Task<Stream>``` | GET 請求，回傳串流回應 |
+| `PostJsonToStringAsync(url, data)` | ```Task<string>``` | POST JSON 資料，回傳字串 |
+| `PostJsonToStringAsync(url, data, options)` | ```Task<string>``` | POST JSON 資料，自訂序列化選項 |
+| `PostJsonToStringAsync(url, data, headers, timeout)` | ```Task<string>``` | POST JSON 資料，支援請求標頭和逾時 |
 | `PostJsonToByteArrayAsync(url, data)` | ``Task<byte[]>`` | POST JSON 資料，回傳位元組陣列 |
-| `PostJsonToStreamAsync(url, data)` | ``Task<Stream>`` | POST JSON 資料，回傳串流 |
-| `PostFormToStringAsync(url, formData)` | ``Task<string>`` | POST 表單資料 |
-| `PostFormToStringAsync(url, formData, headers, timeout)` | ``Task<string>`` | POST 表單資料，支援請求標頭和逾時 |
-| `PostFileToStringAsync(url, filePath)` | ``Task<string>`` | 上傳單一檔案 |
-| `PostFileToStringAsync(url, filePath, headers, timeout)` | ``Task<string>`` | 上傳單一檔案，支援請求標頭和逾時 |
-| `PostMultipartFileToStringAsync(url, fieldName, filePath, formData)` | ``Task<string>`` | Multipart 表單檔案上傳 |
+| `PostJsonToStreamAsync(url, data)` | ```Task<Stream>``` | POST JSON 資料，回傳串流 |
+| `PostFormToStringAsync(url, formData)` | ```Task<string>``` | POST 表單資料 |
+| `PostFormToStringAsync(url, formData, headers, timeout)` | ```Task<string>``` | POST 表單資料，支援請求標頭和逾時 |
+| `PostFileToStringAsync(url, filePath)` | ```Task<string>``` | 上傳單一檔案 |
+| `PostFileToStringAsync(url, filePath, headers, timeout)` | ```Task<string>``` | 上傳單一檔案，支援請求標頭和逾時 |
+| `PostMultipartFileToStringAsync(url, fieldName, filePath, formData)` | ```Task<string>``` | Multipart 表單檔案上傳 |
