@@ -1,5 +1,4 @@
 import { defineConfig } from '@rspress/core';
-import { pluginAutoNavSidebar } from '@rspress/plugin-auto-nav-sidebar';
 import { pluginContainerSyntax } from '@rspress/plugin-container-syntax';
 import { pluginLastUpdated } from '@rspress/plugin-last-updated';
 import { pluginClientRedirects } from '@rspress/plugin-client-redirects';
@@ -69,7 +68,6 @@ export default defineConfig({
   ],
 
   plugins: [
-    pluginAutoNavSidebar(),
     pluginContainerSyntax(),
     pluginLastUpdated(),
     pluginClientRedirects({

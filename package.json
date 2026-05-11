@@ -7,8 +7,7 @@
   "type": "module",
   "devDependencies": {
     "@rspress/core": "^2.0.11",
-    "@rspress/plugin-auto-nav-sidebar": "^1.47.1",
-    "@rspress/plugin-client-redirects": "^2.0.11",
+"@rspress/plugin-client-redirects": "^2.0.11",
     "@rspress/plugin-container-syntax": "^1.47.1",
     "@rspress/plugin-last-updated": "^1.47.1",
     "rspress-plugin-mermaid": "^1.0.1"
