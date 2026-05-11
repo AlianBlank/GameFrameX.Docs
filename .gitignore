@@ -2,8 +2,10 @@
 package-lock.json
 docs/.vitepress/cache
 docs/.vitepress/dist
+docs/.vitepress/dist-*
 .idea
 *.bkp
 .DS_Store
 i18n-migration-plan.md
 .claude/
+.vitepress/
