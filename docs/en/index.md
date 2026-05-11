@@ -1,37 +1,46 @@
-# Game Frame X
+---
+pageType: home
+title: Game Frame X
+titleSuffix: 'Unified C# Game Framework'
 
-**Unified C# stack for client & server · Actor-based architecture · True hot reload**
+hero:
+  name: Game Frame X
+  text: Next-Gen Unified C# Game Development Framework
+  tagline: 'Unified C# Stack · Client & Server · Actor Architecture · Hot Reload'
+  actions:
+    - theme: brand
+      text: Get Started
+      link: /en/client/unity/
+    - theme: alt
+      text: Server
+      link: /en/server/
 
-![Game Frame X](/logo.png)
-
-## Quick Start
-
-- [Get Started](/en/guide/introduce)
-- [Unity Client](/en/client/unity/)
-- [Server](/en/server/)
-
-## Features
-
-### C# Everywhere
-Single language from client to server. No context switching, pure productivity.
-
-### Battle-Tested Toolchain
-From code generation to CI/CD. Automate everything, deploy with confidence.
-
-### Actor-Based Architecture
-Scalable concurrency model. Messages over methods, state over objects.
-
-### True Hot Reload
-HybridCLR-powered runtime hot update. No restart, no downtime, pure flow.
-
-### Protocol Buffers
-Cross-language binary serialization. Backward compatible, forward friendly.
-
-### LuBan Config System
-Excel-powered configuration. Auto-generate code for C#, TypeScript, and more.
-
-### Docker-Ready
-One command to deploy. Horizontal scaling built-in. DevOps-friendly.
-
-### Indie-Friendly
-Low barrier, high ceiling. Ship your game, not your infrastructure.
+features:
+  - title: C# Everywhere
+    details: Single language from client to server. No context switching, pure productivity.
+    icon: 🔗
+  - title: Actor-Based Architecture
+    details: Scalable concurrency model. Messages over methods, state over objects.
+    icon: 🏗️
+  - title: True Hot Reload
+    details: HybridCLR-powered runtime hot update. No restart, no downtime, pure flow.
+    icon: 🔥
+  - title: Protocol Buffers
+    details: Cross-language binary serialization. Backward compatible, forward friendly.
+    icon: 📡
+  - title: LuBan Config System
+    details: Excel-powered configuration. Auto-generate code for C#, TypeScript, and more.
+    icon: ⚙️
+  - title: Docker-Ready
+    details: One command to deploy. Horizontal scaling built-in. DevOps-friendly.
+    icon: 🐳
+  - title: Battle-Tested Toolchain
+    details: From code generation to CI/CD. Automate everything, deploy with confidence.
+    icon: 🛠️
+  - title: Multi-Engine Client
+    details: Unity, Godot, LayaBox, Cocos Creator. One server, multiple frontends.
+    icon: 🖥️
+  - title: Indie-Friendly
+    details: Low barrier, high ceiling. Ship your game, not your infrastructure.
+    icon: 🎮
+---
