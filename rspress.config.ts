@@ -118,6 +118,8 @@ export default defineConfig({
   },
 
   head: [
+    // Auto-redirect to browser language on first visit
+    `<script>(function(){var k='rspress-locale';if(localStorage.getItem(k)!==null)return;var bl=navigator.language||'',tl='en';if(bl.startsWith('zh')){tl=bl.includes('TW')||bl.includes('Hant')||bl.includes('HK')||bl.includes('MO')?'zh-TW':'zh-CN'}else if(bl.startsWith('ja'))tl='ja';else if(bl.startsWith('ko'))tl='ko';localStorage.setItem(k,tl);var p=location.pathname;if(['/en/','/zh-CN/','/zh-TW/','/ja/','/ko/'].some(function(l){return p.startsWith(l)}))return;if(tl!=='en')location.replace('/'+tl+'/')})()</script>`,
     // Baidu analytics
     `<script>window._hmt=window._hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bb98fe196aa7f73b90177c872e5644ab";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})();</script>`,
     // Umami analytics
