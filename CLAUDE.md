@@ -27,8 +27,7 @@ GameFrameX 多语言文档站点，基于 **Rspress** 构建。
 │   └── index.css
 ├── styles/
 │   └── global.css       # 全局样式
-├── scripts/
-│   └── build.js         # 旧版 VitePress 分语言构建脚本（已废弃）
+├── scripts/               # 构建辅助脚本
 └── dist/                # 构建输出
 ```
 
@@ -71,6 +70,6 @@ npm run preview      # 预览构建结果
 
 ## 注意事项
 
-- `scripts/build.js` 是旧版 VitePress 遗留脚本，当前构建不再使用
 - `ssg: false` — 站点为纯 CSR 模式
 - 文档中的 C# 泛型语法（如 `<T>`）需要转义，否则会被当作 HTML 标签解析
+- 首次访问自动根据浏览器语言跳转（`rspress.config.ts` head 脚本）
