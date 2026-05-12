@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "rspress dev",
-    "build": "node --max-old-space-size=4096 ./node_modules/.bin/rspress build",
+    "build": "rspress build",
     "build:ci": "RSPRESS_SSG_WORKER_THREAD_COUNT=1 node --max-old-space-size=3584 ./node_modules/.bin/rspress build",
     "preview": "rspress preview"
   },
