@@ -56,48 +56,45 @@ npm install
 ### 启动开发服务器
 
 ```bash
-npm run docs:dev
+npm run dev
 ```
 
 ### 构建生产版本
 
 ```bash
-npm run docs:build
+npm run build
 ```
 
 ### 预览构建结果
 
 ```bash
-npm run docs:preview
+npm run preview
 ```
 
 ## 技术栈
 
 | 组件 | 技术 |
 |:-----|:-----|
-| 静态站生成 | [VitePress](https://vitepress.dev) 1.6+ |
-| 前端框架 | Vue 3 |
-| 侧边栏生成 | vitepress-sidebar |
-| 图表支持 | vitepress-plugin-mermaid |
-| 图片缩放 | medium-zoom |
-| 评论系统 | Giscus (GitHub Discussions) |
-| 搜索 | VitePress 内置本地搜索 |
+| 静态站生成 | [Rspress](https://rspress.dev/) |
+| 图表支持 | rspress-plugin-mermaid |
+| 图片缩放 | Rspress mediumZoom |
+| 搜索 | Rspress 内置搜索 |
 
 ## 项目结构
 
 ```
-docs/
-├── .vitepress/          # VitePress 配置
-│   ├── config.mts       # 主配置文件
-│   ├── locales/         # 各语言配置
-│   └── theme/           # 自定义主题和组件
-├── en/                  # English 文档
-├── zh-CN/               # 简体中文文档
-├── zh-TW/               # 繁體中文文档
-├── ja/                  # 日本語ドキュメント
-├── ko/                  # 한국어 문서
-├── index.md             # 语言自动跳转页
-└── public/              # 静态资源
+├── rspress.config.ts    # 主配置（locales、plugins、themeConfig）
+├── i18n.json            # UI 文案多语言映射
+├── docs/                # 文档源文件（按语言分目录）
+│   ├── en/              # English
+│   ├── zh-CN/           # 简体中文
+│   ├── zh-TW/           # 繁體中文
+│   ├── ja/              # 日本語
+│   ├── ko/              # 한국어
+│   └── public/          # 静态资源
+├── theme/               # 自定义主题覆盖
+├── styles/              # 全局样式
+└── dist/                # 构建输出
 ```
 
 ## 相关链接
