@@ -14,7 +14,7 @@ export default defineConfig({
   logo: '/logo.png',
   logoText: 'Game Frame X',
   lang: 'en',
-  outDir: 'doc_build',
+  outDir: 'dist',
   mediumZoom: { selector: '.rspress-doc img' },
   markdown: {
     link: {
