@@ -1,6 +1,6 @@
-# 广告(激励)
+# Advertisement 广告(激励)
 
-## com.gameframex.unity.advertisement
+## Advertisement 广告管理
 
 ### 目录
 

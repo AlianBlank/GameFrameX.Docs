@@ -1,6 +1,6 @@
-# 场景
+# Scene 场景管理
 
-## com.gameframex.unity.scene
+## Scene 场景管理
 
 ### 目录
 
