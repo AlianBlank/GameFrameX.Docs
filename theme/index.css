@@ -89,3 +89,36 @@ h1 {
 .medium-zoom-image {
   z-index: 9999 !important;
 }
+
+/* ========== Landing page scroll reveal ========== */
+.rp-landing-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.rp-landing-section.rp-landing--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rp-landing-section .rp-landing-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  transition-delay: calc(var(--stagger, 0) * 0.1s);
+}
+
+.rp-landing--visible .rp-landing-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rp-landing-section,
+  .rp-landing-section .rp-landing-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
