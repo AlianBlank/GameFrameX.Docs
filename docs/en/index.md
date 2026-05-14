@@ -6,7 +6,7 @@ titleSuffix: 'Unified C# Game Framework'
 hero:
   name: Game Frame X
   text: Next-Gen Unified C# Game Development Framework
-  tagline: 'Unified C# Stack · Client & Server · Actor Architecture · Hot Reload'
+  tagline: 'Unified C# Stack · Client & Server · ProtoBuf Messages · Hot Reload'
   actions:
     - theme: brand
       text: Get Started
@@ -19,8 +19,8 @@ features:
   - title: C# Everywhere
     details: Single language from client to server. No context switching, pure productivity.
     icon: 🔗
-  - title: Actor-Based Architecture
-    details: Scalable concurrency model. Messages over methods, state over objects.
+  - title: Message-Driven Architecture
+    details: Request/Response/Notify pattern. Type-safe message routing with ProtoBuf serialization.
     icon: 🏗️
   - title: True Hot Reload
     details: HybridCLR-powered runtime hot update. No restart, no downtime, pure flow.

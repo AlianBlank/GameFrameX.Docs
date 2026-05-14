@@ -6,7 +6,7 @@ titleSuffix: '统一 C# 游戏框架'
 hero:
   name: Game Frame X
   text: 下一代C#统一游戏开发框架
-  tagline: '统一C#技术栈 · 前后端一体化 · Actor架构 · 真正热更新'
+  tagline: '统一C#技术栈 · 前后端一体化 · ProtoBuf消息 · 真正热更新'
   actions:
     - theme: brand
       text: 快速开始
@@ -19,8 +19,8 @@ features:
   - title: C# 全端统一
     details: 前后端统一使用 C# 语言开发，无语言切换负担
     icon: 🔗
-  - title: Actor 架构
-    details: 无锁并发 · 状态与逻辑分离 · 可热更逻辑层
+  - title: 消息驱动架构
+    details: Request/Response/Notify 模式 · 类型安全的消息路由 · ProtoBuf 序列化
     icon: 🏗️
   - title: 真正热更新
     details: HybridCLR 原生支持 · 运行时替换 · 零重启

@@ -6,7 +6,7 @@ titleSuffix: '통합 C# 게임 프레임워크'
 hero:
   name: Game Frame X
   text: 차세대 C# 통합 게임 개발 프레임워크
-  tagline: '통합 C# 기술 스택 · 프론트 & 백엔드 일체화 · Actor 아키텍처 · 진정한 핫 리로드'
+  tagline: '통합 C# 기술 스택 · 프론트 & 백엔드 일체화 · ProtoBuf 메시지 · 진정한 핫 리로드'
   actions:
     - theme: brand
       text: 빠른 시작
@@ -19,8 +19,8 @@ features:
   - title: C# 풀스택
     details: 프론트엔드부터 백엔드까지 C# 통합. 컨텍스트 전환 불필요.
     icon: 🔗
-  - title: Actor 아키텍처
-    details: 확장 가능한 동시성 모델. 락프리, 상태와 로직 분리.
+  - title: 메시지 기반 아키텍처
+    details: Request/Response/Notify 패턴. 타입 안전한 메시지 라우팅과 ProtoBuf 직렬화.
     icon: 🏗️
   - title: 진정한 핫 리로드
     details: HybridCLR 기반 런타임 핫 업데이트. 재시작 불필요.

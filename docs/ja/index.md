@@ -6,7 +6,7 @@ titleSuffix: '統合 C# ゲームフレームワーク'
 hero:
   name: Game Frame X
   text: 次世代C#統合ゲーム開発フレームワーク
-  tagline: '統合C#技術スタック · フロント＆バックエンド一体化 · Actorアーキテクチャ · 真のホットリロード'
+  tagline: '統合C#技術スタック · フロント＆バックエンド一体化 · ProtoBufメッセージ · 真のホットリロード'
   actions:
     - theme: brand
       text: クイックスタート
@@ -19,8 +19,8 @@ features:
   - title: C# フルスタック
     details: フロントエンドからバックエンドまで C# で統一。コンテキスト切替不要の生産性。
     icon: 🔗
-  - title: Actor アーキテクチャ
-    details: スケーラブルな並行処理モデル。ロックフリー、状態とロジックの分離。
+  - title: メッセージ駆動アーキテクチャ
+    details: Request/Response/Notify パターン。型安全なメッセージルーティングと ProtoBuf シリアライゼーション。
     icon: 🏗️
   - title: 真のホットリロード
     details: HybridCLR によるランタイムホットアップデート。再起動不要。
