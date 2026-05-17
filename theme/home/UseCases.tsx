@@ -2,7 +2,7 @@ import { useLang } from '@rspress/core/runtime';
 import { useEffect, useState } from 'react';
 import { useScrollReveal } from './useScrollReveal';
 import { landingI18n } from './i18n';
-import './Stats.css';
+import './UseCases.css';
 
 function AnimatedNumber({ value, trigger }: { value: string; trigger: boolean }) {
   const numericPart = parseInt(value.replace(/[^0-9]/g, ''), 10);
@@ -36,10 +36,10 @@ function AnimatedNumber({ value, trigger }: { value: string; trigger: boolean })
   return <>{display}{suffix}</>;
 }
 
-export default function Stats() {
+export default function UseCases() {
   const { ref, isVisible } = useScrollReveal();
   const lang = useLang();
-  const t = (landingI18n[lang] || landingI18n.en).stats;
+  const t = (landingI18n[lang] || landingI18n.en).useCases;
 
   return (
     <section
@@ -47,17 +47,30 @@ export default function Stats() {
       className={`rp-landing-section ${isVisible ? 'rp-landing--visible' : ''}`}
     >
       <h2 className="rp-landing-section__title">{t.title}</h2>
-      <div className="rp-stats">
-        {t.items.map((item, i) => (
+      <div className="rp-usecases">
+        {t.cases.map((useCase, i) => (
           <div
-            key={item.label}
-            className="rp-stats__item rp-landing-card"
+            key={useCase.title}
+            className="rp-usecases__card rp-landing-card"
             style={{ '--stagger': i } as React.CSSProperties}
           >
-            <span className="rp-stats__value">
-              <AnimatedNumber value={item.value} trigger={isVisible} />
+            <span className="rp-usecases__icon">{useCase.icon}</span>
+            <h3 className="rp-usecases__title">{useCase.title}</h3>
+            <ul className="rp-usecases__bullets">
+              {useCase.bullets.map((bullet) => (
+                <li key={bullet}>{bullet}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div className="rp-usecases__metrics">
+        {t.metrics.map((metric) => (
+          <div key={metric.label} className="rp-usecases__metric">
+            <span className="rp-usecases__metric-value">
+              <AnimatedNumber value={metric.value} trigger={isVisible} />
             </span>
-            <span className="rp-stats__label">{item.label}</span>
+            <span className="rp-usecases__metric-label">{metric.label}</span>
           </div>
         ))}
       </div>

@@ -1,0 +1,121 @@
+.rp-progarch {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.rp-progarch__phase-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+}
+
+.rp-progarch__phase {
+  width: 100%;
+  border-radius: 12px;
+  padding: 24px 20px;
+  background: var(--rp-c-bg-soft);
+  border: 1px solid var(--rp-c-divider);
+  text-align: center;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.rp-progarch__phase:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.rp-progarch__audience {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  background: var(--rp-c-brand-dimm);
+  color: var(--rp-c-brand);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.rp-progarch__phase-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--rp-c-text-1);
+  margin: 0 0 16px;
+}
+
+.rp-progarch__capabilities {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rp-progarch__tag {
+  display: block;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  background: var(--rp-c-bg-default);
+  color: var(--rp-c-text-2);
+  font-weight: 500;
+  border: 1px solid var(--rp-c-divider-light);
+}
+
+.rp-progarch__arrow {
+  font-size: 24px;
+  color: var(--rp-c-text-3);
+  padding: 0 8px;
+  flex-shrink: 0;
+  font-weight: 300;
+}
+
+.rp-progarch__baseline {
+  max-width: 960px;
+  margin: 24px auto 0;
+  text-align: center;
+  padding: 14px 20px;
+  border-radius: 8px;
+  background: var(--rp-c-brand-dimm);
+  border: 1px solid var(--rp-c-brand-soft);
+}
+
+.rp-progarch__baseline-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--rp-c-brand);
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .rp-progarch {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rp-progarch__phase-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rp-progarch__phase {
+    padding: 18px 16px;
+  }
+
+  .rp-progarch__phase-title {
+    font-size: 16px;
+  }
+
+  .rp-progarch__tag {
+    font-size: 13px;
+    padding: 5px 12px;
+  }
+
+  .rp-progarch__arrow {
+    transform: rotate(90deg);
+    text-align: center;
+    padding: 4px 0;
+  }
+}
