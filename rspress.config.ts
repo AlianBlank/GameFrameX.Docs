@@ -95,9 +95,7 @@ export default defineConfig({
         content: 'https://www.bilibili.com/video/BV1yrpeepEn7',
       },
       {
-        icon: {
-          svg: '<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M512.568 3.632C231.842 3.632 4.266 231.206 4.266 511.934s227.574 508.302 508.302 508.302S1020.87 792.66 1020.87 511.934 793.295 3.632 512.57 3.632z" fill="#317BFF"/></svg>',
-        },
+        icon: 'qq',
         mode: 'link',
         content: 'https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN',
       },
