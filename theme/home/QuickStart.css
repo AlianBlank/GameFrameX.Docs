@@ -71,7 +71,7 @@
 .rp-quickstart__code {
   margin: 0;
   padding: 16px 20px;
-  overflow-x: auto;
+  overflow: visible;
   font-size: 13px;
   line-height: 1.7;
   font-family: var(--rp-font-mono);
