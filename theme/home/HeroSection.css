@@ -1,0 +1,118 @@
+.rp-hero {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 6rem 2rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.rp-hero__name {
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.2;
+  background: var(--rp-home-hero-name-background);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rp-hero__text {
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  white-space: nowrap;
+  background: -webkit-linear-gradient(-45deg, #e43498 5%, #5ad7dd 15%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rp-hero__tagline {
+  color: var(--rp-c-text-2);
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.rp-hero__actions {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.rp-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.rp-hero__btn--brand {
+  background: var(--rp-c-brand);
+  color: #fff;
+}
+
+.rp-hero__btn--brand:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.rp-hero__btn--alt {
+  background: var(--rp-c-bg);
+  color: var(--rp-c-text-1);
+  border: 1px solid var(--rp-c-divider);
+}
+
+.rp-hero__btn--alt:hover {
+  border-color: var(--rp-c-brand);
+  color: var(--rp-c-brand);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .rp-hero {
+    padding: 4rem 1.5rem 1.5rem;
+  }
+
+  .rp-hero__name {
+    font-size: 2.25rem;
+  }
+
+  .rp-hero__text {
+    font-size: 2.25rem;
+  }
+
+  .rp-hero__actions {
+    flex-direction: column;
+    width: 80%;
+  }
+}
+
+@media (max-width: 640px) {
+  .rp-hero {
+    padding: 3rem 1rem 1rem;
+  }
+
+  .rp-hero__name {
+    font-size: 1.75rem;
+  }
+
+  .rp-hero__text {
+    font-size: 1.75rem;
+  }
+
+  .rp-hero__tagline {
+    font-size: 1rem;
+  }
+
+  .rp-hero__btn {
+    justify-content: center;
+  }
+}

@@ -37,3 +37,9 @@
     margin-bottom: 32px;
   }
 }
+
+/* Hide default Rspress HomeHero and HomeFeature (empty when frontmatter is stripped) */
+.rp-home-hero,
+.rp-home-feature {
+  display: none !important;
+}
