@@ -16,6 +16,9 @@ export default defineConfig({
   lang: 'en',
   outDir: 'dist',
   ssg: false,
+  search: {
+    codeBlocks: false,
+  },
   mediumZoom: { selector: '.rspress-doc img' },
   markdown: {
     link: {
@@ -61,12 +64,26 @@ export default defineConfig({
       label: '日本語',
       title: 'Game Frame X',
       description: 'Game Frame X ドキュメント',
+      outlineTitle: 'ページナビゲーション',
+      lastUpdatedText: '最終更新',
+      editLinkText: 'このページを編集',
+      prevPageText: '前のページ',
+      nextPageText: '次のページ',
+      notFoundText: 'ページが見つかりません',
+      takeMeHomeText: 'ホームに戻る',
     },
     {
       lang: 'ko',
       label: '한국어',
       title: 'Game Frame X',
       description: 'Game Frame X 문서',
+      outlineTitle: '페이지 탐색',
+      lastUpdatedText: '마지막 업데이트',
+      editLinkText: '이 페이지 편집',
+      prevPageText: '이전 페이지',
+      nextPageText: '다음 페이지',
+      notFoundText: '페이지를 찾을 수 없습니다',
+      takeMeHomeText: '홈으로 돌아가기',
     },
   ],
 
@@ -118,10 +135,8 @@ export default defineConfig({
   head: [
     // Auto-redirect to browser language on first visit
     `<script>(function(){var k='rspress-locale';if(localStorage.getItem(k)!==null)return;var bl=navigator.language||'',tl='en';if(bl.startsWith('zh')){tl=bl.includes('TW')||bl.includes('Hant')||bl.includes('HK')||bl.includes('MO')?'zh-TW':'zh-CN'}else if(bl.startsWith('ja'))tl='ja';else if(bl.startsWith('ko'))tl='ko';localStorage.setItem(k,tl);var p=location.pathname;if(['/en/','/zh-CN/','/zh-TW/','/ja/','/ko/'].some(function(l){return p.startsWith(l)}))return;if(tl!=='en')location.replace('/'+tl+'/')})()</script>`,
-    // Baidu analytics
-    `<script>window._hmt=window._hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bb98fe196aa7f73b90177c872e5644ab";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})();</script>`,
-    // Umami analytics
-    `<script async src="https://cloud.umami.is/script.js" data-website-id="92a468c9-7c0e-4e55-bea3-0e3c3bb0330e"></script>`,
+    // Third-party analytics are skipped for local preview.
+    `<script>(function(){var h=location.hostname;if(h==='localhost'||h==='127.0.0.1'||h==='0.0.0.0')return;window._hmt=window._hmt||[];var b=document.createElement('script');b.async=true;b.src='https://hm.baidu.com/hm.js?bb98fe196aa7f73b90177c872e5644ab';document.head.appendChild(b);var u=document.createElement('script');u.async=true;u.src='https://cloud.umami.is/script.js';u.setAttribute('data-website-id','92a468c9-7c0e-4e55-bea3-0e3c3bb0330e');document.head.appendChild(u)})()</script>`,
   ],
 
   globalStyles: path.join(__dirname, 'styles/global.css'),
