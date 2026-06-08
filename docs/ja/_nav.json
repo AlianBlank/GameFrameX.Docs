@@ -1,4 +1,5 @@
 [
+  { "text": "ガイド", "link": "/guide/" },
   { "text": "クライアント", "items": [
     { "text": "Unity", "link": "/client/unity/" }
   ]},

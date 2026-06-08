@@ -1,4 +1,5 @@
 [
+  { "text": "Guide", "link": "/guide/" },
   { "text": "Client", "items": [
     { "text": "Unity", "link": "/client/unity/" }
   ]},
