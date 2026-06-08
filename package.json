@@ -3,7 +3,10 @@
     "dev": "rspress dev",
     "build": "rspress build",
     "build:ci": "RSPRESS_SSG_WORKER_THREAD_COUNT=1 node --max-old-space-size=3584 ./node_modules/.bin/rspress build",
-    "preview": "rspress preview"
+    "preview": "rspress preview",
+    "analyze:size": "node scripts/report-build-size.mjs",
+    "check:docs": "node scripts/check-i18n-structure.mjs && node scripts/check-docs-links.mjs",
+    "check:docs:strict": "node scripts/check-i18n-structure.mjs --strict && node scripts/check-docs-links.mjs --strict"
   },
   "type": "module",
   "devDependencies": {
