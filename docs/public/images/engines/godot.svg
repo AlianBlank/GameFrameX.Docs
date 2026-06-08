@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Godot">
+  <rect width="64" height="64" rx="12" fill="#478cbf"/>
+  <path d="M12 29 18 17l8 5 6-8 6 8 8-5 6 12v21H12V29Z" fill="#ffffff"/>
+  <path d="M18 31c3-6 8-9 14-9s11 3 14 9v13H18V31Z" fill="#478cbf"/>
+  <circle cx="25" cy="34" r="3" fill="#ffffff"/>
+  <circle cx="39" cy="34" r="3" fill="#ffffff"/>
+  <path d="M26 42c3 3 9 3 12 0" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -93,6 +93,32 @@
   white-space: pre;
 }
 
+.rp-quickstart__guide {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.rp-quickstart__guide a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 18px;
+  border: 1px solid var(--rp-c-divider);
+  border-radius: 8px;
+  color: var(--rp-c-text-1);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.rp-quickstart__guide a:hover {
+  border-color: var(--rp-c-brand);
+  color: var(--rp-c-brand);
+  background: var(--rp-c-brand-dimm);
+}
+
 @media (max-width: 768px) {
   .rp-quickstart {
     grid-template-columns: 1fr;

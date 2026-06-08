@@ -73,6 +73,9 @@ export default function QuickStart() {
         <TerminalPanel label={t.sourceLabel} lines={t.sourceLines} copyLabel={t.copy} copiedLabel={t.copied} />
         <TerminalPanel label={t.dockerLabel} lines={t.dockerLines} copyLabel={t.copy} copiedLabel={t.copied} />
       </div>
+      <div className="rp-quickstart__guide">
+        <a href={`/${lang}/guide/start`}>{t.guideText}</a>
+      </div>
     </section>
   );
 }

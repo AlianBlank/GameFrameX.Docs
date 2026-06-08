@@ -10,6 +10,16 @@ export interface LandingTranslations {
     title: string;
     details: string;
   }[];
+  startPaths: {
+    title: string;
+    subtitle: string;
+    action: string;
+    paths: {
+      title: string;
+      desc: string;
+      href: string;
+    }[];
+  };
   codeDemo: {
     title: string;
     subtitle: string;
@@ -50,6 +60,25 @@ export interface LandingTranslations {
     dockerLines: { text: string; isComment: boolean }[];
     copy: string;
     copied: string;
+    guideText: string;
+  };
+  technicalFacts: {
+    title: string;
+    subtitle: string;
+    prerequisitesTitle: string;
+    prerequisites: string[];
+    repositoriesTitle: string;
+    repositories: {
+      title: string;
+      desc: string;
+      href: string;
+    }[];
+    nextTitle: string;
+    next: {
+      title: string;
+      desc: string;
+      href: string;
+    }[];
   };
   cta: {
     title: string;
@@ -74,6 +103,19 @@ const en: LandingTranslations = {
     { icon: '📡', title: 'Unified Protocol: ProtoBuf', details: 'Protocol definitions are documentation. Auto-generate code for both ends, type-safe and forward-compatible. No hand-written serialization, no duplicate code.' },
     { icon: '📐', title: 'Unified Conventions', details: 'Strong conventions for directory structure, naming, and message patterns. One developer or ten — consistent code style, instant onboarding.' },
   ],
+  startPaths: {
+    title: 'Choose Your Starting Point',
+    subtitle: 'Jump into the documentation path that matches your role.',
+    action: 'Open',
+    paths: [
+      { title: 'Unity Client', desc: 'Integrate GameFrameX components into a Unity project.', href: '/client/unity/' },
+      { title: 'Server', desc: 'Start the C# game server and understand launch options.', href: '/server/' },
+      { title: 'Protobuf', desc: 'Learn the shared protocol workflow and message design.', href: '/protobuf/' },
+      { title: 'Config', desc: 'Use the LuBan-based configuration pipeline.', href: '/config/' },
+      { title: 'Docker', desc: 'Build, publish, and deploy services with containers.', href: '/docker/' },
+      { title: 'Tools', desc: 'Use protocol export and supporting development tools.', href: '/tools/' },
+    ],
+  },
   codeDemo: {
     title: 'Define Once, Generate Both Ends',
     subtitle: 'Client and server share the same language and protocol definitions — no context switching.',
@@ -133,9 +175,9 @@ const en: LandingTranslations = {
       },
     ],
     metrics: [
-      { value: '500+', label: 'GitHub Stars' },
-      { value: '4', label: 'Game Engines' },
-      { value: '100%', label: 'C# Codebase' },
+      { value: 'Open', label: 'Source Framework' },
+      { value: 'Multi', label: 'Engine Client Support' },
+      { value: 'C#', label: 'Client/Server Workflow' },
     ],
   },
   quickStart: {
@@ -167,6 +209,29 @@ const en: LandingTranslations = {
     ],
     copy: 'Copy',
     copied: 'Copied!',
+    guideText: 'Read the complete quick start',
+  },
+  technicalFacts: {
+    title: 'Know What You Need Next',
+    subtitle: 'The practical pieces behind the quick start.',
+    prerequisitesTitle: 'Before You Run',
+    prerequisites: ['.NET SDK', 'MongoDB or Docker Compose', 'Unity client project', 'ProtoBuf workflow'],
+    repositoriesTitle: 'Core Entry Points',
+    repositories: [
+      { title: 'Main Repository', desc: 'Framework source and project overview.', href: 'https://github.com/GameFrameX/gameframex' },
+      { title: 'Server Source', desc: 'C# game server used by the quick start.', href: 'https://github.com/GameFrameX/GameFrameX.Server' },
+      { title: 'Unity Client Docs', desc: 'Client integration and component guides.', href: '/client/unity/' },
+      { title: 'Docs Repository', desc: 'Documentation source and contribution entry.', href: 'https://github.com/AlianBlank/GameFrameX.Docs' },
+    ],
+    nextTitle: 'Recommended Reading',
+    next: [
+      { title: 'Quick Start', desc: 'Complete the first server run.', href: '/guide/start' },
+      { title: 'Unity Client', desc: 'Connect a client project to the framework.', href: '/client/unity/' },
+      { title: 'Launch Parameters', desc: 'Understand server startup options.', href: '/server/launcher-params' },
+      { title: 'Network Protocol', desc: 'Review message and protocol design.', href: '/server/network-proto' },
+      { title: 'Docker', desc: 'Build and deploy with containers.', href: '/docker/' },
+      { title: 'Config', desc: 'Work with the LuBan-based config pipeline.', href: '/config/' },
+    ],
   },
   cta: {
     title: 'Launch Your Game Server in 3 Minutes',
@@ -191,6 +256,19 @@ const zhCN: LandingTranslations = {
     { icon: '📡', title: '统一协议 ProtoBuf', details: '协议定义即文档，自动生成双端代码，类型安全且向前兼容。不手写序列化，不维护两份代码。' },
     { icon: '📐', title: '统一规范', details: '目录结构、命名约定、消息模式强约束。一个人和十个人一个写法，新人即插即用。' },
   ],
+  startPaths: {
+    title: '选择你的起点',
+    subtitle: '按照当前角色直接进入最相关的文档路径。',
+    action: '打开',
+    paths: [
+      { title: 'Unity 客户端', desc: '在 Unity 工程中接入 GameFrameX 组件。', href: '/client/unity/' },
+      { title: '服务器', desc: '启动 C# 游戏服务器并了解启动参数。', href: '/server/' },
+      { title: 'Protobuf 协议', desc: '了解双端共享协议流程和消息设计。', href: '/protobuf/' },
+      { title: '配置系统', desc: '使用基于 LuBan 的配置生成流程。', href: '/config/' },
+      { title: 'Docker 部署', desc: '通过容器完成构建、发布和部署。', href: '/docker/' },
+      { title: '工具链', desc: '使用协议导出和辅助开发工具。', href: '/tools/' },
+    ],
+  },
   codeDemo: {
     title: '一次定义，双端生成',
     subtitle: '客户端和服务端共享同一语言与协议定义，无需上下文切换。',
@@ -250,9 +328,9 @@ const zhCN: LandingTranslations = {
       },
     ],
     metrics: [
-      { value: '500+', label: 'GitHub Stars' },
-      { value: '4', label: '游戏引擎' },
-      { value: '100%', label: 'C# 代码库' },
+      { value: '开源', label: '框架源码' },
+      { value: '多引擎', label: '客户端支持' },
+      { value: 'C#', label: '客户端/服务端流程' },
     ],
   },
   quickStart: {
@@ -284,6 +362,29 @@ const zhCN: LandingTranslations = {
     ],
     copy: '复制',
     copied: '已复制!',
+    guideText: '阅读完整快速开始',
+  },
+  technicalFacts: {
+    title: '继续前需要了解',
+    subtitle: '快速开始背后的关键准备、源码入口和下一步文档。',
+    prerequisitesTitle: '运行前准备',
+    prerequisites: ['.NET SDK', 'MongoDB 或 Docker Compose', 'Unity 客户端工程', 'ProtoBuf 协议流程'],
+    repositoriesTitle: '核心入口',
+    repositories: [
+      { title: '主仓库', desc: '框架源码和项目总览。', href: 'https://github.com/GameFrameX/gameframex' },
+      { title: '服务端源码', desc: '快速开始使用的 C# 游戏服务器。', href: 'https://github.com/GameFrameX/GameFrameX.Server' },
+      { title: 'Unity 客户端文档', desc: '客户端接入和组件使用说明。', href: '/client/unity/' },
+      { title: '文档仓库', desc: '文档源码和贡献入口。', href: 'https://github.com/AlianBlank/GameFrameX.Docs' },
+    ],
+    nextTitle: '推荐阅读',
+    next: [
+      { title: '快速开始', desc: '完成第一次服务端启动。', href: '/guide/start' },
+      { title: 'Unity 客户端', desc: '将客户端工程接入框架。', href: '/client/unity/' },
+      { title: '启动参数', desc: '了解服务端启动配置。', href: '/server/launcher-params' },
+      { title: '网络协议', desc: '查看消息和协议设计。', href: '/server/network-proto' },
+      { title: 'Docker', desc: '使用容器构建和部署。', href: '/docker/' },
+      { title: '配置系统', desc: '使用基于 LuBan 的配置流程。', href: '/config/' },
+    ],
   },
   cta: {
     title: '3 分钟启动你的游戏服务器',
@@ -308,6 +409,19 @@ const zhTW: LandingTranslations = {
     { icon: '📡', title: '統一協定 ProtoBuf', details: '協定定義即文件，自動生成雙端程式碼，型別安全且向前相容。不手寫序列化，不維護兩份程式碼。' },
     { icon: '📐', title: '統一規範', details: '目錄結構、命名約定、訊息模式強約束。一個人和十個人一個寫法，新人即插即用。' },
   ],
+  startPaths: {
+    title: '選擇你的起點',
+    subtitle: '按照目前角色直接進入最相關的文件路徑。',
+    action: '開啟',
+    paths: [
+      { title: 'Unity 用戶端', desc: '在 Unity 專案中接入 GameFrameX 組件。', href: '/client/unity/' },
+      { title: '伺服器', desc: '啟動 C# 遊戲伺服器並了解啟動參數。', href: '/server/' },
+      { title: 'Protobuf 協議', desc: '了解雙端共享協議流程和訊息設計。', href: '/protobuf/' },
+      { title: '配置系統', desc: '使用基於 LuBan 的配置生成流程。', href: '/config/' },
+      { title: 'Docker 部署', desc: '透過容器完成建置、發布和部署。', href: '/docker/' },
+      { title: '工具鏈', desc: '使用協議導出和輔助開發工具。', href: '/tools/' },
+    ],
+  },
   codeDemo: {
     title: '一次定義，雙端生成',
     subtitle: '用戶端和伺服器端共享同一語言與協定定義，無需上下文切換。',
@@ -367,9 +481,9 @@ const zhTW: LandingTranslations = {
       },
     ],
     metrics: [
-      { value: '500+', label: 'GitHub Stars' },
-      { value: '4', label: '遊戲引擎' },
-      { value: '100%', label: 'C# 程式碼庫' },
+      { value: '開源', label: '框架原始碼' },
+      { value: '多引擎', label: '用戶端支援' },
+      { value: 'C#', label: '用戶端/伺服器流程' },
     ],
   },
   quickStart: {
@@ -401,6 +515,29 @@ const zhTW: LandingTranslations = {
     ],
     copy: '複製',
     copied: '已複製!',
+    guideText: '閱讀完整快速開始',
+  },
+  technicalFacts: {
+    title: '繼續前需要了解',
+    subtitle: '快速開始背後的關鍵準備、原始碼入口和下一步文件。',
+    prerequisitesTitle: '執行前準備',
+    prerequisites: ['.NET SDK', 'MongoDB 或 Docker Compose', 'Unity 用戶端專案', 'ProtoBuf 協議流程'],
+    repositoriesTitle: '核心入口',
+    repositories: [
+      { title: '主儲存庫', desc: '框架原始碼和專案總覽。', href: 'https://github.com/GameFrameX/gameframex' },
+      { title: '伺服器原始碼', desc: '快速開始使用的 C# 遊戲伺服器。', href: 'https://github.com/GameFrameX/GameFrameX.Server' },
+      { title: 'Unity 用戶端文件', desc: '用戶端接入和組件使用說明。', href: '/client/unity/' },
+      { title: '文件儲存庫', desc: '文件原始碼和貢獻入口。', href: 'https://github.com/AlianBlank/GameFrameX.Docs' },
+    ],
+    nextTitle: '推薦閱讀',
+    next: [
+      { title: '快速開始', desc: '完成第一次伺服器啟動。', href: '/guide/start' },
+      { title: 'Unity 用戶端', desc: '將用戶端專案接入框架。', href: '/client/unity/' },
+      { title: '啟動參數', desc: '了解伺服器啟動配置。', href: '/server/launcher-params' },
+      { title: '網路協議', desc: '查看訊息和協議設計。', href: '/server/network-proto' },
+      { title: 'Docker', desc: '使用容器建置和部署。', href: '/docker/' },
+      { title: '配置系統', desc: '使用基於 LuBan 的配置流程。', href: '/config/' },
+    ],
   },
   cta: {
     title: '3 分鐘啟動你的遊戲伺服器',
@@ -425,6 +562,19 @@ const ja: LandingTranslations = {
     { icon: '📡', title: '統一プロトコル: ProtoBuf', details: 'プロトコル定義がそのままドキュメントに。両端のコードを自動生成、型安全で前方互換性あり。手書きシリアライゼーション不要、重複コードなし。' },
     { icon: '📐', title: '統一規約', details: 'ディレクトリ構造、命名規則、メッセージパターンの強い規約。1人でも10人でも同じコードスタイル、即座にオンボーディング。' },
   ],
+  startPaths: {
+    title: '開始地点を選択',
+    subtitle: '役割に合うドキュメントへ直接移動できます。',
+    action: '開く',
+    paths: [
+      { title: 'Unity クライアント', desc: 'Unity プロジェクトに GameFrameX コンポーネントを統合します。', href: '/client/unity/' },
+      { title: 'サーバー', desc: 'C# ゲームサーバーを起動し、起動オプションを確認します。', href: '/server/' },
+      { title: 'Protobuf', desc: '共有プロトコルの流れとメッセージ設計を学びます。', href: '/protobuf/' },
+      { title: '設定', desc: 'LuBan ベースの設定パイプラインを使用します。', href: '/config/' },
+      { title: 'Docker', desc: 'コンテナでビルド、公開、デプロイを行います。', href: '/docker/' },
+      { title: 'ツール', desc: 'プロトコル出力と開発支援ツールを使用します。', href: '/tools/' },
+    ],
+  },
   codeDemo: {
     title: '一度の定義で両端を自動生成',
     subtitle: 'クライアントとサーバーが同じ言語とプロトコル定義を共有 — コンテキストスイッチ不要。',
@@ -484,9 +634,9 @@ const ja: LandingTranslations = {
       },
     ],
     metrics: [
-      { value: '500+', label: 'GitHub Stars' },
-      { value: '4', label: 'ゲームエンジン' },
-      { value: '100%', label: 'C# コードベース' },
+      { value: 'Open', label: 'ソースフレームワーク' },
+      { value: 'Multi', label: 'エンジンクライアント対応' },
+      { value: 'C#', label: 'クライアント/サーバーフロー' },
     ],
   },
   quickStart: {
@@ -518,6 +668,29 @@ const ja: LandingTranslations = {
     ],
     copy: 'コピー',
     copied: 'コピー済み!',
+    guideText: '完全なクイックスタートを読む',
+  },
+  technicalFacts: {
+    title: '次に必要な情報',
+    subtitle: 'クイックスタートの裏側にある準備、主要入口、次のドキュメントです。',
+    prerequisitesTitle: '実行前の準備',
+    prerequisites: ['.NET SDK', 'MongoDB または Docker Compose', 'Unity クライアントプロジェクト', 'ProtoBuf ワークフロー'],
+    repositoriesTitle: '主要入口',
+    repositories: [
+      { title: 'メインリポジトリ', desc: 'フレームワークソースとプロジェクト概要。', href: 'https://github.com/GameFrameX/gameframex' },
+      { title: 'サーバーソース', desc: 'クイックスタートで使用する C# ゲームサーバー。', href: 'https://github.com/GameFrameX/GameFrameX.Server' },
+      { title: 'Unity クライアント docs', desc: 'クライアント統合とコンポーネントガイド。', href: '/client/unity/' },
+      { title: 'ドキュメントリポジトリ', desc: 'ドキュメントソースと貢献入口。', href: 'https://github.com/AlianBlank/GameFrameX.Docs' },
+    ],
+    nextTitle: 'おすすめの次の文書',
+    next: [
+      { title: 'クイックスタート', desc: '最初のサーバー起動を完了します。', href: '/guide/start' },
+      { title: 'Unity クライアント', desc: 'クライアントプロジェクトをフレームワークへ接続します。', href: '/client/unity/' },
+      { title: '起動パラメータ', desc: 'サーバー起動オプションを理解します。', href: '/server/launcher-params' },
+      { title: 'ネットワークプロトコル', desc: 'メッセージとプロトコル設計を確認します。', href: '/server/network-proto' },
+      { title: 'Docker', desc: 'コンテナでビルドとデプロイを行います。', href: '/docker/' },
+      { title: '設定', desc: 'LuBan ベースの設定パイプラインを使用します。', href: '/config/' },
+    ],
   },
   cta: {
     title: '3 分でゲームサーバーを起動',
@@ -542,6 +715,19 @@ const ko: LandingTranslations = {
     { icon: '📡', title: '통일 프로토콜: ProtoBuf', details: '프로토콜 정의가 문서화. 양쪽 코드를 자동 생성, 타입 안전하고 전방향 호환. 수동 직렬화 불필요, 중복 코드 없음.' },
     { icon: '📐', title: '통일 규약', details: '디렉토리 구조, 명명 규칙, 메시지 패턴의 강력한 규약. 1명이든 10명이든 동일한 코드 스타일, 즉시 온보딩.' },
   ],
+  startPaths: {
+    title: '시작 지점 선택',
+    subtitle: '역할에 맞는 문서 경로로 바로 이동하세요.',
+    action: '열기',
+    paths: [
+      { title: 'Unity 클라이언트', desc: 'Unity 프로젝트에 GameFrameX 컴포넌트를 통합합니다.', href: '/client/unity/' },
+      { title: '서버', desc: 'C# 게임 서버를 시작하고 실행 옵션을 이해합니다.', href: '/server/' },
+      { title: 'Protobuf', desc: '공유 프로토콜 흐름과 메시지 설계를 학습합니다.', href: '/protobuf/' },
+      { title: '설정', desc: 'LuBan 기반 설정 파이프라인을 사용합니다.', href: '/config/' },
+      { title: 'Docker', desc: '컨테이너로 빌드, 게시, 배포를 진행합니다.', href: '/docker/' },
+      { title: '도구', desc: '프로토콜 내보내기와 개발 보조 도구를 사용합니다.', href: '/tools/' },
+    ],
+  },
   codeDemo: {
     title: '한 번 정의로 양쪽 코드 자동 생성',
     subtitle: '클라이언트와 서버가 동일한 언어와 프로토콜 정의를 공유 — 컨텍스트 전환 불필요.',
@@ -601,9 +787,9 @@ const ko: LandingTranslations = {
       },
     ],
     metrics: [
-      { value: '500+', label: 'GitHub Stars' },
-      { value: '4', label: '게임 엔진' },
-      { value: '100%', label: 'C# 코드베이스' },
+      { value: 'Open', label: '소스 프레임워크' },
+      { value: 'Multi', label: '엔진 클라이언트 지원' },
+      { value: 'C#', label: '클라이언트/서버 흐름' },
     ],
   },
   quickStart: {
@@ -635,6 +821,29 @@ const ko: LandingTranslations = {
     ],
     copy: '복사',
     copied: '복사됨!',
+    guideText: '전체 빠른 시작 읽기',
+  },
+  technicalFacts: {
+    title: '다음에 알아야 할 것',
+    subtitle: '빠른 시작 뒤에 필요한 준비, 핵심 진입점, 다음 문서입니다.',
+    prerequisitesTitle: '실행 전 준비',
+    prerequisites: ['.NET SDK', 'MongoDB 또는 Docker Compose', 'Unity 클라이언트 프로젝트', 'ProtoBuf 워크플로'],
+    repositoriesTitle: '핵심 진입점',
+    repositories: [
+      { title: '메인 저장소', desc: '프레임워크 소스와 프로젝트 개요입니다.', href: 'https://github.com/GameFrameX/gameframex' },
+      { title: '서버 소스', desc: '빠른 시작에서 사용하는 C# 게임 서버입니다.', href: 'https://github.com/GameFrameX/GameFrameX.Server' },
+      { title: 'Unity 클라이언트 문서', desc: '클라이언트 통합과 컴포넌트 가이드입니다.', href: '/client/unity/' },
+      { title: '문서 저장소', desc: '문서 소스와 기여 진입점입니다.', href: 'https://github.com/AlianBlank/GameFrameX.Docs' },
+    ],
+    nextTitle: '추천 문서',
+    next: [
+      { title: '빠른 시작', desc: '첫 서버 실행을 완료합니다.', href: '/guide/start' },
+      { title: 'Unity 클라이언트', desc: '클라이언트 프로젝트를 프레임워크에 연결합니다.', href: '/client/unity/' },
+      { title: '실행 매개변수', desc: '서버 시작 옵션을 이해합니다.', href: '/server/launcher-params' },
+      { title: '네트워크 프로토콜', desc: '메시지와 프로토콜 설계를 확인합니다.', href: '/server/network-proto' },
+      { title: 'Docker', desc: '컨테이너로 빌드하고 배포합니다.', href: '/docker/' },
+      { title: '설정', desc: 'LuBan 기반 설정 파이프라인을 사용합니다.', href: '/config/' },
+    ],
   },
   cta: {
     title: '3 분 안에 게임 서버 시작하기',

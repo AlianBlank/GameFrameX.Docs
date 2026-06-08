@@ -5,13 +5,13 @@ import './EngineGrid.css';
 
 const engineLogos: Record<string, string> = {
   Unity:
-    'https://cdn.simpleicons.org/unity/FFFFFF',
+    '/images/engines/unity.svg',
   Godot:
-    'https://cdn.simpleicons.org/godotengine/478CBF',
+    '/images/engines/godot.svg',
   LayaBox:
     '/images/engines/layabox.png',
   'Cocos Creator':
-    'https://cdn.simpleicons.org/cocos/FFFFFF',
+    '/images/engines/cocos.svg',
 };
 
 export default function EngineGrid() {

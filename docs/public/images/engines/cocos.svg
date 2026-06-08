@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Cocos Creator">
+  <rect width="64" height="64" rx="12" fill="#1f6feb"/>
+  <path d="M32 8 53 20v24L32 56 11 44V20L32 8Z" fill="#ffffff"/>
+  <path d="M32 16 46 24v16L32 48 18 40V24l14-8Z" fill="#1f6feb"/>
+  <path d="M39 25c-2-2-4.5-3-7-3-7 0-12 5-12 12s5 12 12 12c2.8 0 5.3-.9 7.2-2.8" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+</svg>

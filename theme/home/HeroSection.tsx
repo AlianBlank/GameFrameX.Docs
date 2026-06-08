@@ -8,7 +8,7 @@ export default function HeroSection() {
 
   return (
     <section className="rp-hero">
-      <div className="rp-hero__name">{t.name}</div>
+      <h1 className="rp-hero__name">{t.name}</h1>
       <p className="rp-hero__text">{t.text}</p>
       <p className="rp-hero__tagline">{t.tagline}</p>
       <div className="rp-hero__actions">

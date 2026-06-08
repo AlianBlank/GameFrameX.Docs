@@ -1,0 +1,110 @@
+.rp-tech-facts {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) repeat(2, minmax(0, 1.2fr));
+  gap: 18px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.rp-tech-facts__panel {
+  min-height: 100%;
+  padding: 22px;
+  border: 1px solid var(--rp-c-divider);
+  border-radius: 8px;
+  background: var(--rp-c-bg-soft);
+}
+
+.rp-tech-facts__title {
+  margin: 0 0 16px;
+  color: var(--rp-c-text-1);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.rp-tech-facts__checks {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rp-tech-facts__checks li {
+  position: relative;
+  min-height: 24px;
+  padding-left: 28px;
+  color: var(--rp-c-text-2);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.rp-tech-facts__checks li::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 17px;
+  height: 17px;
+  border: 1px solid var(--rp-c-brand);
+  border-radius: 50%;
+  background: var(--rp-c-brand-dimm);
+}
+
+.rp-tech-facts__checks li::after {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 5px;
+  width: 7px;
+  height: 4px;
+  border-bottom: 2px solid var(--rp-c-brand);
+  border-left: 2px solid var(--rp-c-brand);
+  transform: rotate(-45deg);
+}
+
+.rp-tech-facts__links {
+  display: grid;
+  gap: 10px;
+}
+
+.rp-tech-facts__link {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid var(--rp-c-divider-light);
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s, background-color 0.2s, transform 0.2s;
+}
+
+.rp-tech-facts__link:hover {
+  border-color: var(--rp-c-brand);
+  background: var(--rp-c-brand-dimm);
+  transform: translateY(-1px);
+}
+
+.rp-tech-facts__link-title {
+  color: var(--rp-c-text-1);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.rp-tech-facts__link-desc {
+  color: var(--rp-c-text-2);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 960px) {
+  .rp-tech-facts {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 640px) {
+  .rp-tech-facts__panel {
+    padding: 18px;
+  }
+}
