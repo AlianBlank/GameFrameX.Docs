@@ -1,0 +1,24 @@
+{
+  "$schema": "./repo-registry.schema.json",
+  "version": "1.0.0",
+  "description": "GameFrameX 文档体系代码仓组注册表。Phase 1 启动前需先 fork OpenDeepWiki(见 2026-08-13-doc-architecture.md 决策 1),然后本表才会被 OpenDeepWiki 真正加载。当前是占位 schema,标 active: true 的仓是当前本地有路径的。",
+  "groups": {
+    "gfx-main": {
+      "displayName": "GameFrameX 主框架",
+      "ingestMode": "local-path",
+      "repositories": [
+        { "alias": "server",         "domain": "server",      "active": true,  "localPath": "../Server" },
+        { "alias": "server-source",  "domain": "server",      "active": true,  "localPath": "../Server.Source" },
+        { "alias": "foundation",     "domain": "foundation",  "active": true,  "localPath": "../Foundation" },
+        { "alias": "unity",          "domain": "unity",       "active": true,  "localPath": "../Unity" },
+        { "alias": "config",         "domain": "config",      "active": true,  "localPath": "../Config" },
+        { "alias": "protobuf",       "domain": "protobuf",    "active": true,  "localPath": "../Protobuf" },
+        { "alias": "tools",          "domain": "tools",       "active": true,  "localPath": "../Tools" },
+        { "alias": "admin-api",      "domain": "admin",       "active": false, "localPath": "../../Admin/GameFrameX.Admin.Unified.Api", "note": "等待 OpenDeepWiki fork 决策后启用" },
+        { "alias": "admin-vue",      "domain": "admin",       "active": false, "localPath": "../../Admin/GameFrameX.Admin.Unified.Vue", "note": "等待 OpenDeepWiki fork 决策后启用" },
+        { "alias": "fguidir",        "domain": "unity",       "active": false, "localPath": "../FairyGUIProject", "note": "Phase 3 启用" },
+        { "alias": "luban",          "domain": "config",      "active": false, "localPath": "../luban", "note": "Phase 3 启用" }
+      ]
+    }
+  }
+}
