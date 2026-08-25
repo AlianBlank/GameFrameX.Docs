@@ -1,7 +1,0 @@
-# 일반적인 작업
-
-- [설정 표를 불러오는 방법](./load-config.md)
-- [데이터 테이블(BaseDataTable)을 사용하여 설정 항목을 읽는 방법](./use-data-table.md)
-- [설정 로드 이벤트를 구독하는 방법 (성공 / 실패 / 핫 업데이트)](./subscribe-config-events.md)
-- [Unity Inspector에서 ConfigComponent를 확인하고 관리하는 방법](./use-config-inspector.md)
-- [사용자 지정 IConfigManager 구현을 통합하는 방법](./customize-config-manager.md)

@@ -1,11 +1,44 @@
 [
-  { "text": "指南", "link": "/guide/" },
-  { "text": "客戶端", "items": [
-    { "text": "Unity", "link": "/client/unity/" }
-  ]},
-  { "text": "伺服器", "link": "/server/" },
-  { "text": "工具", "link": "/tools/" },
-  { "text": "協議", "link": "/protobuf/" },
-  { "text": "Docker", "link": "/docker/" },
-  { "text": "配置文件", "link": "/config/" }
+  {
+    "text": "指南",
+    "link": "/guide/"
+  },
+  {
+    "text": "客戶端",
+    "items": [
+      {
+        "text": "Unity",
+        "link": "/client/unity/"
+      }
+    ]
+  },
+  {
+    "text": "組件",
+    "items": [
+      {
+        "text": "Unity",
+        "link": "/zh-TW/.auto/components/unity/"
+      }
+    ]
+  },
+  {
+    "text": "伺服器",
+    "link": "/server/"
+  },
+  {
+    "text": "工具",
+    "link": "/tools/"
+  },
+  {
+    "text": "協議",
+    "link": "/protobuf/"
+  },
+  {
+    "text": "Docker",
+    "link": "/docker/"
+  },
+  {
+    "text": "配置文件",
+    "link": "/config/"
+  }
 ]

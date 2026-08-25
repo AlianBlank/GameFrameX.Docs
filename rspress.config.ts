@@ -16,6 +16,10 @@ export default defineConfig({
   lang: 'en',
   outDir: 'dist',
   ssg: false,
+  // glob 默认不匹配点开头目录；.auto/ 是自动生成文档的落位前缀（gfx-config 规范，位于各语言目录内），需显式包含
+  route: {
+    include: ['**/.auto/**/*.md', '**/.auto/**/*.mdx'],
+  },
   search: {
     codeBlocks: false,
   },

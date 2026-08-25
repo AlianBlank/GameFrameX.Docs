@@ -10,6 +10,20 @@
     "$schema": { "type": "string" },
     "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
     "description": { "type": "string" },
+    "packageTitles": {
+      "description": "仓库名 → 各语言展示标题（ODW 语言码 zh/zh-TW/en/ja/ko），OpenDeepWiki 导出时作侧边栏与首页标题",
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "string" },
+          {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": { "type": "string", "minLength": 1 }
+          }
+        ]
+      }
+    },
     "groups": {
       "type": "object",
       "minProperties": 1,

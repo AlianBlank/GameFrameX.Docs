@@ -1,7 +1,23 @@
 {
   "$schema": "./repo-registry.schema.json",
-  "version": "2.0.0",
-  "description": "GameFrameX 文档体系代码仓组注册表。OpenDeepWiki 引擎直接在权威源 AlianBlank/OpenDeepWiki 上推进（2026-08-13 决策修正，不再 fork），本表被 OpenDeepWiki 加载后驱动文档生成。标 active: true 的仓是当前可摄取的。全部仓统一通过 gitUrl 从 GitHub 克隆获取（2026-08-14 决策）。Unity 包仓（com.gameframex.unity.*）不逐条登记，由 gfx-unity-packages 组的 discovery 启动时枚举 GitHub org 展开；第三方重打包单列 thirdParty 清单，默认 active: false，按需逐个激活（2026-08-14 决策）。私有仓文档公开摄取发布（2026-08-14 决策）。包名 → 文档子目录的映射规则见 catalog-template.json childrenTemplate。",
+  "version": "2.0.1",
+  "packageTitles": {
+    "com.gameframex.unity": {
+      "zh": "Core 核心",
+      "zh-TW": "Core 核心",
+      "en": "Core",
+      "ja": "Core コア",
+      "ko": "Core 코어"
+    },
+    "com.gameframex.unity.config": {
+      "zh": "Config 配置",
+      "zh-TW": "Config 設定",
+      "en": "Config",
+      "ja": "Config 設定",
+      "ko": "Config 설정"
+    }
+  },
+  "description": "GameFrameX 文档体系代码仓组注册表。OpenDeepWiki 引擎直接在权威源 AlianBlank/OpenDeepWiki 上推进（2026-08-13 决策修正，不再 fork），本表被 OpenDeepWiki 加载后驱动文档生成。标 active: true 的仓是当前可摄取的。全部仓统一通过 gitUrl 从 GitHub 克隆获取（2026-08-14 决策）。Unity 包仓（com.gameframex.unity.*）不逐条登记，由 gfx-unity-packages 组的 discovery 启动时枚举 GitHub org 展开；第三方重打包单列 thirdParty 清单，默认 active: false，按需逐个激活（2026-08-14 决策）。私有仓文档公开摄取发布（2026-08-14 决策）。包名 → 文档子目录的映射规则见 catalog-template.json childrenTemplate。packageTitles（2.0.1 新增）= 仓库名 → 各语言展示标题，OpenDeepWiki 导出侧边栏/首页标题用，键为 ODW 语言码（zh/zh-TW/en/ja/ko）。",
   "groups": {
     "gfx-main": {
       "displayName": "GameFrameX 主框架",

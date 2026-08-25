@@ -1,11 +1,44 @@
 [
-  { "text": "ガイド", "link": "/guide/" },
-  { "text": "クライアント", "items": [
-    { "text": "Unity", "link": "/client/unity/" }
-  ]},
-  { "text": "サーバー", "link": "/server/" },
-  { "text": "ツール", "link": "/tools/" },
-  { "text": "Protobuf", "link": "/protobuf/" },
-  { "text": "Docker", "link": "/docker/" },
-  { "text": "設定", "link": "/config/" }
+  {
+    "text": "ガイド",
+    "link": "/guide/"
+  },
+  {
+    "text": "クライアント",
+    "items": [
+      {
+        "text": "Unity",
+        "link": "/client/unity/"
+      }
+    ]
+  },
+  {
+    "text": "コンポーネント",
+    "items": [
+      {
+        "text": "Unity",
+        "link": "/ja/.auto/components/unity/"
+      }
+    ]
+  },
+  {
+    "text": "サーバー",
+    "link": "/server/"
+  },
+  {
+    "text": "ツール",
+    "link": "/tools/"
+  },
+  {
+    "text": "Protobuf",
+    "link": "/protobuf/"
+  },
+  {
+    "text": "Docker",
+    "link": "/docker/"
+  },
+  {
+    "text": "設定",
+    "link": "/config/"
+  }
 ]

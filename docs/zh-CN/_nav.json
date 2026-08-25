@@ -17,6 +17,15 @@
     ]
   },
   {
+    "text": "组件",
+    "items": [
+      {
+        "text": "Unity",
+        "link": "/zh-CN/.auto/components/unity/"
+      }
+    ]
+  },
+  {
     "text": "服务器",
     "link": "/server/"
   },

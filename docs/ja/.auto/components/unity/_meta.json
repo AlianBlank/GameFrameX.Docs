@@ -1,0 +1,37 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "入門ガイド"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "ランタイムコア使用"
+  },
+  {
+    "type": "dir",
+    "name": "editor-tasks",
+    "label": "エディターとビルドツール"
+  },
+  {
+    "type": "dir",
+    "name": "platform-tasks",
+    "label": "ミニゲームプラットフォーム対応"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "トラブルシューティング"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "参考"
+  },
+  {
+    "type": "dir",
+    "name": "config",
+    "label": "Config 設定"
+  }
+]
