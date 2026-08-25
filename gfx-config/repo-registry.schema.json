@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "repo-registry.schema.json",
+  "title": "GameFrameX 代码仓组注册表",
+  "description": "gfx-config/repo-registry.json 的校验 schema。docPath 枚举与 catalog-template.json rootDomains 保持同步（9 域 IA 变更时两处同改）。ingestMode 枚举值以 OpenDeepWiki 实际实现为准（2026-08-14 未接入前为约定值）。",
+  "type": "object",
+  "required": ["version", "groups"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "description": { "type": "string" },
+    "groups": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "#/definitions/group" }
+    }
+  },
+  "definitions": {
+    "group": {
+      "type": "object",
+      "required": ["displayName", "ingestMode"],
+      "additionalProperties": false,
+      "anyOf": [
+        { "required": ["repositories"] },
+        { "required": ["discovery"] }
+      ],
+      "properties": {
+        "displayName": { "type": "string", "minLength": 1 },
+        "ingestMode": { "enum": ["git-url", "local-path"] },
+        "repositories": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/repository" }
+        },
+        "discovery": { "$ref": "#/definitions/discovery" },
+        "thirdPartyPackages": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/thirdPartyPackage" }
+        },
+        "note": { "type": "string" }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "required": ["alias", "domain", "active", "gitUrl", "docPath"],
+      "additionalProperties": false,
+      "properties": {
+        "alias": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+        "domain": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+        "active": { "type": "boolean" },
+        "gitUrl": {
+          "type": "string",
+          "pattern": "^(https://github\\.com/|git@github\\.com:)[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+\\.git$"
+        },
+        "docPath": {
+          "description": "自动生成文档落盘目录（相对 docs/<lang>/），必须对齐 catalog-template.json 的 9 域 IA",
+          "enum": [
+            ".auto/guide",
+            ".auto/architecture",
+            ".auto/components/unity",
+            ".auto/components/server",
+            ".auto/components/foundation",
+            ".auto/components/godot",
+            ".auto/admin",
+            ".auto/data-and-config",
+            ".auto/tools-and-specification"
+          ]
+        },
+        "note": { "type": "string" }
+      }
+    },
+    "discovery": {
+      "type": "object",
+      "required": ["type", "org", "repoPatterns", "gitUrlTemplate", "docPathTemplate", "packageTreeRule"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "github-org" },
+        "org": { "type": "string", "minLength": 1 },
+        "repoPatterns": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "visibility": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "enum": ["public", "private"] }
+        },
+        "gitUrlTemplate": { "type": "string", "pattern": "\\{repo\\}" },
+        "docPathTemplate": { "type": "string", "pattern": "\\{packageTree\\}" },
+        "packageTreeRule": { "type": "string", "minLength": 1 },
+        "note": { "type": "string" }
+      }
+    },
+    "thirdPartyPackage": {
+      "type": "object",
+      "required": ["repo", "upstream", "active"],
+      "additionalProperties": false,
+      "properties": {
+        "repo": { "type": "string", "pattern": "^com\\.gameframex\\.unity(\\.[a-z0-9-]+)+$" },
+        "upstream": { "type": "string", "minLength": 1 },
+        "active": { "type": "boolean" },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,24 +1,132 @@
 {
   "$schema": "./repo-registry.schema.json",
-  "version": "1.0.0",
-  "description": "GameFrameX 文档体系代码仓组注册表。Phase 1 启动前需先 fork OpenDeepWiki(见 2026-08-13-doc-architecture.md 决策 1),然后本表才会被 OpenDeepWiki 真正加载。当前是占位 schema,标 active: true 的仓是当前本地有路径的。",
+  "version": "2.0.0",
+  "description": "GameFrameX 文档体系代码仓组注册表。OpenDeepWiki 引擎直接在权威源 AlianBlank/OpenDeepWiki 上推进（2026-08-13 决策修正，不再 fork），本表被 OpenDeepWiki 加载后驱动文档生成。标 active: true 的仓是当前可摄取的。全部仓统一通过 gitUrl 从 GitHub 克隆获取（2026-08-14 决策）。Unity 包仓（com.gameframex.unity.*）不逐条登记，由 gfx-unity-packages 组的 discovery 启动时枚举 GitHub org 展开；第三方重打包单列 thirdParty 清单，默认 active: false，按需逐个激活（2026-08-14 决策）。私有仓文档公开摄取发布（2026-08-14 决策）。包名 → 文档子目录的映射规则见 catalog-template.json childrenTemplate。",
   "groups": {
     "gfx-main": {
       "displayName": "GameFrameX 主框架",
-      "ingestMode": "local-path",
+      "ingestMode": "git-url",
       "repositories": [
-        { "alias": "server",         "domain": "server",      "active": true,  "localPath": "../Server" },
-        { "alias": "server-source",  "domain": "server",      "active": true,  "localPath": "../Server.Source" },
-        { "alias": "foundation",     "domain": "foundation",  "active": true,  "localPath": "../Foundation" },
-        { "alias": "unity",          "domain": "unity",       "active": true,  "localPath": "../Unity" },
-        { "alias": "config",         "domain": "config",      "active": true,  "localPath": "../Config" },
-        { "alias": "protobuf",       "domain": "protobuf",    "active": true,  "localPath": "../Protobuf" },
-        { "alias": "tools",          "domain": "tools",       "active": true,  "localPath": "../Tools" },
-        { "alias": "admin-api",      "domain": "admin",       "active": false, "localPath": "../../Admin/GameFrameX.Admin.Unified.Api", "note": "等待 OpenDeepWiki fork 决策后启用" },
-        { "alias": "admin-vue",      "domain": "admin",       "active": false, "localPath": "../../Admin/GameFrameX.Admin.Unified.Vue", "note": "等待 OpenDeepWiki fork 决策后启用" },
-        { "alias": "fguidir",        "domain": "unity",       "active": false, "localPath": "../FairyGUIProject", "note": "Phase 3 启用" },
-        { "alias": "luban",          "domain": "config",      "active": false, "localPath": "../luban", "note": "Phase 3 启用" }
+        {
+          "alias": "server",
+          "domain": "server",
+          "active": true,
+          "gitUrl": "https://github.com/GameFrameX/GameFrameX.Server.git",
+          "docPath": ".auto/components/server"
+        },
+        {
+          "alias": "server-source",
+          "domain": "server",
+          "active": true,
+          "gitUrl": "https://github.com/GameFrameX/GameFrameX.Server.Source.git",
+          "docPath": ".auto/components/server"
+        },
+        {
+          "alias": "foundation",
+          "domain": "foundation",
+          "active": true,
+          "gitUrl": "https://github.com/GameFrameX/GameFrameX.Foundation.git",
+          "docPath": ".auto/components/foundation"
+        },
+        {
+          "alias": "unity",
+          "domain": "unity",
+          "active": true,
+          "gitUrl": "https://github.com/GameFrameX/GameFrameX.Unity.git",
+          "docPath": ".auto/components/unity",
+          "note": "Unity 主工程仓（引擎集成、项目结构）。com.gameframex.unity.* 包的文档由 gfx-unity-packages 组从独立包仓生成，不读本仓 Packages/"
+        },
+        {
+          "alias": "config",
+          "domain": "config",
+          "active": true,
+          "gitUrl": "https://github.com/GameFrameX/GameFrameX.Config.git",
+          "docPath": ".auto/data-and-config"
+        },
+        {
+          "alias": "protobuf",
+          "domain": "protobuf",
+          "active": true,
+          "gitUrl": "https://github.com/GameFrameX/GameFrameX.Protobuf.git",
+          "docPath": ".auto/data-and-config"
+        },
+        {
+          "alias": "opendeepwiki",
+          "domain": "tools",
+          "active": true,
+          "gitUrl": "https://github.com/AlianBlank/OpenDeepWiki.git",
+          "docPath": ".auto/tools-and-specification",
+          "note": "OpenDeepWiki 引擎自身（权威源 AlianBlank，C2 决策）"
+        },
+        {
+          "alias": "admin-api",
+          "domain": "admin",
+          "active": false,
+          "gitUrl": "https://github.com/GameFrameX/GameFrameX.Admin.Unified.Api.git",
+          "docPath": ".auto/admin",
+          "note": "Phase 2 启用；私有仓，文档公开（2026-08-14 决策）"
+        },
+        {
+          "alias": "admin-vue",
+          "domain": "admin",
+          "active": false,
+          "gitUrl": "https://github.com/GameFrameX/GameFrameX.Admin.Unified.Vue.git",
+          "docPath": ".auto/admin",
+          "note": "Phase 2 启用；私有仓，文档公开（2026-08-14 决策）"
+        },
+        {
+          "alias": "fguidir",
+          "domain": "unity",
+          "active": false,
+          "gitUrl": "https://github.com/GameFrameX/GameFrameX.FairyGUIProject.git",
+          "docPath": ".auto/components/unity",
+          "note": "Phase 3 启用"
+        },
+        {
+          "alias": "luban",
+          "domain": "config",
+          "active": false,
+          "gitUrl": "https://github.com/GameFrameX/luban.git",
+          "docPath": ".auto/data-and-config",
+          "note": "Phase 3 启用"
+        }
       ]
+    },
+    "gfx-unity-packages": {
+      "displayName": "GameFrameX Unity 组件包仓群",
+      "ingestMode": "git-url",
+      "discovery": {
+        "type": "github-org",
+        "org": "GameFrameX",
+        "repoPatterns": ["com.gameframex.unity", "com.gameframex.unity.*"],
+        "visibility": ["public", "private"],
+        "gitUrlTemplate": "https://github.com/GameFrameX/{repo}.git",
+        "docPathTemplate": ".auto/components/unity/{packageTree}",
+        "packageTreeRule": "见 catalog-template.json childrenTemplate.components/unity.packageTreeRule（唯一事实源）",
+        "note": "启动时枚举 org 匹配仓自动展开，新增包仓自动跟进，无需改本表。主仓 Packages/ 下尚未发布独立仓的包（apple-signin、appsflyer、code-philosophy.hybridclr、gravity-engine 系、talkingdata 系等）暂不覆盖，独立仓建立后自动纳入"
+      },
+      "thirdPartyPackages": [
+        { "repo": "com.gameframex.unity.cysharp.unitask", "upstream": "Cysharp/UniTask", "active": false },
+        { "repo": "com.gameframex.unity.demigiant.dotween", "upstream": "Demigiant/DOTween", "active": false },
+        { "repo": "com.gameframex.unity.esotericsoftware.spine.spine-unity", "upstream": "EsotericSoftware/spine-unity", "active": false },
+        { "repo": "com.gameframex.unity.fairygui.unity", "upstream": "fairygui/FairyGUI-unity", "active": false },
+        { "repo": "com.gameframex.unity.focus-creative-games.luban", "upstream": "focus-creative-games/luban", "active": false },
+        { "repo": "com.gameframex.unity.google.protobuf", "upstream": "protobuf-net/protobuf-net", "active": false },
+        { "repo": "com.gameframex.unity.gwiazdorrr.betterstreamingassets", "upstream": "gwiazdorrr/BetterStreamingAssets", "active": false },
+        { "repo": "com.gameframex.unity.litjson", "upstream": "XINCGer/LitJson4Unity", "active": false },
+        { "repo": "com.gameframex.unity.xincger.litjson", "upstream": "XINCGer/LitJson4Unity", "active": false },
+        { "repo": "com.gameframex.unity.json.simplejson", "upstream": "SimpleJSON", "active": false },
+        { "repo": "com.gameframex.unity.psygames.unitywebsocket", "upstream": "psygames/UnityWebSocket", "active": false },
+        { "repo": "com.gameframex.unity.tuyoogame.yooasset", "upstream": "tuyoogame/YooAsset", "active": false },
+        { "repo": "com.gameframex.unity.tuyoogame.yooasset.minigame.alipay", "upstream": "tuyoogame/YooAsset 生态适配", "active": false },
+        { "repo": "com.gameframex.unity.tuyoogame.yooasset.minigame.googleplay", "upstream": "tuyoogame/YooAsset 生态适配", "active": false },
+        { "repo": "com.gameframex.unity.tuyoogame.yooasset.minigame.tiktok", "upstream": "tuyoogame/YooAsset 生态适配", "active": false },
+        { "repo": "com.gameframex.unity.tuyoogame.yooasset.minigame.wechat", "upstream": "tuyoogame/YooAsset 生态适配", "active": false },
+        { "repo": "com.gameframex.unity.tuyoogame.yooasset.minigame.taptap", "upstream": "tuyoogame/YooAsset 生态适配", "active": false },
+        { "repo": "com.gameframex.unity.tencent.xlua", "upstream": "Tencent/xLua", "active": false },
+        { "repo": "com.gameframex.unity.yasirkula.debugconsole", "upstream": "yasirkola/IngameDebugConsole", "active": false }
+      ],
+      "note": "thirdPartyPackages 为第三方库重打包（默认停用，激活后同样按 packageTreeRule 落盘并标注 upstream 溯源）；discovery 枚举时跳过本清单中的仓。SDK 集成适配器（payment.google、advertisement.topon、adjust、sentry 等）是 GameFrameX 原创适配层，不属于重打包，正常纳入"
     }
   }
 }
