@@ -1,0 +1,170 @@
+# Load Your First Config Table in 5 Minutes
+
+Follow the steps on this page and you will install the GameFrameX Config package within 5 minutes, and load and read your first config table in Unity via `ConfigComponent`.
+
+## Prerequisites
+
+- Unity 2019.4 or higher
+- `com.gameframex.unity` (GameFrameX core framework) is already included in your project
+- Dependencies: `com.gameframex.unity.asset`, `com.gameframex.unity.event`
+- A scene object for attaching `GameFrameworkEntry` (GameFrameX entry component)
+
+## Steps
+
+### 1. Install the Config Package
+
+Edit the `Packages/manifest.json` file at the root of your Unity project, add the GameFrameX scoped registry, and declare the config package in `dependencies` (recommended, allows resolving future updates):
+
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.gameframex.unity.config": "1.1.5"
+  }
+}
+```
+
+Source: [README.zh-CN.md](/src/README.zh-CN.md#L36-L51)
+
+If your network cannot access the scoped registry, you can install directly via Git URL instead. Add the following to `dependencies`:
+
+```json
+{
+  "com.gameframex.unity.config": "https://github.com/gameframex/com.gameframex.unity.config.git"
+```
+
+Source: [README.zh-CN.md](/src/README.zh-CN.md#L56-L61)
+
+After installation, Unity will refresh the package list. Confirm that `com.gameframex.unity.config` is visible in the Package Manager.
+
+### 2. Attach the Entry and Config Component in the Scene
+
+Make sure `GameFrameworkEntry` exists in the scene (or start via `com.gameframex.unity.entry`). `ConfigComponent` registers automatically to the framework via attribute, no manual addition needed:
+
+```csharp
+[DisallowMultipleComponent]
+[AddComponentMenu("GameFrameX/Config")]
+[GameFrameXAutoComponent(-5000)]
+public sealed class ConfigComponent : GameFrameworkComponent
+```
+
+Source: [ConfigComponent.cs](/src/Runtime/Config/ConfigComponent.cs#L46-L49)
+
+As long as GameFrameX is started, `Awake()` will automatically create the internal `IConfigManager`, you don't need to `new` it yourself.
+
+### 3. Get ConfigComponent via GameEntry and Load Config
+
+Use `GameEntry.GetComponent<ConfigComponent>()` to get the global component, and call `LoadConfig` to load your first table:
+
+```csharp
+// Standard way: via GameEntry (does not depend on com.gameframex.unity.entry)
+var configComponent = GameEntry.GetComponent<ConfigComponent>();
+configComponent.LoadConfig("ConfigPath");
+```
+
+Source: [README.zh-CN.md](/src/README.zh-CN.md#L66-L70)
+
+> Tip: `ConfigPath` is the load key for the config table resource, determined by your project's resource management convention. Replace with the actual path according to your project.
+
+### 4. Implement a Config Table and Read It
+
+Your config data type must implement the `IDataTable` interface, and the framework manages them by type name as key. Then use `GetConfig<T>` to read:
+
+```csharp
+public class MyConfigTable : IDataTable
+{
+    // Your fields and reading logic
+}
+
+[Preserve]
+public T GetConfig<T>() where T : IDataTable
+{
+    var configName = GetTypeName<T>();
+    var config = m_ConfigManager.GetConfig(configName);
+    if (config != null)
+    {
+        return (T)config;
+    }
+    return default;
+}
+```
+
+Source: [ConfigComponent.cs](/src/Runtime/Config/ConfigComponent.cs#L117-L128)
+
+Read example:
+
+```csharp
+var table = configComponent.GetConfig<MyConfigTable>();
+if (table != null)
+{
+    // Use data in table
+}
+```
+
+### 5. Register Success / Failure Callbacks (Optional)
+
+Subscribe to load results via framework events:
+
+| Event | Purpose |
+|------|------|
+| `LoadConfigSuccessEventArgs` | Triggered when config is loaded successfully |
+| `LoadConfigFailureEventArgs` | Triggered when config fails to load |
+| `LoadConfigUpdateEventArgs` | Triggered on config hot update |
+
+Subscription follows the GameFrameX `GameEntry.GetComponent<EventComponent>()` standard pattern.
+
+## Common Variants
+
+- **Load by type key**: Use `HasConfig<T>()` / `RemoveConfig<T>()` for existence check and removal, key is `typeof(T).Name`:
+
+```csharp
+[Preserve]
+public bool HasConfig<T>() where T : IDataTable
+{
+    var configName = GetTypeName<T>();
+    return m_ConfigManager.HasConfig(configName);
+}
+```
+
+Source: [ConfigComponent.cs](/src/Runtime/Config/ConfigComponent.cs#L138-L143)
+
+- **Dynamically add config at runtime**: Call `Add(configName, dataTable)` to register an already constructed `IDataTable` into the manager:
+
+```csharp
+configComponent.Add("MyConfig", myDataTableInstance);
+```
+
+Source: [ConfigComponent.cs](/src/Runtime/Config/ConfigComponent.cs#L181-L185)
+
+- **Clear all configs**: `RemoveAllConfigs()` will clear both the type mapping and all table entries.
+
+## Common Errors
+
+| Symptom | Cause | Fix |
+|------|------|------|
+| `Log.Fatal("Config manager is invalid.")` | `Awake()` failed to get the manager via `GameFrameworkEntry.GetModule<IConfigManager>()` | Confirm `com.gameframex.unity` is installed, and `ConfigComponent` is properly initialized by the framework |
+| `GetConfig<T>()` returns `default` | Table not loaded yet or name mismatch | Confirm `LoadConfig` has been passed the correct resource key; confirm data type implements `IDataTable` |
+| Editor cannot find `GameFrameX/Config` menu | Package not imported correctly | Restart Unity or re-resolve `com.gameframex.unity.config` in Package Manager |
+
+## Background (Optional)
+
+`ConfigComponent` registers automatically on GameFrameX startup via `[GameFrameXAutoComponent(-5000)]`, with a lower priority so other resource/event components initialize first. Internally, the type mapping is cached in a `ConcurrentDictionary<Type, string>`, with key as `typeof(T).Name`, avoiding reflection name lookup every time. All table entries are maintained by `IConfigManager`, thread-safe.
+
+Source: [ConfigComponent.cs](/src/Runtime/Config/ConfigComponent.cs#L48-L52)
+
+## Related Links
+
+- Config component implementation: [ConfigComponent.cs](/src/Runtime/Config/ConfigComponent.cs)
+- Config manager: [ConfigManager.cs](/src/Runtime/Config/Config/ConfigManager.cs)
+- Data table interface: [IDataTable.cs](/src/Runtime/Config/Config/IDataTable.cs)
+- Base data table class: [BaseDataTable.cs](/src/Runtime/Config/Config/BaseDataTable.cs)
+- Load event definitions: [LoadConfigSuccessEventArgs.cs](/src/Runtime/EventArgs/LoadConfigSuccessEventArgs.cs), [LoadConfigFailureEventArgs.cs](/src/Runtime/EventArgs/LoadConfigFailureEventArgs.cs), [LoadConfigUpdateEventArgs.cs](/src/Runtime/EventArgs/LoadConfigUpdateEventArgs.cs)
+- Project description: [README.zh-CN.md](/src/README.zh-CN.md)

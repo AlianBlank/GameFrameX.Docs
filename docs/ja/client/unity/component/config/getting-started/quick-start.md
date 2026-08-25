@@ -1,0 +1,170 @@
+# 5分で最初の設定表を読み込む
+
+このページの操作手順に従えば、5分以内にGameFrameX Config設定表パッケージをインストールし、`ConfigComponent`を使ってUnityで最初の設定表を読み込んで参照することができます。
+
+## 前提条件
+
+- Unity 2019.4 以降のバージョン
+- プロジェクトに `com.gameframex.unity`（GameFrameX コアフレームワーク）が導入済みであること
+- 依存関係：`com.gameframex.unity.asset`、`com.gameframex.unity.event`
+- `GameFrameworkEntry` をアタッチするシーンオブジェクト（GameFrameX エントリコンポーネント）
+
+## 操作手順
+
+### 1. 設定表パッケージのインストール
+
+Unity プロジェクトのルートディレクトリにある `Packages/manifest.json` を編集し、GameFrameX のスコープ付きレジストリを追加し、`dependencies` 内で設定表パッケージを宣言します（推奨方法で、後続の更新バージョンを解析できます）：
+
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ],
+  "dependencies": {
+    "com.gameframex.unity.config": "1.1.5"
+  }
+}
+```
+
+Source: [README.zh-CN.md](/src/README.zh-CN.md#L36-L51)
+
+ネットワークがスコープ付きレジストリにアクセスできない場合は、Git URL で直接インストールすることもできます。`dependencies` に以下を追加します：
+
+```json
+{
+  "com.gameframex.unity.config": "https://github.com/gameframex/com.gameframex.unity.config.git"
+```
+
+Source: [README.zh-CN.md](/src/README.zh-CN.md#L56-L61)
+
+インストールが完了すると、Unity がパッケージリストを更新するので、Package Manager に `com.gameframex.unity.config` が表示されていることを確認してください。
+
+### 2. シーンにエントリと設定コンポーネントをアタッチする
+
+シーンに `GameFrameworkEntry` が存在することを確認してください（または `com.gameframex.unity.entry` 経由で起動します）。`ConfigComponent` は属性により自動的にフレームワークに登録されるため、手動で追加する必要はありません：
+
+```csharp
+[DisallowMultipleComponent]
+[AddComponentMenu("GameFrameX/Config")]
+[GameFrameXAutoComponent(-5000)]
+public sealed class ConfigComponent : GameFrameworkComponent
+```
+
+Source: [ConfigComponent.cs](/src/Runtime/Config/ConfigComponent.cs#L46-L49)
+
+GameFrameX が起動すれば、`Awake()` が自動的に内部の `IConfigManager` を作成するので、自分で new する必要はありません。
+
+### 3. GameEntry 経由で ConfigComponent を取得し、設定を読み込む
+
+`GameEntry.GetComponent<ConfigComponent>()` を使ってグローバルコンポーネントを取得し、`LoadConfig` を呼び出して最初の表を読み込みます：
+
+```csharp
+// 標準的な方法：GameEntry 経由（com.gameframex.unity.entry に依存しない）
+var configComponent = GameEntry.GetComponent<ConfigComponent>();
+configComponent.LoadConfig("ConfigPath");
+```
+
+Source: [README.zh-CN.md](/src/README.zh-CN.md#L66-L70)
+
+> ヒント：`ConfigPath` は設定表リソースの読み込みキーで、プロジェクトの resource management 規約によって決まります。具体的なパスはプロジェクトの实际情况に合わせて置き換えてください。
+
+### 4. 設定表を実装して読み取る
+
+設定データの型は `IDataTable` インターフェイスを実装する必要があり、フレームワークは型名をキーとしてこれらを管理します。その後、`GetConfig<T>` を使って読み込みます：
+
+```csharp
+public class MyConfigTable : IDataTable
+{
+    // 你的字段与读取逻辑
+}
+
+[Preserve]
+public T GetConfig<T>() where T : IDataTable
+{
+    var configName = GetTypeName<T>();
+    var config = m_ConfigManager.GetConfig(configName);
+    if (config != null)
+    {
+        return (T)config;
+    }
+    return default;
+}
+```
+
+Source: [ConfigComponent.cs](/src/Runtime/Config/ConfigComponent.cs#L117-L128)
+
+読み取り例：
+
+```csharp
+var table = configComponent.GetConfig<MyConfigTable>();
+if (table != null)
+{
+    // table 内のデータを使用する
+}
+```
+
+### 5. 成功 / 失敗コールバックの登録（オプション）
+
+フレームワークイベントで読み込み結果を購読します：
+
+| イベント | 用途 |
+|------|------|
+| `LoadConfigSuccessEventArgs` | 設定の読み込み成功時にトリガー |
+| `LoadConfigFailureEventArgs` | 設定の読み込み失敗時にトリガー |
+| `LoadConfigUpdateEventArgs` | 設定のホットアップデート時にトリガー |
+
+購読方法は GameFrameX の `GameEntry.GetComponent<EventComponent>()` 標準パターンに従います。
+
+## よくあるバリエーション
+
+- **型キーで読み込み**：`HasConfig<T>()` / `RemoveConfig<T>()` で存在確認と削除を行います。キーは `typeof(T).Name` です：
+
+```csharp
+[Preserve]
+public bool HasConfig<T>() where T : IDataTable
+{
+    var configName = GetTypeName<T>();
+    return m_ConfigManager.HasConfig(configName);
+}
+```
+
+Source: [ConfigComponent.cs](/src/Runtime/Config/ConfigComponent.cs#L138-L143)
+
+- **実行時に動的に設定を追加**：`Add(configName, dataTable)` を呼び出して、構築済みの `IDataTable` をマネージャーに登録します：
+
+```csharp
+configComponent.Add("MyConfig", myDataTableInstance);
+```
+
+Source: [ConfigComponent.cs](/src/Runtime/Config/ConfigComponent.cs#L181-L185)
+
+- **すべての設定をクリアする**：`RemoveAllConfigs()` は型マッピングとすべての表項目を同時にクリアします。
+
+## よくあるエラー
+
+| 症状 | 原因 | 修正 |
+|------|------|------|
+| `Log.Fatal("Config manager is invalid.")` | `Awake()` 内で `GameFrameworkEntry.GetModule<IConfigManager>()` からマネージャーを取得できなかった | `com.gameframex.unity` がインストールされていること、`ConfigComponent` がフレームワークによって正常に初期化されていることを確認 |
+| `GetConfig<T>()` が `default` を返す | 表がまだ読み込まれていない、または名前が一致しない | `LoadConfig` に正しいリソースキーが渡されていることを確認、データ型が `IDataTable` を実装していることを確認 |
+| エディタで `GameFrameX/Config` メニューが見つからない | パッケージが正しくインポートされていない | Unity を再起動するか、Package Manager で `com.gameframex.unity.config` を再解析 |
+
+## 背景（オプション）
+
+`ConfigComponent` は `[GameFrameXAutoComponent(-5000)]` により、GameFrameX の起動時に自動的に登録されます。優先度は低めに設定されており、他のリソース / イベントコンポーネントが先に準備完了するようにしています。内部では型マッピングを `ConcurrentDictionary<Type, string>` にキャッシュし、キーは `typeof(T).Name` です。これにより、リフレクションで名前を取得するたびに発生するオーバーヘッドを回避しています。すべての表項目は `IConfigManager` によって一元管理され、スレッドセーフです。
+
+Source: [ConfigComponent.cs](/src/Runtime/Config/ConfigComponent.cs#L48-L52)
+
+## 関連リンク
+
+- 設定コンポーネントの実装：[ConfigComponent.cs](/src/Runtime/Config/ConfigComponent.cs)
+- 設定マネージャー：[ConfigManager.cs](/src/Runtime/Config/Config/ConfigManager.cs)
+- データ表インターフェース：[IDataTable.cs](/src/Runtime/Config/Config/IDataTable.cs)
+- 基本データ表基底クラス：[BaseDataTable.cs](/src/Runtime/Config/Config/BaseDataTable.cs)
+- 読み込みイベント定義：[LoadConfigSuccessEventArgs.cs](/src/Runtime/EventArgs/LoadConfigSuccessEventArgs.cs)、[LoadConfigFailureEventArgs.cs](/src/Runtime/EventArgs/LoadConfigFailureEventArgs.cs)、[LoadConfigUpdateEventArgs.cs](/src/Runtime/EventArgs/LoadConfigUpdateEventArgs.cs)
+- プロジェクト説明：[README.zh-CN.md](/src/README.zh-CN.md)

@@ -1,0 +1,132 @@
+# 仕組み:Config コンポーネントアーキテクチャの概要
+
+Config コンポーネントは `ConfigComponent` をエントリポイントとし、`IConfigManager` インターフェースを通じて設定項目を `ConfigManager` モジュールに一元管理させます。実行時には `IDataTable` インターフェースに従って非同期で読み込み、キャッシュし、ビジネスレイヤーにキーバリューアクセスを提供します。このページでは 1 つの図で「コンポーネント — モジュール — データテーブル」の 3 層の関係と、読み込みから読み取りまでの最小限のコードパスを説明します。
+
+## クイックスタート
+
+1. シーン内の `GameFramework` GameObject に `ConfigComponent` を追加します(コンポーネントメニュー:`GameFrameX/Config`)。
+2. ビジネス側は `GameEntry.GetComponent<ConfigComponent>()` でコンポーネントを取得します。
+3. コンポーネントは `Awake()` 内で `GameFrameworkEntry.GetModule<IConfigManager>()` を呼び出し、`ConfigManager` インスタンスを解決します([ConfigComponent.cs#L73-L85](/Runtime/Config/ConfigComponent.cs#L73-L85))。
+4. 任意の `IDataTable` サブクラスが自身の `LoadAsync()` を呼び出し、読み込み完了後に `ConfigManager.AddConfig(configName, table)` で登録します。以降は `HasConfig` / `GetConfig` でクエリできます。
+
+```csharp
+var configComp = GameEntry.GetComponent<ConfigComponent>();
+var module = GameFrameworkEntry.GetModule<IConfigManager>();
+module.AddConfig("MyTable", myDataTable);   // IDataTable は BaseDataTable<T> から派生
+```
+
+## 仕組みの概要
+
+全体は 3 層に分かれます:**Unity コンポーネント層**(`ConfigComponent`)、**フレームワークモジュール層**(`IConfigManager` / `ConfigManager`)、**データテーブル層**(`IDataTable` / `BaseDataTable<T>`)。コンポーネント層は Unity のライフサイクル内でモジュールを解決する役割を担い、モジュール層は `ConcurrentDictionary<string, IDataTable>` を使って設定集合を維持し、データテーブル層は具体的な読み込み、解析、キーバリュークエリを担当します。
+
+```mermaid
+flowchart TD
+    subgraph コンポーネント層["Unity コンポーネント層"]
+        CC[ConfigComponent]
+    end
+    subgraph モジュール層["フレームワークモジュール層"]
+        ICM[IConfigManager]
+        CM[ConfigManager]
+    end
+    subgraph データテーブル層["データテーブル層"]
+        IDT[IDataTable]
+        BDT[BaseDataTable T]
+    end
+    subgraph イベント層["イベント層"]
+        LCS[LoadConfigSuccessEventArgs]
+        LCF[LoadConfigFailureEventArgs]
+        LCU[LoadConfigUpdateEventArgs]
+    end
+    CC -->|GetModule| ICM
+    ICM --> CM
+    CM -->|AddConfig / HasConfig / GetConfig| IDT
+    IDT <|.. BDT
+    IDT -.->|LoadAsync トリガー| LCS
+    IDT -.->|読み込み失敗| LCF
+    IDT -.->|読み込み進捗| LCU
+```
+
+各層の責務一覧:
+
+| 層 | 主要タイプ | ファイル | 主な責務 |
+|----|----------|------|----------|
+| コンポーネント層 | `ConfigComponent` | [ConfigComponent.cs](/Runtime/Config/ConfigComponent.cs) | `Awake()` 内で `IConfigManager` モジュールを解決する。`[GameFrameXAutoComponent(-5000)]` によって GameFramework に自動注入される |
+| モジュール層 | `IConfigManager`、`ConfigManager` | [IConfigManager.cs](/Runtime/Config/Config/IConfigManager.cs)、[ConfigManager.cs](/Runtime/Config/Config/ConfigManager.cs) | `ConcurrentDictionary<string, IDataTable>` で設定項目を維持し、`Add` / `Remove` / `Has` / `Get` インターフェースを公開する |
+| データテーブル層 | `IDataTable`、`BaseDataTable<T>` | [IDataTable.cs](/Runtime/Config/Config/IDataTable.cs)、[BaseDataTable.cs](/Runtime/Config/Config/BaseDataTable.cs) | 単一テーブルの非同期読み込み、キーインデックス、クエリを担当する |
+| イベント層 | `LoadConfigSuccessEventArgs` など | [LoadConfigSuccessEventArgs.cs](/Runtime/EventArgs/LoadConfigSuccessEventArgs.cs) | 読み込み成功 / 失敗 / 進捗イベント。ビジネス側が購読することで検知できる |
+
+## 重要な API とデフォルト値
+
+`IConfigManager` はモジュール層の対外契約であり、署名はソースコードから直接取得したものです:
+
+| メンバー | シグネチャ | デフォルト値 / 説明 |
+|------|------|---------------|
+| `Count` | `int Count { get; }` | 現在登録済みの設定項目数。内部辞書 `m_ConfigDatas.Count` から取得 |
+| `HasConfig` | `bool HasConfig(string configName)` | 名前の照合には `StringComparer.Ordinal` を使用 |
+| `AddConfig` | `void AddConfig(string configName, IDataTable configValue)` | `m_ConfigDatas` に書き込む |
+| `RemoveConfig` | `bool RemoveConfig(string configName)` | 辞書から指定された設定項目を削除する |
+| `GetConfig` | `IDataTable GetConfig(string configName)` | 名前で `IDataTable` を取得する |
+| `RemoveAllConfigs` | `void RemoveAllConfigs()` | すべての設定項目をクリアする |
+| `Shutdown` | `void Shutdown()` | すべての `IDataTable` を解放し、辞書をクリアする |
+
+`ConfigComponent` の関連コード:
+
+```csharp
+[DisallowMultipleComponent]
+[AddComponentMenu("GameFrameX/Config")]
+[GameFrameXAutoComponent(-5000)]
+public sealed class ConfigComponent : GameFrameworkComponent
+{
+    protected override void Awake()
+    {
+        ImplementationComponentType = Utility.Assembly.GetType(componentType);
+        InterfaceComponentType = typeof(IConfigManager);
+        base.Awake();
+        m_ConfigManager = GameFrameworkEntry.GetModule<IConfigManager>();
+        if (m_ConfigManager == null)
+        {
+            Log.Fatal("Config manager is invalid.");
+            return;
+        }
+    }
+}
+```
+
+Source: [ConfigComponent.cs#L46-L85](/Runtime/Config/ConfigComponent.cs#L46-L85)
+
+`ConfigManager` は `ConcurrentDictionary<string, IDataTable>` ですべてのテーブルを保持し、スレッドセーフです。各 key の文字列比較には `StringComparer.Ordinal` を使用し、大文字と小文字を区別します:
+
+```csharp
+public sealed partial class ConfigManager : GameFrameworkModule, IConfigManager
+{
+    private readonly ConcurrentDictionary<string, IDataTable> m_ConfigDatas;
+
+    public ConfigManager()
+    {
+        m_ConfigDatas = new ConcurrentDictionary<string, IDataTable>(StringComparer.Ordinal);
+    }
+}
+```
+
+Source: [ConfigManager.cs#L46-L61](/Runtime/Config/Config/ConfigManager.cs#L46-L61)
+
+`IDataTable` は非ジェネリックなデータテーブルインターフェースであり、中核メソッド `LoadAsync()` は非同期読み込み用の `Task` を返します:
+
+```csharp
+[Preserve]
+public interface IDataTable
+{
+    [Preserve]
+    Task LoadAsync();
+    int Count { get; }
+    // ... 行取得 / インデックス などのメンバー
+}
+```
+
+Source: [IDataTable.cs#L46-L57](/Runtime/Config/Config/IDataTable.cs#L46-L57)
+
+## 次へ
+
+- カスタムデータテーブルの作成:『カスタム Config データテーブルの実装方法』を参照。
+- 読み込みコールバックの処理:『Config 読み込み成功 / 失敗イベント』を参照。
+- インストールと Inspector 設定:『Editor/ConfigDefineSymbols と Inspector の使用法』を参照。
