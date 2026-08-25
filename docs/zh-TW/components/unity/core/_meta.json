@@ -1,0 +1,32 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "入門指南"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "運行時核心使用"
+  },
+  {
+    "type": "dir",
+    "name": "editor-tasks",
+    "label": "編輯器與建構工具"
+  },
+  {
+    "type": "dir",
+    "name": "platform-tasks",
+    "label": "小遊戲平臺適配"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "疑難排解"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "參考"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "Getting Started Guide"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "Runtime core usage"
+  },
+  {
+    "type": "dir",
+    "name": "editor-tasks",
+    "label": "Editor and Build Tools"
+  },
+  {
+    "type": "dir",
+    "name": "platform-tasks",
+    "label": "Mini Game Platform Adaptation"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "Troubleshooting"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "Reference"
+  }
+]
