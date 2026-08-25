@@ -1,3 +1,12 @@
 [
-  { "type": "dir", "name": "unity", "label": "Unity" }
+  {
+    "type": "dir",
+    "name": "unity",
+    "label": "Unity"
+  },
+  {
+    "type": "dir",
+    "name": "godot",
+    "label": "Godot"
+  }
 ]

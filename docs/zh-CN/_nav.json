@@ -1,11 +1,39 @@
 [
-  { "text": "入门", "link": "/guide/" },
-  { "text": "客户端", "items": [
-    { "text": "Unity", "link": "/client/unity/" }
-  ]},
-  { "text": "服务器", "link": "/server/" },
-  { "text": "工具", "link": "/tools/" },
-  { "text": "协议", "link": "/protobuf/" },
-  { "text": "Docker", "link": "/docker/" },
-  { "text": "配置文件", "link": "/config/" }
+  {
+    "text": "入门",
+    "link": "/guide/"
+  },
+  {
+    "text": "客户端",
+    "items": [
+      {
+        "text": "Unity",
+        "link": "/client/unity/"
+      },
+      {
+        "text": "Godot",
+        "link": "/client/godot/"
+      }
+    ]
+  },
+  {
+    "text": "服务器",
+    "link": "/server/"
+  },
+  {
+    "text": "工具",
+    "link": "/tools/"
+  },
+  {
+    "text": "协议",
+    "link": "/protobuf/"
+  },
+  {
+    "text": "Docker",
+    "link": "/docker/"
+  },
+  {
+    "text": "配置文件",
+    "link": "/config/"
+  }
 ]
