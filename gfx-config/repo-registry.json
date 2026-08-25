@@ -16,7 +16,7 @@
               "alias": "unity",
               "active": true,
               "gitUrl": "https://github.com/GameFrameX/GameFrameX.Unity.git",
-              "docPath": ".auto/components/unity",
+              "docPath": "components/unity",
               "note": "Unity 主工程仓（引擎集成、项目结构）。com.gameframex.unity.* 包的文档由 gfx-unity-packages 组从独立包仓生成，不读本仓 Packages/"
             }
           ]
@@ -29,7 +29,7 @@
               "alias": "server",
               "active": true,
               "gitUrl": "https://github.com/GameFrameX/GameFrameX.Server.git",
-              "docPath": ".auto/components/server",
+              "docPath": "components/server",
               "titles": {
                 "zh": "服务器",
                 "zh-TW": "伺服器",
@@ -42,7 +42,7 @@
               "alias": "server-source",
               "active": true,
               "gitUrl": "https://github.com/GameFrameX/GameFrameX.Server.Source.git",
-              "docPath": ".auto/components/server"
+              "docPath": "components/server"
             }
           ]
         },
@@ -54,7 +54,7 @@
               "alias": "foundation",
               "active": true,
               "gitUrl": "https://github.com/GameFrameX/GameFrameX.Foundation.git",
-              "docPath": ".auto/components/foundation",
+              "docPath": "components/foundation",
               "titles": {
                 "zh": "基础库",
                 "zh-TW": "基礎庫",
@@ -67,13 +67,13 @@
               "alias": "config",
               "active": true,
               "gitUrl": "https://github.com/GameFrameX/GameFrameX.Config.git",
-              "docPath": ".auto/data-and-config"
+              "docPath": "data-and-config"
             },
             {
               "alias": "protobuf",
               "active": true,
               "gitUrl": "https://github.com/GameFrameX/GameFrameX.Protobuf.git",
-              "docPath": ".auto/data-and-config"
+              "docPath": "data-and-config"
             }
           ]
         }
@@ -88,7 +88,7 @@
           "alias": "com.gameframex.unity",
           "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.git",
-          "docPath": ".auto/components/unity",
+          "docPath": "components/unity/core",
           "titles": {
             "zh": "核心",
             "zh-TW": "核心",
@@ -102,7 +102,7 @@
           "alias": "com.gameframex.unity.config",
           "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.config.git",
-          "docPath": ".auto/components/unity/config",
+          "docPath": "components/unity/config",
           "titles": {
             "zh": "配置",
             "zh-TW": "設定",
@@ -115,14 +115,14 @@
           "alias": "com.gameframex.unity.adjust",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.adjust.git",
-          "docPath": ".auto/components/unity/adjust",
+          "docPath": "components/unity/adjust",
           "titles": "AdJust"
         },
         {
           "alias": "com.gameframex.unity.advertisement",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.advertisement.git",
-          "docPath": ".auto/components/unity/advertisement",
+          "docPath": "components/unity/advertisement",
           "titles": {
             "zh": "广告",
             "zh-TW": "廣告",
@@ -135,70 +135,70 @@
           "alias": "com.gameframex.unity.advertisement.alipayminigame",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.advertisement.alipayminigame.git",
-          "docPath": ".auto/components/unity/advertisement/alipayminigame",
+          "docPath": "components/unity/advertisement/alipayminigame",
           "titles": "Advertisement (Alipay Mini Game)"
         },
         {
           "alias": "com.gameframex.unity.advertisement.csj",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.advertisement.csj.git",
-          "docPath": ".auto/components/unity/advertisement/csj",
+          "docPath": "components/unity/advertisement/csj",
           "titles": "Advertisement (CSJ/穿山甲)"
         },
         {
           "alias": "com.gameframex.unity.advertisement.douyinminigame",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.advertisement.douyinminigame.git",
-          "docPath": ".auto/components/unity/advertisement/douyinminigame",
+          "docPath": "components/unity/advertisement/douyinminigame",
           "titles": "Advertisement (DouYin Mini Game)"
         },
         {
           "alias": "com.gameframex.unity.advertisement.kuaishouminigame",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.advertisement.kuaishouminigame.git",
-          "docPath": ".auto/components/unity/advertisement/kuaishouminigame",
+          "docPath": "components/unity/advertisement/kuaishouminigame",
           "titles": "Advertisement (KuaiShou Mini Game)"
         },
         {
           "alias": "com.gameframex.unity.advertisement.topon",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.advertisement.topon.git",
-          "docPath": ".auto/components/unity/advertisement/topon",
+          "docPath": "components/unity/advertisement/topon",
           "titles": "Advertisement (TopOn)"
         },
         {
           "alias": "com.gameframex.unity.advertisement.wechatminigame",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.advertisement.wechatminigame.git",
-          "docPath": ".auto/components/unity/advertisement/wechatminigame",
+          "docPath": "components/unity/advertisement/wechatminigame",
           "titles": "Advertisement (WeChat Mini Game)"
         },
         {
           "alias": "com.gameframex.unity.android",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.android.git",
-          "docPath": ".auto/components/unity/android",
+          "docPath": "components/unity/android",
           "titles": "Android"
         },
         {
           "alias": "com.gameframex.unity.apple-signin",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.apple-signin.git",
-          "docPath": ".auto/components/unity/apple-signin",
+          "docPath": "components/unity/apple-signin",
           "titles": "Sign in with Apple"
         },
         {
           "alias": "com.gameframex.unity.appsflyer",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.appsflyer.git",
-          "docPath": ".auto/components/unity/appsflyer",
+          "docPath": "components/unity/appsflyer",
           "titles": "AppsFlyer"
         },
         {
           "alias": "com.gameframex.unity.asset",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.asset.git",
-          "docPath": ".auto/components/unity/asset",
+          "docPath": "components/unity/asset",
           "titles": {
             "zh": "资源",
             "zh-TW": "資源",
@@ -211,7 +211,7 @@
           "alias": "com.gameframex.unity.builder",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.builder.git",
-          "docPath": ".auto/components/unity/builder",
+          "docPath": "components/unity/builder",
           "titles": {
             "zh": "构建器",
             "zh-TW": "構建器",
@@ -224,7 +224,7 @@
           "alias": "com.gameframex.unity.coroutine",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.coroutine.git",
-          "docPath": ".auto/components/unity/coroutine",
+          "docPath": "components/unity/coroutine",
           "titles": {
             "zh": "协程",
             "zh-TW": "協程",
@@ -237,7 +237,7 @@
           "alias": "com.gameframex.unity.debugger",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.debugger.git",
-          "docPath": ".auto/components/unity/debugger",
+          "docPath": "components/unity/debugger",
           "titles": {
             "zh": "调试器",
             "zh-TW": "調試器",
@@ -250,7 +250,7 @@
           "alias": "com.gameframex.unity.download",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.download.git",
-          "docPath": ".auto/components/unity/download",
+          "docPath": "components/unity/download",
           "titles": {
             "zh": "下载",
             "zh-TW": "下載",
@@ -263,7 +263,7 @@
           "alias": "com.gameframex.unity.entity",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.entity.git",
-          "docPath": ".auto/components/unity/entity",
+          "docPath": "components/unity/entity",
           "titles": {
             "zh": "实体",
             "zh-TW": "實體",
@@ -276,7 +276,7 @@
           "alias": "com.gameframex.unity.entry",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.entry.git",
-          "docPath": ".auto/components/unity/entry",
+          "docPath": "components/unity/entry",
           "titles": {
             "zh": "入口",
             "zh-TW": "入口",
@@ -289,7 +289,7 @@
           "alias": "com.gameframex.unity.event",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.event.git",
-          "docPath": ".auto/components/unity/event",
+          "docPath": "components/unity/event",
           "titles": {
             "zh": "事件",
             "zh-TW": "事件",
@@ -302,7 +302,7 @@
           "alias": "com.gameframex.unity.fairygui",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.fairygui.git",
-          "docPath": ".auto/components/unity/fairygui",
+          "docPath": "components/unity/fairygui",
           "titles": {
             "zh": "FairyGUI 适配",
             "zh-TW": "FairyGUI 適配",
@@ -315,7 +315,7 @@
           "alias": "com.gameframex.unity.fsm",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.fsm.git",
-          "docPath": ".auto/components/unity/fsm",
+          "docPath": "components/unity/fsm",
           "titles": {
             "zh": "有限状态机",
             "zh-TW": "有限狀態機",
@@ -328,7 +328,7 @@
           "alias": "com.gameframex.unity.gameanalytics",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.gameanalytics.git",
-          "docPath": ".auto/components/unity/gameanalytics",
+          "docPath": "components/unity/gameanalytics",
           "titles": {
             "zh": "数据分析",
             "zh-TW": "數據分析",
@@ -341,42 +341,42 @@
           "alias": "com.gameframex.unity.gameanalytics.gameanalytics",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.gameanalytics.gameanalytics.git",
-          "docPath": ".auto/components/unity/gameanalytics/gameanalytics",
+          "docPath": "components/unity/gameanalytics/gameanalytics",
           "titles": "Game Analytics(Game Analytics)"
         },
         {
           "alias": "com.gameframex.unity.gameanalytics.grafanaloki",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.gameanalytics.grafanaloki.git",
-          "docPath": ".auto/components/unity/gameanalytics/grafanaloki",
+          "docPath": "components/unity/gameanalytics/grafanaloki",
           "titles": "Game Analytics Grafana Loki"
         },
         {
           "alias": "com.gameframex.unity.gameanalytics.gravity-engine",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.gameanalytics.gravity-engine.git",
-          "docPath": ".auto/components/unity/gameanalytics/gravity-engine",
+          "docPath": "components/unity/gameanalytics/gravity-engine",
           "titles": "Game Analytics(Gravity Engine)"
         },
         {
           "alias": "com.gameframex.unity.gameanalytics.talkingdata",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.gameanalytics.talkingdata.git",
-          "docPath": ".auto/components/unity/gameanalytics/talkingdata",
+          "docPath": "components/unity/gameanalytics/talkingdata",
           "titles": "Game Analytics(Talking Data)"
         },
         {
           "alias": "com.gameframex.unity.gameanalytics.talkingdata.sdk",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.gameanalytics.talkingdata.sdk.git",
-          "docPath": ".auto/components/unity/gameanalytics/talkingdata/sdk",
+          "docPath": "components/unity/gameanalytics/talkingdata/sdk",
           "titles": "Game Analytics(Talking Data SDK)"
         },
         {
           "alias": "com.gameframex.unity.getchannel",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.getchannel.git",
-          "docPath": ".auto/components/unity/getchannel",
+          "docPath": "components/unity/getchannel",
           "titles": {
             "zh": "渠道获取",
             "zh-TW": "渠道獲取",
@@ -389,7 +389,7 @@
           "alias": "com.gameframex.unity.globalconfig",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.globalconfig.git",
-          "docPath": ".auto/components/unity/globalconfig",
+          "docPath": "components/unity/globalconfig",
           "titles": {
             "zh": "全局配置",
             "zh-TW": "全域設定",
@@ -402,7 +402,7 @@
           "alias": "com.gameframex.unity.imagecache",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.imagecache.git",
-          "docPath": ".auto/components/unity/imagecache",
+          "docPath": "components/unity/imagecache",
           "titles": {
             "zh": "图片缓存",
             "zh-TW": "圖片緩存",
@@ -415,7 +415,7 @@
           "alias": "com.gameframex.unity.localization",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.localization.git",
-          "docPath": ".auto/components/unity/localization",
+          "docPath": "components/unity/localization",
           "titles": {
             "zh": "本地化",
             "zh-TW": "本地化",
@@ -428,56 +428,56 @@
           "alias": "com.gameframex.unity.login.apple",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.login.apple.git",
-          "docPath": ".auto/components/unity/login/apple",
+          "docPath": "components/unity/login/apple",
           "titles": "Apple Login"
         },
         {
           "alias": "com.gameframex.unity.login.facebook",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.login.facebook.git",
-          "docPath": ".auto/components/unity/login/facebook",
+          "docPath": "components/unity/login/facebook",
           "titles": "FaceBook Login"
         },
         {
           "alias": "com.gameframex.unity.login.google",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.login.google.git",
-          "docPath": ".auto/components/unity/login/google",
+          "docPath": "components/unity/login/google",
           "titles": "Google Login"
         },
         {
           "alias": "com.gameframex.unity.login.qq",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.login.qq.git",
-          "docPath": ".auto/components/unity/login/qq",
+          "docPath": "components/unity/login/qq",
           "titles": "QQ Login"
         },
         {
           "alias": "com.gameframex.unity.login.wechat",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.login.wechat.git",
-          "docPath": ".auto/components/unity/login/wechat",
+          "docPath": "components/unity/login/wechat",
           "titles": "WeChat Login"
         },
         {
           "alias": "com.gameframex.unity.minigame.wechat",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.minigame.wechat.git",
-          "docPath": ".auto/components/unity/minigame/wechat",
+          "docPath": "components/unity/minigame/wechat",
           "titles": "Mini Game WeChat"
         },
         {
           "alias": "com.gameframex.unity.mono",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.mono.git",
-          "docPath": ".auto/components/unity/mono",
+          "docPath": "components/unity/mono",
           "titles": "Mono"
         },
         {
           "alias": "com.gameframex.unity.network",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.network.git",
-          "docPath": ".auto/components/unity/network",
+          "docPath": "components/unity/network",
           "titles": {
             "zh": "网络",
             "zh-TW": "網路",
@@ -490,7 +490,7 @@
           "alias": "com.gameframex.unity.objectstorage",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.objectstorage.git",
-          "docPath": ".auto/components/unity/objectstorage",
+          "docPath": "components/unity/objectstorage",
           "titles": {
             "zh": "对象存储",
             "zh-TW": "物件儲存",
@@ -503,28 +503,28 @@
           "alias": "com.gameframex.unity.objectstorage.aliyun",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.objectstorage.aliyun.git",
-          "docPath": ".auto/components/unity/objectstorage/aliyun",
+          "docPath": "components/unity/objectstorage/aliyun",
           "titles": "Object Storage ALiYun OSS"
         },
         {
           "alias": "com.gameframex.unity.objectstorage.qiniu",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.objectstorage.qiniu.git",
-          "docPath": ".auto/components/unity/objectstorage/qiniu",
+          "docPath": "components/unity/objectstorage/qiniu",
           "titles": "Object Storage QiNiu"
         },
         {
           "alias": "com.gameframex.unity.objectstorage.tencent",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.objectstorage.tencent.git",
-          "docPath": ".auto/components/unity/objectstorage/tencent",
+          "docPath": "components/unity/objectstorage/tencent",
           "titles": "Object Storage Tencent"
         },
         {
           "alias": "com.gameframex.unity.operationclipboard",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.operationclipboard.git",
-          "docPath": ".auto/components/unity/operationclipboard",
+          "docPath": "components/unity/operationclipboard",
           "titles": {
             "zh": "剪贴板操作",
             "zh-TW": "剪貼板操作",
@@ -537,7 +537,7 @@
           "alias": "com.gameframex.unity.payment",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.payment.git",
-          "docPath": ".auto/components/unity/payment",
+          "docPath": "components/unity/payment",
           "titles": {
             "zh": "支付",
             "zh-TW": "支付",
@@ -550,35 +550,35 @@
           "alias": "com.gameframex.unity.payment.alipay",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.payment.alipay.git",
-          "docPath": ".auto/components/unity/payment/alipay",
+          "docPath": "components/unity/payment/alipay",
           "titles": "Payment Alipay"
         },
         {
           "alias": "com.gameframex.unity.payment.apple",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.payment.apple.git",
-          "docPath": ".auto/components/unity/payment/apple",
+          "docPath": "components/unity/payment/apple",
           "titles": "Payment Apple"
         },
         {
           "alias": "com.gameframex.unity.payment.google",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.payment.google.git",
-          "docPath": ".auto/components/unity/payment/google",
+          "docPath": "components/unity/payment/google",
           "titles": "Payment Google"
         },
         {
           "alias": "com.gameframex.unity.payment.minigame.douyin",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.payment.minigame.douyin.git",
-          "docPath": ".auto/components/unity/payment/minigame/douyin",
+          "docPath": "components/unity/payment/minigame/douyin",
           "titles": "Payment MiniGame DouYin"
         },
         {
           "alias": "com.gameframex.unity.procedure",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.procedure.git",
-          "docPath": ".auto/components/unity/procedure",
+          "docPath": "components/unity/procedure",
           "titles": {
             "zh": "流程",
             "zh-TW": "流程",
@@ -591,7 +591,7 @@
           "alias": "com.gameframex.unity.readassets",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.readassets.git",
-          "docPath": ".auto/components/unity/readassets",
+          "docPath": "components/unity/readassets",
           "titles": {
             "zh": "资源读取",
             "zh-TW": "資源讀取",
@@ -604,7 +604,7 @@
           "alias": "com.gameframex.unity.scene",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.scene.git",
-          "docPath": ".auto/components/unity/scene",
+          "docPath": "components/unity/scene",
           "titles": {
             "zh": "场景",
             "zh-TW": "場景",
@@ -617,14 +617,14 @@
           "alias": "com.gameframex.unity.sentry",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.sentry.git",
-          "docPath": ".auto/components/unity/sentry",
+          "docPath": "components/unity/sentry",
           "titles": "Sentry"
         },
         {
           "alias": "com.gameframex.unity.setting",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.setting.git",
-          "docPath": ".auto/components/unity/setting",
+          "docPath": "components/unity/setting",
           "titles": {
             "zh": "设置",
             "zh-TW": "設定",
@@ -637,14 +637,14 @@
           "alias": "com.gameframex.unity.sharesdk",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.sharesdk.git",
-          "docPath": ".auto/components/unity/sharesdk",
+          "docPath": "components/unity/sharesdk",
           "titles": "Share SDK"
         },
         {
           "alias": "com.gameframex.unity.sound",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.sound.git",
-          "docPath": ".auto/components/unity/sound",
+          "docPath": "components/unity/sound",
           "titles": {
             "zh": "音频",
             "zh-TW": "音頻",
@@ -657,7 +657,7 @@
           "alias": "com.gameframex.unity.startup",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.startup.git",
-          "docPath": ".auto/components/unity/startup",
+          "docPath": "components/unity/startup",
           "titles": {
             "zh": "启动",
             "zh-TW": "啟動",
@@ -670,14 +670,14 @@
           "alias": "com.gameframex.unity.steamworks",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.steamworks.git",
-          "docPath": ".auto/components/unity/steamworks",
+          "docPath": "components/unity/steamworks",
           "titles": "SteamWorks"
         },
         {
           "alias": "com.gameframex.unity.systeminfo",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.systeminfo.git",
-          "docPath": ".auto/components/unity/systeminfo",
+          "docPath": "components/unity/systeminfo",
           "titles": {
             "zh": "系统信息",
             "zh-TW": "系統資訊",
@@ -690,7 +690,7 @@
           "alias": "com.gameframex.unity.timer",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.timer.git",
-          "docPath": ".auto/components/unity/timer",
+          "docPath": "components/unity/timer",
           "titles": {
             "zh": "计时器",
             "zh-TW": "計時器",
@@ -703,63 +703,63 @@
           "alias": "com.gameframex.unity.ui",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.ui.git",
-          "docPath": ".auto/components/unity/ui",
+          "docPath": "components/unity/ui",
           "titles": "UI"
         },
         {
           "alias": "com.gameframex.unity.ui.fairygui",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.ui.fairygui.git",
-          "docPath": ".auto/components/unity/ui/fairygui",
+          "docPath": "components/unity/ui/fairygui",
           "titles": "UI FairyGUI"
         },
         {
           "alias": "com.gameframex.unity.ui.mvvm",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.ui.mvvm.git",
-          "docPath": ".auto/components/unity/ui/mvvm",
+          "docPath": "components/unity/ui/mvvm",
           "titles": "UI MVVM"
         },
         {
           "alias": "com.gameframex.unity.ui.mvvm.fairygui",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.ui.mvvm.fairygui.git",
-          "docPath": ".auto/components/unity/ui/mvvm/fairygui",
+          "docPath": "components/unity/ui/mvvm/fairygui",
           "titles": "UI MVVM FairyGUI"
         },
         {
           "alias": "com.gameframex.unity.ui.mvvm.ugui",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.ui.mvvm.ugui.git",
-          "docPath": ".auto/components/unity/ui/mvvm/ugui",
+          "docPath": "components/unity/ui/mvvm/ugui",
           "titles": "UI MVVM UGUI"
         },
         {
           "alias": "com.gameframex.unity.ui.ugui",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.ui.ugui.git",
-          "docPath": ".auto/components/unity/ui/ugui",
+          "docPath": "components/unity/ui/ugui",
           "titles": "UI UGUI"
         },
         {
           "alias": "com.gameframex.unity.web",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.web.git",
-          "docPath": ".auto/components/unity/web",
+          "docPath": "components/unity/web",
           "titles": "Web"
         },
         {
           "alias": "com.gameframex.unity.web.protobuff",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.web.protobuff.git",
-          "docPath": ".auto/components/unity/web/protobuff",
+          "docPath": "components/unity/web/protobuff",
           "titles": "Web ProtoBuff"
         },
         {
           "alias": "com.gameframex.unity.webview",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.webview.git",
-          "docPath": ".auto/components/unity/webview",
+          "docPath": "components/unity/webview",
           "titles": {
             "zh": "网页视图",
             "zh-TW": "網頁視圖",
@@ -772,14 +772,14 @@
           "alias": "com.gameframex.unity.xcode",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.xcode.git",
-          "docPath": ".auto/components/unity/xcode",
+          "docPath": "components/unity/xcode",
           "titles": "XCode"
         },
         {
           "alias": "com.gameframex.unity.xlua",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.xlua.git",
-          "docPath": ".auto/components/unity/xlua",
+          "docPath": "components/unity/xlua",
           "titles": {
             "zh": "XLua 适配",
             "zh-TW": "XLua 適配",
@@ -792,7 +792,7 @@
           "alias": "com.gameframex.unity.code-philosophy.hybridclr",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.code-philosophy.hybridclr.git",
-          "docPath": ".auto/components/unity/code-philosophy/hybridclr",
+          "docPath": "components/unity/code-philosophy/hybridclr",
           "upstream": "focus-creative-games/hybridclr",
           "titles": "HybridCLR"
         },
@@ -800,7 +800,7 @@
           "alias": "com.gameframex.unity.cysharp.unitask",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.cysharp.unitask.git",
-          "docPath": ".auto/components/unity/cysharp/unitask",
+          "docPath": "components/unity/cysharp/unitask",
           "upstream": "Cysharp/UniTask",
           "titles": "UniTask"
         },
@@ -808,7 +808,7 @@
           "alias": "com.gameframex.unity.demigiant.dotween",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.demigiant.dotween.git",
-          "docPath": ".auto/components/unity/demigiant/dotween",
+          "docPath": "components/unity/demigiant/dotween",
           "upstream": "Demigiant/DOTween",
           "titles": "DoTween"
         },
@@ -816,7 +816,7 @@
           "alias": "com.gameframex.unity.esotericsoftware.spine.spine-unity",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.esotericsoftware.spine.spine-unity.git",
-          "docPath": ".auto/components/unity/esotericsoftware/spine/spine-unity",
+          "docPath": "components/unity/esotericsoftware/spine/spine-unity",
           "upstream": "EsotericSoftware/spine-unity",
           "titles": "Spine-Unity"
         },
@@ -824,7 +824,7 @@
           "alias": "com.gameframex.unity.fairygui.unity",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.fairygui.unity.git",
-          "docPath": ".auto/components/unity/fairygui/unity",
+          "docPath": "components/unity/fairygui/unity",
           "upstream": "fairygui/FairyGUI-unity",
           "titles": "FairyGUI"
         },
@@ -832,7 +832,7 @@
           "alias": "com.gameframex.unity.focus-creative-games.luban",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.focus-creative-games.luban.git",
-          "docPath": ".auto/components/unity/focus-creative-games/luban",
+          "docPath": "components/unity/focus-creative-games/luban",
           "upstream": "focus-creative-games/luban",
           "titles": "LuBan"
         },
@@ -840,7 +840,7 @@
           "alias": "com.gameframex.unity.google.protobuf",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.google.protobuf.git",
-          "docPath": ".auto/components/unity/google/protobuf",
+          "docPath": "components/unity/google/protobuf",
           "upstream": "protobuf-net/protobuf-net",
           "titles": "Google Protocol Buffers"
         },
@@ -848,7 +848,7 @@
           "alias": "com.gameframex.unity.gravityinfinite.gravity-engine",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.gravityinfinite.gravity-engine.git",
-          "docPath": ".auto/components/unity/gravityinfinite/gravity-engine",
+          "docPath": "components/unity/gravityinfinite/gravity-engine",
           "upstream": "Gravity Engine by gravityinfinite",
           "titles": "Gravity Engine"
         },
@@ -856,7 +856,7 @@
           "alias": "com.gameframex.unity.gwiazdorrr.betterstreamingassets",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.gwiazdorrr.betterstreamingassets.git",
-          "docPath": ".auto/components/unity/gwiazdorrr/betterstreamingassets",
+          "docPath": "components/unity/gwiazdorrr/betterstreamingassets",
           "upstream": "gwiazdorrr/BetterStreamingAssets",
           "titles": "Better Streaming Assets"
         },
@@ -864,7 +864,7 @@
           "alias": "com.gameframex.unity.json.simplejson",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.json.simplejson.git",
-          "docPath": ".auto/components/unity/json/simplejson",
+          "docPath": "components/unity/json/simplejson",
           "upstream": "SimpleJSON",
           "titles": "SimpleJSON"
         },
@@ -872,7 +872,7 @@
           "alias": "com.gameframex.unity.litjson",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.litjson.git",
-          "docPath": ".auto/components/unity/litjson",
+          "docPath": "components/unity/litjson",
           "upstream": "XINCGer/LitJson4Unity",
           "titles": "LitJSON"
         },
@@ -880,7 +880,7 @@
           "alias": "com.gameframex.unity.moodkie.easysave3",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.moodkie.easysave3.git",
-          "docPath": ".auto/components/unity/moodkie/easysave3",
+          "docPath": "components/unity/moodkie/easysave3",
           "upstream": "Moodkie/Easy Save 3",
           "titles": "Easy Save"
         },
@@ -888,7 +888,7 @@
           "alias": "com.gameframex.unity.neuecc.messagepack",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.neuecc.messagepack.git",
-          "docPath": ".auto/components/unity/neuecc/messagepack",
+          "docPath": "components/unity/neuecc/messagepack",
           "upstream": "neuecc/MessagePack-CSharp",
           "titles": "MessagePack"
         },
@@ -896,7 +896,7 @@
           "alias": "com.gameframex.unity.nomnomab.asset-tabs",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.nomnomab.asset-tabs.git",
-          "docPath": ".auto/components/unity/nomnomab/asset-tabs",
+          "docPath": "components/unity/nomnomab/asset-tabs",
           "upstream": "nomnomab/AssetTabs",
           "titles": "Asset Tabs"
         },
@@ -904,7 +904,7 @@
           "alias": "com.gameframex.unity.pointcache.beastconsole",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.pointcache.beastconsole.git",
-          "docPath": ".auto/components/unity/pointcache/beastconsole",
+          "docPath": "components/unity/pointcache/beastconsole",
           "upstream": "pointcache/BeastConsole",
           "titles": "Beast Console"
         },
@@ -912,7 +912,7 @@
           "alias": "com.gameframex.unity.psygames.unitywebsocket",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.psygames.unitywebsocket.git",
-          "docPath": ".auto/components/unity/psygames/unitywebsocket",
+          "docPath": "components/unity/psygames/unitywebsocket",
           "upstream": "psygames/UnityWebSocket",
           "titles": "UnityWebSocket"
         },
@@ -920,7 +920,7 @@
           "alias": "com.gameframex.unity.tencent.xlua",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.tencent.xlua.git",
-          "docPath": ".auto/components/unity/tencent/xlua",
+          "docPath": "components/unity/tencent/xlua",
           "upstream": "Tencent/xLua",
           "titles": "XLua"
         },
@@ -928,7 +928,7 @@
           "alias": "com.gameframex.unity.tuyoogame.yooasset",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.tuyoogame.yooasset.git",
-          "docPath": ".auto/components/unity/tuyoogame/yooasset",
+          "docPath": "components/unity/tuyoogame/yooasset",
           "upstream": "tuyoogame/YooAsset",
           "titles": "YooAsset"
         },
@@ -936,7 +936,7 @@
           "alias": "com.gameframex.unity.tuyoogame.yooasset.minigame.alipay",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.tuyoogame.yooasset.minigame.alipay.git",
-          "docPath": ".auto/components/unity/tuyoogame/yooasset/minigame/alipay",
+          "docPath": "components/unity/tuyoogame/yooasset/minigame/alipay",
           "upstream": "tuyoogame/YooAsset 生态适配",
           "titles": "YooAsset MiniGame Alipay"
         },
@@ -944,7 +944,7 @@
           "alias": "com.gameframex.unity.tuyoogame.yooasset.minigame.googleplay",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.tuyoogame.yooasset.minigame.googleplay.git",
-          "docPath": ".auto/components/unity/tuyoogame/yooasset/minigame/googleplay",
+          "docPath": "components/unity/tuyoogame/yooasset/minigame/googleplay",
           "upstream": "tuyoogame/YooAsset 生态适配",
           "titles": "YooAsset MiniGame GooglePlay"
         },
@@ -952,7 +952,7 @@
           "alias": "com.gameframex.unity.tuyoogame.yooasset.minigame.taptap",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.tuyoogame.yooasset.minigame.taptap.git",
-          "docPath": ".auto/components/unity/tuyoogame/yooasset/minigame/taptap",
+          "docPath": "components/unity/tuyoogame/yooasset/minigame/taptap",
           "upstream": "tuyoogame/YooAsset 生态适配",
           "titles": "YooAsset MiniGame TapTap"
         },
@@ -960,7 +960,7 @@
           "alias": "com.gameframex.unity.tuyoogame.yooasset.minigame.tiktok",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.tuyoogame.yooasset.minigame.tiktok.git",
-          "docPath": ".auto/components/unity/tuyoogame/yooasset/minigame/tiktok",
+          "docPath": "components/unity/tuyoogame/yooasset/minigame/tiktok",
           "upstream": "tuyoogame/YooAsset 生态适配",
           "titles": "YooAsset MiniGame TikTok"
         },
@@ -968,7 +968,7 @@
           "alias": "com.gameframex.unity.tuyoogame.yooasset.minigame.wechat",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.tuyoogame.yooasset.minigame.wechat.git",
-          "docPath": ".auto/components/unity/tuyoogame/yooasset/minigame/wechat",
+          "docPath": "components/unity/tuyoogame/yooasset/minigame/wechat",
           "upstream": "tuyoogame/YooAsset 生态适配",
           "titles": "YooAsset MiniGame WeChat"
         },
@@ -976,7 +976,7 @@
           "alias": "com.gameframex.unity.xincger.litjson",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.xincger.litjson.git",
-          "docPath": ".auto/components/unity/xincger/litjson",
+          "docPath": "components/unity/xincger/litjson",
           "upstream": "XINCGer/LitJson4Unity",
           "titles": "LitJSON"
         },
@@ -984,7 +984,7 @@
           "alias": "com.gameframex.unity.yasirkula.debugconsole",
           "active": false,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.yasirkula.debugconsole.git",
-          "docPath": ".auto/components/unity/yasirkula/debugconsole",
+          "docPath": "components/unity/yasirkula/debugconsole",
           "upstream": "yasirkola/IngameDebugConsole",
           "titles": "Debug Console"
         }
@@ -1012,7 +1012,7 @@
               "alias": "opendeepwiki",
               "active": true,
               "gitUrl": "https://github.com/AlianBlank/OpenDeepWiki.git",
-              "docPath": ".auto/tools-and-specification",
+              "docPath": "tools-and-specification",
               "note": "OpenDeepWiki 引擎自身（权威源 AlianBlank，C2 决策）"
             }
           ]
@@ -1025,14 +1025,14 @@
               "alias": "admin-api",
               "active": false,
               "gitUrl": "https://github.com/GameFrameX/GameFrameX.Admin.Unified.Api.git",
-              "docPath": ".auto/admin",
+              "docPath": "admin",
               "note": "Phase 2 启用；私有仓，文档公开（2026-08-14 决策）"
             },
             {
               "alias": "admin-vue",
               "active": false,
               "gitUrl": "https://github.com/GameFrameX/GameFrameX.Admin.Unified.Vue.git",
-              "docPath": ".auto/admin",
+              "docPath": "admin",
               "note": "Phase 2 启用；私有仓，文档公开（2026-08-14 决策）"
             }
           ]
@@ -1045,14 +1045,14 @@
               "alias": "fguidir",
               "active": false,
               "gitUrl": "https://github.com/GameFrameX/GameFrameX.FairyGUIProject.git",
-              "docPath": ".auto/components/unity",
+              "docPath": "components/unity",
               "note": "Phase 3 启用；FairyGUI 素材工程，落 Unity 域"
             },
             {
               "alias": "luban",
               "active": false,
               "gitUrl": "https://github.com/GameFrameX/luban.git",
-              "docPath": ".auto/data-and-config",
+              "docPath": "data-and-config",
               "note": "Phase 3 启用"
             }
           ]
