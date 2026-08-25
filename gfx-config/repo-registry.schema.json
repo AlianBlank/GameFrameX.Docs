@@ -2,66 +2,114 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "repo-registry.schema.json",
   "title": "GameFrameX 代码仓组注册表",
-  "description": "gfx-config/repo-registry.json 的校验 schema。docPath 枚举与 catalog-template.json rootDomains 保持同步（9 域 IA 变更时两处同改）。ingestMode 枚举值以 OpenDeepWiki 实际实现为准（2026-08-14 未接入前为约定值）。",
+  "description": "gfx-config/repo-registry.json 的校验 schema。docPath 枚举与 catalog-template.json rootDomains 保持同步（9 域 IA 变更时两处同改）。v3.0.0：标题内嵌（repository.titles / 组级 packageTitles），discovery 支持组级 active 整组停用。ingestMode 枚举值以 OpenDeepWiki 实际实现为准（2026-08-14 未接入前为约定值）。",
   "type": "object",
-  "required": ["version", "groups"],
+  "required": [
+    "version",
+    "groups"
+  ],
   "additionalProperties": false,
   "properties": {
-    "$schema": { "type": "string" },
-    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
-    "description": { "type": "string" },
-    "packageTitles": {
-      "description": "仓库名 → 各语言展示标题（ODW 语言码 zh/zh-TW/en/ja/ko），OpenDeepWiki 导出时作侧边栏与首页标题",
-      "type": "object",
-      "additionalProperties": {
-        "oneOf": [
-          { "type": "string" },
-          {
-            "type": "object",
-            "minProperties": 1,
-            "additionalProperties": { "type": "string", "minLength": 1 }
-          }
-        ]
-      }
+    "$schema": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "description": {
+      "type": "string"
     },
     "groups": {
       "type": "object",
       "minProperties": 1,
-      "additionalProperties": { "$ref": "#/definitions/group" }
+      "additionalProperties": {
+        "$ref": "#/definitions/group"
+      }
     }
   },
   "definitions": {
     "group": {
       "type": "object",
-      "required": ["displayName", "ingestMode"],
+      "required": [
+        "displayName",
+        "ingestMode"
+      ],
       "additionalProperties": false,
       "anyOf": [
-        { "required": ["repositories"] },
-        { "required": ["discovery"] }
+        {
+          "required": [
+            "repositories"
+          ]
+        },
+        {
+          "required": [
+            "discovery"
+          ]
+        }
       ],
       "properties": {
-        "displayName": { "type": "string", "minLength": 1 },
-        "ingestMode": { "enum": ["git-url", "local-path"] },
+        "displayName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ingestMode": {
+          "enum": [
+            "git-url",
+            "local-path"
+          ]
+        },
         "repositories": {
           "type": "array",
-          "items": { "$ref": "#/definitions/repository" }
+          "items": {
+            "$ref": "#/definitions/repository"
+          }
         },
-        "discovery": { "$ref": "#/definitions/discovery" },
+        "discovery": {
+          "$ref": "#/definitions/discovery"
+        },
+        "packageTitles": {
+          "description": "各语言展示标题（ODW 语言码 zh/zh-TW/en/ja/ko）；对象按语言键，字符串为全语言通用",
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
         "thirdPartyPackages": {
           "type": "array",
-          "items": { "$ref": "#/definitions/thirdPartyPackage" }
+          "items": {
+            "$ref": "#/definitions/thirdPartyPackage"
+          }
         },
-        "note": { "type": "string" }
+        "note": {
+          "type": "string"
+        }
       }
     },
     "repository": {
       "type": "object",
-      "required": ["alias", "domain", "active", "gitUrl", "docPath"],
+      "required": [
+        "alias",
+        "domain",
+        "active",
+        "gitUrl",
+        "docPath"
+      ],
       "additionalProperties": false,
       "properties": {
-        "alias": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
-        "domain": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
-        "active": { "type": "boolean" },
+        "alias": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "domain": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "active": {
+          "type": "boolean"
+        },
         "gitUrl": {
           "type": "string",
           "pattern": "^(https://github\\.com/|git@github\\.com:)[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+\\.git$"
@@ -80,41 +128,101 @@
             ".auto/tools-and-specification"
           ]
         },
-        "note": { "type": "string" }
+        "note": {
+          "type": "string"
+        },
+        "titles": {
+          "description": "各语言展示标题（ODW 语言码 zh/zh-TW/en/ja/ko）；对象按语言键，字符串为全语言通用",
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
       }
     },
     "discovery": {
       "type": "object",
-      "required": ["type", "org", "repoPatterns", "gitUrlTemplate", "docPathTemplate", "packageTreeRule"],
+      "required": [
+        "type",
+        "org",
+        "repoPatterns",
+        "gitUrlTemplate",
+        "docPathTemplate",
+        "packageTreeRule"
+      ],
       "additionalProperties": false,
       "properties": {
-        "type": { "const": "github-org" },
-        "org": { "type": "string", "minLength": 1 },
+        "type": {
+          "const": "github-org"
+        },
+        "org": {
+          "type": "string",
+          "minLength": 1
+        },
+        "active": {
+          "description": "整组开关，false 时该 discovery 匹配的仓不导出（默认 true）",
+          "type": "boolean"
+        },
         "repoPatterns": {
           "type": "array",
           "minItems": 1,
-          "items": { "type": "string", "minLength": 1 }
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
         },
         "visibility": {
           "type": "array",
           "minItems": 1,
-          "items": { "enum": ["public", "private"] }
+          "items": {
+            "enum": [
+              "public",
+              "private"
+            ]
+          }
         },
-        "gitUrlTemplate": { "type": "string", "pattern": "\\{repo\\}" },
-        "docPathTemplate": { "type": "string", "pattern": "\\{packageTree\\}" },
-        "packageTreeRule": { "type": "string", "minLength": 1 },
-        "note": { "type": "string" }
+        "gitUrlTemplate": {
+          "type": "string",
+          "pattern": "\\{repo\\}"
+        },
+        "docPathTemplate": {
+          "type": "string",
+          "pattern": "\\{packageTree\\}"
+        },
+        "packageTreeRule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "note": {
+          "type": "string"
+        }
       }
     },
     "thirdPartyPackage": {
       "type": "object",
-      "required": ["repo", "upstream", "active"],
+      "required": [
+        "repo",
+        "upstream",
+        "active"
+      ],
       "additionalProperties": false,
       "properties": {
-        "repo": { "type": "string", "pattern": "^com\\.gameframex\\.unity(\\.[a-z0-9-]+)+$" },
-        "upstream": { "type": "string", "minLength": 1 },
-        "active": { "type": "boolean" },
-        "note": { "type": "string" }
+        "repo": {
+          "type": "string",
+          "pattern": "^com\\.gameframex\\.unity(\\.[a-z0-9-]+)+$"
+        },
+        "upstream": {
+          "type": "string",
+          "minLength": 1
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "note": {
+          "type": "string"
+        }
       }
     }
   }
