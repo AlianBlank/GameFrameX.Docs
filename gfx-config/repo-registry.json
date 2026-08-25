@@ -209,7 +209,7 @@
         },
         {
           "alias": "com.gameframex.unity.builder",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.builder.git",
           "docPath": "components/unity/builder",
           "titles": {
@@ -222,7 +222,7 @@
         },
         {
           "alias": "com.gameframex.unity.coroutine",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.coroutine.git",
           "docPath": "components/unity/coroutine",
           "titles": {
@@ -248,7 +248,7 @@
         },
         {
           "alias": "com.gameframex.unity.download",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.download.git",
           "docPath": "components/unity/download",
           "titles": {
@@ -261,7 +261,7 @@
         },
         {
           "alias": "com.gameframex.unity.entity",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.entity.git",
           "docPath": "components/unity/entity",
           "titles": {
@@ -274,7 +274,7 @@
         },
         {
           "alias": "com.gameframex.unity.entry",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.entry.git",
           "docPath": "components/unity/entry",
           "titles": {
@@ -287,7 +287,7 @@
         },
         {
           "alias": "com.gameframex.unity.event",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.event.git",
           "docPath": "components/unity/event",
           "titles": {
@@ -313,7 +313,7 @@
         },
         {
           "alias": "com.gameframex.unity.fsm",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.fsm.git",
           "docPath": "components/unity/fsm",
           "titles": {
@@ -326,7 +326,7 @@
         },
         {
           "alias": "com.gameframex.unity.gameanalytics",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.gameanalytics.git",
           "docPath": "components/unity/gameanalytics",
           "titles": {
@@ -374,7 +374,7 @@
         },
         {
           "alias": "com.gameframex.unity.getchannel",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.getchannel.git",
           "docPath": "components/unity/getchannel",
           "titles": {
@@ -387,7 +387,7 @@
         },
         {
           "alias": "com.gameframex.unity.globalconfig",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.globalconfig.git",
           "docPath": "components/unity/globalconfig",
           "titles": {
@@ -400,7 +400,7 @@
         },
         {
           "alias": "com.gameframex.unity.imagecache",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.imagecache.git",
           "docPath": "components/unity/imagecache",
           "titles": {
@@ -468,14 +468,14 @@
         },
         {
           "alias": "com.gameframex.unity.mono",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.mono.git",
           "docPath": "components/unity/mono",
           "titles": "Mono"
         },
         {
           "alias": "com.gameframex.unity.network",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.network.git",
           "docPath": "components/unity/network",
           "titles": {
@@ -488,7 +488,7 @@
         },
         {
           "alias": "com.gameframex.unity.objectstorage",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.objectstorage.git",
           "docPath": "components/unity/objectstorage",
           "titles": {
@@ -535,7 +535,7 @@
         },
         {
           "alias": "com.gameframex.unity.payment",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.payment.git",
           "docPath": "components/unity/payment",
           "titles": {
@@ -576,7 +576,7 @@
         },
         {
           "alias": "com.gameframex.unity.procedure",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.procedure.git",
           "docPath": "components/unity/procedure",
           "titles": {
@@ -589,7 +589,7 @@
         },
         {
           "alias": "com.gameframex.unity.readassets",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.readassets.git",
           "docPath": "components/unity/readassets",
           "titles": {
@@ -602,7 +602,7 @@
         },
         {
           "alias": "com.gameframex.unity.scene",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.scene.git",
           "docPath": "components/unity/scene",
           "titles": {
@@ -622,7 +622,7 @@
         },
         {
           "alias": "com.gameframex.unity.setting",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.setting.git",
           "docPath": "components/unity/setting",
           "titles": {
@@ -642,7 +642,7 @@
         },
         {
           "alias": "com.gameframex.unity.sound",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.sound.git",
           "docPath": "components/unity/sound",
           "titles": {
@@ -655,7 +655,7 @@
         },
         {
           "alias": "com.gameframex.unity.startup",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.startup.git",
           "docPath": "components/unity/startup",
           "titles": {
@@ -688,7 +688,7 @@
         },
         {
           "alias": "com.gameframex.unity.timer",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.timer.git",
           "docPath": "components/unity/timer",
           "titles": {
@@ -701,14 +701,14 @@
         },
         {
           "alias": "com.gameframex.unity.ui",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.ui.git",
           "docPath": "components/unity/ui",
           "titles": "UI"
         },
         {
           "alias": "com.gameframex.unity.ui.fairygui",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.ui.fairygui.git",
           "docPath": "components/unity/ui/fairygui",
           "titles": "UI FairyGUI"
@@ -736,28 +736,28 @@
         },
         {
           "alias": "com.gameframex.unity.ui.ugui",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.ui.ugui.git",
           "docPath": "components/unity/ui/ugui",
           "titles": "UI UGUI"
         },
         {
           "alias": "com.gameframex.unity.web",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.web.git",
           "docPath": "components/unity/web",
           "titles": "Web"
         },
         {
           "alias": "com.gameframex.unity.web.protobuff",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.web.protobuff.git",
           "docPath": "components/unity/web/protobuff",
           "titles": "Web ProtoBuff"
         },
         {
           "alias": "com.gameframex.unity.webview",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.webview.git",
           "docPath": "components/unity/webview",
           "titles": {
@@ -770,7 +770,7 @@
         },
         {
           "alias": "com.gameframex.unity.xcode",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.xcode.git",
           "docPath": "components/unity/xcode",
           "titles": "XCode"
@@ -822,7 +822,7 @@
         },
         {
           "alias": "com.gameframex.unity.fairygui.unity",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.fairygui.unity.git",
           "docPath": "components/unity/fairygui/unity",
           "upstream": "fairygui/FairyGUI-unity",
@@ -870,7 +870,7 @@
         },
         {
           "alias": "com.gameframex.unity.litjson",
-          "active": false,
+          "active": true,
           "gitUrl": "https://github.com/GameFrameX/com.gameframex.unity.litjson.git",
           "docPath": "components/unity/litjson",
           "upstream": "XINCGer/LitJson4Unity",
