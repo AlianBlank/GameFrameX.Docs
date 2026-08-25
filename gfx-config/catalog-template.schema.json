@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "catalog-template.schema.json",
   "title": "GameFrameX 文档目录骨架模板",
-  "description": "gfx-config/catalog-template.json 的校验 schema。rootDomains 是 9 域 IA 的唯一权威定义，repo-registry.schema.json 的 docPath 枚举与此保持同步（变更时两处同改）。",
+  "description": "gfx-config/catalog-template.json 的校验 schema。rootDomains 是 9 域 IA 的唯一权威定义，repo-registry.schema.json 的 docPath 根域约束与此保持同步（变更时两处同改）。",
   "type": "object",
   "required": ["version", "rootDomains", "namingRules", "frontmatter"],
   "additionalProperties": false,

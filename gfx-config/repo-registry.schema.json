@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "repo-registry.schema.json",
   "title": "GameFrameX 代码仓组注册表",
-  "description": "gfx-config/repo-registry.json 的校验 schema。docPath 枚举与 catalog-template.json rootDomains 保持同步（9 域 IA 变更时两处同改）。v3.0.0：标题内嵌（repository.titles / 组级 packageTitles），discovery 支持组级 active 整组停用。ingestMode 枚举值以 OpenDeepWiki 实际实现为准（2026-08-14 未接入前为约定值）。",
+  "description": "gfx-config/repo-registry.json 的校验 schema。docPath 根域与 catalog-template.json rootDomains 保持同步（9 域 IA 变更时两处同改）。v4.0.0：注册表为目录树结构——groups 与 children 均为节点数组，节点标识内嵌 name 字段，全树递归引用同一 node 定义（约定最多三层：组 → 子组 → 仓库）；全部仓显式登记（无 discovery 泛匹配），第三方重打包用 upstream 字段溯源；repository 删除 domain；active 可出现在任意节点，false 时停用该节点整棵子树。ingestMode 枚举值以 OpenDeepWiki 实际实现为准（2026-08-14 未接入前为约定值）。",
   "type": "object",
   "required": [
     "version",
@@ -21,66 +21,66 @@
       "type": "string"
     },
     "groups": {
-      "type": "object",
-      "minProperties": 1,
-      "additionalProperties": {
-        "$ref": "#/definitions/group"
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/node"
       }
     }
   },
   "definitions": {
-    "group": {
+    "node": {
       "type": "object",
       "required": [
-        "displayName",
-        "ingestMode"
+        "name",
+        "displayName"
       ],
       "additionalProperties": false,
       "anyOf": [
         {
           "required": [
-            "repositories"
+            "children"
           ]
         },
         {
           "required": [
-            "discovery"
+            "repositories"
           ]
         }
       ],
       "properties": {
+        "name": {
+          "description": "节点标识（kebab-case，同级唯一）",
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
         "displayName": {
           "type": "string",
           "minLength": 1
         },
         "ingestMode": {
+          "description": "摄取方式；子节点可省略，省略时继承组级声明",
           "enum": [
             "git-url",
             "local-path"
           ]
         },
+        "active": {
+          "description": "节点开关，false 时停用该节点整棵子树（含子分组与全部显式仓库）",
+          "type": "boolean"
+        },
+        "children": {
+          "description": "子分组节点数组，结构同父节点，支持无限嵌套（约定最多三层：组 → 子组 → 仓库）；同级 name 唯一",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/node"
+          }
+        },
         "repositories": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/repository"
-          }
-        },
-        "discovery": {
-          "$ref": "#/definitions/discovery"
-        },
-        "packageTitles": {
-          "description": "各语言展示标题（ODW 语言码 zh/zh-TW/en/ja/ko）；对象按语言键，字符串为全语言通用",
-          "type": "object",
-          "minProperties": 1,
-          "additionalProperties": {
-            "type": "string",
-            "minLength": 1
-          }
-        },
-        "thirdPartyPackages": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/thirdPartyPackage"
           }
         },
         "note": {
@@ -92,7 +92,6 @@
       "type": "object",
       "required": [
         "alias",
-        "domain",
         "active",
         "gitUrl",
         "docPath"
@@ -100,12 +99,9 @@
       "additionalProperties": false,
       "properties": {
         "alias": {
+          "description": "仓标识；包仓直接用包名（含点），普通仓用 kebab-case 短名",
           "type": "string",
-          "pattern": "^[a-z][a-z0-9-]*$"
-        },
-        "domain": {
-          "type": "string",
-          "pattern": "^[a-z][a-z0-9-]*$"
+          "pattern": "^[a-z][a-z0-9.-]*$"
         },
         "active": {
           "type": "boolean"
@@ -115,115 +111,39 @@
           "pattern": "^(https://github\\.com/|git@github\\.com:)[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+\\.git$"
         },
         "docPath": {
-          "description": "自动生成文档落盘目录（相对 docs/<lang>/），必须对齐 catalog-template.json 的 9 域 IA",
-          "enum": [
-            ".auto/guide",
-            ".auto/architecture",
-            ".auto/components/unity",
-            ".auto/components/server",
-            ".auto/components/foundation",
-            ".auto/components/godot",
-            ".auto/admin",
-            ".auto/data-and-config",
-            ".auto/tools-and-specification"
-          ]
+          "description": "自动生成文档落盘目录（相对 docs/<lang>/），根域对齐 catalog-template.json rootDomains 的 9 域 IA；components 域下允许按 childrenTemplate packageTreeRule 展开的子目录",
+          "type": "string",
+          "pattern": "^\\.auto/(guide|architecture|components/(unity|server|foundation|godot)(/[a-z0-9-]+)*|admin|data-and-config|tools-and-specification)$"
+        },
+        "upstream": {
+          "description": "第三方重打包的上游仓溯源（owner/repo 或说明）；仅重打包仓使用",
+          "type": "string",
+          "minLength": 1
         },
         "note": {
           "type": "string"
         },
         "titles": {
-          "description": "各语言展示标题（ODW 语言码 zh/zh-TW/en/ja/ko）；对象按语言键，字符串为全语言通用",
+          "$ref": "#/definitions/titles"
+        }
+      }
+    },
+    "titles": {
+      "description": "各语言展示标题（ODW 语言码 zh/zh-TW/en/ja/ko）；对象按语言键，字符串为全语言通用",
+      "oneOf": [
+        {
           "type": "object",
           "minProperties": 1,
           "additionalProperties": {
             "type": "string",
             "minLength": 1
           }
-        }
-      }
-    },
-    "discovery": {
-      "type": "object",
-      "required": [
-        "type",
-        "org",
-        "repoPatterns",
-        "gitUrlTemplate",
-        "docPathTemplate",
-        "packageTreeRule"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "type": {
-          "const": "github-org"
         },
-        "org": {
+        {
           "type": "string",
           "minLength": 1
-        },
-        "active": {
-          "description": "整组开关，false 时该 discovery 匹配的仓不导出（默认 true）",
-          "type": "boolean"
-        },
-        "repoPatterns": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string",
-            "minLength": 1
-          }
-        },
-        "visibility": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "enum": [
-              "public",
-              "private"
-            ]
-          }
-        },
-        "gitUrlTemplate": {
-          "type": "string",
-          "pattern": "\\{repo\\}"
-        },
-        "docPathTemplate": {
-          "type": "string",
-          "pattern": "\\{packageTree\\}"
-        },
-        "packageTreeRule": {
-          "type": "string",
-          "minLength": 1
-        },
-        "note": {
-          "type": "string"
         }
-      }
-    },
-    "thirdPartyPackage": {
-      "type": "object",
-      "required": [
-        "repo",
-        "upstream",
-        "active"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "repo": {
-          "type": "string",
-          "pattern": "^com\\.gameframex\\.unity(\\.[a-z0-9-]+)+$"
-        },
-        "upstream": {
-          "type": "string",
-          "minLength": 1
-        },
-        "active": {
-          "type": "boolean"
-        },
-        "note": {
-          "type": "string"
-        }
-      }
+      ]
     }
   }
 }

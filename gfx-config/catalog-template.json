@@ -21,7 +21,7 @@
   },
   "childrenTemplate": {
     "components/unity": {
-      "source": "GitHub org GameFrameX 下 com.gameframex.unity / com.gameframex.unity.* 包仓（repo-registry.json gfx-unity-packages 组 discovery 枚举；第三方重打包需逐个激活）",
+      "source": "GitHub org GameFrameX 下 com.gameframex.unity / com.gameframex.unity.* 包仓（repo-registry.json gfx-unity-packages 组显式登记，新增包仓手动补条目；第三方重打包默认 active: false 需逐个激活）",
       "packageTreeRule": "包名剥去前缀 com.gameframex.unity 后按 . 切分，每段映射为一个目录层级，追加在 components/unity/ 之下；剥后为空（主包 com.gameframex.unity 本体）则落 components/unity/ 域根",
       "examples": [
         "com.gameframex.unity → components/unity/（主包，落域根）",
