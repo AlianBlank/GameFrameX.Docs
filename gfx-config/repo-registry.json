@@ -28,7 +28,7 @@
             {
               "alias": "server",
               "active": true,
-              "gitUrl": "https://github.com/GameFrameX/GameFrameX.Server.git",
+              "gitUrl": "https://github.com/GameFrameX/GameFrameX.Server.Source.git",
               "docPath": "components/server",
               "titles": {
                 "zh": "服务器",
@@ -40,7 +40,7 @@
             },
             {
               "alias": "server-source",
-              "active": true,
+              "active": false,
               "gitUrl": "https://github.com/GameFrameX/GameFrameX.Server.Source.git",
               "docPath": "components/server"
             }
@@ -67,13 +67,13 @@
               "alias": "config",
               "active": true,
               "gitUrl": "https://github.com/GameFrameX/GameFrameX.Config.git",
-              "docPath": "data-and-config"
+              "docPath": "config"
             },
             {
               "alias": "protobuf",
-              "active": true,
+              "active": false,
               "gitUrl": "https://github.com/GameFrameX/GameFrameX.Protobuf.git",
-              "docPath": "data-and-config"
+              "docPath": "protobuf"
             }
           ]
         }

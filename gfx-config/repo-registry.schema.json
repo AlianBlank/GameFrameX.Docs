@@ -113,7 +113,7 @@
         "docPath": {
           "description": "自动生成文档落盘目录（相对 docs/<lang>/），根域对齐 catalog-template.json rootDomains 的 9 域 IA；components 域下允许按 childrenTemplate packageTreeRule 展开的子目录",
           "type": "string",
-          "pattern": "^(guide|architecture|components/(unity|server|foundation|godot)(/[a-z0-9-]+)*|admin|data-and-config|tools-and-specification)$"
+          "pattern": "^(guide|architecture|components/(unity|server|foundation|godot)(/[a-z0-9-]+)*|admin|config|protobuf|tools-and-specification)$"
         },
         "upstream": {
           "description": "第三方重打包的上游仓溯源（owner/repo 或说明）；仅重打包仓使用",
