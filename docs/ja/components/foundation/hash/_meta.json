@@ -1,0 +1,7 @@
+[
+  "md5-sha-digest",
+  "hmac-message-auth",
+  "crc-checksum",
+  "password-hashing",
+  "murmur-xxhash"
+]

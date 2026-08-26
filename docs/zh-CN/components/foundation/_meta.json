@@ -1,0 +1,77 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "入门指引"
+  },
+  {
+    "type": "dir",
+    "name": "encryption",
+    "label": "加密(Encryption)"
+  },
+  {
+    "type": "dir",
+    "name": "hash",
+    "label": "哈希(Hash)"
+  },
+  {
+    "type": "dir",
+    "name": "json",
+    "label": "JSON 序列化"
+  },
+  {
+    "type": "dir",
+    "name": "options",
+    "label": "命令行参数与配置(Options)"
+  },
+  {
+    "type": "dir",
+    "name": "logger",
+    "label": "日志(Logger)"
+  },
+  {
+    "type": "dir",
+    "name": "localization",
+    "label": "本地化(Localization)"
+  },
+  {
+    "type": "dir",
+    "name": "http-extension",
+    "label": "HTTP 客户端扩展"
+  },
+  {
+    "type": "dir",
+    "name": "http-normalization",
+    "label": "HTTP 响应规范化"
+  },
+  {
+    "type": "dir",
+    "name": "extensions",
+    "label": "扩展方法库(Extensions)"
+  },
+  {
+    "type": "dir",
+    "name": "utility",
+    "label": "通用工具(Utility)"
+  },
+  {
+    "type": "dir",
+    "name": "orm-attribute",
+    "label": "ORM 特性(Attribute)"
+  },
+  {
+    "type": "dir",
+    "name": "orm-entity",
+    "label": "ORM 实体基类(Entity)"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "故障排查"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "参考"
+  }
+]

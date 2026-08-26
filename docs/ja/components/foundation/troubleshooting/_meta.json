@@ -1,0 +1,8 @@
+[
+  "argument-already-exception",
+  "json-exception",
+  "http-client-request-exception",
+  "localization-missing-key",
+  "entity-contract-violation",
+  "options-parse-failure"
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "입문 안내"
+  },
+  {
+    "type": "dir",
+    "name": "encryption",
+    "label": "암호화"
+  },
+  {
+    "type": "dir",
+    "name": "hash",
+    "label": "해시(Hash)"
+  },
+  {
+    "type": "dir",
+    "name": "json",
+    "label": "JSON 직렬화"
+  },
+  {
+    "type": "dir",
+    "name": "options",
+    "label": "명령행 인수와 설정(Options)"
+  },
+  {
+    "type": "dir",
+    "name": "logger",
+    "label": "로거(Logger)"
+  },
+  {
+    "type": "dir",
+    "name": "localization",
+    "label": "현지화"
+  },
+  {
+    "type": "dir",
+    "name": "http-extension",
+    "label": "HTTP 클라이언트 확장"
+  },
+  {
+    "type": "dir",
+    "name": "http-normalization",
+    "label": "HTTP 응답 정규화"
+  },
+  {
+    "type": "dir",
+    "name": "extensions",
+    "label": "확장 방법 라이브러리(Extensions)"
+  },
+  {
+    "type": "dir",
+    "name": "utility",
+    "label": "일반 도구(Utility)"
+  },
+  {
+    "type": "dir",
+    "name": "orm-attribute",
+    "label": "ORM 특성(Attribute)"
+  },
+  {
+    "type": "dir",
+    "name": "orm-entity",
+    "label": "ORM 엔터티 기본 클래스(Entity)"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "장애排查 → **장애 조사 및 해결**\n\n实际上\"故障排查\"更地道的韩语翻译是:\n\n**장애 진단 및 해결** 或 **고장 진단**\n\n不过最常见的对应表达是 **장애조사** (故障调查/排查)"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "참고"
+  }
+]

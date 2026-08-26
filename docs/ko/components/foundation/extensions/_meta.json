@@ -1,0 +1,9 @@
+[
+  "byte-hex-extensions",
+  "collection-extensions",
+  "dictionary-extensions",
+  "async-disposable-dictionary",
+  "concurrent-limited-queue",
+  "expression-extension",
+  "directory-extensions"
+]

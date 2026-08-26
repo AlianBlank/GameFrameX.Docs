@@ -1,0 +1,77 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "入門ガイド"
+  },
+  {
+    "type": "dir",
+    "name": "encryption",
+    "label": "暗号化"
+  },
+  {
+    "type": "dir",
+    "name": "hash",
+    "label": "ハッシュ"
+  },
+  {
+    "type": "dir",
+    "name": "json",
+    "label": "JSONシリアライゼーション"
+  },
+  {
+    "type": "dir",
+    "name": "options",
+    "label": "コマンドライン引数と設定(Options)"
+  },
+  {
+    "type": "dir",
+    "name": "logger",
+    "label": "ロガー (Logger)"
+  },
+  {
+    "type": "dir",
+    "name": "localization",
+    "label": "ローカリゼーション"
+  },
+  {
+    "type": "dir",
+    "name": "http-extension",
+    "label": "HTTP クライアント拡張"
+  },
+  {
+    "type": "dir",
+    "name": "http-normalization",
+    "label": "HTTP 応答正規化"
+  },
+  {
+    "type": "dir",
+    "name": "extensions",
+    "label": "拡張メソッドライブラリ(Extensions)"
+  },
+  {
+    "type": "dir",
+    "name": "utility",
+    "label": "汎用ツール (Utility)"
+  },
+  {
+    "type": "dir",
+    "name": "orm-attribute",
+    "label": "ORM の属性 (Attribute)"
+  },
+  {
+    "type": "dir",
+    "name": "orm-entity",
+    "label": "ORMエンティティ基底クラス(Entity)"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "トラブルシューティング"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "参考"
+  }
+]
