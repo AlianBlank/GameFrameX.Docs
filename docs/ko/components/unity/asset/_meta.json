@@ -1,0 +1,20 @@
+[
+  "about",
+  "quick-start",
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "일반적인 작업"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "장애 점검"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "참조 매뉴얼"
+  },
+  "how-it-works"
+]

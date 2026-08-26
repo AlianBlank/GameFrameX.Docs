@@ -1,0 +1,32 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "입문 및 설치"
+  },
+  {
+    "type": "dir",
+    "name": "ui-forms",
+    "label": "인터페이스 및 창 관리"
+  },
+  {
+    "type": "dir",
+    "name": "components",
+    "label": "컴포넌트 확장 및 고급 컨트롤"
+  },
+  {
+    "type": "dir",
+    "name": "editor",
+    "label": "편집기와 코드 생성"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "참고 및 속찾기"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "자주 묻는 질문 및 문제 해결"
+  }
+]

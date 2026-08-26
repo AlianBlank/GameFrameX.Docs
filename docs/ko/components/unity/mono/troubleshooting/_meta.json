@@ -1,0 +1,6 @@
+[
+  "mono-manager-invalid",
+  "event-manager-invalid",
+  "null-listener-argument",
+  "listener-not-firing"
+]

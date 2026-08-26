@@ -1,0 +1,32 @@
+[
+  {
+    "type": "dir",
+    "name": "overview",
+    "label": "개요"
+  },
+  {
+    "type": "dir",
+    "name": "installation",
+    "label": "설치 및 통합"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "일반적인 작업"
+  },
+  {
+    "type": "dir",
+    "name": "debugging",
+    "label": "디버깅과 에디터"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "API 및 참조"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "장애排查"
+  }
+]

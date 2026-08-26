@@ -1,0 +1,10 @@
+[
+  "read-write-typed-settings",
+  "store-serializable-objects",
+  "save-and-load",
+  "remove-settings",
+  "enumerate-settings",
+  "switch-storage-backend",
+  "custom-setting-helper",
+  "minigame-platform-adaptation"
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "入门指南"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "常见任务"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "故障排查"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "参考"
+  },
+  {
+    "type": "dir",
+    "name": "concepts",
+    "label": "原理速览"
+  }
+]

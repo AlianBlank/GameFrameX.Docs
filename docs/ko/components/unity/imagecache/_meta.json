@@ -1,0 +1,19 @@
+[
+  "intro",
+  "install",
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "임무"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "참고"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "장애 조사"
+  }
+]

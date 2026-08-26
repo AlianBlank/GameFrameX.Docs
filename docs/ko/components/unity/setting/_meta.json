@@ -1,0 +1,27 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "입문"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "핵심 임무"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "참고"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "장애 수리"
+  },
+  {
+    "type": "dir",
+    "name": "concepts",
+    "label": "원리 속보기"
+  }
+]

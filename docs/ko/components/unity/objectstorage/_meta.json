@@ -1,0 +1,22 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "입문 가이드"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "일반적인 작업"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "API 참조"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "장애 해결"
+  }
+]
