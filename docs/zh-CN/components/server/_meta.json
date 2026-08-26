@@ -1,0 +1,70 @@
+[
+  "introduction",
+  "quick-start",
+  "architecture",
+  "environment-setup",
+  "add-business-module",
+  "write-hotfix-logic",
+  "player-login-session",
+  "mongodb-persistence",
+  "config-tables",
+  "proto-message-codec",
+  "multi-protocol-networking",
+  "cross-server-messaging",
+  "hot-update-deployment",
+  "docker-compose-deployment",
+  "monitoring-observability",
+  "bot-client-testing",
+  "event-system",
+  "server-config",
+  "api-component",
+  "startup-failures",
+  "hotfix-issues",
+  "network-issues",
+  "tests-layout",
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "入门指引"
+  },
+  {
+    "type": "dir",
+    "name": "deployment",
+    "label": "环境与部署"
+  },
+  {
+    "type": "dir",
+    "name": "network",
+    "label": "网络与协议"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "业务子系统开发"
+  },
+  {
+    "type": "dir",
+    "name": "hotfix-and-state",
+    "label": "热更新与状态层"
+  },
+  {
+    "type": "dir",
+    "name": "config",
+    "label": "配置与表数据"
+  },
+  {
+    "type": "dir",
+    "name": "runtime",
+    "label": "Actor 模型与可观测性"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "故障排查"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "参考"
+  }
+]

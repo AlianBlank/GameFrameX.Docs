@@ -1,0 +1,70 @@
+[
+  "introduction",
+  "quick-start",
+  "architecture",
+  "environment-setup",
+  "add-business-module",
+  "write-hotfix-logic",
+  "player-login-session",
+  "mongodb-persistence",
+  "config-tables",
+  "proto-message-codec",
+  "multi-protocol-networking",
+  "cross-server-messaging",
+  "hot-update-deployment",
+  "docker-compose-deployment",
+  "monitoring-observability",
+  "bot-client-testing",
+  "event-system",
+  "server-config",
+  "api-component",
+  "startup-failures",
+  "hotfix-issues",
+  "network-issues",
+  "tests-layout",
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "入門ガイド"
+  },
+  {
+    "type": "dir",
+    "name": "deployment",
+    "label": "環境とデプロイ"
+  },
+  {
+    "type": "dir",
+    "name": "network",
+    "label": "ネットワークとプロトコル"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "業務サブシステム開発"
+  },
+  {
+    "type": "dir",
+    "name": "hotfix-and-state",
+    "label": "ホットリロードと状態レイヤー"
+  },
+  {
+    "type": "dir",
+    "name": "config",
+    "label": "配置とテーブルデータ"
+  },
+  {
+    "type": "dir",
+    "name": "runtime",
+    "label": "アクターモデルと可観測性"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "トラブルシューティング"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "参考"
+  }
+]
