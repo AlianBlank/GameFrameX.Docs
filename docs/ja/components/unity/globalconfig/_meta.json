@@ -1,0 +1,27 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "入門"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "一般的なタスク"
+  },
+  {
+    "type": "dir",
+    "name": "requests-responses",
+    "label": "リクエストとレスポンスモデル"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "参考"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "トラブルシューティング"
+  }
+]

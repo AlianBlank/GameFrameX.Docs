@@ -1,0 +1,8 @@
+[
+  "path-argument-exception",
+  "asset-bundle-not-found",
+  "path-util-ioexception",
+  "android-streaming-asset",
+  "webgl-unsupported",
+  "il2cpp-stripping"
+]

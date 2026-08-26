@@ -1,0 +1,32 @@
+[
+  {
+    "type": "dir",
+    "name": "overview",
+    "label": "概要"
+  },
+  {
+    "type": "dir",
+    "name": "installation",
+    "label": "インストールと統合"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "よくあるタスク"
+  },
+  {
+    "type": "dir",
+    "name": "debugging",
+    "label": "デバッグとエディター"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "API とリファレンス"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "トラブルシューティング"
+  }
+]

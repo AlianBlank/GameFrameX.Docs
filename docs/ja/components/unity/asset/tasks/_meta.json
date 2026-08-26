@@ -1,0 +1,11 @@
+[
+  "init-package-and-play-mode",
+  "load-and-unload-asset",
+  "load-typed-assets",
+  "load-subassets-and-rawfile",
+  "load-scene",
+  "hot-update-flow",
+  "clear-cache-and-package-lifecycle",
+  "editor-inspector-debug",
+  "prevent-code-stripping"
+]

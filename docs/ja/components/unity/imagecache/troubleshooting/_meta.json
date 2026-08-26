@@ -1,0 +1,7 @@
+[
+  "load-returns-null",
+  "manager-invalid",
+  "download-manager-invalid",
+  "webgl-clear-not-supported",
+  "url-protocol"
+]

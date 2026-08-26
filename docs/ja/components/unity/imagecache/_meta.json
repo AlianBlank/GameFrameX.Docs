@@ -1,0 +1,19 @@
+[
+  "intro",
+  "install",
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "任務"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "参考"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "トラブルシューティング"
+  }
+]
