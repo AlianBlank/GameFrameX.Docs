@@ -1,0 +1,17 @@
+[
+  "write-first-message",
+  "assign-module-id",
+  "define-error-codes",
+  "internal-vs-external",
+  "add-new-module",
+  "create-config-table",
+  "fill-table-header",
+  "naming-and-grouping",
+  "split-large-table",
+  "define-enums-and-beans",
+  "localization",
+  "run-generation",
+  "json-vs-bin",
+  "use-generated-code",
+  "luban-conf"
+]

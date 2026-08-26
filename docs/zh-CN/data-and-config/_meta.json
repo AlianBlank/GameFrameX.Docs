@@ -1,0 +1,37 @@
+[
+  {
+    "type": "dir",
+    "name": "overview",
+    "label": "概述"
+  },
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "快速上手"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "协议编写指南"
+  },
+  {
+    "type": "dir",
+    "name": "export",
+    "label": "代码导出与集成"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "故障排查"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "参考"
+  },
+  {
+    "type": "dir",
+    "name": "concepts",
+    "label": "工作原理速览"
+  }
+]
