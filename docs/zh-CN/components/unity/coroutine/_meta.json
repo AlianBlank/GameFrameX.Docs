@@ -1,0 +1,20 @@
+[
+  "introduction",
+  "quick-start",
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "常见任务"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "故障排查"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "参考手册"
+  },
+  "how-it-works"
+]

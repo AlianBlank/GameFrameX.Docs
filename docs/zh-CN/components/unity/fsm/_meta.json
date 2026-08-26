@@ -1,0 +1,32 @@
+[
+  {
+    "type": "dir",
+    "name": "overview",
+    "label": "概述"
+  },
+  {
+    "type": "dir",
+    "name": "installation",
+    "label": "安装与集成"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "常见任务"
+  },
+  {
+    "type": "dir",
+    "name": "debugging",
+    "label": "调试与编辑器"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "API 与参考"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "故障排查"
+  }
+]

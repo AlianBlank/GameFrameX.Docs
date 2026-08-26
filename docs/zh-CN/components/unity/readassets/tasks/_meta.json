@@ -1,0 +1,10 @@
+[
+  "initialize",
+  "read-files",
+  "check-existence",
+  "list-files",
+  "load-asset-bundle",
+  "editor-external-init",
+  "handle-compressed-asset-event",
+  "use-path-util"
+]

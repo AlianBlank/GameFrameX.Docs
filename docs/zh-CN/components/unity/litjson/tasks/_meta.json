@@ -1,0 +1,11 @@
+[
+  "serialize-object-to-json",
+  "deserialize-json-to-object",
+  "control-json-output-format",
+  "serialize-unity-built-in-types",
+  "skip-fields-with-jsonignore",
+  "customize-json-keys-with-jsonproperty",
+  "register-custom-type-converters",
+  "work-with-jsondata",
+  "handle-il2cpp-stripping"
+]

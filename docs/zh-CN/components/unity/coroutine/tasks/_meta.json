@@ -1,0 +1,8 @@
+[
+  "setup-component",
+  "start-and-stop-coroutine",
+  "stop-all-coroutines",
+  "wait-for-end-of-frame",
+  "keep-code-from-stripping",
+  "write-tests"
+]

@@ -1,0 +1,10 @@
+[
+  "configure-startup-options",
+  "implement-startup-ui-handler",
+  "implement-hotfix-launcher",
+  "configure-http-params",
+  "choose-asset-play-mode",
+  "configure-url-failover",
+  "subscribe-startup-events",
+  "skip-remote-requests"
+]

@@ -1,0 +1,8 @@
+[
+  "create-procedure",
+  "switch-procedure",
+  "configure-component",
+  "use-startup-runner",
+  "runtime-management",
+  "reinitialize-procedures"
+]

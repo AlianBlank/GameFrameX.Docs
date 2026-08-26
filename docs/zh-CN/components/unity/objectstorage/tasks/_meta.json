@@ -1,0 +1,8 @@
+[
+  "initialize-storage-manager",
+  "create-upload-manager-via-factory",
+  "set-save-path",
+  "upload-single-file",
+  "upload-directory",
+  "implement-custom-storage-provider"
+]

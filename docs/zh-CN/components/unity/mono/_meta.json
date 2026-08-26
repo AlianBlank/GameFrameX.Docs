@@ -1,0 +1,22 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "入门"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "常用任务"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "故障排查"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "API 参考"
+  }
+]

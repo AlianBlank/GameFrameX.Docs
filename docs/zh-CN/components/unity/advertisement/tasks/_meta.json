@@ -1,0 +1,9 @@
+[
+  "configure-ad-units",
+  "initialize-advertisement",
+  "play-reward-ad",
+  "load-and-show-ad",
+  "set-extra-data",
+  "migrate-to-play-option",
+  "inspector-configuration"
+]

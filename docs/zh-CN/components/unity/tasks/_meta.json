@@ -1,0 +1,11 @@
+[
+  "configure-hotfix-launcher",
+  "use-config-tables",
+  "switch-json-binary-config",
+  "use-localization",
+  "choose-ui-framework",
+  "register-network-protocol",
+  "manage-assets-with-yooasset",
+  "customize-startup-procedure",
+  "build-and-publish-scenes"
+]
