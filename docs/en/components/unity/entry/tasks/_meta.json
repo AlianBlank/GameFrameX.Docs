@@ -1,0 +1,11 @@
+[
+  "use-gameapp-facade",
+  "use-core-subsystems",
+  "use-data-subsystems",
+  "use-ui-subsystems",
+  "use-network-subsystems",
+  "use-runtime-subsystems",
+  "use-thirdparty-sdks",
+  "use-guide-and-fairygui-package",
+  "naming-conventions"
+]

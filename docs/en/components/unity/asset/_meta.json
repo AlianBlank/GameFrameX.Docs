@@ -1,0 +1,20 @@
+[
+  "about",
+  "quick-start",
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "Common tasks"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "Troubleshooting"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "Reference Manual"
+  },
+  "how-it-works"
+]

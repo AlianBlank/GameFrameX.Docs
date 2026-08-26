@@ -1,0 +1,9 @@
+[
+  "load-remote-image",
+  "configure-cache",
+  "check-cached",
+  "remove-cache",
+  "clear-cache",
+  "webgl-platform",
+  "cancel-loading"
+]

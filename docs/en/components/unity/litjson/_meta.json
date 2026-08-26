@@ -1,0 +1,19 @@
+[
+  "introduction",
+  "install-and-first-use",
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "Common tasks"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "Troubleshooting"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "Reference"
+  }
+]

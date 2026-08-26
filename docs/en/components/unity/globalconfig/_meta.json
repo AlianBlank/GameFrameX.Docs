@@ -1,0 +1,27 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "Getting Started"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "Common Tasks"
+  },
+  {
+    "type": "dir",
+    "name": "requests-responses",
+    "label": "Request and Response Models"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "Reference"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "Troubleshooting"
+  }
+]

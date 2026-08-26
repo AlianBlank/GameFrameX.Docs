@@ -1,0 +1,32 @@
+[
+  {
+    "type": "dir",
+    "name": "overview",
+    "label": "Overview"
+  },
+  {
+    "type": "dir",
+    "name": "installation",
+    "label": "Installation and Integration"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "Common tasks"
+  },
+  {
+    "type": "dir",
+    "name": "debugging",
+    "label": "Debugging and Editor"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "API and Reference"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "Troubleshooting"
+  }
+]

@@ -1,0 +1,19 @@
+[
+  "intro",
+  "install",
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "Task"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "Reference"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "Troubleshooting"
+  }
+]
