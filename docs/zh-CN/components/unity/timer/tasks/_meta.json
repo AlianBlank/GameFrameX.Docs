@@ -1,0 +1,10 @@
+[
+  "create-timers",
+  "on-complete-callback",
+  "use-time-scale",
+  "pause-resume-remove",
+  "tag-batch-management",
+  "query-timer-state",
+  "async-waiting",
+  "il2cpp-cropping"
+]

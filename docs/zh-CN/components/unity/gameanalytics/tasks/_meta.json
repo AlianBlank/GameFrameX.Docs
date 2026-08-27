@@ -1,0 +1,8 @@
+[
+  "configure-providers",
+  "report-events",
+  "use-timers",
+  "player-and-properties",
+  "manual-init",
+  "custom-provider"
+]
