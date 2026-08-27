@@ -1,0 +1,20 @@
+[
+  "overview",
+  "install-and-quick-start",
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "일반 작업"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "문제 해결"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "참고"
+  },
+  "network-channel-flow"
+]
