@@ -1,0 +1,9 @@
+[
+  "writing-hotfix-code",
+  {
+    "type": "dir",
+    "name": "hot-update-deployment",
+    "label": "Implementing Zero-Downtime Hot Updates (AppStartUpHotfixGame Series)"
+  },
+  "cache-state-persistence"
+]

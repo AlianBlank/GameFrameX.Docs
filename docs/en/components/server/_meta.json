@@ -1,4 +1,49 @@
 [
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "Getting Started Guide"
+  },
+  {
+    "type": "dir",
+    "name": "deployment",
+    "label": "Environment and Deployment"
+  },
+  {
+    "type": "dir",
+    "name": "network",
+    "label": "Networks and Protocols"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "Business Subsystem Development"
+  },
+  {
+    "type": "dir",
+    "name": "hotfix-and-state",
+    "label": "Hot Updates and the State Layer"
+  },
+  {
+    "type": "dir",
+    "name": "config",
+    "label": "Configuration and Table Data"
+  },
+  {
+    "type": "dir",
+    "name": "runtime",
+    "label": "Actor Model and Observability"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "Troubleshooting"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "Reference"
+  },
   "introduction",
   "quick-start",
   "architecture",

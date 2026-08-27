@@ -1,0 +1,7 @@
+[
+  "missing-handler",
+  "server-fully-loaded",
+  "hotfix-state-mismatch",
+  "mongodb-connection",
+  "startup-failure"
+]
