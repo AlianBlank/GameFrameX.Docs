@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "repo-registry.schema.json",
   "title": "GameFrameX 代码仓组注册表",
-  "description": "gfx-config/repo-registry.json 的校验 schema。docPath 根域与 catalog-template.json rootDomains 保持同步（9 域 IA 变更时两处同改）。v4.0.0：注册表为目录树结构——groups 与 children 均为节点数组，节点标识内嵌 name 字段，全树递归引用同一 node 定义（约定最多三层：组 → 子组 → 仓库）；全部仓显式登记（无 discovery 泛匹配），第三方重打包用 upstream 字段溯源；repository 删除 domain；active 可出现在任意节点，false 时停用该节点整棵子树。ingestMode 枚举值以 OpenDeepWiki 实际实现为准（2026-08-14 未接入前为约定值）。",
+  "description": "gfx-config/repo-registry.json 的校验 schema。docPath 根域与 catalog-template.json rootDomains 保持同步（9 域 IA 变更时两处同改）。v4.0.0：注册表为目录树结构——groups 与 children 均为节点数组，节点标识内嵌 name 字段，全树递归引用同一 node 定义（约定最多三层：组 → 子组 → 仓库）；全部仓显式登记（无 discovery 泛匹配），第三方重打包用 upstream 字段溯源；repository 删除 domain；active 可出现在任意节点，false 时停用该节点整棵子树。v4.1.0：docPath 放宽为结构化 pattern（client 组件区 / components 生成区 / server 子域 / 平铺域），对齐实际落位。ingestMode 枚举值以 OpenDeepWiki 实际实现为准（2026-08-14 未接入前为约定值）。",
   "type": "object",
   "required": [
     "version",
@@ -111,9 +111,9 @@
           "pattern": "^(https://github\\.com/|git@github\\.com:)[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+\\.git$"
         },
         "docPath": {
-          "description": "自动生成文档落盘目录（相对 docs/<lang>/），根域对齐 catalog-template.json rootDomains 的 9 域 IA；components 域下允许按 childrenTemplate packageTreeRule 展开的子目录",
+          "description": "自动生成文档落盘目录（相对 docs/<lang>/）。结构：client/<tech>/component 为组件文档区（Unity/Godot，包目录树按 catalog-template.json childrenTemplate 的 packageTreeRule 展开，主工程落组件区根）；components/<tech> 为既有生成区（server/foundation 等）；server/ 下按子域落位（如 server/admin）；其余为平铺域。根域与 catalog-template.json rootDomains 保持同步（变更时两处同改）",
           "type": "string",
-          "pattern": "^(guide|architecture|components/(unity|server|foundation|godot)(/[a-z0-9-]+)*|admin|config|protobuf|tools-and-specification)$"
+          "pattern": "^(guide|architecture|config|protobuf|data-and-config|tools-and-specification|components/(unity|server|foundation|godot)(/[a-z0-9-]+)*|client/(unity|godot)/component(/[a-z0-9-]+)*|server(/[a-z0-9-]+)*)$"
         },
         "upstream": {
           "description": "第三方重打包的上游仓溯源（owner/repo 或说明）；仅重打包仓使用",
