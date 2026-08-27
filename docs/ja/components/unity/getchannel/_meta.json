@@ -1,0 +1,14 @@
+[
+  "install-and-sample",
+  "get-channel-name",
+  "configure-android-channel",
+  "configure-ios-channel",
+  "configure-resources-config",
+  "returns-default",
+  "cache-not-refreshed",
+  "ios-plist-write",
+  "api",
+  "platform-config-sources",
+  "changelog",
+  "channel-read-flow"
+]
