@@ -1,0 +1,10 @@
+[
+  "create-network-channel",
+  "send-receive-messages",
+  "use-rpc",
+  "configure-heartbeat",
+  "message-serialization",
+  "network-events",
+  "editor-inspector-and-logging",
+  "code-stripping"
+]
