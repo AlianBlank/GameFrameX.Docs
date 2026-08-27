@@ -23,5 +23,165 @@
     "type": "dir",
     "name": "concepts",
     "label": "原理速览"
+  },
+  {
+    "type": "dir",
+    "name": "advertisement",
+    "label": "广告"
+  },
+  {
+    "type": "dir",
+    "name": "asset",
+    "label": "资源"
+  },
+  {
+    "type": "dir",
+    "name": "builder",
+    "label": "构建器"
+  },
+  {
+    "type": "dir",
+    "name": "config",
+    "label": "配置"
+  },
+  {
+    "type": "dir",
+    "name": "core",
+    "label": "核心"
+  },
+  {
+    "type": "dir",
+    "name": "coroutine",
+    "label": "协程"
+  },
+  {
+    "type": "dir",
+    "name": "download",
+    "label": "下载"
+  },
+  {
+    "type": "dir",
+    "name": "entity",
+    "label": "实体"
+  },
+  {
+    "type": "dir",
+    "name": "entry",
+    "label": "入口"
+  },
+  {
+    "type": "dir",
+    "name": "event",
+    "label": "事件"
+  },
+  {
+    "type": "dir",
+    "name": "fairygui",
+    "label": "FairyGUI 适配"
+  },
+  {
+    "type": "dir",
+    "name": "fsm",
+    "label": "有限状态机"
+  },
+  {
+    "type": "dir",
+    "name": "gameanalytics",
+    "label": "数据分析"
+  },
+  {
+    "type": "dir",
+    "name": "getchannel",
+    "label": "渠道获取"
+  },
+  {
+    "type": "dir",
+    "name": "globalconfig",
+    "label": "全局配置"
+  },
+  {
+    "type": "dir",
+    "name": "imagecache",
+    "label": "图片缓存"
+  },
+  {
+    "type": "dir",
+    "name": "litjson",
+    "label": "LitJSON"
+  },
+  {
+    "type": "dir",
+    "name": "mono",
+    "label": "Mono"
+  },
+  {
+    "type": "dir",
+    "name": "network",
+    "label": "网络"
+  },
+  {
+    "type": "dir",
+    "name": "objectstorage",
+    "label": "对象存储"
+  },
+  {
+    "type": "dir",
+    "name": "payment",
+    "label": "支付"
+  },
+  {
+    "type": "dir",
+    "name": "procedure",
+    "label": "流程"
+  },
+  {
+    "type": "dir",
+    "name": "readassets",
+    "label": "资源读取"
+  },
+  {
+    "type": "dir",
+    "name": "scene",
+    "label": "场景"
+  },
+  {
+    "type": "dir",
+    "name": "setting",
+    "label": "设置"
+  },
+  {
+    "type": "dir",
+    "name": "sound",
+    "label": "音频"
+  },
+  {
+    "type": "dir",
+    "name": "startup",
+    "label": "启动"
+  },
+  {
+    "type": "dir",
+    "name": "timer",
+    "label": "计时器"
+  },
+  {
+    "type": "dir",
+    "name": "ui",
+    "label": "UI"
+  },
+  {
+    "type": "dir",
+    "name": "web",
+    "label": "Web"
+  },
+  {
+    "type": "dir",
+    "name": "webview",
+    "label": "网页视图"
+  },
+  {
+    "type": "dir",
+    "name": "xcode",
+    "label": "XCode"
   }
 ]

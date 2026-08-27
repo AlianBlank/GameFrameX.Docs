@@ -5,5 +5,5 @@
   "launcher-procedure",
   "sync-image",
   "component-list",
-  { "type": "dir", "name": "component", "label": "Component" }
+  { "type": "dir", "name": "component", "label": "组件" }
 ]
