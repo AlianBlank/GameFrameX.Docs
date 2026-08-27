@@ -1,0 +1,13 @@
+[
+  "configure-info-plist",
+  "frameworks-and-libraries",
+  "build-properties-and-linker-flags",
+  "configure-capabilities",
+  "localize-app-name",
+  "cocoapods-integration",
+  "code-signing",
+  "scheme-env-and-launch-args",
+  "swift-bridging",
+  "copy-files-and-folders",
+  "multi-config-merge"
+]

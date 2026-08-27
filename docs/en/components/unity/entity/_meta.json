@@ -1,0 +1,27 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "Quick Start"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "Common Tasks"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "Reference"
+  },
+  {
+    "type": "dir",
+    "name": "concepts",
+    "label": "Principles at a Glance"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "Troubleshooting"
+  }
+]

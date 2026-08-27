@@ -2,12 +2,12 @@
   {
     "type": "dir",
     "name": "getting-started",
-    "label": "Getting Started"
+    "label": "Getting Started Guide"
   },
   {
     "type": "dir",
     "name": "tasks",
-    "label": "Common tasks"
+    "label": "Common Tasks"
   },
   {
     "type": "dir",
@@ -22,6 +22,6 @@
   {
     "type": "dir",
     "name": "concepts",
-    "label": "Quick Overview of Principles"
+    "label": "Principles at a Glance"
   }
 ]

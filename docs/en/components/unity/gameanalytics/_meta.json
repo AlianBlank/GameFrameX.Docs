@@ -1,0 +1,20 @@
+[
+  "introduction",
+  "install-and-setup",
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "Common Tasks"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "Troubleshooting"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "Reference"
+  },
+  "lifecycle"
+]

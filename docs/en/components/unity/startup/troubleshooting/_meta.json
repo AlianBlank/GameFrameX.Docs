@@ -1,0 +1,9 @@
+[
+  "argument-validation-errors",
+  "global-info-fetch-failure",
+  "url-failover-exhausted",
+  "yooasset-patch-failure",
+  "hotfix-launch-failure",
+  "ui-handler-issues",
+  "procedure-stuck"
+]
