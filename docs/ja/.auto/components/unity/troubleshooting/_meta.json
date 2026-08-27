@@ -1,8 +1,0 @@
-[
-  "module-lookup-failure",
-  "helper-resolution-failure",
-  "pool-exceptions",
-  "build-failure",
-  "aot-preserve-validation",
-  "mini-game-define-symbols"
-]

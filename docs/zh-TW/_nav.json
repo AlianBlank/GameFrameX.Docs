@@ -14,12 +14,7 @@
   },
   {
     "text": "組件",
-    "items": [
-      {
-        "text": "Unity",
-        "link": "/zh-TW/.auto/components/unity/"
-      }
-    ]
+    "items": []
   },
   {
     "text": "伺服器",

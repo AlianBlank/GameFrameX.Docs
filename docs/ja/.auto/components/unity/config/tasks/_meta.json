@@ -1,7 +1,0 @@
-[
-  "load-config",
-  "use-data-table",
-  "subscribe-config-events",
-  "use-config-inspector",
-  "customize-config-manager"
-]

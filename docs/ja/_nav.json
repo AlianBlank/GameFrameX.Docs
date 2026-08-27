@@ -14,12 +14,7 @@
   },
   {
     "text": "コンポーネント",
-    "items": [
-      {
-        "text": "Unity",
-        "link": "/ja/.auto/components/unity/"
-      }
-    ]
+    "items": []
   },
   {
     "text": "サーバー",
