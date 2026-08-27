@@ -2,31 +2,31 @@
   {
     "type": "dir",
     "name": "getting-started",
-    "label": "入门与安装"
+    "label": "入門とインストール"
   },
   {
     "type": "dir",
     "name": "ui-forms",
-    "label": "界面与窗体管理"
+    "label": "インターフェースとフォームの管理"
   },
   {
     "type": "dir",
     "name": "components",
-    "label": "组件扩展与增强控件"
+    "label": "コンポーネントの拡張と強化コントロール"
   },
   {
     "type": "dir",
     "name": "editor",
-    "label": "编辑器与代码生成"
+    "label": "エディターとコード生成"
   },
   {
     "type": "dir",
     "name": "reference",
-    "label": "参考与速查"
+    "label": "参考と速査"
   },
   {
     "type": "dir",
     "name": "troubleshooting",
-    "label": "常见问题与故障排查"
+    "label": "よくある質問とトラブルシューティング"
   }
 ]

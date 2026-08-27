@@ -41,7 +41,7 @@ if (uiFormAssetPath.IndexOf(Utility.Asset.Path.BundlesDirectoryName, StringCompa
 }
 ```
 
-Source: [Runtime/UIManager.Open.cs#L144-L155](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L144-L155)
+Source: [Runtime/UIManager.Open.cs#L149-L160](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L149-L160)
 
 해결:
 
@@ -70,7 +70,7 @@ if (assetHandle.IsDone && assetHandle.Status == EOperationStatus.Succeed)
 return LoadAssetFailureCallback(assetPath, assetHandle.LastError, openUIFormInfo);
 ```
 
-Source: [Runtime/UIManager.Open.cs#L158-L169](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L158-L169)
+Source: [Runtime/UIManager.Open.cs#L163-L174](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L163-L174)
 
 해결:
 
@@ -107,7 +107,7 @@ UIFormLoadingObject uiFormLoadingObject = UIFormLoadingObject.Create(uiFormAsset
 m_LoadingUIForms.Add(uiFormLoadingObject);
 ```
 
-Source: [Runtime/UIManager.Open.cs#L108-L110](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L108-L110)
+Source: [Runtime/UIManager.Open.cs#L113-L115](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L113-L115)
 
 이러한 예외는 일반적으로 사용자 정의 `UIFormHelper`가 규약대로 `OpenUIFormInfo`를 구성하지 않을 때 발생합니다. 필요한 경우가 아니면 리소스 로드 콜백을 재정의하지 마세요.
 
@@ -162,7 +162,25 @@ if (UseSingletonOpenMode(uiFormType))
 }
 ```
 
-Source: [Runtime/UIManager.Open.cs#L77-L97](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L77-L97)
+Source: [Runtime/UIManager.Open.cs#L79-L111](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L79-L111)
+
+인스턴스 풀 재사용(`m_InstancePool.Spawn`)은 이 싱글톤 블록 내부에서만 수행됩니다. 2.6.2부터 다중 인스턴스 인터페이스는 풀에서 인스턴스를 꺼내 재사용하지 않고, 매번 하단의 로드 플로우를 통해 새 인스턴스를 생성합니다(풀이 MultiSpawn 풀이라 다중 인스턴스 열기 시 사용 중인 동일 `GameObject`를 꺼내 여러 인터페이스가 하나의 객체를 공유하여 서로 덮어쓰던 문제 수정):
+
+```csharp
+// 实例池复用仅用于单实例模式。实例池是 MultiSpawn 池（允许同一对象被并发取出），
+// 多实例界面打开时会取回使用中的同一 GameObject，GetOrAddComponent 又取回同一逻辑组件，
+// 造成多个界面共用一个对象互相覆盖；多实例界面每次走下方加载流程新建实例，
+// 关闭时照常 Unspawn/Release，不依赖池复用。
+var uiFormInstanceObject = m_InstancePool.Spawn(assetPath);
+if (uiFormInstanceObject != null)
+{
+    // 池复用也分配新的请求序列号，确保每次打开请求可观测。
+    int serialId = ++m_Serial;
+    return InternalOpenUIForm(serialId, uiFormAssetPath, uiFormAssetName, uiFormType, uiFormInstanceObject.Target, pauseCoveredUIForm, false, 0f, userData, isFullScreen);
+}
+```
+
+Source: [Runtime/UIManager.Open.cs#L100-L110](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L100-L110)
 
 해결:
 
@@ -181,7 +199,7 @@ foreach (var loadingUIForm in m_LoadingUIForms)
 }
 ```
 
-Source: [Runtime/UIManager.Open.cs#L88-L96](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L88-L96)
+Source: [Runtime/UIManager.Open.cs#L90-L98](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L90-L98)
 
 동시의 두 번째 열기는 새로운 실패 콜백을 트리거하지 않으며, 첫 번째 요청의 실패/성공 이벤트만 트리거됩니다.
 

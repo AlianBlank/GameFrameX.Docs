@@ -48,7 +48,7 @@ Source: [UGUI.cs](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blo
 
 ### 3. UIComponent를 통해 인터페이스 열기
 
-`UIManager`의 열기 인터페이스는 `GameFrameX.UI.Runtime.UIComponent`에 있으며, 내부적으로 `UIManager.InnerOpenUIFormAsync`를 호출하여 리소스 로드, 인스턴스화 및 인터페이스 생성을 완료합니다([UIManager.Open.cs](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L70-L122)).
+`UIManager`의 열기 인터페이스는 `GameFrameX.UI.Runtime.UIComponent`에 있으며, 내부적으로 `UIManager.InnerOpenUIFormAsync`를 호출하여 리소스 로드, 인스턴스화 및 인터페이스 생성을 완료합니다([UIManager.Open.cs](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L70-L127)).
 
 ```csharp
 using GameFrameX.UI.Runtime;
@@ -82,7 +82,7 @@ public class GameEntry
 | `userData` | 인터페이스 `OnAwake`/`OnOpen`에 전달되는 사용자 정의 데이터. |
 | `isFullScreen` | 전체 화면으로 표시할지 여부. |
 
-로드 프로세스: 경로에 `BundlesDirectoryName`이 포함되지 않으면 `Resources.Load`를 사용하고, 그렇지 않으면 YooAsset 비동기 패키지 로드를 사용합니다([UIManager.Open.cs](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L139-L170)).
+로드 프로세스: 경로에 `BundlesDirectoryName`이 포함되지 않으면 `Resources.Load`를 사용하고, 그렇지 않으면 YooAsset 비동기 패키지 로드를 사용합니다([UIManager.Open.cs](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L144-L175)).
 
 ### 4. 열기 결과 모니터링
 
@@ -105,7 +105,7 @@ uiComponent.OpenUIFormFailure += (sender, args) =>
 ## 일반적인 변형
 
 - **동기 열기**: `uiComponent.OpenUIForm(...)`(동기 시그니처, 내부적으로는 여전히 비동기 로드)을 사용합니다.
-- **싱글톤 모드**: `UIComponent`에서 인터페이스를 등록할 때 `Singleton = true`로 설정하면, 동일한 인터페이스를 반복해서 열 때 이전 인스턴스가 재사용되고 `RefocusUIForm`이 트리거됩니다([UIManager.Open.cs](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L77-L97)).
+- **싱글톤 모드**: `UIComponent`에서 인터페이스를 등록할 때 `Singleton = true`로 설정하면, 동일한 인터페이스를 반복해서 열 때 이전 인스턴스가 재사용되고 `RefocusUIForm`이 트리거됩니다([UIManager.Open.cs](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UIManager.Open.cs#L79-L111)). 인스턴스 풀(`m_InstancePool.Spawn`) 재사용은 싱글톤 모드에서만 수행되며, 다중 인스턴스 인터페이스는 매번 로드 플로우를 통해 새 인스턴스를 생성합니다.
 - **애니메이션 포함**: 스크립트에 `[OptionUIShowAnimation(enable: true, animationName: "Show")]` / `[OptionUIHideAnimation(...)]`을 추가하면, Helper가 이를 읽고 적용합니다([UGUIFormHelper.cs](https://github.com/GameFrameX/com.gameframex.unity.ui.ugui/blob/main/Runtime/UGUIFormHelper.cs#L124-L144)).
 
 ## 일반적인 오류
