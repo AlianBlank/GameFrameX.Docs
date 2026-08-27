@@ -2,17 +2,17 @@
   {
     "type": "dir",
     "name": "getting-started",
-    "label": "入门指引"
+    "label": "入門ガイド"
   },
   {
     "type": "dir",
     "name": "tasks",
-    "label": "常用任务"
+    "label": "よく使うタスク"
   },
   {
     "type": "dir",
     "name": "troubleshooting",
-    "label": "故障排查"
+    "label": "トラブルシューティング"
   },
   {
     "type": "dir",
@@ -22,6 +22,6 @@
   {
     "type": "dir",
     "name": "concepts",
-    "label": "原理速览"
+    "label": "原理の概要"
   }
 ]
