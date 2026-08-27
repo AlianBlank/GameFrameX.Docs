@@ -2,26 +2,26 @@
   {
     "type": "dir",
     "name": "getting-started",
-    "label": "入门指南"
+    "label": "Getting Started Guide"
   },
   {
     "type": "dir",
     "name": "tasks",
-    "label": "常见任务"
+    "label": "Common Tasks"
   },
   {
     "type": "dir",
     "name": "troubleshooting",
-    "label": "故障排查"
+    "label": "Troubleshooting"
   },
   {
     "type": "dir",
     "name": "reference",
-    "label": "参考速查"
+    "label": "Quick Reference"
   },
   {
     "type": "dir",
     "name": "concepts",
-    "label": "工作原理速览"
+    "label": "How It Works at a Glance"
   }
 ]
