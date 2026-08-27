@@ -1,0 +1,27 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "クイックスタート"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "よくあるタスク"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "トラブルシューティング"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "参考"
+  },
+  {
+    "type": "dir",
+    "name": "how-it-works",
+    "label": "動作原理"
+  }
+]

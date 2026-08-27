@@ -1,0 +1,32 @@
+[
+  {
+    "type": "dir",
+    "name": "overview",
+    "label": "概要"
+  },
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "クイックスタート"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "よくあるタスク"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "設定リファレンス"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "トラブルシューティング"
+  },
+  {
+    "type": "dir",
+    "name": "concepts",
+    "label": "仕組みの早わかり"
+  }
+]

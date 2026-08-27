@@ -1,0 +1,19 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "クイックスタート"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "よくあるタスク"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "トラブルシューティング"
+  },
+  "api-quick-reference",
+  "ui-lifecycle"
+]
