@@ -1,0 +1,8 @@
+[
+  "init-payment-system",
+  "make-purchase",
+  "handle-payment-events",
+  "query-and-consume",
+  "integrate-channels",
+  "custom-channel"
+]
