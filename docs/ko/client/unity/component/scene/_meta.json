@@ -2,26 +2,26 @@
   {
     "type": "dir",
     "name": "getting-started",
-    "label": "入门指南"
+    "label": "입문 가이드"
   },
   {
     "type": "dir",
     "name": "tasks",
-    "label": "常见任务"
+    "label": "일반 작업"
   },
   {
     "type": "dir",
     "name": "troubleshooting",
-    "label": "故障排查"
+    "label": "문제 해결"
   },
   {
     "type": "dir",
     "name": "reference",
-    "label": "参考"
+    "label": "참고"
   },
   {
     "type": "dir",
     "name": "concepts",
-    "label": "原理速览"
+    "label": "원리 한눈에 보기"
   }
 ]
