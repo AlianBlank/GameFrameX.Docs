@@ -1,0 +1,9 @@
+[
+  "writing-hotfix-code",
+  {
+    "type": "dir",
+    "name": "hot-update-deployment",
+    "label": "무중단 핫 업데이트 구현(AppStartUpHotfixGame 시리즈)"
+  },
+  "cache-state-persistence"
+]

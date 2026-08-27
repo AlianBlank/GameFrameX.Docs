@@ -1,4 +1,49 @@
 [
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "입문 가이드"
+  },
+  {
+    "type": "dir",
+    "name": "deployment",
+    "label": "환경과 배포"
+  },
+  {
+    "type": "dir",
+    "name": "network",
+    "label": "네트워크 및 프로토콜"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "업무 하위 시스템 개발"
+  },
+  {
+    "type": "dir",
+    "name": "hotfix-and-state",
+    "label": "핫 업데이트와 상태 계층"
+  },
+  {
+    "type": "dir",
+    "name": "config",
+    "label": "구성 및 테이블 데이터"
+  },
+  {
+    "type": "dir",
+    "name": "runtime",
+    "label": "Actor 모델과 관측 가능성"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "문제 해결"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "참고"
+  },
   "introduction",
   "quick-start",
   "architecture",

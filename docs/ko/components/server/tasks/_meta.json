@@ -1,0 +1,12 @@
+[
+  "account-login",
+  "player-system",
+  "player-bag",
+  "player-mail",
+  "player-pet",
+  "player-attribute",
+  "player-reward",
+  "game-room",
+  "game-rockpaperscissors",
+  "http-handler"
+]

@@ -37,6 +37,20 @@
                 "ja": "サーバー",
                 "ko": "서버"
               }
+            },
+            {
+              "alias": "server-legacy",
+              "active": true,
+              "gitUrl": "https://github.com/GameFrameX/GameFrameX.Server.git",
+              "docPath": "components/server",
+              "titles": {
+                "zh": "服务器",
+                "zh-TW": "伺服器",
+                "en": "Server",
+                "ja": "サーバー",
+                "ko": "서버"
+              },
+              "note": "换源前旧仓（task/config/deployment 等子目录文档）与 Server.Source 共用 components/server：根级页面来自 Server.Source，子目录来自本仓"
             }
           ]
         },

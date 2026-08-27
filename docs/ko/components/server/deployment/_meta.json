@@ -1,0 +1,5 @@
+[
+  "docker-compose",
+  "local-launch",
+  "mongodb-setup"
+]
