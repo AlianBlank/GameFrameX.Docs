@@ -1,0 +1,11 @@
+[
+  "add-download",
+  "async-download",
+  "subscribe-events",
+  "tagged-tasks",
+  "priority-and-concurrency",
+  "pause-resume",
+  "remove-tasks",
+  "real-time-metrics",
+  "custom-agent-helper"
+]

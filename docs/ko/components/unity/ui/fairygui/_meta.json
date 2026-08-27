@@ -1,0 +1,19 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "빠른 시작"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "일반 작업"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "문제 해결"
+  },
+  "api-quick-reference",
+  "ui-lifecycle"
+]

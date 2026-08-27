@@ -1,0 +1,11 @@
+[
+  "create-first-ui",
+  "open-close-recycle-ui",
+  "configure-ui-groups",
+  "load-fairygui-packages",
+  "async-resource-loading",
+  "show-hide-animations",
+  "find-gobject-by-path",
+  "mvvm-binding-cleanup",
+  "editor-tools"
+]

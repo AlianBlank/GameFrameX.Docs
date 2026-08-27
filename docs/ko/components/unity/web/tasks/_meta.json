@@ -1,0 +1,11 @@
+[
+  "send-get-requests",
+  "send-post-requests",
+  "binary-upload-download",
+  "protobuf-requests",
+  "parse-json-response",
+  "base-form-header-query",
+  "timeout-and-connections",
+  "webgl-and-https",
+  "enable-web-logs"
+]

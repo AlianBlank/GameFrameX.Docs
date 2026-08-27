@@ -1,0 +1,27 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "빠른 시작"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "일반 작업"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "문제 해결"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "참고"
+  },
+  {
+    "type": "dir",
+    "name": "how-it-works",
+    "label": "작동 원리"
+  }
+]
