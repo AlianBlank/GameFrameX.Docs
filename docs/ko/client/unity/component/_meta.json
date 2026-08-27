@@ -1,116 +1,177 @@
 [
-  "index",
-  "entry",
-  "hybridCLR",
-  "litjson",
-  "object-storage",
-  "protobuf-net",
-  "wechat-mini-game",
-  "yoo-asset",
-  "do-tween",
-  "douyin-mini-game",
   {
     "type": "dir",
-    "name": "advertisement"
+    "name": "getting-started",
+    "label": "빠른 시작"
   },
   {
     "type": "dir",
-    "name": "asset"
+    "name": "tasks",
+    "label": "일반적인 작업"
   },
   {
     "type": "dir",
-    "name": "builder"
+    "name": "troubleshooting",
+    "label": "문제 해결"
   },
   {
     "type": "dir",
-    "name": "coroutine"
+    "name": "reference",
+    "label": "참고"
   },
   {
     "type": "dir",
-    "name": "download"
+    "name": "concepts",
+    "label": "원리 한눈에 보기"
   },
   {
     "type": "dir",
-    "name": "entity"
+    "name": "advertisement",
+    "label": "광고"
   },
   {
     "type": "dir",
-    "name": "event"
+    "name": "asset",
+    "label": "에셋"
   },
   {
     "type": "dir",
-    "name": "fsm"
+    "name": "builder",
+    "label": "빌더"
   },
   {
     "type": "dir",
-    "name": "gameanalytics"
+    "name": "config",
+    "label": "설정"
   },
   {
     "type": "dir",
-    "name": "getchannel"
+    "name": "core",
+    "label": "코어"
   },
   {
     "type": "dir",
-    "name": "globalconfig"
+    "name": "coroutine",
+    "label": "코루틴"
   },
   {
     "type": "dir",
-    "name": "localization"
+    "name": "download",
+    "label": "다운로드"
   },
   {
     "type": "dir",
-    "name": "mono"
+    "name": "entity",
+    "label": "엔티티"
   },
   {
     "type": "dir",
-    "name": "network"
+    "name": "entry",
+    "label": "엔트리"
   },
   {
     "type": "dir",
-    "name": "operationclipboard"
+    "name": "event",
+    "label": "이벤트"
   },
   {
     "type": "dir",
-    "name": "procedure"
+    "name": "fairygui",
+    "label": "FairyGUI 어댑터"
   },
   {
     "type": "dir",
-    "name": "scene"
+    "name": "fsm",
+    "label": "스테이트 머신"
   },
   {
     "type": "dir",
-    "name": "setting"
+    "name": "gameanalytics",
+    "label": "데이터 분석"
   },
   {
     "type": "dir",
-    "name": "sound"
+    "name": "getchannel",
+    "label": "채널 조회"
   },
   {
     "type": "dir",
-    "name": "timer"
+    "name": "globalconfig",
+    "label": "전역 설정"
   },
   {
     "type": "dir",
-    "name": "ui"
+    "name": "imagecache",
+    "label": "이미지 캐시"
   },
   {
     "type": "dir",
-    "name": "ui-fairygui"
+    "name": "litjson",
+    "label": "LitJSON"
   },
   {
     "type": "dir",
-    "name": "ui-ugui"
+    "name": "mono",
+    "label": "Mono"
   },
   {
     "type": "dir",
-    "name": "web"
+    "name": "objectstorage",
+    "label": "오브젝트 스토리지"
   },
   {
     "type": "dir",
-    "name": "web-protobuff"
+    "name": "procedure",
+    "label": "플로우"
   },
   {
     "type": "dir",
-    "name": "webview"
+    "name": "readassets",
+    "label": "에셋 읽기"
+  },
+  {
+    "type": "dir",
+    "name": "scene",
+    "label": "씬"
+  },
+  {
+    "type": "dir",
+    "name": "setting",
+    "label": "설정"
+  },
+  {
+    "type": "dir",
+    "name": "sound",
+    "label": "사운드"
+  },
+  {
+    "type": "dir",
+    "name": "startup",
+    "label": "시작"
+  },
+  {
+    "type": "dir",
+    "name": "timer",
+    "label": "타이머"
+  },
+  {
+    "type": "dir",
+    "name": "ui",
+    "label": "UI"
+  },
+  {
+    "type": "dir",
+    "name": "web",
+    "label": "Web"
+  },
+  {
+    "type": "dir",
+    "name": "webview",
+    "label": "웹뷰"
+  },
+  {
+    "type": "dir",
+    "name": "xcode",
+    "label": "XCode"
   }
 ]

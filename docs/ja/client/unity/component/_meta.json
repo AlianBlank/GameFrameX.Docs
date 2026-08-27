@@ -1,116 +1,177 @@
 [
-  "index",
-  "entry",
-  "hybridCLR",
-  "litjson",
-  "object-storage",
-  "protobuf-net",
-  "wechat-mini-game",
-  "yoo-asset",
-  "do-tween",
-  "douyin-mini-game",
   {
     "type": "dir",
-    "name": "advertisement"
+    "name": "getting-started",
+    "label": "クイックスタート"
   },
   {
     "type": "dir",
-    "name": "asset"
+    "name": "tasks",
+    "label": "一般的なタスク"
   },
   {
     "type": "dir",
-    "name": "builder"
+    "name": "troubleshooting",
+    "label": "トラブルシューティング"
   },
   {
     "type": "dir",
-    "name": "coroutine"
+    "name": "reference",
+    "label": "参考"
   },
   {
     "type": "dir",
-    "name": "download"
+    "name": "concepts",
+    "label": "原理の早わかり"
   },
   {
     "type": "dir",
-    "name": "entity"
+    "name": "advertisement",
+    "label": "広告"
   },
   {
     "type": "dir",
-    "name": "event"
+    "name": "asset",
+    "label": "アセット"
   },
   {
     "type": "dir",
-    "name": "fsm"
+    "name": "builder",
+    "label": "ビルダー"
   },
   {
     "type": "dir",
-    "name": "gameanalytics"
+    "name": "config",
+    "label": "設定"
   },
   {
     "type": "dir",
-    "name": "getchannel"
+    "name": "core",
+    "label": "コア"
   },
   {
     "type": "dir",
-    "name": "globalconfig"
+    "name": "coroutine",
+    "label": "コルーチン"
   },
   {
     "type": "dir",
-    "name": "localization"
+    "name": "download",
+    "label": "ダウンロード"
   },
   {
     "type": "dir",
-    "name": "mono"
+    "name": "entity",
+    "label": "エンティティ"
   },
   {
     "type": "dir",
-    "name": "network"
+    "name": "entry",
+    "label": "エントリー"
   },
   {
     "type": "dir",
-    "name": "operationclipboard"
+    "name": "event",
+    "label": "イベント"
   },
   {
     "type": "dir",
-    "name": "procedure"
+    "name": "fairygui",
+    "label": "FairyGUI アダプター"
   },
   {
     "type": "dir",
-    "name": "scene"
+    "name": "fsm",
+    "label": "ステートマシン"
   },
   {
     "type": "dir",
-    "name": "setting"
+    "name": "gameanalytics",
+    "label": "データ分析"
   },
   {
     "type": "dir",
-    "name": "sound"
+    "name": "getchannel",
+    "label": "チャネル取得"
   },
   {
     "type": "dir",
-    "name": "timer"
+    "name": "globalconfig",
+    "label": "グローバル設定"
   },
   {
     "type": "dir",
-    "name": "ui"
+    "name": "imagecache",
+    "label": "画像キャッシュ"
   },
   {
     "type": "dir",
-    "name": "ui-fairygui"
+    "name": "litjson",
+    "label": "LitJSON"
   },
   {
     "type": "dir",
-    "name": "ui-ugui"
+    "name": "mono",
+    "label": "Mono"
   },
   {
     "type": "dir",
-    "name": "web"
+    "name": "objectstorage",
+    "label": "オブジェクトストレージ"
   },
   {
     "type": "dir",
-    "name": "web-protobuff"
+    "name": "procedure",
+    "label": "フロー"
   },
   {
     "type": "dir",
-    "name": "webview"
+    "name": "readassets",
+    "label": "アセット読み込み"
+  },
+  {
+    "type": "dir",
+    "name": "scene",
+    "label": "シーン"
+  },
+  {
+    "type": "dir",
+    "name": "setting",
+    "label": "設定"
+  },
+  {
+    "type": "dir",
+    "name": "sound",
+    "label": "サウンド"
+  },
+  {
+    "type": "dir",
+    "name": "startup",
+    "label": "スタートアップ"
+  },
+  {
+    "type": "dir",
+    "name": "timer",
+    "label": "タイマー"
+  },
+  {
+    "type": "dir",
+    "name": "ui",
+    "label": "UI"
+  },
+  {
+    "type": "dir",
+    "name": "web",
+    "label": "Web"
+  },
+  {
+    "type": "dir",
+    "name": "webview",
+    "label": "ウェブビュー"
+  },
+  {
+    "type": "dir",
+    "name": "xcode",
+    "label": "XCode"
   }
 ]
