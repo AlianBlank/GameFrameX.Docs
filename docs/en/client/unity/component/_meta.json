@@ -2,181 +2,217 @@
   {
     "type": "dir",
     "name": "getting-started",
-    "label": "Quick Start"
+    "label": "Quick Start",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "tasks",
-    "label": "Common Tasks"
+    "label": "Common Tasks",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "troubleshooting",
-    "label": "Troubleshooting"
+    "label": "Troubleshooting",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "reference",
-    "label": "Reference"
+    "label": "Reference",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "concepts",
-    "label": "Principles at a Glance"
+    "label": "Principles at a Glance",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "advertisement",
-    "label": "Advertisement"
+    "label": "Advertisement",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "asset",
-    "label": "Asset"
+    "label": "Asset",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "builder",
-    "label": "Builder"
+    "label": "Builder",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "config",
-    "label": "Config"
+    "label": "Config",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "core",
-    "label": "Core"
+    "label": "Core",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "coroutine",
-    "label": "Coroutine"
+    "label": "Coroutine",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "download",
-    "label": "Download"
+    "label": "Download",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "entity",
-    "label": "Entity"
+    "label": "Entity",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "entry",
-    "label": "Entry"
+    "label": "Entry",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "event",
-    "label": "Event"
+    "label": "Event",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "fairygui",
-    "label": "FairyGUI"
+    "label": "FairyGUI",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "fsm",
-    "label": "FSM"
+    "label": "FSM",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "gameanalytics",
-    "label": "Game Analytics"
+    "label": "Game Analytics",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "getchannel",
-    "label": "Get Channel"
+    "label": "Get Channel",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "globalconfig",
-    "label": "Global Config"
+    "label": "Global Config",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "imagecache",
-    "label": "Image Cache"
+    "label": "Image Cache",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "litjson",
-    "label": "LitJSON"
+    "label": "LitJSON",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "mono",
-    "label": "Mono"
+    "label": "Mono",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "network",
-    "label": "Network"
+    "label": "Network",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "objectstorage",
-    "label": "Object Storage"
+    "label": "Object Storage",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "procedure",
-    "label": "Procedure"
+    "label": "Procedure",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "readassets",
-    "label": "Read Assets"
+    "label": "Read Assets",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "scene",
-    "label": "Scene"
+    "label": "Scene",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "setting",
-    "label": "Setting"
+    "label": "Setting",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "sound",
-    "label": "Sound"
+    "label": "Sound",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "startup",
-    "label": "Startup"
+    "label": "Startup",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "timer",
-    "label": "Timer"
+    "label": "Timer",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "ui",
-    "label": "UI"
+    "label": "UI",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "web",
-    "label": "Web"
+    "label": "Web",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "webview",
-    "label": "Web View"
+    "label": "Web View",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "xcode",
-    "label": "XCode"
+    "label": "XCode",
+    "collapsed": true
   }
 ]

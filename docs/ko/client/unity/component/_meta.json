@@ -2,176 +2,211 @@
   {
     "type": "dir",
     "name": "getting-started",
-    "label": "빠른 시작"
+    "label": "빠른 시작",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "tasks",
-    "label": "일반적인 작업"
+    "label": "일반적인 작업",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "troubleshooting",
-    "label": "문제 해결"
+    "label": "문제 해결",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "reference",
-    "label": "참고"
+    "label": "참고",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "concepts",
-    "label": "원리 한눈에 보기"
+    "label": "원리 한눈에 보기",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "advertisement",
-    "label": "광고"
+    "label": "광고",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "asset",
-    "label": "에셋"
+    "label": "에셋",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "builder",
-    "label": "빌더"
+    "label": "빌더",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "config",
-    "label": "설정"
+    "label": "설정",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "core",
-    "label": "코어"
+    "label": "코어",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "coroutine",
-    "label": "코루틴"
+    "label": "코루틴",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "download",
-    "label": "다운로드"
+    "label": "다운로드",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "entity",
-    "label": "엔티티"
+    "label": "엔티티",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "entry",
-    "label": "엔트리"
+    "label": "엔트리",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "event",
-    "label": "이벤트"
+    "label": "이벤트",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "fairygui",
-    "label": "FairyGUI 어댑터"
+    "label": "FairyGUI 어댑터",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "fsm",
-    "label": "스테이트 머신"
+    "label": "스테이트 머신",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "gameanalytics",
-    "label": "데이터 분석"
+    "label": "데이터 분석",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "getchannel",
-    "label": "채널 조회"
+    "label": "채널 조회",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "globalconfig",
-    "label": "전역 설정"
+    "label": "전역 설정",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "imagecache",
-    "label": "이미지 캐시"
+    "label": "이미지 캐시",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "litjson",
-    "label": "LitJSON"
+    "label": "LitJSON",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "mono",
-    "label": "Mono"
+    "label": "Mono",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "objectstorage",
-    "label": "오브젝트 스토리지"
+    "label": "오브젝트 스토리지",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "procedure",
-    "label": "플로우"
+    "label": "플로우",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "readassets",
-    "label": "에셋 읽기"
+    "label": "에셋 읽기",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "scene",
-    "label": "씬"
+    "label": "씬",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "setting",
-    "label": "설정"
+    "label": "설정",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "sound",
-    "label": "사운드"
+    "label": "사운드",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "startup",
-    "label": "시작"
+    "label": "시작",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "timer",
-    "label": "타이머"
+    "label": "타이머",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "ui",
-    "label": "UI"
+    "label": "UI",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "web",
-    "label": "Web"
+    "label": "Web",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "webview",
-    "label": "웹뷰"
+    "label": "웹뷰",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "xcode",
-    "label": "XCode"
+    "label": "XCode",
+    "collapsed": true
   }
 ]

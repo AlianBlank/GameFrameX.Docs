@@ -2,176 +2,211 @@
   {
     "type": "dir",
     "name": "getting-started",
-    "label": "クイックスタート"
+    "label": "クイックスタート",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "tasks",
-    "label": "一般的なタスク"
+    "label": "一般的なタスク",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "troubleshooting",
-    "label": "トラブルシューティング"
+    "label": "トラブルシューティング",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "reference",
-    "label": "参考"
+    "label": "参考",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "concepts",
-    "label": "原理の早わかり"
+    "label": "原理の早わかり",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "advertisement",
-    "label": "広告"
+    "label": "広告",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "asset",
-    "label": "アセット"
+    "label": "アセット",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "builder",
-    "label": "ビルダー"
+    "label": "ビルダー",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "config",
-    "label": "設定"
+    "label": "設定",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "core",
-    "label": "コア"
+    "label": "コア",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "coroutine",
-    "label": "コルーチン"
+    "label": "コルーチン",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "download",
-    "label": "ダウンロード"
+    "label": "ダウンロード",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "entity",
-    "label": "エンティティ"
+    "label": "エンティティ",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "entry",
-    "label": "エントリー"
+    "label": "エントリー",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "event",
-    "label": "イベント"
+    "label": "イベント",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "fairygui",
-    "label": "FairyGUI アダプター"
+    "label": "FairyGUI アダプター",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "fsm",
-    "label": "ステートマシン"
+    "label": "ステートマシン",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "gameanalytics",
-    "label": "データ分析"
+    "label": "データ分析",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "getchannel",
-    "label": "チャネル取得"
+    "label": "チャネル取得",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "globalconfig",
-    "label": "グローバル設定"
+    "label": "グローバル設定",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "imagecache",
-    "label": "画像キャッシュ"
+    "label": "画像キャッシュ",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "litjson",
-    "label": "LitJSON"
+    "label": "LitJSON",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "mono",
-    "label": "Mono"
+    "label": "Mono",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "objectstorage",
-    "label": "オブジェクトストレージ"
+    "label": "オブジェクトストレージ",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "procedure",
-    "label": "フロー"
+    "label": "フロー",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "readassets",
-    "label": "アセット読み込み"
+    "label": "アセット読み込み",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "scene",
-    "label": "シーン"
+    "label": "シーン",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "setting",
-    "label": "設定"
+    "label": "設定",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "sound",
-    "label": "サウンド"
+    "label": "サウンド",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "startup",
-    "label": "スタートアップ"
+    "label": "スタートアップ",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "timer",
-    "label": "タイマー"
+    "label": "タイマー",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "ui",
-    "label": "UI"
+    "label": "UI",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "web",
-    "label": "Web"
+    "label": "Web",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "webview",
-    "label": "ウェブビュー"
+    "label": "ウェブビュー",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "xcode",
-    "label": "XCode"
+    "label": "XCode",
+    "collapsed": true
   }
 ]

@@ -2,186 +2,223 @@
   {
     "type": "dir",
     "name": "getting-started",
-    "label": "快速上手"
-  },
-  {
-    "type": "dir",
-    "name": "tasks",
-    "label": "常见任务"
-  },
-  {
-    "type": "dir",
-    "name": "troubleshooting",
-    "label": "故障排查"
-  },
-  {
-    "type": "dir",
-    "name": "reference",
-    "label": "参考"
-  },
-  {
-    "type": "dir",
-    "name": "concepts",
-    "label": "原理速览"
-  },
-  {
-    "type": "dir",
-    "name": "advertisement",
-    "label": "广告"
-  },
-  {
-    "type": "dir",
-    "name": "asset",
-    "label": "资源"
-  },
-  {
-    "type": "dir",
-    "name": "builder",
-    "label": "构建器"
-  },
-  {
-    "type": "dir",
-    "name": "config",
-    "label": "配置"
+    "label": "快速上手",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "core",
-    "label": "核心"
+    "label": "核心",
+    "collapsed": true
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "常见任务",
+    "collapsed": true
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "故障排查",
+    "collapsed": true
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "参考",
+    "collapsed": true
+  },
+  {
+    "type": "dir",
+    "name": "concepts",
+    "label": "原理速览",
+    "collapsed": true
+  },
+  {
+    "type": "dir",
+    "name": "advertisement",
+    "label": "广告",
+    "collapsed": true
+  },
+  {
+    "type": "dir",
+    "name": "asset",
+    "label": "资源",
+    "collapsed": true
+  },
+  {
+    "type": "dir",
+    "name": "builder",
+    "label": "构建器",
+    "collapsed": true
+  },
+  {
+    "type": "dir",
+    "name": "config",
+    "label": "配置",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "coroutine",
-    "label": "协程"
+    "label": "协程",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "download",
-    "label": "下载"
+    "label": "下载",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "entity",
-    "label": "实体"
+    "label": "实体",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "entry",
-    "label": "入口"
+    "label": "入口",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "event",
-    "label": "事件"
+    "label": "事件",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "fairygui",
-    "label": "FairyGUI 适配"
+    "label": "FairyGUI 适配",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "fsm",
-    "label": "有限状态机"
+    "label": "有限状态机",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "gameanalytics",
-    "label": "数据分析"
+    "label": "数据分析",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "getchannel",
-    "label": "渠道获取"
+    "label": "渠道获取",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "globalconfig",
-    "label": "全局配置"
+    "label": "全局配置",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "imagecache",
-    "label": "图片缓存"
+    "label": "图片缓存",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "litjson",
-    "label": "LitJSON"
+    "label": "LitJSON",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "mono",
-    "label": "Mono"
+    "label": "Mono",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "network",
-    "label": "网络"
+    "label": "网络",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "objectstorage",
-    "label": "对象存储"
+    "label": "对象存储",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "payment",
-    "label": "支付"
+    "label": "支付",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "procedure",
-    "label": "流程"
+    "label": "流程",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "readassets",
-    "label": "资源读取"
+    "label": "资源读取",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "scene",
-    "label": "场景"
+    "label": "场景",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "setting",
-    "label": "设置"
+    "label": "设置",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "sound",
-    "label": "音频"
+    "label": "音频",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "startup",
-    "label": "启动"
+    "label": "启动",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "timer",
-    "label": "计时器"
+    "label": "计时器",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "ui",
-    "label": "UI"
+    "label": "UI",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "web",
-    "label": "Web"
+    "label": "Web",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "webview",
-    "label": "网页视图"
+    "label": "网页视图",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "xcode",
-    "label": "XCode"
+    "label": "XCode",
+    "collapsed": true
   }
 ]

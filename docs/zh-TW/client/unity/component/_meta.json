@@ -2,11 +2,13 @@
   {
     "type": "dir",
     "name": "config",
-    "label": "設定"
+    "label": "設定",
+    "collapsed": true
   },
   {
     "type": "dir",
     "name": "core",
-    "label": "核心"
+    "label": "核心",
+    "collapsed": true
   }
 ]
