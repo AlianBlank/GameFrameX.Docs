@@ -1,0 +1,19 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "快速上手"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "常見任務"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "故障排除"
+  },
+  "api-quick-reference",
+  "ui-lifecycle"
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "入門"
+  },
+  {
+    "type": "dir",
+    "name": "core-concepts",
+    "label": "核心概念"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "常見任務"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "API 參考"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "疑難排解"
+  }
+]

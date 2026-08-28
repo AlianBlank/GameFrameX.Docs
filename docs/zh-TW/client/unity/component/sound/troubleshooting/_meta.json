@@ -1,0 +1,8 @@
+[
+  "sound-manager-invalid",
+  "base-event-component-missing",
+  "helper-create-failed",
+  "add-sound-group-failed",
+  "audiomixer-missing",
+  "no-audio-or-dropout"
+]

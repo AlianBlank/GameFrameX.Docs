@@ -1,0 +1,8 @@
+[
+  "load-scene",
+  "unload-scene",
+  "set-scene-order",
+  "subscribe-scene-events",
+  "query-scene-state",
+  "refresh-main-camera"
+]

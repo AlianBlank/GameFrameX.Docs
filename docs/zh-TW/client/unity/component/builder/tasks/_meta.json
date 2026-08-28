@@ -1,0 +1,11 @@
+[
+  "command-line-params",
+  "build-apk",
+  "build-asset-bundle",
+  "incremental-build",
+  "upload-to-object-storage",
+  "configure-object-storage",
+  "update-asset-version",
+  "wechat-notify",
+  "package-removal"
+]

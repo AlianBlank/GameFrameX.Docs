@@ -1,0 +1,27 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "入門"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "一般作業"
+  },
+  {
+    "type": "dir",
+    "name": "requests-responses",
+    "label": "請求與回應模型"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "參考"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "問題解決"
+  }
+]

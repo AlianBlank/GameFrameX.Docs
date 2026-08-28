@@ -1,0 +1,17 @@
+[
+  "load-ui-package",
+  "use-components",
+  "buttons-events",
+  "lists",
+  "scroll-pull-refresh",
+  "text-rich-emoji",
+  "windows-modal",
+  "controllers-gears",
+  "transitions-tween",
+  "drag-gesture",
+  "visual-effects",
+  "embed-3d-particles",
+  "screen-adaptation",
+  "minigame-webgl",
+  "pixelation"
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "入門與安裝"
+  },
+  {
+    "type": "dir",
+    "name": "ui-forms",
+    "label": "介面及視窗管理"
+  },
+  {
+    "type": "dir",
+    "name": "components",
+    "label": "元件擴充與進階控制項"
+  },
+  {
+    "type": "dir",
+    "name": "editor",
+    "label": "編輯器與程式碼生成"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "參考與內文搜尋"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "常見問題與疑難排解"
+  }
+]

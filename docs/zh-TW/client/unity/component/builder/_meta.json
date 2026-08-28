@@ -2,17 +2,17 @@
   {
     "type": "dir",
     "name": "getting-started",
-    "label": "快速上手"
+    "label": "快速入門"
   },
   {
     "type": "dir",
     "name": "tasks",
-    "label": "常見任務"
+    "label": "一般任務"
   },
   {
     "type": "dir",
     "name": "troubleshooting",
-    "label": "故障排除"
+    "label": "疑難排解"
   },
   {
     "type": "dir",
@@ -23,17 +23,5 @@
     "type": "dir",
     "name": "concepts",
     "label": "原理速覽"
-  },
-  {
-    "type": "dir",
-    "name": "config",
-    "label": "設定",
-    "collapsed": true
-  },
-  {
-    "type": "dir",
-    "name": "core",
-    "label": "核心",
-    "collapsed": true
   }
 ]

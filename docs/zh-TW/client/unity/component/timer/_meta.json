@@ -12,28 +12,11 @@
   {
     "type": "dir",
     "name": "troubleshooting",
-    "label": "故障排除"
+    "label": "疑難排解"
   },
   {
     "type": "dir",
     "name": "reference",
     "label": "參考"
-  },
-  {
-    "type": "dir",
-    "name": "concepts",
-    "label": "原理速覽"
-  },
-  {
-    "type": "dir",
-    "name": "config",
-    "label": "設定",
-    "collapsed": true
-  },
-  {
-    "type": "dir",
-    "name": "core",
-    "label": "核心",
-    "collapsed": true
   }
 ]

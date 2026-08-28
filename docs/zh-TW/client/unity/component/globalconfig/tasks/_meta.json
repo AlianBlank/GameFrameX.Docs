@@ -1,0 +1,8 @@
+[
+  "config-version-check-urls",
+  "config-host-server-url",
+  "config-aot-code-list",
+  "store-custom-content",
+  "fetch-and-apply-global-info",
+  "read-write-component-props"
+]

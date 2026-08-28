@@ -1,0 +1,6 @@
+[
+  "missing-or-empty-fields-after-deserialize",
+  "invalid-token-parse-error",
+  "invalid-character-parse-error",
+  "il2cpp-stripped-type-missing"
+]
