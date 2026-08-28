@@ -1,0 +1,9 @@
+[
+  "writing-hotfix-code",
+  {
+    "type": "dir",
+    "name": "hot-update-deployment",
+    "label": "實作零停機熱更新(AppStartUpHotfixGame 系列)"
+  },
+  "cache-state-persistence"
+]

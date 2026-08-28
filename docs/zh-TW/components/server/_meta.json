@@ -1,0 +1,70 @@
+[
+  "introduction",
+  "quick-start",
+  "architecture",
+  "environment-setup",
+  "add-business-module",
+  "write-hotfix-logic",
+  "player-login-session",
+  "mongodb-persistence",
+  "config-tables",
+  "proto-message-codec",
+  "multi-protocol-networking",
+  "cross-server-messaging",
+  "hot-update-deployment",
+  "docker-compose-deployment",
+  "monitoring-observability",
+  "bot-client-testing",
+  "event-system",
+  "server-config",
+  "api-component",
+  "startup-failures",
+  "hotfix-issues",
+  "network-issues",
+  "tests-layout",
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "入門指引"
+  },
+  {
+    "type": "dir",
+    "name": "deployment",
+    "label": "環境與部署"
+  },
+  {
+    "type": "dir",
+    "name": "network",
+    "label": "網路與協定"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "業務子系統開發"
+  },
+  {
+    "type": "dir",
+    "name": "hotfix-and-state",
+    "label": "熱更新與狀態層"
+  },
+  {
+    "type": "dir",
+    "name": "config",
+    "label": "配置與表資料"
+  },
+  {
+    "type": "dir",
+    "name": "runtime",
+    "label": "Actor 模型與可觀測性"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "疑難排解"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "參考"
+  }
+]
