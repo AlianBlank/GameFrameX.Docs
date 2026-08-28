@@ -1,0 +1,77 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "入門指南"
+  },
+  {
+    "type": "dir",
+    "name": "encryption",
+    "label": "加密"
+  },
+  {
+    "type": "dir",
+    "name": "hash",
+    "label": "雜湊"
+  },
+  {
+    "type": "dir",
+    "name": "json",
+    "label": "JSON序列化"
+  },
+  {
+    "type": "dir",
+    "name": "options",
+    "label": "命令列引數與設定(Options)"
+  },
+  {
+    "type": "dir",
+    "name": "logger",
+    "label": "記錄器 (Logger)"
+  },
+  {
+    "type": "dir",
+    "name": "localization",
+    "label": "在地化"
+  },
+  {
+    "type": "dir",
+    "name": "http-extension",
+    "label": "HTTP 用戶端擴充"
+  },
+  {
+    "type": "dir",
+    "name": "http-normalization",
+    "label": "HTTP 回應正規化"
+  },
+  {
+    "type": "dir",
+    "name": "extensions",
+    "label": "擴充方法程式庫(Extensions)"
+  },
+  {
+    "type": "dir",
+    "name": "utility",
+    "label": "泛用工具 (Utility)"
+  },
+  {
+    "type": "dir",
+    "name": "orm-attribute",
+    "label": "ORM 的屬性 (Attribute)"
+  },
+  {
+    "type": "dir",
+    "name": "orm-entity",
+    "label": "ORM實體基底類別(Entity)"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "疑難排解"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "參考"
+  }
+]
