@@ -1,0 +1,7 @@
+[
+  "switch-language",
+  "get-localized-string",
+  "manage-dictionary",
+  "listen-language-change",
+  "custom-helper"
+]
