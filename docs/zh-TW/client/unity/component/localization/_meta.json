@@ -1,0 +1,23 @@
+[
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "快速上手"
+  },
+  {
+    "type": "dir",
+    "name": "tasks",
+    "label": "常見任務"
+  },
+  {
+    "type": "dir",
+    "name": "troubleshooting",
+    "label": "疑難排解"
+  },
+  {
+    "type": "dir",
+    "name": "reference",
+    "label": "參考速查"
+  },
+  "architecture"
+]
