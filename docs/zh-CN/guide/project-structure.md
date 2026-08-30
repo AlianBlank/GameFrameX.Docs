@@ -45,7 +45,7 @@ GameFrameX/                   # 项目根目录
 | `LayaBox/` | LayaAir 版客户端，和 Unity/Godot 二选一 | 只有用 LayaAir 时才碰 |
 | `Config/` | 配置表工程，Excel 都放这 | 改数值、加道具、加关卡 |
 | `Protobuf/` | 通讯协议定义，`.proto` 文件都放这 | 客户端和服务器之间加新消息 |
-| `FairyGUIProject/` | UI 编辑工程，界面在这里面画 | 改界面、加界面 |
+| `FairyGUIProject/` | UI 编辑工程，界面在这里面画（推荐方案，非必须；不用 FairyGUI 时可无视此目录） | 改界面、加界面 |
 | `Tools/` | 协议导出工具（命令行 + 图形界面） | 改完 `.proto` 后导出代码时 |
 | `docker/` | 本地数据库的 Docker 配置 | 入门第 1 步启动 MongoDB |
 | `Admin/` | 管理后台相关 | 上线运营阶段才需要 |

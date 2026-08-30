@@ -46,7 +46,11 @@ sh Proto2CsExport_Client.sh    # 客户端代码 → Unity/Assets/Hotfix/Proto/
 
 协议有硬规则（只支持 proto3、消息命名 `Req/Resp/Notify` 前缀、字段编号 < 800 等），详见 [协议文档](../protobuf/)。
 
-### ③ 改界面 → 改 FairyGUI UI
+### ③ 改界面 → 改 FairyGUI UI（推荐方案，非必须）
+
+::: tip 不想多学一个编辑器？可以不用 FairyGUI
+FairyGUI 只是**推荐**方案——好处是一套 UI 工程同时给 Unity / Godot 用。你也可以直接用引擎原生 UI（Unity 的 UGUI、Godot 的 Control 节点）写界面，框架底层会自动切换适配，两套方案不冲突。下面的步骤针对 FairyGUI，走原生 UI 的同学按引擎常规做法写即可。
+:::
 
 1. 用 FairyGUI 编辑器（≥5.0）打开 `FairyGUIProject/Game.fairy`（Godot 客户端对应 `Godot/FairyGUIProject/`）
 2. 改完 **文件 → 发布**，**务必勾选「生成代码」**
