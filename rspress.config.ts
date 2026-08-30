@@ -95,7 +95,17 @@ export default defineConfig({
     pluginContainerSyntax(),
     pluginLastUpdated(),
     pluginClientRedirects({
-      redirects: [],
+      redirects: [
+        // 入门章节重构（zh-CN 先行）：旧页面 → 新页面；其余语言待翻译同步后一并纳入
+        {
+          from: '^/(en/|zh-CN/)?guide/ready/?$',
+          to: '$1guide/environment',
+        },
+        {
+          from: '^/(en/|zh-CN/)?guide/start/?$',
+          to: '$1guide/quick-start',
+        },
+      ],
     }),
     mermaid(),
   ],

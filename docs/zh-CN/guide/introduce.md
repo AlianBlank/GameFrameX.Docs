@@ -55,6 +55,7 @@ MongoDB 自动存档、Docker 一键部署、自带管理后台网页（看数�
 |:---|:---|:---|
 | 深夜的烧烤店 | [TapTap](https://www.taptap.cn/app/384964) | 2024-04-15 |
 | 连续黑白 | 抖音、快手、支付宝、鸿蒙、TapTap、iOS 等 | 2024-11 |
+| 异次元防线（Dimensional Defense） | [Google Play](https://play.google.com/store/apps/details?id=com.yjbwz.app.game) | 2026 |
 
 ## 里面都有什么技术？
 
