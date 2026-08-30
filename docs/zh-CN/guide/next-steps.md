@@ -8,8 +8,8 @@
 
 ```mermaid
 flowchart LR
-    U[Unity 客户端<br/>登录、主城] -- "TCP 29100 / HTTP 28080" --> S[游戏服务器<br/>GameFrameX.Launcher]
-    S -- "玩家存档自动落库" --> D[(MongoDB<br/>docker 容器)]
+    U[客户端（Unity/Godot）<br/>登录、主城] -- "TCP 29100 / HTTP 28080" --> S[游戏服务器<br/>GameFrameX.Launcher]
+    S -- "玩家存档自动落库" --> D[(MongoDB<br/>你自己的数据库)]
 ```
 
 日常开发就是在改这条链路上的零件。最常改的是下面三件事。
@@ -48,9 +48,9 @@ sh Proto2CsExport_Client.sh    # 客户端代码 → Unity/Assets/Hotfix/Proto/
 
 ### ③ 改界面 → 改 FairyGUI UI
 
-1. 用 FairyGUI 编辑器（≥5.0）打开 `FairyGUIProject/Game.fairy`
+1. 用 FairyGUI 编辑器（≥5.0）打开 `FairyGUIProject/Game.fairy`（Godot 客户端对应 `Godot/FairyGUIProject/`）
 2. 改完 **文件 → 发布**，**务必勾选「生成代码」**
-3. 产物自动写入 `Unity/Assets/`，回到 Unity 等编译完就能看到
+3. 产物自动写入 `Unity/Assets/`（或 Godot 工程），回到引擎等编译完就能看到
 
 ::: warning 新人最常见问题
 发布完 Unity 里报「找不到类」→ 十有八九是发布时没勾**「生成代码」**，回去重新发布一次。
@@ -64,6 +64,7 @@ sh Proto2CsExport_Client.sh    # 客户端代码 → Unity/Assets/Hotfix/Proto/
 |-----------|--------|
 | 服务器：启动参数、消息处理、Actor 模型 | [服务器文档](../server/) |
 | Unity 客户端：组件清单、构建打包 | [Unity 客户端文档](../client/unity/) |
+| Godot 客户端：工程结构、迁移说明 | [Godot 客户端文档](../client/godot/) |
 | 配置表：完整规则、进阶用法 | [配置文件文档](../config/) |
 | 协议：导出工具、命名规则 | [协议文档](../protobuf/) |
 | 用 Docker 部署整套服务 | [Docker 文档](../docker/) |

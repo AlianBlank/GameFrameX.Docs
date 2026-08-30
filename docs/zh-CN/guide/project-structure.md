@@ -4,7 +4,7 @@
 
 ## 先搞懂一件事：这是「聚合仓」
 
-你下载的 GameFrameX 主仓库是一个**聚合发布仓**——它每天自动把 7 个源仓库的最新代码同步到同名文件夹里。好处是：
+你下载的 GameFrameX 主仓库是一个**聚合发布仓**——它每天自动把各源仓库的最新代码同步到同名文件夹里。好处是：
 
 1. **下载一次就拿到所有零件**，不用挨个 clone 七八个仓库
 2. **文件夹天生就在正确位置**——配置生成、协议导出都靠相对路径互相找到对方
@@ -24,6 +24,7 @@
 GameFrameX/                   # 项目根目录
 ├── Server/                   # 游戏服务器（.NET 10，Actor 模型 + 热更新）
 ├── Unity/                    # Unity 客户端工程（含 HybridCLR 热更、YooAsset 资源）
+├── Godot/                    # Godot 4 客户端工程（C#，与 Unity 客户端功能对齐）
 ├── LayaBox/                  # LayaAir 客户端工程（可选客户端）
 ├── Config/                   # LuBan 配置表：Excel 在这改，一键生成两端代码
 ├── Protobuf/                 # 通讯协议：.proto 在这改，一键导出各端代码
@@ -39,8 +40,9 @@ GameFrameX/                   # 项目根目录
 | 目录 | 是什么 | 你什么时候会碰到 |
 |------|--------|----------------|
 | `Server/` | 游戏服务器本体，玩家的登录、战斗、存档逻辑都在这跑 | 跑服务器、写服务器逻辑 |
-| `Unity/` | Unity 客户端工程，双击用 Unity 打开的就是它 | 跑客户端、写客户端逻辑 |
-| `LayaBox/` | LayaAir 版客户端，和 Unity 二选一 | 只有用 LayaAir 时才碰 |
+| `Unity/` | Unity 客户端工程，用 Unity 编辑器打开 | 跑客户端、写客户端逻辑 |
+| `Godot/` | Godot 4 客户端工程（C#），与 Unity 客户端功能对齐，连同一套服务器 | 用 Godot 时的客户端 |
+| `LayaBox/` | LayaAir 版客户端，和 Unity/Godot 二选一 | 只有用 LayaAir 时才碰 |
 | `Config/` | 配置表工程，Excel 都放这 | 改数值、加道具、加关卡 |
 | `Protobuf/` | 通讯协议定义，`.proto` 文件都放这 | 客户端和服务器之间加新消息 |
 | `FairyGUIProject/` | UI 编辑工程，界面在这里面画 | 改界面、加界面 |
@@ -79,8 +81,8 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    C[客户端<br/>Unity / LayaBox] -- "登录、战斗等消息（TCP/HTTP/WS）" --> S3[服务器<br/>Server/]
-    S3 -- "读写存档" --> D[(MongoDB<br/>docker/mongo/)]
+    C[客户端<br/>Unity / Godot / LayaBox] -- "登录、战斗等消息（TCP/HTTP/WS）" --> S3[服务器<br/>Server/]
+    S3 -- "读写存档" --> D[(MongoDB<br/>自己的数据库)]
 ```
 
 ## 服务器内部再看一眼
@@ -110,7 +112,7 @@ flowchart LR
 |------|------|
 | [GameFrameX.Foundation](https://github.com/GameFrameX/GameFrameX.Foundation) | 服务器底层库，以 NuGet 包形式被 Server 引用，构建时自动还原，**无需 clone** |
 | [GameFrameX.Admin](https://github.com/GameFrameX/GameFrameX.Admin) | 管理后台（部分源码不开源），[在线演示](https://game.admin.web.vue.alianblank.com) |
-| [GameFrameX.Godot](https://github.com/GameFrameX/GameFrameX.Godot) / [GameFrameX.CocosCreator](https://github.com/GameFrameX/GameFrameX.CocosCreator) | 其他引擎的客户端 |
+| [GameFrameX.CocosCreator](https://github.com/GameFrameX/GameFrameX.CocosCreator) | Cocos Creator 版客户端（聚合仓未含） |
 | [GameFrameX.Docs](https://github.com/GameFrameX/GameFrameX.Docs) | 文档站源码 |
 
 ## 改代码去哪个仓库？
@@ -119,6 +121,7 @@ flowchart LR
 |---------------|--------------------------------|
 | `Server/` | https://github.com/GameFrameX/GameFrameX.Server |
 | `Unity/` | https://github.com/GameFrameX/GameFrameX.Unity |
+| `Godot/` | https://github.com/GameFrameX/GameFrameX.Godot |
 | `LayaBox/` | https://github.com/GameFrameX/GameFrameX.LayaBox |
 | `Config/` | https://github.com/GameFrameX/GameFrameX.Config |
 | `Protobuf/` | https://github.com/GameFrameX/GameFrameX.Protobuf |
